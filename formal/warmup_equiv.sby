@@ -1,0 +1,26 @@
+# V3c: unbounded sequential equivalence of the extracted warm-up netlist and
+# upstream/warmup/01_netlist.v, independent of instance and net names (PDR finds the
+# state correspondence itself). Cell behaviour comes from the Liberty functions.
+[options]
+mode prove
+
+[engines]
+abc pdr
+
+[script]
+read_liberty -ignore_miss_func sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog 01_netlist.v
+rename adder_demo gold
+read_verilog adder_demo.v
+rename adder_demo gate
+read_verilog -formal warmup_miter.sv
+delete */t:sky130_fd_sc_hd__tapvpwrvgnd_1 */t:sky130_fd_sc_hd__decap_* */t:sky130_fd_sc_hd__fill_* */t:sky130_fd_sc_hd__diode_*
+hierarchy -check -top warmup_miter
+flatten
+prep -top warmup_miter
+
+[files]
+../pdk/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+../upstream/warmup/01_netlist.v
+../out/adder_demo.v
+warmup_miter.sv

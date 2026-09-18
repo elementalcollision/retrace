@@ -6,3 +6,5 @@ __pycache__/
 !upstream/**/*.vcd
 *.fst
 upstream/
+formal/*/
+!formal/eqy/
