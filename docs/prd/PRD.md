@@ -5,8 +5,8 @@ applied to the Jane Street ASIC puzzle
 **Challenge:** Jane Street "Can you reverse-engineer an ASIC?"
 (https://blog.janestreet.com/can-you-reverse-engineer-an-asic/),
 files at https://github.com/janestreet/asic-puzzle-2026 (vendored read-only in `upstream/`)
-**Process of the target:** SkyWater SKY130, `sky130_fd_sc_hd` standard cells,
-OpenLane-style flow (Tiny Tapeout lineage)
+**Process of the target:** SkyWater SKY130, `sky130_fd_sc_hd` standard cells from
+open_pdks `8afc8346` (identified from cell geometry), OpenLane-style flow (Tiny Tapeout lineage)
 **Deadline:** the competition closed 2026-09-04. This is a post-competition learning
 project with no external deadline, so milestones below are internal.
 **Sister project:** TEMPO (`~/Claude_Primary/Jane_Street_ASIC`), the forward
@@ -127,8 +127,8 @@ S4. Round trip: run our recovered RTL through OpenLane/LibreLane for sky130 and
 
 ### Non-goals
 * No transistor-level extraction or device recognition. The masters are named, and we
-  treat them as trusted. One cheap check: hash each master's geometry against the
-  PDK's GDS to catch a tampered cell.
+  treat them as trusted, which `tools/retrace/cellcheck.py` justifies by comparing every
+  master's geometry with the pinned PDK (all identical for `8afc8346`).
 * No timing or parasitics. Simulation is zero-delay functional plus the flop
   semantics. The puzzle is a logic puzzle, not a timing one.
 * No general-purpose LVS product. RETRACE supports standard-cell digital designs from
@@ -178,7 +178,7 @@ VERIFICATION, STATUS, WRITEUP), D8 IHP port for TEMPO (G6).
 | GDS `PATH` semantics (width, pathtype end extension) handled wrong | convert paths to polygons with gdstk (honours pathtype), property-test on the warm-up against DEF wire segments |
 | Cell orientation or mirroring bugs put pins in the wrong place | F1 checked against DEF orientation (N/FS/etc.) for all warm-up cells before the puzzle |
 | Puzzle flow differs from the warm-up ("very similar", not identical) | the puzzle has its own oracle (the VCD), plus the tool reports every unmatched shape (Q1) |
-| sky130 PDK version may not match the puzzle's flow | resolved for tooling on 2026-09-18: open_pdks `0fe599b2` installed on the mini with ciel and the `sky130_fd_sc_hd` subset copied to `pdk/`. Cell-geometry diffs against the puzzle are tracked in STATUS. |
+| sky130 PDK version may not match the puzzle's flow | resolved 2026-09-18: `cellcheck.py` scan of 24 released versions; open_pdks `8afc8346` matches all 69 puzzle masters and all 18 warm-up masters exactly, and is pinned (STATUS) |
 | A cell master was tampered with at transistor level (the extractor trusts masters) | layer-by-layer comparison of every master with the PDK GDS; any diff is escalated to a Magic SPICE extraction of that cell |
 | Obfuscated logic (such as a hash) is too big to invert by hand | formal solver (F9) is the primary path, analysis is secondary; if SAT is slow, use BMC depth from the flop-count/structure analysis and `abc pdr` |
 | The output generator depends on reaching `success` by the *intended* input, not any satisfying input | enumerate all solutions (block each found trace, re-run cover), compare output strings, prefer the one consistent with the recovered intent |
