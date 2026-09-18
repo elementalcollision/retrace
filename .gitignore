@@ -1,0 +1,8 @@
+.venv/
+out/
+pdk/
+__pycache__/
+*.vcd
+!upstream/**/*.vcd
+*.fst
+upstream/
