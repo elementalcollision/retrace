@@ -10,3 +10,6 @@ closed on 2026-09-04.
 * `docs/spec/VERIFICATION.md`: check layers V0-V8 and the layout-mutation campaign
 * `docs/STATUS.md`: current state
 * `upstream/`: the puzzle repo, vendored read-only
+
+Licensed under the Apache License, Version 2.0 (`LICENSE`). The puzzle files in
+`upstream/` belong to Jane Street and are not part of this repository.
