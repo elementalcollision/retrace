@@ -54,9 +54,9 @@ forward stage (`00`..`04`), so we can test each inverse stage on its own.
   not the via's name, so an oddly named or custom via still works.
 * **Algorithm:** per layer, spatial index (R-tree / sorted sweep) of the shapes;
   union-find merges shapes that touch or overlap. Then cuts merge across layers. Then
-  cell pin polygons (li1) join li1 nets. Cell-internal li1 that is not a pin must
-  *not* join (it is internal to the cell), so a cell contributes only its pin
-  polygons.
+  cell pin conductors (li1 and met1, from S2) join the routing. Cell-internal geometry
+  that is not a pin must *not* join (it is internal to the cell), so a cell
+  contributes only its pin conductors.
 * **Outputs:** net table with `{pins:[(inst,pin)], ports:[...], layers, bbox}`;
   diagnostics for floating shapes, single-pin nets, nets with more than one driver,
   and nets with no driver.
@@ -72,11 +72,13 @@ forward stage (`00`..`04`), so we can test each inverse stage on its own.
   it simulates with the PDK's functional models unchanged.
 * Net names are generated deterministically from geometry (lowest layer, then lowest
   x,y), so the same GDS always yields the same file (Q3).
-* **Oracle (warm-up):** Yosys equivalence between `out/adder_demo.v` and
-  `upstream/warmup/01_netlist.v`. Both are flattened, `equiv_make`/`equiv_induct`
-  run on the matched ports, and flops are matched structurally (`equiv_struct`). The
-  fallback is SAT-based sequential equivalence via `miter` + `sat -tempinduct`. This
-  catches a swapped A/B pin, which a cell-histogram comparison would miss.
+* **Oracle (warm-up):** against `upstream/warmup/01_netlist.v`, twice. (1) Labelled
+  graph isomorphism (cell type, pin name, port name). (2) Sequential equivalence: a
+  miter (`formal/warmup_miter.sv`) runs both netlists from an asserted reset and asserts
+  equal outputs, and SymbiYosys `abc pdr` proves it unboundedly. PDR finds the
+  state correspondence itself, so no name map is needed. (As built: Yosys
+  `equiv_make` could not pair flops without shared names.) A planted A0/A1 swap on a
+  `mux2_1` makes the proof fail, which a cell-histogram comparison would miss.
 
 ## S5. Simulation
 
