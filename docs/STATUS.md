@@ -9,7 +9,7 @@
 | Upstream | `janestreet/asic-puzzle-2026` @ `ffd53e0ba24e2fc1c1b12dc824e8eac5888c19a9` (2026-08-05) shallow-cloned into `upstream/` (read-only, git-ignored) |
 | PDK | **sky130 installed on the Mac mini** with ciel 2.6.1 (`~/ciel-venv`), open_pdks `0fe599b2afb6708d281543108caf8310912f54af` (the OpenLane 2 default), PDK root `~/pdk-sky130` (sky130A + sky130B). The `sky130_fd_sc_hd` subset (LEF, techlef, tt_025C_1v80 Liberty, Verilog models, cell GDS; ~22 MB) is copied to local `pdk/` (git-ignored; `pdk/VERSION` records the commit). iverilog compiles the warm-up netlist against the models. |
 | Env (this Mac) | `.venv/` (Python 3.14) with `gdstk`, `klayout`; oss-cad-suite at `~/ttsetup/oss-cad-suite` (Yosys, eqy, SBY, iverilog, Verilator) |
-| Env (mini) | host: Python 3.12.14 and Icarus 13.0 in `/opt/homebrew/bin` (a non-interactive SSH session needs that on PATH), no Yosys; OrbStack VM `tt-runner` **unreachable on 2026-09-18** (`sconrpc ... socket was not connectible`, `orb` hangs). This also affects TEMPO's self-hosted CI runner. |
+| Env (mini) | host: Python 3.12.14 and Icarus 13.0 in `/opt/homebrew/bin` (a non-interactive SSH session needs that on PATH), no Yosys. OrbStack VM `tt-runner` (Ubuntu noble arm64, 11 cores, Python 3.12.3, iverilog in `/usr/bin`, `~/pdk` has IHP only) was unreachable for a while on 2026-09-18 (`sconrpc ... socket was not connectible`, load average ~110) and was back later that day: `mini-orb-tt` runner online and idle. |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding: cell masters vs PDK GDS (2026-09-18)
@@ -34,8 +34,7 @@ PDK's CDL.
 
 ## Next (ordered)
 
-1. Decide what to do about the mini's OrbStack VM (restart or wait). It blocks TEMPO CI too.
-2. Resolve the cell-master finding above.
-3. S1/S2 on the warm-up: V1, V2.
-4. S3/S4 on the warm-up: V3 (equivalence with `01_netlist.v`).
-5. Puzzle extraction, then V4-V6.
+1. Resolve the cell-master finding above.
+2. S1/S2 on the warm-up: V1, V2.
+3. S3/S4 on the warm-up: V3 (equivalence with `01_netlist.v`).
+4. Puzzle extraction, then V4-V6.
