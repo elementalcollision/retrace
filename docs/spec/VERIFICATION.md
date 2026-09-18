@@ -8,13 +8,13 @@ Nothing downstream is trusted until the stage above it is green.
 | ID | Layer | Check | Pass criterion | Location |
 |---|---|---|---|---|
 | V0 | Lint | generated netlists read by Yosys and Verilator | no errors, no implicit nets | `make lint` |
-| V1 | Instances | warm-up GDS instances vs DEF `COMPONENTS` | multiset of (master, x, y, orient) identical | `test/test_instances.py` |
+| V1 | Instances | warm-up GDS instances vs DEF `COMPONENTS` | multiset of (master, x, y, orient) identical | `test/test_warmup.py` |
 | V2 | Pins | per master: GDS pin labels vs sky130 LEF pins, directions from Liberty | identical sets for all 80 masters in use | `test/test_pins.py` |
-| V3 | Warm-up netlist | extracted `adder_demo` vs `01_netlist.v` | Yosys equivalence proven (combinational and sequential) | `test/test_warmup_equiv.py`, `formal/warmup_equiv.ys` |
-| V4 | Extractor diversity | gdstk extractor vs KLayout L2N on the puzzle | instance–net bipartite graphs isomorphic | `test/test_diversity.py` |
-| V5 | Electrical sanity | supply isolation, port binding, drivers | 0 signal–supply shorts, 13/13 ports bound, every net exactly 1 driver (or a port), 0 floating logic inputs | `test/test_sanity.py` |
-| V6 | Behaviour | puzzle netlist replaying `example_inputs.vcd` in iverilog and Verilator | `O` and `success` match at every clock edge after reset | `test/test_vcd_replay.py` |
-| V7 | Intent | recovered RTL vs extracted netlist | `eqy` proven per block and top-level | `formal/eqy/` |
+| V3 | Warm-up netlist | extracted `adder_demo` vs `01_netlist.v` | DEF net partition equal; labelled-graph isomorphic; SymbiYosys PDR sequential equivalence | `test/test_warmup.py`, `formal/warmup_equiv.sby` |
+| V4 | Extractor diversity | gdstk extractor vs KLayout L2N on the puzzle | identical net partitions over (master@origin, pin) | `test/test_crosscheck.py` |
+| V5 | Electrical sanity | supply isolation, port binding, drivers | 0 signal–supply shorts, 13/13 ports bound, every net exactly 1 driver (or a port), 0 floating logic inputs | `test/test_puzzle.py` |
+| V6 | Behaviour | puzzle netlist replaying `example_inputs.vcd` in iverilog and Verilator | `O` and `success` match at every clock edge after reset | `test/test_crosscheck.py` |
+| V7 | Intent | recovered RTL vs extracted netlist | per block: SAT miter against the gold cone cut at the flops (`tools/analysis/cone.py`); top level: SymbiYosys `abc pdr` miter asserting `O`, `success` and all 92 flops equal after reset (`tools/analysis/e2e.py`), with negative controls | `test/test_recovered.py` |
 | V8 | Answer | SBY cover trace + analytical input | both raise `success` in V6's harness; all-solutions enumeration is finite and documented | `formal/solve.sby`, `test/test_answer.py` |
 
 ## 2. Mutation campaign (the TEMPO move)
@@ -33,6 +33,10 @@ least one layer to catch each:
 
 Target, as in TEMPO: every non-equivalent mutant killed. Survivors get recorded with a
 reason.
+
+Campaign as run (2026-09-18, `docs/MUTATION.md`): 130 mutants, 90 killed, 39
+equivalent, 1 survivor (a behavioural master swap on the puzzle), which the V7
+end-to-end proof kills when run against the mutant layout.
 
 ## 3. Test data
 

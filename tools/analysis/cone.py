@@ -182,6 +182,11 @@ def gold_module(block):
         assert v["reset_net"] in (None, port_net["rst_n"]), (k, v["reset_net"])
     rename = {pins[f]["Q"]: f"q_{fid[f]}" for f in flops}
     rename.update({port_net[p]: p for p in ports})
+    # nets named after output port bits ("O[3]") must not be emitted as `wire O[3];`,
+    # which Verilog reads as an unconnected array and leaves the real O port undriven
+    for o in targets:
+        if "[" in o and port_net[o] not in rename:
+            rename[port_net[o]] = "o_" + o.replace("[", "").replace("]", "")
     ins = sorted(ports) + sorted(f"q_{fid[f]}" for f in flops)
     outs = list(targets)
     bus_o = sorted(o for o in outs if o.startswith("O["))
@@ -206,6 +211,7 @@ def gold_module(block):
             conns.append(f".{p}({r})")
         body.append(f"  {inst[c]['master']} {c} ({', '.join(conns)});")
     lines += [f"  wire {n};" for n in sorted(internal)]
+    lines += [f"  wire {r};" for r in sorted(v for v in rename.values() if v.startswith("o_"))]
     lines += body
     for o, n in targets.items():
         lines.append(f"  assign {o} = {ref(n)};")
