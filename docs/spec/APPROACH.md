@@ -33,9 +33,12 @@ forward stage (`00`..`04`), so we can test each inverse stage on its own.
 
 ## S2. Pin geometry
 
-* For each master, take pin polygons on li1 (67/16) and attach the nearest 67/5
-  label. A pin can be several polygons (e.g. `Q` shows up four times in `dfrtp_2`).
-  Supply pins sit on met1 (VPWR/VGND, 68/5) and on nwell/pwell (VPB/VNB).
+* For each master, a pin is the cell-internal conductor under its label (li1 67/5, met1
+  68/5): li1/met1 polygons (x/20 and x/16) joined by mcon (67/44), plus li1 islands
+  joined through gate poly (66/20) by licon (66/44). Poly is cut at the resistor marker
+  66/15 so `conb_1` outputs stay off the supplies. Diffusion is never followed. (As
+  built: the li1 x/16 shapes turned out to be label markers only, see STATUS findings.)
+  Supply pins sit on met1 (VPWR/VGND); VPB/VNB (wells) are not extracted.
 * Transform into top coordinates per instance.
 * **Oracle:** the pin set of each master matches the sky130 LEF, and each pin's
   direction comes from the Liberty/LEF (needed later so we know drivers from loads).

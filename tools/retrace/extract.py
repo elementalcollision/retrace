@@ -2,8 +2,8 @@
 
 Stages (docs/spec/APPROACH.md):
   S1 instances   every sky130_fd_sc_hd reference: master, DEF-style lower-left, orientation
-  S2 pins        per master, the li1/met1 conductor (x/20 joined by mcon 67/44) under
-                 each pin label (67/5, 68/5)
+  S2 pins        per master, the li1/met1 conductor under each pin label (67/5, 68/5):
+                 li1/met1 joined by mcon, li1 islands joined through gate poly by licon
   S3 nets        union-find over conductor shapes: li1/met1..met5 routing (paths and
                  polygons, datatypes 20 and 16), via-cell pads, cell pins; a cut shape
                  L/44 in a via cell joins the layers L and L+1 that it touches
@@ -27,6 +27,9 @@ LI1, MET5 = 67, 72
 LAYER_NAMES = {67: "li1", 68: "met1", 69: "met2", 70: "met3", 71: "met4", 72: "met5"}
 CONDUCTOR_DT = (20, 16)
 CUT_DT = 44
+POLY = (66, 20)
+LICON = (66, 44)
+POLY_RES = (66, 15)
 LABEL_DT = 5
 # masters with no signal pins or no logic function
 PHYSICAL = ("tapvpwrvgnd", "decap", "fill", "diode")
@@ -102,8 +105,8 @@ class Extraction:
             x = ox - w if orient in ("S", "FN") else ox
             y = oy - h if orient in ("S", "FS") else oy
             short = master[len(PREFIX):]
-            inst = {"name": f"{short}_{x}_{y}", "master": master, "x": x, "y": y,
-                    "orient": orient, "pins": collections.defaultdict(list)}
+            inst = {"name": f"{short}_{x}_{y}", "master": master, "x": x, "y": y, "orient": orient,
+                    "gds_origin": (ox, oy), "pins": collections.defaultdict(list)}
             for name, polys in self._master_pins(ref.cell).items():
                 for q in polys:
                     q = gdstk.Polygon(q.points, q.layer, q.datatype)
@@ -116,14 +119,28 @@ class Extraction:
         """Pin geometry of a master, cached: {pin: [gdstk.Polygon in master coordinates]}.
 
         A pin is the whole conductor that its label sits on *inside the cell*: li1 and
-        met1 polygons (drawing x/20 and pin x/16) joined by the cell's mcon cuts (67/44).
-        Many sky130 pins are a met1 strap over two li1 islands (e.g. xor2_2 B, dfrtp_2
-        RESET_B), and routers land on the strap. On li1 the x/16 shapes are only small
+        met1 polygons (drawing x/20 and pin x/16) joined by mcon (67/44), plus li1 islands
+        joined through gate poly (66/20) by licon (66/44). Many sky130 pins are a met1
+        strap over two li1 islands (xor2_2 B, dfrtp_2 RESET_B) or two li1 islands on one
+        poly gate (a31oi_2 A1), and routers land on any of them and even route *through*
+        the cell between them. On li1 the x/16 shapes are only small
         markers inside the drawing, but the supply rails exist only as met1 x/16."""
         if cell.name in self._pin_cache:
             return self._pin_cache[cell.name]
         polys = [p for p in cell.polygons if p.layer in (LI1, LI1 + 1) and p.datatype in CONDUCTOR_DT]
         geoms = [_poly(p.points) for p in polys]
+        # gate poly, cut where the PDK marks a poly resistor (66/15, only in conb_1): a
+        # tie cell's HI/LO reach the supplies through such resistors and must stay
+        # separate nets
+        cuts = shapely.union_all([_poly(p.points) for p in cell.polygons if (p.layer, p.datatype) == POLY_RES])
+        for p in cell.polygons:
+            if (p.layer, p.datatype) != POLY:
+                continue
+            g = _poly(p.points).difference(cuts)
+            for part in getattr(g, "geoms", [g]):
+                if not part.is_empty:
+                    polys.append(gdstk.Polygon(list(part.exterior.coords)[:-1], POLY[0], POLY[1]))
+                    geoms.append(part)
         uf = UnionFind()
         for _ in polys:
             uf.add()
@@ -132,12 +149,18 @@ class Extraction:
         for a, b in zip(left.tolist(), right.tolist()):
             if polys[a].layer == polys[b].layer and a != b:
                 uf.union(a, b)
+        # mcon joins li1-met1; licon joins li1-poly (licon on diffusion touches no poly and
+        # is ignored, so transistor source/drain never merge)
         for cut in cell.polygons:
-            if (cut.layer, cut.datatype) != (LI1, CUT_DT):
+            if (cut.layer, cut.datatype) not in ((LI1, CUT_DT), LICON):
                 continue
-            hits = tree.query(_poly(cut.points), predicate="intersects").tolist()
-            for h in hits[1:]:
-                uf.union(hits[0], h)
+            below = POLY[0] if (cut.layer, cut.datatype) == LICON else LI1
+            above = LI1 if (cut.layer, cut.datatype) == LICON else LI1 + 1
+            hits = [h for h in tree.query(_poly(cut.points), predicate="intersects").tolist()
+                    if polys[h].layer in (below, above)]
+            if {polys[h].layer for h in hits} >= {below, above}:
+                for h in hits[1:]:
+                    uf.union(hits[0], h)
         names = collections.defaultdict(set)
         for lb in cell.labels:
             if lb.texttype != LABEL_DT or lb.layer not in (LI1, LI1 + 1):
@@ -155,7 +178,7 @@ class Extraction:
                 self.diag["pin_component_multiple_labels"] += 1
                 self.notes.append(f"{cell.name}: one conductor carries {sorted(labels)}")
             name = sorted(labels)[0]
-            pins[name].extend(polys[i] for i in range(len(polys)) if uf.find(i) == root)
+            pins[name].extend(polys[i] for i in range(len(polys)) if uf.find(i) == root and polys[i].layer != POLY[0])
         self._pin_cache[cell.name] = dict(pins)
         return self._pin_cache[cell.name]
 
@@ -339,7 +362,9 @@ class Extraction:
                     self.diag["pin_missing_geometry"] += 1
                     continue
                 used.add(net)
-                conns.append(f".{pin}({_vname(net)})")
+                # a bus port bit is written as a bit-select (O[3]), never escaped
+                ref = net if net in self.ports else _vname(net)
+                conns.append(f".{pin}({ref})")
             body.append(f"  {inst['master']} {inst['name']} ({', '.join(conns)});")
         for net in sorted(used):
             if net not in self.ports:
