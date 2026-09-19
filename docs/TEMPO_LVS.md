@@ -256,6 +256,22 @@ The review also found that the "sky130 unchanged" evidence first reported by the
 refactored code gives identical output, so the conclusion held; the evidence above is the
 corrected one.
 
+## 4d. In TEMPO's CI
+
+TEMPO's `.github/workflows/lvs.yaml` (layer L5b in TEMPO's `docs/spec/VERIFICATION.md`) runs
+these checks after every sign-off: `gds.yaml` calls it once the `gds` job has produced the
+`GDS_logs` artifact, and it can be dispatched by hand against an earlier run. It runs on a
+GitHub-hosted runner, as TEMPO's runner security note requires. It checks out RETRACE pinned to a
+commit and fetches only the `sg13cmos5l` standard-cell LEF and GDS from IHP-Open-PDK `2bbec755`,
+the revision the TT GDS action installs. The report goes to the job summary and to an
+`lvs_report` artifact.
+
+A dry run on the self-hosted runner's VM (Ubuntu, arm64) found two portability bugs before the
+first CI run: peak RSS is reported in KiB on Linux, and the sky130 guard test needs to skip where
+the puzzle files are absent. The first CI run (35438357943, 2026-09-19) checked the CI-built
+`v0.2-signoff` GDS (run 35218140984): every check passes, identical to the local results, with
+11 tests passed and the sky130 guard skipped. Extraction took 44 s with a 1.9 GB peak.
+
 ## 5. Open items
 
 * **DEF `SPECIALNETS` is not read.** Power/ground routing correctness (that

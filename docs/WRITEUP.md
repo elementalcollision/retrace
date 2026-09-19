@@ -262,7 +262,8 @@ independent of LibreLane's Magic and Netgen (`tools/tempo/lvs.py`, `docs/TEMPO_L
 | cell geometry vs PDK | 51 / 51 masters identical |
 | extractor 1 vs KLayout (V4) | 35,543 / 35,543 multi-pin nets |
 
-It runs in about 20 s. Four planted faults in copies of TEMPO's GDS (a deleted via, a flipped
+It runs in about 20 s, and since 2026-09-19 it runs in TEMPO's CI after every sign-off
+(first run: the CI-built `v0.2-signoff` GDS, all checks passing). Four planted faults in copies of TEMPO's GDS (a deleted via, a flipped
 cell, two swapped SRAM pin labels, a Metal2 short) were each caught. Power connections (124,303
 pins) and 157 single-pin nets are counted and excluded explicitly, because DEF's `NETS` and the
 netlist do not list them.
