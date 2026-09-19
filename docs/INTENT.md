@@ -32,12 +32,12 @@ RTL is that circuit.
                               | 22 saturating   |   | 12-tap I shift  |            |
                               | 2-bit "hit bin" |   | register + 2    |            |
                               | counters, one   |   | sticky checkers |            |
-                              | per (q_f00..    |   | match_ok(f53),  |            |
+                              | per (q_f00..    |   | row_count_err,  |            |
                               | q_f07) pattern  |   | hist_hit(f64)   |            |
                               | (f09-f52)       |   | (f53-f68)       |            |
                               +--------+--------+   +--------+--------+            |
                                        |                      |                    |
-                                       | array_bits[43:0]      | match_ok, hist_hit |
+                                       | array_bits[43:0]      | 2 sticky flags     |
                                        |                      |                    |
                                        +----------+   +-------+                    |
                                                   |   |                            |
@@ -48,9 +48,9 @@ RTL is that circuit.
                                           | ~armed (one-shot);    |<---------------+
                                           | on trigger, pass =    |
                                           | array_ok & lb_ok &    |
-                                          | ~match_ok; latches    |
-                                          | success or alt_latch  |
-                                          | (f77-f79)             |
+                                          | ~row_count_err;       |
+                                          | latches success or    |
+                                          | alt_latch (f77-f79)   |
                                           +-----------+-----------+
                                                       |
                                     success, alt_latch(q_f77), hist_hit(q_f64)
@@ -125,19 +125,23 @@ Two cooperating pieces of state, both gated by `shift_en = enable & ~cnt_done`:
 (1) a 12-stage shift register recording the last 12 samples of `I`
 (`I -> f67 -> f66 -> f68 -> f63 -> f60 -> f58 -> f61 -> f56 -> f57 -> f59 -> f62 ->
 f65`), advancing one tap per `shift_en` cycle; (2) two independent **sticky** ("set
-once, stay set until reset") flags, `match_ok` (f53) and `hist_hit` (f64), each
+once, stay set until reset") flags, `row_count_err` (f53) and `hist_hit` (f64), each
 latched from a small combinational condition over the taps, `I`, and
 `check_slot = ~lo2 & lo1 & ~lo0 & lo3` (true on one specific value of the counter's
-low 4 bits). `cmp_state`(f54)/`cmp_hold`(f55) are a 2-cycle serial-comparator helper
-for `match_ok`.
+low 4 bits: column 10, the last cell of a row). `row_stars_hi`(f54)/`row_stars_lo`(f55) form
+`row_stars`, a 2-bit saturating count of the stars so far in the current row, cleared at the
+row's last cell. `row_count_err` is set there unless the row holds exactly 2 stars, and
+`hist_hit` is set when a new star touches an earlier one. (Renamed on 2026-09-19 from the first
+recovered names `match_ok`/`cmp_state`/`cmp_hold`, which described the logic as a "serial
+comparator" and read the error flag as its opposite.)
 
 | Register | Flop | Meaning | Reset |
 |---|---|---|---|
-| `match_ok` | f53 | sticky flag, latches on a `check_slot` cycle | 0 |
-| `cmp_state` | f54 | running comparator accumulator | 0 |
-| `cmp_hold` | f55 | 1-cycle delayed comparator sample | 0 |
+| `row_count_err` | f53 | sticky error: some row did not hold exactly 2 stars | 0 |
+| `row_stars_hi` | f54 | `row_stars` bit 1 (stars so far in this row, saturating at 3) | 0 |
+| `row_stars_lo` | f55 | `row_stars` bit 0 | 0 |
 | `shift_tap0..11` | f67,f66,f68,f63,f60,f58,f61,f56,f57,f59,f62,f65 | 12-tap `I` shift register, tap0=newest .. tap11=oldest | 0 |
-| `hist_hit` | f64 | sticky flag, latched from shift-tap disjunction | 0 |
+| `hist_hit` | f64 | sticky error: a star touched an earlier one (from the shift-register taps) | 0 |
 
 ### 2.4 `left_bottom` (`rtl_recovered/left_bottom.v`, flops f69-f76, all `dfrtp_2` reset-to-0)
 
@@ -162,7 +166,7 @@ placement/synthesis (LSB..MSB = f75,f70,f72,f74,f69,f71,f73,f76), not sequential
 A one-shot "did the puzzle solve?" decision. `armed` (f79) is a sticky OR-latch
 (`d_f79 = cnt_done | armed`), so `trigger = cnt_done & ~armed` is high on exactly one
 cycle per reset interval: the first time `cnt_done` (counter's `q_f08`) is seen 1.
-On that cycle only, `check` evaluates `pass = trigger & ~match_ok & lb_ok & array_ok`
+On that cycle only, `check` evaluates `pass = trigger & ~row_count_err & lb_ok & array_ok`
 (see §3 for `lb_ok`/`array_ok`) and, if `pass`, sets exactly one of `success_latch`
 (f78, when `hist_hit=0`) or `alt_latch` (f77, when `hist_hit=1`); if the trigger
 fires without `pass`, both are cleared. Every other cycle both hold. `success` wires
@@ -223,10 +227,10 @@ from 0 (see §2.1). At that instant:
 
 ```
 trigger        = cnt_done & ~armed                          (one-shot, always true this cycle)
-gate_ok        = ~match_ok                                   (left_top's f53 must be 0)
+rows_ok        = ~row_count_err                             (left_top's f53 must be 0)
 left_bottom_ok = ({f76,...,f69} == 8'b0000_1011)              (raw flop-id order; the counter VALUE is 22)
 array_ok       = (array_bits[43:0] == ARRAY_TARGET)           (see below)
-pass           = trigger & gate_ok & left_bottom_ok & array_ok
+pass           = trigger & rows_ok & left_bottom_ok & array_ok
 success        = success_latch, set to 1 iff  pass & ~hist_hit   (f64 == 0)
                                 (if pass & hist_hit, alt_latch is set instead and
                                  success stays 0; if trigger fires without pass,
@@ -254,8 +258,7 @@ group-A bin and one group-B bin, and 11 bins x 2 hits = 22 in each group.
 **In words, `success` becomes and stays 1 if and only if**, on the single cycle the
 counter's mod-121 sweep first completes (the 121st enabled cycle since the counter
 was last at 0):
-1. `left_top`'s `match_ok` (f53) is **0** (the round-comparator sticky flag must
-   never have latched),
+1. `left_top`'s `row_count_err` (f53) is **0**: every row held exactly 2 stars,
 2. `left_top`'s `hist_hit` (f64) is **0** (the history-pattern sticky flag must
    never have latched — if this alone is violated while everything else holds,
    `alt_latch` is set instead and `success` stays 0 permanently),

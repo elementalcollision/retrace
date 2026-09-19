@@ -36,28 +36,30 @@
 //      the counter block's own numbering.) This is the cycle each round
 //      the two "checker" flops below evaluate their sticky verdicts.
 //
-//   4. f53 (match_ok) and f54/f55 (cmp_state/cmp_hold) form a small
-//      2-cycle serial comparator against I, gated by shift_en:
-//        - f55 holds the previous cycle's comparator result while the
-//          register is shifting.
-//        - f54 accumulates whether that comparator has fired since the
-//          last check_slot (it is force-cleared to 0 exactly on a
-//          check_slot cycle, otherwise sticky-set by I & q_f55).
-//        - f53 is a "once true, stays true" (until reset) sticky flag:
-//          it latches when check_slot & shift_en & (a function of
-//          f54, f55, I) holds.
+//   4. The per-row star count (renamed 2026-09-19; first recovered as a
+//      "serial comparator" match_ok/cmp_state/cmp_hold):
+//        - {f54, f55} = row_stars, a 2-bit saturating count of the stars
+//          (I = 1 cells) entered so far in the current row: 0, 1, 2, or
+//          3 meaning three or more. Cleared at the row's last cell
+//          (check_slot, column 10).
+//        - f53 = row_count_err, a sticky ("once set, stays set" until
+//          reset) error flag: set at a row's last cell when that row's
+//          final count, including the current cell, is not exactly 2.
+//          success needs it clear (check.v), i.e. two stars in every row.
 //
 //   5. f64 (hist_hit) is a second, independent sticky flag ("once true,
 //      stays true" until reset): it latches whenever, during a shift_en
 //      cycle with I=1, the shift-register taps f59/f62/f65/f67 and the
-//      counter's low bits satisfy `hist_hit_cond` below.
+//      counter's low bits satisfy `hist_hit_cond` below, i.e. the new star
+//      touches an earlier one (left, or the three cells above; no
+//      wraparound). check.v routes pass & hist_hit to the TWO NOT TOUCH latch.
 //
 // Scope note (review, 2026-09-18): the claim that "downstream logic reads
 // q_f53 and q_f64" comes from an external scout hint about connectivity
 // *outside* this module, and cannot be confirmed from left_top.v alone --
 // this file only produces q_f53/q_f64 as ordinary flop outputs like any
 // other d_fNN here. Everything below the line -- shift_en, check_slot, the
-// shift chain, and the match_ok/hist_hit latch conditions -- is this
+// shift chain, and the row_count_err/hist_hit latch conditions -- is this
 // module's own behavior and is fully proven (SAT-equivalent to
 // gold_left_top.v via tools.analysis.cone: "V7 left_top PASS") and
 // independently testbench-verified (612/612 checks, directed + 500-vector
@@ -65,16 +67,13 @@
 //
 // Flop map (all sky130_fd_sc_hd__dfrtp_2, async-reset-to-0 by rst_n,
 // clocked by clk; per-flop next-state meaning):
-//   f53 match_ok    -- sticky "round matched" flag. Latches on a check_slot
-//                      cycle (while shift_en) when match_cond holds:
-//                      q_f54 ? (I|q_f55) : ~(I&q_f55). Holds thereafter
-//                      until reset (never cleared once set).
-//   f54 cmp_state   -- running comparator accumulator. While shift_en: forced
-//                      to 0 on a check_slot cycle, else sticky-set to 1 by
-//                      (I & q_f55), else holds. Frozen when shift_en is low.
-//   f55 cmp_hold    -- one-cycle-delayed comparator sample. While shift_en:
-//                      0 on a check_slot cycle, else q_f55 ? (q_f54|~I) : I.
-//                      Frozen when shift_en is low.
+//   f53 row_count_err -- sticky error flag. Set on a check_slot cycle (while
+//                        shift_en) when row_stars + I != 2; never cleared
+//                        until reset.
+//   f54 row_stars_hi  -- row_stars bit 1. While shift_en: 0 on a check_slot
+//                        cycle, else the saturating row_stars + I. Frozen when
+//                        shift_en is low.
+//   f55 row_stars_lo  -- row_stars bit 0, same update.
 //   f56 shift[7]    -- shift-register tap: next = q_f61 when shift_en, else
 //                      holds.
 //   f57 shift[8]    -- shift-register tap: next = q_f56 when shift_en, else
@@ -149,19 +148,17 @@ module rec_left_top (
 
   assign d_f64 = q_f64 | (I & shift_en & hist_hit_cond);
 
-  // -- 4. cmp_hold (f55): previous cycle's comparator sample -----------------
-  // active only while shifting; holds otherwise.
-  wire cmp_sample = check_slot ? 1'b0
-                                : (q_f55 ? (q_f54 | ~I) : I);
-  assign d_f55 = shift_en ? cmp_sample : q_f55;
+  // -- 4. per-row star count and the row error flag --------------------------
+  // row_stars: saturating count of stars so far in this row (3 = three or more),
+  // cleared at the row's last cell (check_slot).
+  wire [1:0] row_stars      = {q_f54, q_f55};
+  wire [1:0] row_stars_inc  = (row_stars == 2'd3) ? 2'd3 : row_stars + {1'b0, I};
+  wire [1:0] row_stars_next = check_slot ? 2'd0 : row_stars_inc;
+  assign {d_f54, d_f55} = shift_en ? row_stars_next : row_stars;
 
-  // -- 4. cmp_state (f54): sticky comparator accumulator, force-cleared on
-  //       check_slot, otherwise set by I & cmp_hold while shifting.
-  wire cmp_set = I & q_f55;
-  assign d_f54 = shift_en ? (~check_slot & (q_f54 | cmp_set)) : q_f54;
-
-  // -- 4. match_ok (f53): sticky "round matched" flag, latched on check_slot.
-  wire match_cond = q_f54 ? (I | q_f55) : ~(I & q_f55);
-  assign d_f53 = q_f53 | (check_slot & shift_en & match_cond);
+  // row_count_err (f53): sticky; set at the row's last cell unless the row,
+  // including this cell, holds exactly two stars.
+  wire row_not_two = ({1'b0, row_stars} + {2'b0, I}) != 3'd2;
+  assign d_f53 = q_f53 | (check_slot & shift_en & row_not_two);
 
 endmodule

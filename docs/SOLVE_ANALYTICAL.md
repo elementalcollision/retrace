@@ -84,9 +84,13 @@ column), one value per bin, all 11 column values 0-10 covered exactly once
 (`LO_TO_COLBIN` in `starbattle.py`, cross-checked against the same `tb_array.log`, 0
 mismatches). So group B is literally "count of stars in this column."
 
-## 4. `match_ok` (f53): exact trigger, established by directed simulation
+## 4. `row_count_err` (f53): exact trigger, established by directed simulation
 
-`match_ok` only ever updates on a `check_slot` cycle (`LO == 10`, i.e. the last cell of each
+(This flag and its two helper flops were first recovered as `row_count_err`, `row_stars_hi` and
+`row_stars_lo`; they were renamed to `row_count_err`, `row_stars_hi` and `row_stars_lo` on
+2026-09-19, after this section established what they are.)
+
+`row_count_err` only ever updates on a `check_slot` cycle (`LO == 10`, i.e. the last cell of each
 row — one `check_slot` per row, 11 total over the sweep), confirmed by both reading
 `left_top.v`'s `check_slot` equation (`~q_f04 & q_f05 & ~q_f06 & q_f07`, which decodes to
 `LO == 10` under the counter's own bit weights) and by simulation.
@@ -95,7 +99,7 @@ Directed test (`out/solve_a` runs, reproduced by the snippet in this doc's histo
 holding every other row at exactly 2 stars and sweeping one row's star count through
 0,1,2,3,4:
 
-| row star count | `match_ok` |
+| row star count | `row_count_err` |
 |---|---|
 | 0 | 1 (bad) |
 | 1 | 1 (bad) |
@@ -105,12 +109,12 @@ holding every other row at exactly 2 stars and sweeping one row's star count thr
 
 This holds for row 0, row 5, and row 10 alike (no special-case for the first/last row).
 Five additional random trials, each with every row given a *different pair* of columns (so
-column and region counts are not the all-2 pattern), still show `match_ok=0` whenever every
+column and region counts are not the all-2 pattern), still show `row_count_err=0` whenever every
 row's count is exactly 2, regardless of *which* two columns. **Confirms the `docs/INTENT.md`
-hypothesis exactly: `match_ok` is a per-row "does this row have exactly 2 stars" checker**,
-evaluated independently for each of the 11 rows (via the small serial comparator
-`cmp_state`/`cmp_hold`, which is force-cleared to 0 at every `check_slot`, i.e. it restarts
-fresh each row) and OR'd sticky into one flag. `check.v` requires `match_ok == 0` for
+hypothesis exactly: `row_count_err` is a per-row "does this row have exactly 2 stars" checker**,
+evaluated independently for each of the 11 rows (via `row_stars = {row_stars_hi, row_stars_lo}`,
+a 2-bit saturating count of the row's stars that is cleared at every `check_slot`, i.e. it restarts
+fresh each row) and OR'd sticky into one flag. `check.v` requires `row_count_err == 0` for
 `success`, so **every row must have exactly 2 stars.**
 
 ## 5. `hist_hit` (f64): exact trigger, established by directed simulation
@@ -177,7 +181,7 @@ saturate past 2 and fail the equality; any count below 2 obviously fails it too)
 
 An 11x11 grid. Place stars ("I=1") in cells such that:
 
-1. Every one of the 11 **rows** contains exactly 2 stars (`match_ok == 0`).
+1. Every one of the 11 **rows** contains exactly 2 stars (`row_count_err == 0`).
 2. Every one of the 11 **columns** contains exactly 2 stars (group B / `array_ok`'s column
    half, `left_bottom == 22` is implied).
 3. Every one of the 11 **regions** in the map above (letters A-K) contains exactly 2 stars
@@ -195,7 +199,7 @@ was synthesized), and (b) adjacency does not wrap around the grid edges.
 
 `tools/solve/starbattle.py::solve_all()` builds this exact rule set as a `z3` model: one
 Boolean variable per cell, pseudo-Boolean `== 2` constraints for every region/row/column
-(rules 1-3), and the `left_top` shift-register + `match_ok`/`hist_hit` FSM (section 4-5)
+(rules 1-3), and the `left_top` shift-register + `row_count_err`/`hist_hit` FSM (section 4-5)
 symbolically unrolled over the 121-cell schedule from section 1, using `z3.Bool` cell
 variables as the free `I[k]` inputs and everything else (row/column indices, `check_slot`,
 `cnt_done`) as concrete constants per the fixed schedule — i.e. the *exact* equations from
@@ -258,7 +262,7 @@ would rise on the real `upstream/puzzle.gds` netlist for this same `I` sequence.
 | Row-major cell order, column fastest | **Confirmed** (direct RTL simulation) |
 | Group A bins = grid regions | **Confirmed**, but region sizes are irregular (4-28 cells), not all 11 as a naive Latin-square guess might suggest — **that stronger claim is refuted** |
 | Group B bins = columns | **Confirmed** |
-| `match_ok` = per-row star-count check | **Confirmed exactly**, including that row 0 and row 10 behave identically to interior rows |
+| `row_count_err` = per-row star-count check | **Confirmed exactly**, including that row 0 and row 10 behave identically to interior rows |
 | `hist_hit` = adjacency ("stars may not touch, incl. diagonally") | **Confirmed exactly**, and additionally established: no wraparound across row/column edges |
 | Left-bottom target = 22 total stars | **Confirmed** (matches lead-review correction already in `docs/INTENT.md`) |
 | Every array bin target = 2 | **Confirmed** for all 22 bins |

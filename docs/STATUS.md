@@ -77,14 +77,14 @@ once, on the 121st enabled cycle, and prints a message on `O`.
 |---|---|---|
 | counter | 9 | column digit `lo` and row digit `hi` (0-10 each), plus sticky `cnt_done` |
 | array | 44 | 22 two-bit saturating bins: 11 irregular region masks (group A), 11 column decodes on `lo` (group B) |
-| left_top | 16 | 12-cell shift register of `I` (the current neighbourhood) and two sticky error flags: `hist_hit` (neighbouring stars) and `match_ok` (latches only in column 10, i.e. once per row; hypothesis: the per-row count) |
+| left_top | 16 | 12-cell shift register of `I` (the current neighbourhood) and two sticky error flags: `hist_hit` (neighbouring stars) and `row_count_err` (set at a row's last cell unless the row holds exactly 2 stars) |
 | left_bottom | 8 | count of `I = 1` cells (8 bits, frozen after `cnt_done`) |
 | check | 3 | `armed`, and the two outcome latches `success` and `alt` |
 | outgen | 12 | message ROMs and a scrambler (LFSR over `I`); prints 9 bytes after the decision |
 
 **`success` rises iff, at the decision cycle:** exactly 22 stars were entered
 (`left_bottom` = 22), every region bin and every column bin holds exactly 2,
-`match_ok` = 0, and `hist_hit` = 0. With stars touching but everything else right, the
+`row_count_err` = 0, and `hist_hit` = 0. With stars touching but everything else right, the
 `alt` latch is set instead and `O` prints "TWO NOT TOUCH". Other messages: "EMPTY SKY"
 (0 stars), "BIG BANG" (all 121 cells), otherwise "TRY AGAIN" (the sample trace). On
 success, `O` prints a table XORed with the scrambler, so the readable text depends on the
@@ -98,7 +98,6 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next (ordered)
 
-1. Rename `left_top`'s `match_ok` to what it is (the per-row star-count error flag, confirmed by route A's directed tests).
 
 Done since: easter eggs decoded (`tools/analysis/eastereggs.py`: the Morse strip reads PER ARENAM
 AD ASTRA; the met2 squares are a 57 x 57 logo of four broken rings), every message demonstrated

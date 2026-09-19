@@ -2,7 +2,7 @@
 // Drives rec_left_top over a caller-supplied 121-cycle I sequence (read from
 // a file, one '0'/'1' char per enabled cycle, in the same row-major cell
 // order as the counter: k=0..120 <-> (hi,lo) row-major) together with the
-// real rec_counter, and reports the final match_ok (f53) / hist_hit (f64).
+// real rec_counter, and reports the final row_count_err (f53) / hist_hit (f64).
 module tb;
   reg clk=0, rst_n=0, enable=0;
   reg [0:2047] seqfile;
@@ -67,7 +67,7 @@ module tb;
       @(posedge clk);
     end
     #1;
-    $display("RESULT match_ok=%b hist_hit=%b cnt_done=%b", lq_f53, lq_f64, cq_f08);
+    $display("RESULT row_count_err=%b hist_hit=%b cnt_done=%b", lq_f53, lq_f64, cq_f08);
     $finish;
   end
 endmodule

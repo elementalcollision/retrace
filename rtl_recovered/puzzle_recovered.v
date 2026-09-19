@@ -98,9 +98,9 @@ module puzzle_recovered (
   reg bin21_msb;  // f52, reset 0 (dfrtp)
 
   // -- left_top (f53-f68): I-history shift register + 2 sticky checkers --
-  reg match_ok;  // f53, reset 0 (dfrtp)
-  reg cmp_state;  // f54, reset 0 (dfrtp)
-  reg cmp_hold;  // f55, reset 0 (dfrtp)
+  reg row_count_err;  // f53, reset 0 (dfrtp)
+  reg row_stars_hi;  // f54, reset 0 (dfrtp)
+  reg row_stars_lo;  // f55, reset 0 (dfrtp)
   reg shift_tap7;  // f56, reset 0 (dfrtp)
   reg shift_tap8;  // f57, reset 0 (dfrtp)
   reg shift_tap5;  // f58, reset 0 (dfrtp)
@@ -200,9 +200,9 @@ module puzzle_recovered (
   wire next_bin21_lsb;
   wire next_bin21_msb;
 
-  wire next_match_ok;
-  wire next_cmp_state;
-  wire next_cmp_hold;
+  wire next_row_count_err;
+  wire next_row_stars_hi;
+  wire next_row_stars_lo;
   wire next_shift_tap7;
   wire next_shift_tap8;
   wire next_shift_tap5;
@@ -379,9 +379,9 @@ module puzzle_recovered (
       .q_f06(lo0),
       .q_f07(lo3),
       .q_f08(cnt_done),
-      .q_f53(match_ok),
-      .q_f54(cmp_state),
-      .q_f55(cmp_hold),
+      .q_f53(row_count_err),
+      .q_f54(row_stars_hi),
+      .q_f55(row_stars_lo),
       .q_f56(shift_tap7),
       .q_f57(shift_tap8),
       .q_f58(shift_tap5),
@@ -395,9 +395,9 @@ module puzzle_recovered (
       .q_f66(shift_tap1),
       .q_f67(shift_tap0),
       .q_f68(shift_tap2),
-      .d_f53(next_match_ok),
-      .d_f54(next_cmp_state),
-      .d_f55(next_cmp_hold),
+      .d_f53(next_row_count_err),
+      .d_f54(next_row_stars_hi),
+      .d_f55(next_row_stars_lo),
       .d_f56(next_shift_tap7),
       .d_f57(next_shift_tap8),
       .d_f58(next_shift_tap5),
@@ -481,7 +481,7 @@ module puzzle_recovered (
       .q_f50(bin20_lsb),
       .q_f51(bin21_lsb),
       .q_f52(bin21_msb),
-      .q_f53(match_ok),
+      .q_f53(row_count_err),
       .q_f64(hist_hit),
       .q_f69(lb_bit4),
       .q_f70(lb_bit1),
@@ -598,9 +598,9 @@ module puzzle_recovered (
       bin20_lsb <= 1'b0;
       bin21_lsb <= 1'b0;
       bin21_msb <= 1'b0;
-      match_ok <= 1'b0;
-      cmp_state <= 1'b0;
-      cmp_hold <= 1'b0;
+      row_count_err <= 1'b0;
+      row_stars_hi <= 1'b0;
+      row_stars_lo <= 1'b0;
       shift_tap7 <= 1'b0;
       shift_tap8 <= 1'b0;
       shift_tap5 <= 1'b0;
@@ -683,9 +683,9 @@ module puzzle_recovered (
       bin20_lsb <= next_bin20_lsb;
       bin21_lsb <= next_bin21_lsb;
       bin21_msb <= next_bin21_msb;
-      match_ok <= next_match_ok;
-      cmp_state <= next_cmp_state;
-      cmp_hold <= next_cmp_hold;
+      row_count_err <= next_row_count_err;
+      row_stars_hi <= next_row_stars_hi;
+      row_stars_lo <= next_row_stars_lo;
       shift_tap7 <= next_shift_tap7;
       shift_tap8 <= next_shift_tap8;
       shift_tap5 <= next_shift_tap5;

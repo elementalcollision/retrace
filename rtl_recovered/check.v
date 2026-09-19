@@ -28,7 +28,7 @@
 //
 // On that one cycle, the block evaluates a single AND of four independent gate
 // conditions ("pass"):
-//   1. gate_ok         : q_f53 == 0
+//   1. rows_ok         : q_f53 == 0 (left_top's row_count_err: every row held exactly 2 stars)
 //   2. left_bottom_ok  : the 8 "left_bottom" flops equal a fixed pattern
 //   3. array_ok        : the 44 "array" flops equal a fixed 44-bit constant
 //                         (the netlist computes this as 22 independent
@@ -97,12 +97,12 @@ module rec_check (
 
   wire array_ok        = (array_bits == ARRAY_TARGET);
   wire left_bottom_ok   = (left_bottom_bits == LEFT_BOTTOM_TARGET);
-  wire gate_ok          = ~q_f53;
+  wire rows_ok          = ~q_f53;   // left_top's row_count_err
 
   // One-shot: high only on the cycle the counter MSB is first seen high.
   wire trigger = q_f08 & ~q_f79;
 
-  wire pass = trigger & gate_ok & left_bottom_ok & array_ok;
+  wire pass = trigger & rows_ok & left_bottom_ok & array_ok;
 
   assign d_f79 = q_f08 | q_f79;                              // sticky "armed" flag
   assign d_f77 = (pass & q_f64)  | (q_f77 & ~trigger);        // latch, alt outcome

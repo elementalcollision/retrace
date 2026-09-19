@@ -324,7 +324,7 @@ LO_TO_COLBIN = {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 9: 8, 8: 9, 10: 
 
 # ---------------------------------------------------------------------------
 # 3. left_top.v translated verbatim: 12-tap I-history shift register plus
-#    two independent sticky flags, match_ok (f53) and hist_hit (f64).
+#    two independent sticky flags, row_count_err (f53) and hist_hit (f64).
 SHIFT_TAPS = ["f67", "f66", "f68", "f63", "f60", "f58", "f61", "f56", "f57", "f59", "f62", "f65"]
 
 
@@ -358,22 +358,18 @@ def left_top_step(state, I, row, col):
     hist_hit_cond = taps["f62"] or any_low_gate or tap9_off_slot
     new_hist_hit = state["f64"] or (I and hist_hit_cond)
 
-    # 4. cmp_hold (f55)
-    cmp_sample = False if check_slot else ((f54 or (not I)) if f55 else I)
-    new_f55 = cmp_sample
-
-    # 4. cmp_state (f54)
-    cmp_set = I and f55
-    new_f54 = (not check_slot) and (f54 or cmp_set)
-
-    # 4. match_ok (f53), latched only on check_slot (col==10)
-    match_cond = (I or f55) if f54 else (not (I and f55))
-    new_match_ok = state["f53"] or (check_slot and match_cond)
+    # 4. row_stars = {f54, f55}: stars so far in this row, saturating at 3, cleared at the
+    #    row's last cell (check_slot, col == 10). row_count_err (f53) is set there unless
+    #    the row, including the current cell, holds exactly two stars.
+    row_final = 2 * int(f54) + int(f55) + int(I)
+    row_next = 0 if check_slot else min(row_final, 3)
+    new_f54, new_f55 = bool(row_next & 2), bool(row_next & 1)
+    new_row_count_err = state["f53"] or (check_slot and row_final != 2)
 
     out = dict(new_taps)
     out["f54"] = new_f54
     out["f55"] = new_f55
-    out["f53"] = new_match_ok
+    out["f53"] = new_row_count_err
     out["f64"] = new_hist_hit
     return out
 
@@ -389,7 +385,7 @@ def left_top_reset_state():
 
 def simulate_left_top(I_seq):
     """I_seq: list of 121 python bools, cell order = cell_order(). Returns
-    (match_ok, hist_hit) after all 121 steps."""
+    (row_count_err, hist_hit) after all 121 steps."""
     st = left_top_reset_state()
     order = cell_order()
     for k, I in enumerate(I_seq):
@@ -407,7 +403,7 @@ def run_icarus_left_top(I_seq):
     for line in res.stdout.splitlines():
         if line.startswith("RESULT"):
             parts = dict(p.split("=") for p in line.split()[1:])
-            return parts["match_ok"] == "1", parts["hist_hit"] == "1", parts["cnt_done"] == "1"
+            return parts["row_count_err"] == "1", parts["hist_hit"] == "1", parts["cnt_done"] == "1"
     raise RuntimeError(f"no RESULT line from icarus: {res.stdout}\n{res.stderr}")
 
 
@@ -587,31 +583,28 @@ def solve_all(max_solutions=1000, verbose=True):
         hist_hit_cond = z3.Or(taps["f62"], any_low_gate, tap9_off_slot)
         new_hist_hit = z3.Or(state["f64"], z3.And(I, hist_hit_cond))
 
+        # 4. row_stars = {f54, f55} and row_count_err, as in left_top_step()
+        row_final = 2 * z3.If(f54, 1, 0) + z3.If(f55, 1, 0) + z3.If(I, 1, 0)
         if check_slot:
-            new_f55 = z3.BoolVal(False)
-            new_f54 = z3.BoolVal(False)
+            new_f54, new_f55 = z3.BoolVal(False), z3.BoolVal(False)
+            new_row_count_err = z3.Or(state["f53"], row_final != 2)
         else:
-            new_f55 = z3.If(f55, z3.Or(f54, z3.Not(I)), I)
-            cmp_set = z3.And(I, f55)
-            new_f54 = z3.Or(f54, cmp_set)
-
-        if check_slot:
-            match_cond = z3.If(f54, z3.Or(I, f55), z3.Not(z3.And(I, f55)))
-            new_match_ok = z3.Or(state["f53"], match_cond)
-        else:
-            new_match_ok = state["f53"]
+            row_next = z3.If(row_final > 3, 3, row_final)
+            new_f54 = row_next >= 2
+            new_f55 = z3.Or(row_next == 1, row_next == 3)
+            new_row_count_err = state["f53"]
 
         out = dict(new_taps)
         out["f54"] = new_f54
         out["f55"] = new_f55
-        out["f53"] = new_match_ok
+        out["f53"] = new_row_count_err
         out["f64"] = new_hist_hit
         return out
 
     for r, c in order:
         st = zstep(st, cells[(r, c)], r, c)
 
-    s.add(z3.Not(st["f53"]))  # match_ok must be 0
+    s.add(z3.Not(st["f53"]))  # row_count_err must be 0
     s.add(z3.Not(st["f64"]))  # hist_hit must be 0
 
     solutions = []
@@ -727,7 +720,7 @@ def self_test():
     assert LEFT_BOTTOM_TARGET == 22
 
     mism, n = cross_check_left_top()
-    print(f"left_top match_ok/hist_hit FSM: {n} sequences cross-checked against Icarus rec_left_top, "
+    print(f"left_top row_count_err/hist_hit FSM: {n} sequences cross-checked against Icarus rec_left_top, "
           f"{len(mism)} mismatches")
     if mism:
         for m in mism[:10]:
