@@ -22,6 +22,7 @@ import collections
 import json
 import re
 import resource
+import sys
 import time
 
 from ..retrace import cellcheck
@@ -55,7 +56,8 @@ def extract_tempo(gds=GDS, lef=None, top=TOP):
     t0 = time.time()
     ex = Extraction(gds, lef, top, tech=IHP_SG13CMOS5L)
     dt = time.time() - t0
-    peak_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1e6  # bytes -> MB on macOS
+    rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    peak_mb = rss / 1e6 if sys.platform == "darwin" else rss / 1e3  # bytes on macOS, KiB on Linux
     return ex, dt, peak_mb
 
 

@@ -135,6 +135,8 @@ def test_v4_extractors_agree():
     assert ours == theirs, (sorted(map(sorted, ours - theirs))[:3], sorted(map(sorted, theirs - ours))[:3])
 
 
+@pytest.mark.skipif(not (os.path.exists("upstream/puzzle.gds") and os.path.isdir("pdk/sky130_fd_sc_hd")),
+                    reason="puzzle files or sky130 PDK subset not present (e.g. on TEMPO's CI runner)")
 def test_sky130_extractor_output_is_unaffected():
     """The IHP port must not change a single byte of the puzzle's sky130
     extraction (docs/STATUS.md); this is also covered by the rest of the
