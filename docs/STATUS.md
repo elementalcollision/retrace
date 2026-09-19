@@ -96,8 +96,15 @@ weights that is 22, confirmed by simulating the proven counter), and "BIG BANG"'
 `0xAE` is the count 121. The V7 harness also had a bug that left the gold `O` bus
 undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
-## Next (ordered)
+## Next
 
+Nothing open: goals G1-G7 are done. Optional follow-ups, none started:
+
+* PRD stretch S1 (net and block overlays on layout renders), S3 (automatic structure
+  recognition in anonymous netlists) and S4 (round trip of the recovered RTL through
+  OpenLane, comparing cell mix and area with the puzzle).
+* A `Tech` table for GF180MCU, so the extractor covers the third open PDK.
+* When RETRACE changes, bump the pinned commit in TEMPO's `.github/workflows/lvs.yaml`.
 
 Done since: easter eggs decoded (`tools/analysis/eastereggs.py`: the Morse strip reads PER ARENAM
 AD ASTRA; the met2 squares are a 57 x 57 logo of four broken rings), every message demonstrated
