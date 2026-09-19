@@ -15,7 +15,7 @@ Run:
     .venv/bin/python -m tools.solve.starbattle --selftest   # only the RTL cross-checks
 
 All numbers/claims printed under "DERIVED" are established by simulating the
-actual rtl_recovered/*.v files with Icarus (out/solve_a/tb_*.v), not by
+actual rtl_recovered/*.v files with Icarus (tools/solve/tb/*.v, built into out/solve_a/), not by
 trusting the hand-written commentary in those files or in docs/INTENT.md.
 """
 import itertools
@@ -27,8 +27,9 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 RTL = os.path.join(REPO, "rtl_recovered")
 OUT = os.path.join(REPO, "out", "solve_a")
-IVERILOG = "iverilog"
-VVP = "vvp"
+_EDA = os.path.expanduser("~/ttsetup/oss-cad-suite/bin")
+IVERILOG = os.path.join(_EDA, "iverilog") if os.path.exists(os.path.join(_EDA, "iverilog")) else "iverilog"
+VVP = os.path.join(_EDA, "vvp") if os.path.exists(os.path.join(_EDA, "vvp")) else "vvp"
 
 
 # ---------------------------------------------------------------------------
@@ -55,6 +56,28 @@ def counter_bits(hi, lo):
     hi0, hi1, hi2, hi3 = (hi >> 0) & 1, (hi >> 1) & 1, (hi >> 2) & 1, (hi >> 3) & 1
     lo0, lo1, lo2, lo3 = (lo >> 0) & 1, (lo >> 1) & 1, (lo >> 2) & 1, (lo >> 3) & 1
     return dict(f00=hi0, f01=hi3, f02=hi1, f03=hi2, f04=lo2, f05=lo1, f06=lo0, f07=lo3)
+
+
+TB_DIR = os.path.join(REPO, "tools", "solve", "tb")
+# testbench -> the recovered RTL files it drives; logs are regenerated on every run
+TESTBENCHES = {
+    "tb_counter": ["counter.v"],
+    "tb_array": ["array.v"],
+    "tb_left_top": ["left_top.v", "counter.v"],
+}
+
+
+def build_testbenches():
+    """Compile the committed testbenches (tools/solve/tb/) against rtl_recovered/ into
+    out/solve_a/, and run the two that produce logs. Needed by every cross-check."""
+    os.makedirs(OUT, exist_ok=True)
+    for tb, rtl in TESTBENCHES.items():
+        vvp = os.path.join(OUT, f"{tb}.vvp")
+        subprocess.run([IVERILOG, "-g2012", "-o", vvp, os.path.join(TB_DIR, f"{tb}.v")]
+                       + [os.path.join(RTL, f) for f in rtl], check=True, cwd=REPO)
+        if tb != "tb_left_top":  # tb_left_top is run per sequence by run_icarus_left_top()
+            with open(os.path.join(OUT, f"{tb}.log"), "w") as fh:
+                subprocess.run([VVP, "-n", vvp], check=True, cwd=REPO, stdout=fh)
 
 
 def verify_cell_order_against_icarus():
@@ -714,6 +737,7 @@ def self_test():
 
 
 def main():
+    build_testbenches()
     if "--selftest" in sys.argv:
         self_test()
         return

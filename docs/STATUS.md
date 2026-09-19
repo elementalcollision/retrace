@@ -26,7 +26,7 @@ independent of order and start vertex).
 
 Against the first pinned version (`0fe599b2`, the OpenLane 2 default), 66 of 69 masters
 matched. `o211a_2` (poly, licon), `and4b_2` (poly) and `conb_1` (95/20) differed.
-Scanning 24 of the 116 released sky130 versions (standard-cell library only, fetched with
+Scanning 25 of the 116 released sky130 versions (standard-cell library only, fetched with
 `ciel fetch -l sky130_fd_sc_hd` on the mini) found two families:
 
 | Versions (list position, newest = 1) | Result |
@@ -99,4 +99,9 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 1. Writeup (G7): technique-first, from the layers, oracles and the failures each one caught.
 2. TEMPO transfer (G6): port the extractor to IHP `sg13cmos5l` and check TEMPO's sign-off GDS against its netlist.
-3. Stretch: decode the `INTERNAL_*` strip and the met2 pixel art (S2); rename `left_top`'s `match_ok` to what it is (the per-row star-count error flag, confirmed by route A's directed tests).
+3. Rename `left_top`'s `match_ok` to what it is (the per-row star-count error flag, confirmed by route A's directed tests).
+
+Done since: easter eggs decoded (`tools/analysis/eastereggs.py`: the Morse strip reads PER ARENAM
+AD ASTRA; the met2 squares are a 57 x 57 logo of four broken rings), every message demonstrated
+on the extracted netlist (`test/test_messages.py`), and the writeup (`docs/WRITEUP.md`, rendered
+by `tools/writeup/render.py`), fact-checked claim by claim.
