@@ -6,6 +6,7 @@ names; the partitions must be identical.
 
 from tools.l2n.klayout_extract import extract, partitions
 from tools.retrace.extract import Extraction
+from tools.retrace.tech import SKY130_HD
 
 
 def partition_ours(ex: Extraction, labels):
@@ -19,9 +20,9 @@ def partition_ours(ex: Extraction, labels):
     return out
 
 
-def partition_klayout(gds):
-    layout, top, l2n = extract(gds)
-    parts = partitions(layout, top, l2n)
+def partition_klayout(gds, tech=SKY130_HD):
+    layout, top, l2n = extract(gds, tech)
+    parts = partitions(layout, top, l2n, tech)
     labels = {p["name"] for p in parts if p["name"]}
     out = set()
     for p in parts:
@@ -33,7 +34,11 @@ def partition_klayout(gds):
     return out, labels
 
 
-def compare(gds, ex: Extraction):
-    theirs, labels = partition_klayout(gds)
+def compare(gds, ex: Extraction, tech=None):
+    """Compare extractor 1's already-built `Extraction` (`ex`) against a fresh
+    KLayout extraction of `gds` under the same `Tech` (defaulting to `ex.tech`, so
+    existing sky130 callers that omit `tech` are unaffected)."""
+    tech = tech or ex.tech
+    theirs, labels = partition_klayout(gds, tech)
     ours = partition_ours(ex, labels)
     return ours, theirs

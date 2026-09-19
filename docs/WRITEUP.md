@@ -240,6 +240,45 @@ the wrong bit on `I` during every gap. Every run shows `success` high and the 15
 `28 2a 20 54 57 4f 20 53 54 41 52 53 20 2a 29`: **`(* TWO STARS *)`**.
 `answer/solution.vcd` is the winning run, in the format of the sample.
 
+## 7. Transfer: an independent LVS for TEMPO
+
+The test of whether this is a method rather than a one-off script is whether it carries over to
+another process and a much larger design. The extractor now takes a technology table
+(`tools/retrace/tech.py`: conductor and cut layers, the rule for joining a pin's islands,
+physical and macro cells, supply names). `SKY130_HD` reproduces the puzzle work exactly, and
+`IHP_SG13CMOS5L` is new. The puzzle and warm-up netlists extracted by the refactored code are
+byte-identical to those from the committed pre-port code.
+
+The target is TEMPO's sign-off GDS (IHP `sg13cmos5l`, 62,151 cell and macro instances, 335,134
+references, one SRAM macro), checked against TEMPO's own DEF, final netlist and LEF. This is an LVS
+independent of LibreLane's Magic and Netgen (`tools/tempo/lvs.py`, `docs/TEMPO_LVS.md`):
+
+| Check | Result |
+|---|---|
+| placements vs DEF | 62,151 / 62,151 |
+| net partition vs DEF, and vs the final netlist | 35,542 / 35,542, both |
+| pins vs IHP LEF | 52 masters (51 cells and the SRAM), no mismatch |
+| electrical sanity | 0 undriven, 0 multiply driven nets |
+| cell geometry vs PDK | 51 / 51 masters identical |
+| extractor 1 vs KLayout (V4) | 35,543 / 35,543 multi-pin nets |
+
+It runs in about 20 s. Four planted faults in copies of TEMPO's GDS (a deleted via, a flipped
+cell, two swapped SRAM pin labels, a Metal2 short) were each caught. Power connections (124,303
+pins) and 157 single-pin nets are counted and excluded explicitly, because DEF's `NETS` and the
+netlist do not list them.
+
+What the port taught:
+
+* **A 90-degree rotation path had never run.** The puzzle never rotates a cell, and TEMPO's
+  SRAM is placed at orientation `E`. The orientation table and the DEF-offset formula now cover
+  all eight orientations, checked against the macro's DEF placement.
+* **A process-specific rule is not a general one.** IHP's tie cells need no poly-resistor cut.
+  This was verified by running the join algorithm on the PDK's own `tiehi` and `tielo`, not
+  assumed from sky130.
+* **The pins check has a blind spot.** It compares pin-name sets, so two swapped labels on the
+  same macro pass it. The net-partition checks catch the swap, so the suite as a whole does, but
+  it is recorded as a known limit of that check on its own.
+
 ## Easter eggs
 
 * A row of rectangles below the die, in two widths with a 1:3 ratio: Morse code for
@@ -252,6 +291,30 @@ the wrong bit on `I` during every gap. Every run shows `success` high and the 15
 * `EMPTY SKY`, `BIG BANG` and `TWO NOT TOUCH` are reachable in their own right. Simulated on
   the extracted netlist: 0 stars prints `EMPTY SKY`, all 121 cells print `BIG BANG`, and a grid
   that obeys every rule except that stars touch prints `TWO NOT TOUCH` (`test/test_messages.py`).
+
+## What this project developed, and where it applies
+
+Most of what follows is a new *combination* of established techniques (union-find extraction,
+LVS-style partition comparison, PDR equivalence, mutation testing) rather than a new algorithm.
+We have not done a prior-art search, so nothing here should be read as a novelty or
+patentability claim. Note also that the repository is Apache-2.0, which carries an express
+patent licence to users: anything meant to be protected needs a decision before the repository
+is made public. Each item names the code path that implements it.
+
+| # | Technique or finding | Code path | What is new here | Future applications |
+|---|---|---|---|---|
+| 1 | **PDK fingerprinting from cell geometry**: compare every embedded master, layer by layer on a 1 nm grid, against candidate PDK builds, and identify the exact build | `tools/retrace/cellcheck.py` | identifies a PDK *release* from a GDS alone (sky130 `8afc8346` out of 116 builds) and separates revision drift from tampering | supply-chain provenance for shuttle and foundry GDS; detecting modified standard cells (cell-level hardware Trojans); reproducing a third-party flow exactly |
+| 2 | **Pins as cell-internal conductors**: li1/met1 through contacts, islands joined through gate poly, poly cut at resistor markers; detects routes that pass *through* a cell's pin | `tools/retrace/extract.py` (`_master_pins`), `tools/retrace/tech.py` | a cell-level extractor that needs no SPICE extraction, yet is right on multi-island pins and tie cells | fast, independent LVS for standard-cell designs; recovering netlists from GDS for audits, repair or porting |
+| 3 | **Discovery: the router uses a gate-poly-joined pin as a feedthrough** (sky130 `a31oi_2` A1; legal by LEF, electrically a path through poly) | finding in `docs/STATUS.md`, check in V2 (`test/test_pins.py`) | shows up as an "undriven net" in any metal-only extractor | a lint for nets that rely on a pin feedthrough (resistance and timing risk); a regression case for extraction tools |
+| 4 | **Differential dual extraction**: two independent extractors, compared as net partitions keyed by `master@origin`, used to find *shared* blind spots | `tools/l2n/`, `tools/l2n/compare.py` | disagreement over how a pin was *reported* exposed an error both extractors made | independent sign-off cross-check for open-source flows; CI for extraction and LVS tools |
+| 5 | **Name-free equivalence proofs**: PDR on a miter needs no name map; probe ports make an end-to-end proof 1-inductive (all flops asserted equal), about 2 s for the whole chip | `formal/warmup_miter.sv`, `tools/analysis/e2e.py`, `formal/recovered_miter.sv` | LEC without correspondence points, and a way around Yosys losing hierarchical references after `flatten` | checking re-synthesised, recovered or ECO'd netlists; regression oracle for layout changes (it caught the one mutant nothing else did) |
+| 6 | **Mutation testing of an extractor**: 10 layout operators with electrical-equivalence classification | `tools/retrace/mutate.py`, `test/mutation/campaign.py` | measures what each check layer actually catches, instead of assuming it | qualifying LVS and extraction tools; coverage metrics for sign-off; regression when porting a PDK |
+| 7 | **Gold-cone acceptance harness for machine-recovered RTL**: cut the netlist at flops, SAT-prove each recovered block, then the whole design | `tools/analysis/cone.py`, `tools/analysis/e2e.py`, `rtl_recovered/` | AI-written RTL is accepted only by proof, with independent skeptic agents on top | AI-assisted reverse engineering with guarantees; modernising legacy gate-level netlists into maintainable RTL; teaching |
+| 8 | **Stutter lemma for input uniqueness**: SAT-prove that a disabled cycle changes no state, which extends a bounded formal uniqueness result to every input schedule | `test/test_uniqueness.py` | turns "unique among contiguous inputs" into "unique among all inputs" with one combinational proof | proving uniqueness or robustness of unlock, licence and key-check circuits; handshake and back-pressure robustness proofs |
+| 9 | **VCD to self-checking testbench** | `tools/retrace/vcdtb.py` | a one-command golden-trace oracle for any netlist or RTL | silicon bring-up (TEMPO test layer L6); regression against captured traces |
+| 10 | **Technology-independent extractor** (`Tech` table; sky130 and IHP `sg13cmos5l`), including general 8-orientation placement and macro black-boxing | `tools/retrace/tech.py`, `tools/tempo/lvs.py` | the same extractor checks TEMPO's 62,151-instance sign-off GDS, independently of LibreLane's Magic and Netgen | a second LVS for every Tiny Tapeout or IHP shuttle design; gf180 and other open PDKs by adding a table |
+| 11 | **Bit-order audit discipline**: a register pattern is not a number until its bit weights are proven | lead-review corrections in `docs/INTENT.md` | caught two misreadings (11 for 22, `0xAE` for 121) that proven RTL could not | review checklists for recovered designs; any work that reads constants out of netlists |
+| 12 | **Tooling pitfalls found**: `wire O[3];` from bus-bit net names silently disconnects the port; hierarchical references are left undriven after Yosys `flatten`; gdstk may write a rewritten straight path back as a polygon | `tools/analysis/cone.py`, `docs/INTENT.md` §6, `docs/MUTATION.md` | each produced a *passing* check that was vacuous | lint rules for netlist emitters and formal harnesses; upstream bug reports |
 
 ## Lessons that transfer
 
@@ -271,6 +334,9 @@ the wrong bit on `I` during every gap. Every run shows `success` high and the 15
    oracle, a reviewer or a negative control, not by the one who made it. This writeup was
    itself fact-checked claim by claim by three more agents, which found 13 problems, all
    fixed, including a reproduction command that did not work from a clean checkout.
+6. **A rule that looks like "how this process works" may really be "how this specific process
+   works."** The sky130 poly-resistor cut and the untested 90-degree-rotation code path (§7)
+   were both invisible until a second process and a second, larger design exercised them.
 
 ## How this was built
 
@@ -279,9 +345,9 @@ work), directed by the project owner, on 2026-09-18 and 19, after the contest de
 contest rules, as stated in the announcement post, prohibited feeding the puzzle files to AI
 tools and using AI for writeups, so this is not a contest entry. The approach kept one line on purpose: AI wrote and ran *tools*, and the tools
 did the analysis, so every result here can be reproduced from the repository without an AI in
-the loop. The two multi-agent phases used 21 subagent runs (about 3.4 M subagent tokens):
-intent recovery and the mutation campaign took 83 minutes of wall time, and solving took 31
-minutes.
+the loop. Four multi-agent phases used 27 subagent runs (about 4.5 M subagent tokens): intent recovery
+and the mutation campaign (18 runs, 83 minutes of wall time), solving (3, 31 minutes), fact-checking
+this writeup (3, 10 minutes) and the IHP port (3, 61 minutes).
 
 Stack: gdstk, shapely, KLayout (Python), Yosys, SymbiYosys (abc pdr, abc bmc3, smtbmc with
 yices and bitwuzla), Icarus Verilog, Verilator, z3, networkx; sky130 via ciel
@@ -296,7 +362,10 @@ yices and bitwuzla), Icarus Verilog, Verilator, z3, networkx; sky130 via ciel
 .venv/bin/python -m tools.solve.formal_solve        # route B
 .venv/bin/python -m tools.solve.starbattle          # route A
 .venv/bin/python -m tools.analysis.eastereggs       # Morse strip and pixel art
+.venv/bin/python -m tools.tempo.lvs                 # G6: IHP port, LVS against TEMPO's sign-off GDS
+.venv/bin/python -m pytest -q test/test_tempo.py    # skips cleanly without the TEMPO checkout
 ```
 
 Details: `docs/STATUS.md` (ledger), `docs/INTENT.md` (design), `docs/MUTATION.md`,
-`docs/SOLUTION.md`, `docs/SOLVE_ANALYTICAL.md`, `docs/SOLVE_FORMAL.md`.
+`docs/SOLUTION.md`, `docs/SOLVE_ANALYTICAL.md`, `docs/SOLVE_FORMAL.md`, `docs/TEMPO_LVS.md`
+(the G6 port and LVS).

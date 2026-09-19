@@ -4,7 +4,9 @@ The Markdown is the source of truth; this adds the page design, draws the solved
 (regions coloured, stars placed) in place of the ASCII grid, and draws the region map
 in place of its ASCII block.
 
-    python -m tools.writeup.render OUT.html
+    python -m tools.writeup.render OUT.html            # Claude artifact (body only, web fonts)
+    python -m tools.writeup.render --site OUT.html     # theelementalcodices.com/artifacts/: a full
+                                                       # document, system fonts, no external requests
 """
 
 import html
@@ -136,7 +138,21 @@ def board(regions, stars=None, label_regions=False):
     return f'<div class="board" role="group" aria-label="11 by 11 grid">{"".join(cells)}</div>'
 
 
-def render():
+SYSTEM_FONTS = {
+    '"Source Serif 4", Georgia, "Times New Roman", serif':
+        'ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif',
+    '"Archivo Narrow", "Arial Narrow", "Helvetica Neue", sans-serif':
+        '"Avenir Next Condensed", "Arial Narrow", ui-sans-serif, -apple-system, "Segoe UI", sans-serif',
+    '"Archivo Narrow", "Arial Narrow", sans-serif':
+        '"Avenir Next Condensed", "Arial Narrow", ui-sans-serif, -apple-system, "Segoe UI", sans-serif',
+    '"JetBrains Mono", ui-monospace, Menlo, monospace': 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+    '"JetBrains Mono", ui-monospace, monospace': 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+}
+DESCRIPTION = ("How RETRACE reverse-engineered Jane Street's ASIC puzzle from a name-stripped GDS to a proven, "
+               "unique solution, and what the method developed along the way.")
+
+
+def render(site=False):
     with open(SRC) as f:
         md = f.read()
     blocks = _blocks(md)
@@ -172,8 +188,11 @@ def render():
   </div>
   <div class="board-wrap">{board(regions, stars)}<div class="board-cap">the only accepted grid</div></div>
 </header>"""
-    return f"""<title>{html.escape(TITLE)}</title>
-<meta name="description" content="How RETRACE reverse-engineered Jane Street's ASIC puzzle from GDS to a proven, unique solution.">
+    footer = "Generated from <code>docs/WRITEUP.md</code> by <code>tools/writeup/render.py</code>."
+    desc = html.escape(DESCRIPTION)
+    if not site:
+        return f"""<title>{html.escape(TITLE)}</title>
+<meta name="description" content="{desc}">
 {FONTS}
 <style>{CSS}</style>
 <div class="wrap">
@@ -181,16 +200,50 @@ def render():
 <article>
 {body}
 </article>
-<footer>Generated from <code>docs/WRITEUP.md</code> by <code>tools/writeup/render.py</code>.</footer>
+<footer>{footer}</footer>
 </div>
+"""
+    css = CSS
+    for web, system in SYSTEM_FONTS.items():
+        css = css.replace(web, system)
+    css += (".back { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .08em;\n"
+            "  text-transform: uppercase; color: var(--muted); text-decoration: none; }\n"
+            ".back:hover { color: var(--accent); }\n")
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="{desc}">
+<meta property="og:title" content="{html.escape(TITLE)}">
+<meta property="og:description" content="{desc}">
+<meta property="og:type" content="article">
+<title>{html.escape(TITLE)}</title>
+<!-- No external requests: system font stacks, inline SVG, no scripts. -->
+<style>{css}</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/artifacts/">&larr; The Elemental Codices &middot; Artifacts</a>
+{hero}
+<article>
+{body}
+</article>
+<footer>{footer}</footer>
+</div>
+</body>
+</html>
 """
 
 
 def main(argv=None):
-    argv = argv if argv is not None else sys.argv[1:]
+    argv = list(argv if argv is not None else sys.argv[1:])
+    site = "--site" in argv
+    argv = [a for a in argv if a != "--site"]
     out = argv[0] if argv else "out/writeup/index.html"
     with open(out, "w") as f:
-        f.write(render())
+        f.write(render(site))
     print(out)
     return 0
 

@@ -35,8 +35,8 @@ def layer_shapes(cell):
     return by_layer
 
 
-def masters(path):
-    return {c.name: c for c in gdstk.read_gds(path).cells if c.name.startswith(PREFIX)}
+def masters(path, prefix=PREFIX):
+    return {c.name: c for c in gdstk.read_gds(path).cells if c.name.startswith(prefix)}
 
 
 def compare(design, pdk):
@@ -63,12 +63,13 @@ def main(argv=None):
     ap.add_argument("design")
     ap.add_argument("pdk", nargs="+")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--prefix", default=PREFIX, help="master name prefix to compare (default: sky130_fd_sc_hd__)")
     args = ap.parse_args(argv)
 
-    design = masters(args.design)
+    design = masters(args.design, args.prefix)
     report = {}
     for path in args.pdk:
-        d = compare(design, masters(path))
+        d = compare(design, masters(path, args.prefix))
         report[path] = {
             m: (v if isinstance(v, str) else {f"{l}/{t}": list(n) for (l, t), n in v.items()})
             for m, v in d.items()
@@ -77,12 +78,12 @@ def main(argv=None):
         json.dump({"design": args.design, "masters": len(design), "pdk": report}, sys.stdout, indent=1)
         print()
         return 0
-    print(f"{args.design}: {len(design)} {PREFIX}* masters")
+    print(f"{args.design}: {len(design)} {args.prefix}* masters")
     for path, d in report.items():
         print(f"{path}: {len(design) - len(d)} identical, {len(d)} differ")
         for m, v in d.items():
             detail = v if isinstance(v, str) else ", ".join(f"{k} +{a}/-{b}" for k, (a, b) in v.items())
-            print(f"  {m[len(PREFIX):]}: {detail}")
+            print(f"  {m[len(args.prefix):]}: {detail}")
     return 0
 
 
