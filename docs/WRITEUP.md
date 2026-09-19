@@ -275,9 +275,10 @@ What the port taught:
 * **A process-specific rule is not a general one.** IHP's tie cells need no poly-resistor cut.
   This was verified by running the join algorithm on the PDK's own `tiehi` and `tielo`, not
   assumed from sky130.
-* **The pins check has a blind spot.** It compares pin-name sets, so two swapped labels on the
-  same macro pass it. The net-partition checks catch the swap, so the suite as a whole does, but
-  it is recorded as a known limit of that check on its own.
+* **The pins check had a blind spot.** It compared pin-name sets, so two swapped labels on the
+  same macro passed it (the net-partition checks still caught the swap). A geometric check now
+  requires every LEF pin rectangle to sit on the extracted conductor of the same name. It passes
+  on TEMPO (553 rectangles), and swapping two labels, on the SRAM or on a `nand2`, fails it.
 
 ## Easter eggs
 

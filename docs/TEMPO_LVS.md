@@ -241,9 +241,15 @@ Four faults planted in copies of the TEMPO GDS were each caught: a deleted Via1 
 (checks b, c, e), a mirrored `o21ai_1` (a, then b, c, e), two swapped SRAM pin labels
 `A_DIN<15>`/`A_BIST_DIN<15>` (b, c), and a Metal2 bridge between two nets (b, c, e).
 
-Known limit: check (d), pins vs LEF, compares the *set* of pin names an instance exposes, not
-which polygon carries which name. Two swapped labels on the same master therefore pass (d) on
-its own. The net-partition checks (b) and (c) catch the swap, so the suite as a whole does.
+Known limit, now closed: check (d), pins vs LEF, compares the *set* of pin names an instance
+exposes, not which polygon carries which name, so two swapped labels on the same master pass it
+on its own. **Check (d2)** (`check_pin_geometry_vs_lef`) closes this. For every master used, the
+centre of every LEF port rectangle of every signal pin must lie on the extracted conductor of the
+same pin, on the same layer, and on no other pin's (LEF `ORIGIN 0 0`, so LEF and GDS master
+coordinates coincide). On TEMPO: 52 masters, 553 rectangles, 0 misplaced, in 0.02 s (STRtree
+per master and layer). Negative controls in `test/test_tempo.py`: swapping the SRAM's
+`A_DIN<15>`/`A_BIST_DIN<15>` labels, or a `nand2_1`'s A/B labels, flags exactly those two pins,
+each found on the other's conductor.
 
 The review also found that the "sky130 unchanged" evidence first reported by the port hashed
 `out/puzzle.json`, a stale file no test regenerates. Regenerating it from the committed and the

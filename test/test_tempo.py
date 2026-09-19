@@ -68,6 +68,33 @@ def test_d_pins_match_ihp_lef():
     assert bad == {}
 
 
+def test_d2_pin_geometry_matches_ihp_lef():
+    """Every LEF port rectangle of every signal pin, for all 52 masters used, lies on
+    the extracted conductor of the same pin and on no other pin's (closes the
+    name-set blind spot of (d), docs/TEMPO_LVS.md 4c)."""
+    _ex, report = result()
+    d2 = report["d2_pin_geometry"]
+    assert len(d2) == 52
+    assert sum(v["rects_checked"] for v in d2.values()) > 500
+    assert {m: v["bad"] for m, v in d2.items() if v["bad"]} == {}
+
+
+@pytest.mark.parametrize("master,a,b", [
+    ("RM_IHPSG13_1P_1024x32_c2_bm_bist", "A_DIN<15>", "A_BIST_DIN<15>"),
+    ("sg13cmos5l_nand2_1", "A", "B"),
+], ids=["sram-labels", "nand2-labels"])
+def test_d2_negative_control_swapped_labels(master, a, b):
+    """Swapping two pin labels leaves (d)'s name set unchanged but must fail (d2),
+    flagging exactly the two pins, each found on the other's conductor."""
+    ex, _report = result()
+    lef = lvs.load_lef()
+    cells = {c.name: c for c in ex.lib.cells}
+    swapped = lvs.swapped_label_cell(cells[master], a, b)
+    bad = lvs.check_pin_geometry_vs_lef(ex, lef, cells={**cells, master: swapped}, only=[master])[master]["bad"]
+    norm = lvs._norm_bus
+    assert {(x["pin"], tuple(x["owners"])) for x in bad} == {(norm(a), (norm(b),)), (norm(b), (norm(a),))}
+
+
 def test_e_electrical_sanity():
     """Every signal net has exactly one driver (once power/ground-use LEF pins
     are excluded, docs/TEMPO_LVS.md), no signal net floats undriven, and no

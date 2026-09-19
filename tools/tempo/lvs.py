@@ -9,7 +9,8 @@ files (all read-only, under $TEMPO_ROOT, default ~/Claude_Primary/Jane_Street_AS
                     also builds the GDS-name -> DEF-name map every other check uses
   (b) net partition GDS-extracted (instance, pin) groups <-> DEF NETS, exact
   (c) net partition GDS-extracted (instance, pin) groups <-> nl.v connections, exact
-  (d) pins          every master used, GDS-derived pins <-> IHP LEF pins
+  (d) pins          every master used, GDS-derived pin names <-> IHP LEF pin names
+  (d2) pin geometry every LEF port rectangle lies on the extracted pin of the same name
   (e) sanity        one driver per signal net, no floating inputs, supplies separate
   (f) cellcheck     every std-cell master embedded in the GDS <-> the PDK's own cell GDS
 
@@ -268,6 +269,73 @@ def check_pins_vs_lef(ex, lef):
     return report
 
 
+def _pin_geometry(ex, cell, is_macro):
+    """{normalised pin name: {gds layer: [shapely Polygon]}} in master coordinates,
+    from the extractor's own per-master pin conductors (so this tests exactly what
+    the extraction uses)."""
+    from shapely.geometry import Polygon
+
+    pins = ex._macro_pins(cell) if is_macro else ex._master_pins(cell)
+    geo = collections.defaultdict(lambda: collections.defaultdict(list))
+    for name, polys in pins.items():
+        for q in polys:
+            geo[_norm_bus(name)][q.layer].append(Polygon(q.points))
+    return geo
+
+
+def check_pin_geometry_vs_lef(ex, lef, cells=None, only=None):
+    """(d2) Pin geometry against the LEF, per master: the centre of every LEF port
+    rectangle of a signal pin must lie on the extracted conductor of the *same* pin,
+    on the same layer, and on no other pin's. Closes the blind spot of (d), which
+    compares only name sets and so passes two swapped labels (docs/TEMPO_LVS.md 4c).
+    LEF `ORIGIN 0 0` / `FOREIGN 0 0` for every master used, so LEF and GDS master
+    coordinates coincide. `cells` overrides the GDS cells looked up by name and `only`
+    limits the masters checked (negative controls)."""
+    import shapely
+    from shapely.geometry import Point, box
+
+    cells = cells or {c.name: c for c in ex.lib.cells}
+    masters = sorted({i["master"] for i in ex.instances} if only is None else only)
+    report = {}
+    for master in masters:
+        cell = cells.get(master)
+        pins_lef = lef.get(master, {}).get("pins", {})
+        if cell is None or not pins_lef:
+            continue
+        geo = _pin_geometry(ex, cell, master in ex.tech.macro_prefixes)
+        index = {}  # gds layer -> (STRtree over that layer's pin polygons, pin name per polygon)
+        for layer in {lyr for by_layer in geo.values() for lyr in by_layer}:
+            polys = [(p, g) for p, by_layer in geo.items() for g in by_layer.get(layer, [])]
+            index[layer] = (shapely.STRtree([g for _p, g in polys]), [p for p, _g in polys])
+        checked, bad = 0, []
+        for pin, d in pins_lef.items():
+            if d.get("use") in ("POWER", "GROUND"):
+                continue
+            for layer_name, x0, y0, x1, y1 in d["rects"]:
+                cond = ex.tech.conductor_named(layer_name)
+                if cond is None:
+                    continue
+                c = box(x0, y0, x1, y1).centroid
+                tree, names = index.get(cond.layer, (None, []))
+                hits = tree.query(Point(c.x, c.y).buffer(1e-6), predicate="intersects").tolist() if tree else []
+                owners = sorted({names[i] for i in hits})
+                checked += 1
+                if owners != [_norm_bus(pin)]:
+                    bad.append({"pin": pin, "layer": layer_name, "rect": (x0, y0, x1, y1), "owners": owners})
+        report[master] = {"rects_checked": checked, "bad": bad}
+    return report
+
+
+def swapped_label_cell(cell, a, b, suffix="__swapped"):
+    """A copy of `cell` (new name, so no pin cache is reused) with the texts of labels
+    `a` and `b` exchanged: the negative control for (d2)."""
+    new = cell.copy(cell.name + suffix, deep_copy=True)
+    for lb in new.labels:
+        if lb.text in (a, b):
+            lb.text = b if lb.text == a else a
+    return new
+
+
 # --- (e) V5 sanity -----------------------------------------------------------
 
 def check_sanity(ex, lef):
@@ -352,6 +420,12 @@ def run(verbose=True):
     if verbose:
         print(f"(d) pins vs LEF: {len(report['d_pins_vs_lef'])} masters, {len(d_bad)} with mismatches")
 
+    report["d2_pin_geometry"] = check_pin_geometry_vs_lef(ex, lef)
+    d2 = report["d2_pin_geometry"]
+    if verbose:
+        print(f"(d2) pin geometry vs LEF: {len(d2)} masters, {sum(v['rects_checked'] for v in d2.values())} "
+              f"rects, {sum(len(v['bad']) for v in d2.values())} misplaced")
+
     report["e_sanity"] = check_sanity(ex, lef)
     if verbose:
         print("(e) sanity:", {k: v for k, v in report["e_sanity"].items() if not isinstance(v, list)})
@@ -366,7 +440,7 @@ def run(verbose=True):
 def main():
     _ex, report = run()
     print(json.dumps(
-        {k: v for k, v in report.items() if k != "d_pins_vs_lef"},
+        {k: v for k, v in report.items() if k not in ("d_pins_vs_lef", "d2_pin_geometry")},
         indent=1, default=str))
     return 0
 
