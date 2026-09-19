@@ -1,6 +1,6 @@
 # Reverse-engineering Jane Street's ASIC puzzle: from GDS to "(* TWO STARS *)"
 
-*RETRACE project writeup, 2026-09-19. Repository: `elementalcollision/retrace` (private).*
+*RETRACE project writeup, 2026-09-19. Repository: [elementalcollision/retrace](https://github.com/elementalcollision/retrace) (public).*
 
 **Answer.** The chip is an 11 x 11 Star Battle ("Two Not Touch") checker. Clocked in row
 by row, one cell per enabled cycle, the only accepted grid raises `success` and makes the
