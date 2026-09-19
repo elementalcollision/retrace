@@ -1,0 +1,46 @@
+# Route B (formal), steps 1-2: does `success` go high on the extracted netlist
+# (out/solve_b/puzzle.v), with I free every cycle, rst_n low only in cycle 0, enable
+# high every cycle after that? Two ways to ask the same question, several engines each,
+# run in parallel as separate SBY tasks -- whichever finishes first is the answer.
+# depth ~135 covers the ~121 enabled cycles plus the reset cycle and the decision/first
+# output cycles with margin.
+#
+# Invoke from the repo root, e.g.:
+#   sby -f formal/solve.sby --prefix out/solve_b/solve -j 4 cover_yices cover_bitwuzla bmc_abc bmc_yices
+# (tools/solve/formal_solve.py does this and parses the result.)
+
+[tasks]
+cover_yices
+cover_bitwuzla
+bmc_abc
+bmc_yices
+
+[options]
+cover_yices:   mode cover
+cover_bitwuzla: mode cover
+bmc_abc:       mode bmc
+bmc_yices:     mode bmc
+depth 135
+
+[engines]
+cover_yices:    smtbmc yices
+cover_bitwuzla: smtbmc bitwuzla
+bmc_abc:        abc bmc3
+bmc_yices:      smtbmc yices
+
+[script]
+read_liberty -ignore_miss_func sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog puzzle.v
+cover_yices:    read_verilog -formal solve_top.sv
+cover_bitwuzla: read_verilog -formal solve_top.sv
+bmc_abc:        read_verilog -formal -DSOLVE_BMC solve_top.sv
+bmc_yices:      read_verilog -formal -DSOLVE_BMC solve_top.sv
+delete */t:sky130_fd_sc_hd__tapvpwrvgnd_1 */t:sky130_fd_sc_hd__decap_* */t:sky130_fd_sc_hd__fill_* */t:sky130_fd_sc_hd__diode_*
+hierarchy -check -top solve_top
+flatten
+prep -top solve_top
+
+[files]
+pdk/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+out/solve_b/puzzle.v
+formal/solve_top.sv

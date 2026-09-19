@@ -1,0 +1,49 @@
+# Route B (formal), step 4: uniqueness. Same reset/enable policy and same depth as
+# formal/solve.sby, plus the `differs` sticky register from formal/solve_uniq_top.sv,
+# which needs out/solve_b/solve_found_bits.vh (written by tools/solve/formal_solve.py
+# after formal/solve.sby finds a solution) to be generated first.
+#
+#   cover(success && differs) reachable   => another, different input also succeeds.
+#   assert(!(success && differs)) holding => no other input (free I, enable high every
+#     cycle from cycle 1, up to this depth) reaches success while disagreeing with the
+#     found sequence on any of the first 121 enabled cycles.
+#
+# Invoke from the repo root, e.g.:
+#   sby -f formal/solve_uniq.sby --prefix out/solve_b/solve_uniq -j 4 cover_yices cover_bitwuzla bmc_abc bmc_yices
+
+[tasks]
+cover_yices
+cover_bitwuzla
+bmc_abc
+bmc_yices
+
+[options]
+cover_yices:    mode cover
+cover_bitwuzla: mode cover
+bmc_abc:        mode bmc
+bmc_yices:      mode bmc
+depth 135
+
+[engines]
+cover_yices:    smtbmc yices
+cover_bitwuzla: smtbmc bitwuzla
+bmc_abc:        abc bmc3
+bmc_yices:      smtbmc yices
+
+[script]
+read_liberty -ignore_miss_func sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog puzzle.v
+cover_yices:    read_verilog -formal solve_uniq_top.sv
+cover_bitwuzla: read_verilog -formal solve_uniq_top.sv
+bmc_abc:        read_verilog -formal -DSOLVE_BMC solve_uniq_top.sv
+bmc_yices:      read_verilog -formal -DSOLVE_BMC solve_uniq_top.sv
+delete */t:sky130_fd_sc_hd__tapvpwrvgnd_1 */t:sky130_fd_sc_hd__decap_* */t:sky130_fd_sc_hd__fill_* */t:sky130_fd_sc_hd__diode_*
+hierarchy -check -top solve_uniq_top
+flatten
+prep -top solve_uniq_top
+
+[files]
+pdk/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+out/solve_b/puzzle.v
+formal/solve_uniq_top.sv
+out/solve_b/solve_found_bits.vh

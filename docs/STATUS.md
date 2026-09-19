@@ -1,4 +1,4 @@
-# RETRACE — status (2026-09-18, sprints 0-3)
+# RETRACE — status (2026-09-19, sprints 0-4)
 
 ## What exists
 
@@ -14,7 +14,8 @@
 | Verification | V1 placements = DEF (230/230). V2 pin geometry = LEF for every master used (warm-up and puzzle). V3a net partition = DEF (84/84). V3b labelled-graph isomorphic to `01_netlist.v` (79 cells, 84 nets). V3c SymbiYosys `abc pdr` proves sequential equivalence with `01_netlist.v` without a name map (a planted mux2 input swap makes it FAIL). V4 two extractors identical. V5 electrical sanity. **V6 the extracted puzzle reproduces `example_inputs.vcd` exactly (1248 checks, 0 errors) in Icarus with the PDK Verilog models and in Verilator with Liberty-derived logic.** |
 | Intent (sprint 3) | **Recovered RTL proven equal to the netlist** (`rtl_recovered/`, `docs/INTENT.md`). Six blocks, each SAT-proven against its gold cone (V7, `tools/analysis/cone.py`); the integrated `puzzle_recovered` is proven sequentially equivalent to the extracted netlist by SymbiYosys `abc pdr` with no assumption beyond the initial reset (`tools/analysis/e2e.py`, ~2 s; a one-byte message change fails it), and replays the sample VCD (1248/0). All 92 flops are clocked by `clk` through buffers only; every reset/set pin is `rst_n`. |
 | Mutation | **130 layout mutants, 10 operators, both designs** (`docs/MUTATION.md`, `test/mutation/`): 90 killed, 39 equivalent (art, path end types, 5-20 nm near misses), 1 survived: a same-footprint `nor2_2`->`nand2_2` swap on the puzzle, which models a different chip rather than an extraction error and which the recovered-design proof (`e2e.py --gds`) now kills. |
-| Tests | **39/39 pass** (~26 s): V1-V7, mutation smoke tests. |
+| **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
+| Tests | **50/50 pass** (~34 s): V1-V8, uniqueness lemma, mutation smoke tests. |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -96,6 +97,6 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next (ordered)
 
-1. Sprint 4, solve (V8), two independent routes that must agree: (a) SymbiYosys `cover(success)` on the *extracted netlist* over 121 enabled cycles; (b) analytical: turn the recovered region masks into the 11 x 11 Star Battle grid and solve it as a puzzle. Then enumerate all solutions, simulate the success message on the extracted netlist in two simulators, and decode `O`.
-2. Confirm or refute the `match_ok` = per-row-count hypothesis (a directed test on the proven RTL).
-3. Writeup (G7) and the TEMPO transfer (G6).
+1. Writeup (G7): technique-first, from the layers, oracles and the failures each one caught.
+2. TEMPO transfer (G6): port the extractor to IHP `sg13cmos5l` and check TEMPO's sign-off GDS against its netlist.
+3. Stretch: decode the `INTERNAL_*` strip and the met2 pixel art (S2); rename `left_top`'s `match_ok` to what it is (the per-row star-count error flag, confirmed by route A's directed tests).
