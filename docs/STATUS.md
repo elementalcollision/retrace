@@ -5,7 +5,7 @@
 | Area | State |
 |---|---|
 | Docs | PRD (`docs/prd/PRD.md`), approach (`docs/spec/APPROACH.md`), verification plan (`docs/spec/VERIFICATION.md`) |
-| Repo | private GitHub repo `elementalcollision/retrace` (main), Apache-2.0; skeleton `tools/retrace`, `tools/l2n`, `test`, `formal`, `rtl_recovered`, `out`, `pdk` |
+| Repo | **public** GitHub repo `elementalcollision/retrace` (main, made public 2026-09-19), Apache-2.0; writeup published at https://theelementalcodices.com/artifacts/retracing-two-stars/; skeleton `tools/retrace`, `tools/l2n`, `test`, `formal`, `rtl_recovered`, `out`, `pdk` |
 | Upstream | `janestreet/asic-puzzle-2026` @ `ffd53e0ba24e2fc1c1b12dc824e8eac5888c19a9` (2026-08-05) shallow-cloned into `upstream/` (read-only, git-ignored) |
 | PDK | **sky130 installed on the Mac mini** with ciel 2.6.1 (`~/ciel-venv`), open_pdks `8afc8346a57fe1ab7934ba5a6056ea8b43078e71` (matches the puzzle's cells exactly, see below; first pinned `0fe599b2`, the OpenLane 2 default), PDK root `~/pdk-sky130` (sky130A + sky130B). The `sky130_fd_sc_hd` subset (LEF, techlef, tt_025C_1v80 Liberty, Verilog models, cell GDS; ~22 MB) is copied to local `pdk/` (git-ignored; `pdk/VERSION` records the commit). iverilog compiles the warm-up netlist against the models. |
 | Env (this Mac) | `.venv/` (Python 3.14) with `gdstk`, `klayout`; oss-cad-suite at `~/ttsetup/oss-cad-suite` (Yosys, eqy, SBY, iverilog, Verilator) |

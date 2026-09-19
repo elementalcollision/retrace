@@ -211,5 +211,5 @@ VERIFICATION, STATUS, WRITEUP), D8 IHP port for TEMPO (G6).
 |---|---|---|
 | 1 | Clean room (no public writeups) until solved? | Yes. Read them afterwards for the retrospective. |
 | 2 | Python (`gdstk` + union-find) as the primary extractor and KLayout L2N as the second, or the reverse? | Python primary (we own every rule), KLayout as the independent check |
-| 3 | Put RETRACE under git and in the same GitHub org as TEMPO? | Yes, a private repo, public after the writeup |
+| 3 | Put RETRACE under git and in the same GitHub org as TEMPO? | Done: `elementalcollision/retrace`, public since 2026-09-19 after the writeup |
 | 4 | Start G6 (IHP port) as soon as the warm-up passes, or after the solve? | After the solve |
