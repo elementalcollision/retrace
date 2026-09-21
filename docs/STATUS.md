@@ -98,13 +98,50 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next
 
-Nothing open: goals G1-G7 are done. Optional follow-ups, none started:
+Goals G1-G7 are done. Stretch S2 (easter eggs) is done. Reviewed on 2026-09-21; in priority order:
 
-* PRD stretch S1 (net and block overlays on layout renders), S3 (automatic structure
-  recognition in anonymous netlists) and S4 (round trip of the recovered RTL through
-  OpenLane, comparing cell mix and area with the puzzle).
-* A `Tech` table for GF180MCU, so the extractor covers the third open PDK.
-* When RETRACE changes, bump the pinned commit in TEMPO's `.github/workflows/lvs.yaml`.
+1. **The TEMPO LVS does not see a VDD-VSS short (found by the review).** Nothing checks that the
+   supplies are separate. The supply roots are left out of checks (b) and (c), and (e)'s
+   `supply_names_overlap` reads chip-level `VDD`/`VSS` text labels, which TEMPO's GDS does not
+   have, so it can never fire there. Probe: a Metal1 bar from rail to rail inside one `fill_2`
+   (`FILLER_0_1042`) in a copy of the sign-off GDS merges the two supply roots into one, and
+   (b), (c) and (e) still report full agreement. LibreLane's own Magic/Netgen LVS still covers
+   TEMPO, so this is a hole in the second check, not a tape-out risk today. Fix: a supply check
+   built from LEF `USE` (exactly one root holding every `POWER` pin, one holding every `GROUND`
+   pin, and they differ), with two negative controls: the short above, and a power open (the vias
+   removed from one rail). Correct `docs/TEMPO_LVS.md`, which claims "VDD/VSS never overlap" in
+   three places. Size: hours.
+2. **Make the planted TEMPO faults permanent tests.** The four faults from the port review (a
+   deleted Via1, a mirrored cell, swapped SRAM labels, a Metal2 bridge) ran once and are not in
+   `test/test_tempo.py`, so TEMPO's CI never re-runs them. Plant them, plus the two supply
+   faults, far apart in a single copy, so CI pays for one extra extraction (about 20 to 45 s),
+   and require each check to flag its own fault. Then bump the RETRACE pin in TEMPO's
+   `lvs.yaml`. Do this together with 1, as one change.
+3. **S1, overlays.** The writeup has no figures. Three renders: the puzzle's layout coloured
+   by recovered block, to show that the layout hints at function; TEMPO's layout coloured by
+   RTL module, from the net names, which keep the hierarchy (`u_top.u_core.rf`,
+   `u_top.u_ser.u_ser0`, ...) and could serve as datasheet images (TEMPO's open item 7); and
+   an LVS report image marking any mismatched nets, so a failing CI run shows where. Size: a day.
+4. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
+   runner in this public repo, not on TEMPO's self-hosted runner. It gives three things. It
+   compares cell mix and area with the puzzle, which shows whether the puzzle is plain synthesis
+   or padded by hand. It adds a second sky130 GDS whose source we know, larger than the
+   warm-up. And it closes the loop: extract our own GDS and prove it equivalent to the
+   recovered RTL. Size: a day or two.
+5. **S3, structure recognition.** This is an established research area, so it only pays as a
+   learning track. What makes it worth doing here is TEMPO as a labelled test set: 62k cells
+   whose net names give the ground truth. First slice: shift registers, counters and word
+   grouping by shared enable and reset, scored on TEMPO, with the puzzle as a small blind case.
+   Size: large.
+6. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+   check it against. A table with no ground-truth design would be untested.
+
+Housekeeping, with 1:
+* `docs/INTENT.md` section 7 is stale. The irregular group-A bins are the Star Battle regions
+  (`docs/SOLVE_ANALYTICAL.md`). The success message is readable (`test/test_messages.py`). The
+  `check` block has its own V7 proof and is covered by the end-to-end proof.
+* Bump TEMPO's pin only when `tools/retrace`, `tools/l2n`, `tools/tempo` or
+  `test/test_tempo.py` change. Nothing in them has changed since the pinned `2ff89c3`.
 
 Done since: easter eggs decoded (`tools/analysis/eastereggs.py`: the Morse strip reads PER ARENAM
 AD ASTRA; the met2 squares are a 57 x 57 logo of four broken rings), every message demonstrated
