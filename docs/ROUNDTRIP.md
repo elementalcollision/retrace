@@ -2,7 +2,8 @@
 
 **What this is.** Stretch goal S4: infer Jane Street's forward flow, harden `rtl_recovered/` with
 it, and check the result with RETRACE's tools. Measured on 2026-09-21 on one macOS arm64 host,
-LibreLane and the Yosys 0.62/0.66 runs in linux/arm64 LibreLane containers, the rest natively (§10).
+LibreLane and the Yosys 0.62/0.66 runs in linux/arm64 LibreLane containers, the rest natively;
+repeated in CI on x86_64 with byte-identical results (§9).
 Paths under `out/roundtrip/` are local evidence, git-ignored and not in this repository (§9 says
 what `ci.sh` regenerates); `upstream/` and `pdk/` are local copies. §6-§8 quote
 `out/roundtrip/verify_doc/ci/`, a `tools/roundtrip/ci.sh --no-harden` run (18:53-18:57) which, like
@@ -464,17 +465,17 @@ a push to `main` touching what the round trip reads: `rtl_recovered/`,
 (minor only; local runs used 3.14.5) and eight pip packages (the README's list less `markdown` and
 `ciel`, plus `numpy`, which RETRACE does not import). Not pinned: the actions (major tags, e.g.
 `checkout@v7`), the runner image, and other pip dependencies, ciel (via LibreLane) included.
-**The workflow has never run.**
+**First run** (run 35647684519, 2026-09-21, commit `f6bfe99`, `ubuntu-24.04` x86_64, 13 min): every
+step passed, all 34 round-trip tests passed, the pulled image matched the pinned digest, and all
+ten identity hashes (synthesis `nl.v`, final DEF, `nl.v` and `pnl.v`, and the netlist extracted from
+the KLayout GDS, for both variants) equal the macOS arm64 reference: the flow and the checks are
+byte-for-byte deterministic across the two hosts. Artifact: 52 MB.
 
 ## 10. Open items
 
-- **The first CI run** should check the oss-cad-suite symlink, setup-python's `python3`, `ciel`
-  with `GITHUB_TOKEN`, `--dockerized` and GNU `date -d` on Linux, the amd64 pull, the PDK cache,
-  the 60-minute timeout and the artifact size. (The `.gitignore` rule `pdk/`, which also matched
-  `tools/roundtrip/pdk/`, is now `/pdk/`.)
-- **Not run natively on Linux or x86_64**: LibreLane ran in linux/arm64 containers; RETRACE, Yosys
-  0.69+59, Icarus 14.0 devel and Python 3.14.5 on macOS. The identity step will show whether amd64
-  gives the same bytes; the warm-up calibration test needs an exact match there.
+- **CI**: the first run passed on x86_64 with byte-identical results (§9). Not pinned: actions (major
+  tags), the runner image, transitive pip dependencies. (The `.gitignore` rule `pdk/`, which also
+  matched `tools/roundtrip/pdk/`, is now `/pdk/`.)
 - **Unknowns** (§2.3, §4.4): placement (`MANUAL_GLOBAL_PLACEMENTS` could test cluster points), the
   version and whether dev48-dev52 can make the NDR, the keep-out, `CLOCK_PERIOD`, the partition.
 - **Timing is not gated**: at the guessed 10 ns two flop-to-`O` paths miss setup at ss (§5).

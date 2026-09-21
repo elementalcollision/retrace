@@ -1,4 +1,4 @@
-# RETRACE — status (2026-09-21, sprints 0-4, G6, writeup, stretch review)
+# RETRACE — status (2026-09-21, sprints 0-4, G6, writeup, stretch S1/S2/S4)
 
 ## What exists
 
@@ -16,7 +16,7 @@
 | Mutation | **130 layout mutants, 10 operators, both designs** (`docs/MUTATION.md`, `test/mutation/`): 90 killed, 39 equivalent (art, path end types, 5-20 nm near misses), 1 survived: a same-footprint `nor2_2`->`nand2_2` swap on the puzzle, which models a different chip rather than an extraction error and which the recovered-design proof (`e2e.py --gds`) now kills. |
 | **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
 | **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Six planted faults, one per failure class, are permanent tests and each is reported where it was planted (`tools/tempo/faults.py`); the supplies are checked since 2026-09-21 (`docs/TEMPO_LVS.md` §4e). The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
-| Tests | **74/74 pass** (~4 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, TEMPO LVS (19, including 7 on six planted faults; skipped without the TEMPO checkout). |
+| Tests | **111 passed, 3 skipped** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI). |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -98,7 +98,7 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next
 
-Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21; S1 is done.
+Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21; S1 and S4 are done.
 
 Done (2026-09-21), after the review:
 * **The TEMPO LVS now checks the supplies.** The review found that nothing did: a Metal1 bar
@@ -125,21 +125,32 @@ Done (2026-09-21), after the review:
   locally, 20 passed and 1 skipped). Published: the writeup on the site and as the Claude
   artifact (version 5), with three figures.
 
+* **S4, round trip** (`tools/roundtrip/`, `docs/ROUNDTRIP.md`, writeup section 8). Jane Street's
+  flow identified as LibreLane 3.0.x Classic on open_pdks 8afc8346 (hierarchy kept, `AREA 0`,
+  design repair and fill off); synthesis calibrated on the warm-up to an exact, name-level match.
+  Our RTL synthesizes to 584 cells / 6982 um2 against the puzzle's 696 / 8034 (same flops and
+  cell style; keep + `DELAY 0` gives exactly 696 with the wrong gate mix): plain synthesis, no
+  sign of hand padding. Hardened with LibreLane 3.0.14: the floorplan is the puzzle's exactly;
+  gates, diodes and placement differ. Without fill, DRC/LVS fail on n-well findings, as on
+  `puzzle.gds` itself; with fill, clean. Our GDS passes RETRACE's oracles, and its extracted
+  netlist is proven equivalent to the recovered RTL and to the puzzle's extracted netlist.
+  CI: `.github/workflows/roundtrip.yml`; first run 35647684519 passed on x86_64 in 13 min, with
+  synthesis, DEF, netlists and extracted netlist byte-identical to the macOS arm64 run.
+
 Next, in priority order:
 
-1. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
-   runner in this public repo, not on TEMPO's self-hosted runner. It gives three things. It
-   compares cell mix and area with the puzzle, which shows whether the puzzle is plain synthesis
-   or padded by hand. It adds a second sky130 GDS whose source we know, larger than the
-   warm-up. And it closes the loop: extract our own GDS and prove it equivalent to the
-   recovered RTL. Size: a day or two.
-2. **S3, structure recognition.** This is an established research area, so it only pays as a
+1. **S3, structure recognition.** This is an established research area, so it only pays as a
    learning track. What makes it worth doing here is TEMPO as a labelled test set: 62k cells
-   whose net names give the ground truth. First slice: shift registers, counters and word
-   grouping by shared enable and reset, scored on TEMPO, with the puzzle as a small blind case.
-   Size: large.
-3. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+   whose net names give the ground truth (`tools/viz/tempo.py` already labels them by module).
+   First slice: shift registers, counters and word grouping by shared enable and reset, scored
+   on TEMPO, with the puzzle as a small blind case. Size: large.
+2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
    check it against. A table with no ground-truth design would be untested.
+3. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
+   ignores via cuts drawn as top-level polygons (Magic's stream-out; `tools/roundtrip/check.py`
+   binds them); the puzzle's placement mechanism (dense clusters) is not reproduced;
+   `mutate.py`'s `master_swap` description claims identical connectivity, which is wrong for
+   pairs whose pin geometry differs.
 
 Bump the RETRACE pin in TEMPO's `lvs.yaml` whenever `tools/retrace`, `tools/l2n`, `tools/tempo`
 or `test/test_tempo.py` change.

@@ -23,7 +23,7 @@ import markdown
 
 SRC = "docs/WRITEUP.md"
 FIG_DIR = "docs/figures"
-WIDE = {"tempo_modules.png", "lvs_planted.png"}
+WIDE = {"tempo_modules.png", "lvs_planted.png", "roundtrip_blocks.svg"}
 TITLE = "Retracing Two Stars"
 
 CSS = """

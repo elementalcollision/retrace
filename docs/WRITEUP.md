@@ -317,6 +317,56 @@ found the VDD-VSS short at the planted bar, the tinted SRAM carries the two swap
 drivers on one net) and the mirrored cell ((a), with its nets undriven). A mismatched net is
 ringed wherever its cells are, so one fault can show in several places.*
 
+## 8. Round trip: back through Jane Street's flow
+
+The last stretch goal ran the method in reverse: rebuild Jane Street's forward flow, push our
+recovered RTL through it, and check the new layout with our own tools (`docs/ROUNDTRIP.md` has
+the full report, every number sourced).
+
+**Which flow.** The files carry no tool versions, but they carry fingerprints. open_pdks
+`8afc8346` is the default PDK of only one line of flows, LibreLane 3.0.x. The warm-up's clock
+tree uses a non-default routing rule and CTS dummy loads that older OpenROAD versions do not
+write, and the instance and net names are LibreLane's. The odd cell style (every gate at drive
+strength `_2`, no fill, no timing buffers) turned out to be ordinary: the PDK's default list of
+cells synthesis may not use, plus three non-default settings: module hierarchy kept, and design
+repair and fill insertion off (the synthesis strategy is the default, `AREA 0`). The test was the warm-up: with those settings,
+LibreLane 3.0.14's synthesis reproduces Jane Street's warm-up netlist exactly, down to instance
+and net names.
+
+**Is the puzzle padded?** No sign of it. Our proven-equivalent RTL, synthesized the same way,
+gives 584 cells and 6,982 um^2 before the clock tree, against the puzzle's 696 and 8,034, with
+the same 92 flops and the same cell style. The puzzle is 19% larger, but a reviewer found that
+the delay-oriented `DELAY 0` strategy gives exactly 696 cells from our RTL, with the wrong gate
+mix (no XOR gates, where the puzzle has 50). A different RTL partition or recipe could explain
+the size (no tested recipe matches both the count and the mix); nothing requires a human hand. Only about 7 of the extra cells (tie cells feeding gates, one
+feed-through buffer) can be pinned directly on kept module boundaries.
+
+**The layout.** Hardened with LibreLane 3.0.14 and those settings, our design lands on the
+puzzle's floorplan exactly: all 880 tap and end cells at the same positions, the 13 pins, the 30
+power straps and the clock tree's shape (a `clkbuf_16` root, 16 leaves, 15 dummy loads). What
+differs is the gate count, 10 antenna diodes the puzzle has and we do not need, and placement:
+Jane Street's dense clusters come from a mechanism we did not identify. Without fill, the n-well
+breaks at every gap: 211 of its pieces have no tap and the narrowest gaps violate spacing, so DRC
+and LVS fail. `puzzle.gds` fails the same checks the same way (731 Magic DRC findings, 127
+untapped n-well islands). With fill turned on, the same layout is DRC and LVS clean.
+
+![The puzzle's layout and ours, one panel per recovered block](figures/roundtrip_blocks.svg)
+
+*Each recovered block in Jane Street's layout (top) and in ours (bottom), same scale. The
+floorplans match; placement does not: our placer spreads each block, where Jane Street's layout
+packs cells into dense clusters, each block split over several. `tools/roundtrip/vs_puzzle.py` measures it: a flop lands 82 um
+(median) from its puzzle counterpart.*
+
+**Closing the loop.** Our GDS passes every oracle RETRACE built for the puzzle: placements,
+pins, nets against LibreLane's own DEF and netlist, the second extractor, cell geometry against
+the PDK. Its extracted netlist is proven equivalent to the recovered RTL, and also directly to
+the puzzle's extracted netlist: two different layouts, one machine, proven in about a second each
+by the same kind of PDR miter as before, with one-gate mutants failing. Replayed on our layout,
+the winning input raises `success` and prints `(* TWO STARS *)`. `.github/workflows/roundtrip.yml`
+repeats the hardening and every check on a GitHub-hosted x86-64 runner in about 13 minutes; its
+first run gave byte-identical synthesis, DEF, netlists and extracted netlist to the arm64 run
+they were developed on.
+
 ## Easter eggs
 
 * A row of rectangles below the die, in two widths with a 1:3 ratio: Morse code for
@@ -355,6 +405,7 @@ express patent licence to users. Each item names the code path that implements i
 | 13 | **Planted-fault regression for an LVS**: six faults (via open, mirrored cell, Metal2 bridge, swapped macro labels, supply short, a rail cut off from the grid) planted far apart in one copy, sites chosen by rule, each required to be reported at its own instances and nowhere else | `tools/tempo/faults.py`, `test/test_tempo.py` | every check shown able to fail, and where, on every sign-off, for one extra extraction; it found a supply check that could not fail | qualifying any LVS or extraction flow on a real design; catching checks that silently stop working |
 | 14 | **Supply-short locator**: breadth-first search over touching shapes from every power pin to the first ground pin; the non-pin shapes on that shortest path are the short | `tools/tempo/lvs.py` (`locate_supply_short`) | turns "VDD and VSS are one net" into a place on the die | debugging shorts in any open flow; CI images that show where an LVS failed |
 | 15 | **Module map of a flat netlist**: seed cells from the register nets that keep hierarchical names, label the rest by nearest seed in the connectivity graph, check by holding out seeds; placement not used | `tools/viz/tempo.py`, `tools/viz/layout.py` | a flat, anonymous netlist drawn by RTL module, with a measured accuracy; the clustering on the die is independent evidence | floorplan review after synthesis flattens the design; datasheet figures; a labelled test set for structure recognition (PRD S3) |
+| 16 | **Flow forensics and a calibrated round trip**: identify a third party's flow and version from its GDS (PDK pin, clock-tree rules and dummy loads, naming, tap/pin/PDN geometry), calibrate synthesis on a known design until the netlist matches by name, harden the recovered RTL, and prove the two layouts equivalent | `tools/roundtrip/` | reproduces Jane Street's floorplan exactly and proves their layout and ours implement the same machine | provenance of shuttle and third-party GDS; reproducing a published flow; carrying recovered designs through a real flow as a regression |
 
 ## Lessons that transfer
 
@@ -378,6 +429,9 @@ express patent licence to users. Each item names the code path that implements i
 6. **A rule that looks like "how this process works" may really be "how this specific process
    works."** The sky130 poly-resistor cut and the untested 90-degree-rotation code path (§7)
    were both invisible until a second process and a second, larger design exercised them.
+7. **A matching count is not a match.** One synthesis strategy gives exactly the puzzle's 696
+   cells from our RTL, and the wrong gate mix. Calibrating on the warm-up, where the answer is
+   known down to net names, is what made the strategy question answerable at all.
 
 ## How this was built
 
