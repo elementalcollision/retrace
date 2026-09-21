@@ -1,6 +1,6 @@
 .venv/
 out/
-pdk/
+/pdk/
 __pycache__/
 *.vcd
 !upstream/**/*.vcd

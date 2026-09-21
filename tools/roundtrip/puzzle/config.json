@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "version": 2,
+    "flow": "Classic"
+  },
+  "//": "RETRACE S4 round trip: harden the recovered RTL (rtl_recovered/) with the forward flow inferred for Jane Street's puzzle (LibreLane 3.0.x Classic, open_pdks 8afc8346; tested with LibreLane 3.0.14). Run: tools/roundtrip/puzzle/harden.sh [upstreamlike|clean] (or tools/roundtrip/run.sh tools/roundtrip/puzzle/config.json TAG). MEASURED = read off upstream/puzzle.gds (or the warm-up DEF, which the same settings reproduce) and reproduced by a LibreLane run; GUESS = not observable in the artefacts. Evidence for every setting: out/roundtrip/part1_results.json, forensics.parameters.",
+
+  "DESIGN_NAME": "puzzle_recovered",
+  "VERILOG_FILES": [
+    "dir::../../../rtl_recovered/puzzle_recovered.v",
+    "dir::../../../rtl_recovered/counter.v",
+    "dir::../../../rtl_recovered/array.v",
+    "dir::../../../rtl_recovered/left_top.v",
+    "dir::../../../rtl_recovered/left_bottom.v",
+    "dir::../../../rtl_recovered/check.v",
+    "dir::../../../rtl_recovered/outgen.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "//CLOCK_PERIOD": "GUESS. Unobservable: no resizer/timing repair ran in the puzzle, and AREA 0 synthesis gives a byte-identical netlist at 1 ns and 10 ns. 10 ns is LibreLane's example value.",
+  "CLOCK_PERIOD": 10,
+
+  "//floorplan": "MEASURED. Die = the puzzle GDS boundary (235/4) 0,0-200,300. Core rows start at (10.12,10.88), 102 rows x 391 sites: only a uniform 10 um margin fits both the puzzle and the warm-up; OpenROAD snaps (10,10) to (10.12,10.88).",
+  "FP_SIZING": "absolute",
+  "DIE_AREA": [0, 0, 200, 300],
+  "CORE_AREA": [10, 10, 190, 290],
+
+  "//synthesis": "MEASURED on the warm-up: keep + AREA 0 (Yosys 0.62) reproduces Jane Street's synthesized warm-up netlist exactly (names and connectivity); flatten and the other strategies do not. The _2-only cell style is the PDK default no_synth.cells + drc_exclude.cells, so no cell lists are set here. SYNTH_DIRECT_WIRE_BUFFERING is the LibreLane default (the puzzle's single buf_2 is an insbuf at a module port). Caveat: the recovered RTL's module boundaries are ours, not Jane Street's.",
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "SYNTH_STRATEGY": "AREA 0",
+  "SYNTH_DIRECT_WIRE_BUFFERING": true,
+
+  "//PDN": "MEASURED: 2 um met4/met5 straps on a 30 um pitch (30/30 puzzle straps reproduced); offsets and spacing are the PDK defaults, written out for clarity.",
+  "PDN_VWIDTH": 2,
+  "PDN_HWIDTH": 2,
+  "PDN_VPITCH": 30,
+  "PDN_HPITCH": 30,
+  "PDN_VOFFSET": 16.32,
+  "PDN_HOFFSET": 16.65,
+  "PDN_VSPACING": 1.7,
+  "PDN_HSPACING": 1.7,
+  "//FP_TAPCELL_DIST": "MEASURED (PDK default): tap checkerboard; all 880 puzzle taps+endcaps reproduced at the same master, position and orientation (and the warm-up's 151 by name too).",
+  "FP_TAPCELL_DIST": 13,
+
+  "//IO_PIN_ORDER_CFG": "MEASURED: the virtual-pin ($n) spacing is the unique io_place.py solution for the puzzle's pin positions; 13/13 signal pins reproduced exactly (met3; W edge: I, enable, rst_n, clk; E edge: O[*] and success).",
+  "IO_PIN_ORDER_CFG": "dir::pin_order.cfg",
+
+  "//ROUTING_OBSTRUCTIONS": "Mechanism MEASURED on the warm-up (met2+met3 keep-out over the logo, 60,60-100,100). The puzzle box extent is a GUESS: any met2/met3 box covering the logo (34.9-52.3 x 35.2-52.3) that stays left of x=58.5 and below y=72.2 fits the puzzle's routing.",
+  "ROUTING_OBSTRUCTIONS": [
+    ["met2", 30, 30, 57, 57],
+    ["met3", 30, 30, 57, 57]
+  ],
+
+  "//repair": "MEASURED: no post-GPL design repair (no input/output buffers, 27 nets above MAX_FANOUT unbuffered) and no post-CTS/post-GRT resizer (no hold buffers).",
+  "RUN_POST_GPL_DESIGN_REPAIR": false,
+  "RUN_POST_CTS_RESIZER_TIMING": false,
+  "RUN_POST_GRT_RESIZER_TIMING": false,
+  "RUN_POST_GRT_DESIGN_REPAIR": false,
+
+  "//RUN_FILL_INSERTION": "MEASURED: the puzzle has no fill or decap fillers (every decap_3 is an endcap; 47 one-site and 23 two-site gaps remain). Without fill the n-wells of cells separated by a gap do not merge, and every n-well island that does not touch a tap cell floats, so Magic DRC (nwell.4, LU.3, nwell.1, nwell.2a), KLayout DRC and LVS (one extra VPB net per floating island) fail by construction; the 'clean' variant in harden.sh turns fill on.",
+  "RUN_FILL_INSERTION": false,
+
+  "//antenna": "MEASURED in kind (puzzle: 10 diode_2 near sink pins = OpenROAD repair_antennas, no heuristic diodes); the diode count depends on placement and routing, so no exact match is expected.",
+  "RUN_ANTENNA_REPAIR": true,
+  "RUN_HEURISTIC_DIODE_INSERTION": false,
+
+  "//CTS": "MEASURED: clkbuf_16 root, clkbuf_8 leaves, clkbuf_4 dummy loads, half NDR on the upper clock nets (PDK/LibreLane defaults except CTS_APPLY_NDR, which only LibreLane >= 3.0.0rc0 has).",
+  "CTS_ROOT_BUFFER": "sky130_fd_sc_hd__clkbuf_16",
+  "CTS_CLK_BUFFERS": [
+    "sky130_fd_sc_hd__clkbuf_8",
+    "sky130_fd_sc_hd__clkbuf_4",
+    "sky130_fd_sc_hd__clkbuf_2"
+  ],
+  "CTS_APPLY_NDR": "half",
+
+  "//PRIMARY_GDSII_STREAMOUT_TOOL": "MEASURED in kind: puzzle.gds has KLayout-style VIA_* subcells and paths (Magic flattens vias). Whether Jane Street set this or copied final/klayout_gds is not observable. Both stream-outs are written either way.",
+  "PRIMARY_GDSII_STREAMOUT_TOOL": "klayout",
+
+  "//not_set": "NOT REPRODUCED: placement is left at LibreLane defaults because Jane Street's per-module cluster points for the puzzle are unknown, so logic placement, CTS leaf clustering, routing and diodes differ from the puzzle. Checker behaviour is left at LibreLane defaults too (unobservable); tools/roundtrip/puzzle/harden.sh defines the two variants run on top of this file: 'upstreamlike' (this file, with ERROR_ON_MAGIC_DRC/KLAYOUT_DRC/LVS_ERROR false so the expected no-fill DRC/LVS failures are recorded as warnings and the run exits 0) and 'clean' (this file with RUN_FILL_INSERTION true, every checker enforced)."
+}

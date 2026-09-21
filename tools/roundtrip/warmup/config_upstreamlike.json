@@ -1,0 +1,29 @@
+{
+  "DESIGN_NAME": "adder_demo",
+  "VERILOG_FILES": [
+    "dir::../../../upstream/warmup/00_source.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "FP_SIZING": "absolute",
+  "DIE_AREA": [
+    0,
+    0,
+    100,
+    100
+  ],
+  "CORE_AREA": [
+    10,
+    10,
+    90,
+    90
+  ],
+  "SYNTH_HIERARCHY_MODE": "keep",
+  "RUN_POST_GPL_DESIGN_REPAIR": false,
+  "RUN_POST_CTS_RESIZER_TIMING": false,
+  "RUN_FILL_INSERTION": false,
+  "PDN_VWIDTH": 2,
+  "PDN_HWIDTH": 2,
+  "PDN_VPITCH": 30,
+  "PDN_HPITCH": 30
+}

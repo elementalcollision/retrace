@@ -25,6 +25,7 @@ ported to IHP `sg13cmos5l` as an independent LVS for our own Tiny Tapeout design
 | `tools/tempo/lvs.py` | LVS of TEMPO's sign-off GDS against its DEF, netlist and LEF |
 | `tools/viz/` | layout overlays: the puzzle's die by recovered block, TEMPO's by RTL module, and where an LVS found something (`docs/figures/`) |
 | `tools/tempo/faults.py` | six planted layout faults (opens, shorts, a supply short and a rail cut off from the grid), each of which a check must report where it was planted |
+| `tools/roundtrip/` | the round trip: harden `rtl_recovered/` with LibreLane 3.0.14 as Jane Street's flow was inferred to be, then check our own GDS with the oracles above, prove it equivalent to the RTL and to the puzzle's netlist, and compare it with `puzzle.gds` (`ci.sh`; CI in `.github/workflows/roundtrip.yml`) |
 | `docs/` | PRD, approach, verification plan, status ledger, design intent, mutation report, solution, writeup |
 
 ## Reproduce
@@ -40,6 +41,8 @@ python3 -m venv .venv && .venv/bin/pip install gdstk klayout shapely networkx py
 mkdir -p pdk/sky130_fd_sc_hd && for d in lef lib verilog gds; do \
   cp -rL ~/pdk-sky130/sky130A/libs.ref/sky130_fd_sc_hd/$d pdk/sky130_fd_sc_hd/; done
 .venv/bin/python -m pytest -q
+python3.12 -m venv ~/ttsetup/librelane-venv && ~/ttsetup/librelane-venv/bin/pip install librelane==3.0.14
+tools/roundtrip/ci.sh   # the round trip (needs Docker; see docs/ROUNDTRIP.md section 9), ~7 min
 ```
 
 The TEMPO tests skip unless `TEMPO_ROOT` points at a TEMPO checkout with a sign-off run and

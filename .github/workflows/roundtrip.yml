@@ -1,0 +1,221 @@
+name: roundtrip
+
+# RETRACE S4, the round trip: harden the recovered RTL (rtl_recovered/) with the flow
+# inferred for Jane Street's puzzle (LibreLane 3.0.14 Classic on open_pdks 8afc8346,
+# tools/roundtrip/puzzle/config.json), then check the layout with RETRACE's own tools:
+# its oracles against the run's own DEF and nl.v (tools.roundtrip.check), the loop back
+# to the RTL (tools.roundtrip.loop: extract, prove equivalent, replay), the comparison
+# with the puzzle's GDS (tools.roundtrip.vs_puzzle) and test/test_roundtrip.py.
+# All of it is tools/roundtrip/ci.sh, which runs the same way on a workstation; this
+# file only installs the pinned tools. GitHub-hosted runner (x86_64); the repo is public.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'rtl_recovered/**'
+      - 'tools/roundtrip/**'
+      - 'tools/retrace/**'
+      - 'tools/l2n/**'
+      # also used by the round trip: tools.analysis (cone, e2e: the puzzle's extraction and
+      # the probe miter), tools.viz (block_cells, the figure), formal/ (recovered_miter.sv),
+      # answer/solution.vcd (the loop's replay, step 3)
+      - 'tools/analysis/**'
+      - 'tools/viz/**'
+      - 'formal/**'
+      - 'answer/solution.vcd'
+      - 'test/test_roundtrip.py'
+      - '.github/workflows/roundtrip.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: roundtrip-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Every tool is pinned; bump deliberately.
+  UPSTREAM_REPO: https://github.com/janestreet/asic-puzzle-2026
+  UPSTREAM_SHA: ffd53e0ba24e2fc1c1b12dc824e8eac5888c19a9
+  LIBRELANE_VERSION: '3.0.14'
+  # manifest-list digest of ghcr.io/librelane/librelane:3.0.14, the image the local runs used
+  # (out/roundtrip/docker_pull.log; docker buildx imagetools inspect gives the same, with
+  # linux/arm64 sha256:f851ed1a... and linux/amd64 sha256:23fc800d... under it). The tag is
+  # pulled and must still resolve to this; a moved tag fails the job.
+  LIBRELANE_IMAGE_DIGEST: sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f
+  OPEN_PDKS: 8afc8346a57fe1ab7934ba5a6056ea8b43078e71
+  OSS_CAD_SUITE: '2026-09-15'
+  PYTHON_VERSION: '3.12'
+  # RETRACE's Python dependencies, the versions the local runs used
+  RETRACE_PIP: >-
+    gdstk==1.0.1 klayout==0.30.12 shapely==2.1.2 networkx==3.6.1 pytest==9.1.1
+    z3-solver==5.1.0.0 pillow==12.3.0 numpy==2.5.3
+
+jobs:
+  roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash  # explicit: -eo pipefail
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+
+      - name: upstream puzzle files (Jane Street's; not redistributed in this repo)
+        run: |
+          git clone -q "$UPSTREAM_REPO" upstream
+          git -C upstream checkout -q --detach "$UPSTREAM_SHA"
+          test "$(git -C upstream rev-parse HEAD)" = "$UPSTREAM_SHA"
+          ls -l upstream upstream/warmup
+
+      - name: disk space
+        run: |
+          df -h /
+          avail=$(df --output=avail -BG / | tail -1 | tr -dc 0-9)
+          # image ~6 GB, PDK ~2 GB, oss-cad-suite ~3 GB, two runs ~0.5 GB
+          if [ "$avail" -lt 25 ]; then
+            echo "only ${avail} GB free: removing preinstalled SDKs the round trip does not use"
+            sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup
+            df -h /
+          fi
+
+      # before setup-python: oss-cad-suite's bin/ holds a python3 of its own, and the
+      # last PATH entry added wins
+      - name: oss-cad-suite (Yosys, SymbiYosys, Icarus)
+        uses: YosysHQ/setup-oss-cad-suite@v4
+        with:
+          version: ${{ env.OSS_CAD_SUITE }}
+          github-token: ${{ github.token }}
+
+      - name: oss-cad-suite where RETRACE looks for it (~/ttsetup/oss-cad-suite/bin)
+        run: |
+          bin="$(dirname "$(command -v yosys)")"
+          mkdir -p ~/ttsetup
+          ln -sfn "$(dirname "$bin")" ~/ttsetup/oss-cad-suite
+          ls -l ~/ttsetup/oss-cad-suite
+          for t in yosys yosys-abc sby iverilog vvp; do test -x "$HOME/ttsetup/oss-cad-suite/bin/$t"; done
+          ~/ttsetup/oss-cad-suite/bin/yosys -V
+          ~/ttsetup/oss-cad-suite/bin/iverilog -V | head -1
+
+      - name: python
+        id: py
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: python packages (RETRACE; LibreLane in a venv of its own)
+        env:
+          PY: ${{ steps.py.outputs.python-path }}
+        run: |
+          read -r -a pkgs <<<"$RETRACE_PIP"
+          "$PY" -m pip install --disable-pip-version-check -q "${pkgs[@]}"
+          "$PY" -m venv ~/librelane-venv
+          ~/librelane-venv/bin/pip install --disable-pip-version-check -q "librelane==$LIBRELANE_VERSION"
+          {
+            echo "PYTHON=$PY"
+            echo "LIBRELANE=$HOME/librelane-venv/bin/librelane"
+            echo "PDK_ROOT=$HOME/pdk-sky130"
+          } >> "$GITHUB_ENV"
+          "$PY" --version
+          ~/librelane-venv/bin/librelane --bare-version
+          ~/librelane-venv/bin/pip list 2>/dev/null | grep -i -E '^(librelane|ciel) '
+
+      - name: restore the sky130 PDK
+        id: pdk
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/pdk-sky130
+          key: ciel-sky130-${{ env.OPEN_PDKS }}
+
+      - name: sky130 PDK (ciel enable, open_pdks ${{ env.OPEN_PDKS }})
+        env:
+          GITHUB_TOKEN: ${{ github.token }}  # ciel lists releases through the GitHub API
+        run: |
+          ~/librelane-venv/bin/ciel enable --pdk-root "$PDK_ROOT" --pdk-family sky130 "$OPEN_PDKS"
+          head -1 "$PDK_ROOT/sky130A/SOURCES"
+          du -sh "$PDK_ROOT"
+
+      - name: save the sky130 PDK
+        if: steps.pdk.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/pdk-sky130
+          key: ciel-sky130-${{ env.OPEN_PDKS }}
+
+      - name: pdk/ subset (README, Reproduce)
+        run: |
+          mkdir -p pdk/sky130_fd_sc_hd
+          for d in lef lib verilog gds; do
+            cp -rL "$PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/$d" pdk/sky130_fd_sc_hd/
+          done
+          du -sh pdk/sky130_fd_sc_hd
+
+      - name: pull the LibreLane image (tag, checked against the pinned digest)
+        run: |
+          repo=ghcr.io/librelane/librelane
+          image="$repo:$LIBRELANE_VERSION"
+          t0=$(date +%s)
+          docker pull -q "$image"
+          echo "IMAGE_PULL_S=$(( $(date +%s) - t0 ))" >> "$GITHUB_ENV"
+          echo "pulled in $(( $(date +%s) - t0 )) s"
+          # the manifest-list digest the tag resolved to, as recorded by the pull
+          pulled=$(docker image inspect --format '{{range .RepoDigests}}{{println .}}{{end}}' "$image" \
+                   | sed -n "s|^$repo@||p" | sort -u)
+          echo "pulled digest(s): ${pulled:-none}"
+          if [ "$pulled" != "$LIBRELANE_IMAGE_DIGEST" ]; then
+            echo "::error::$image resolved to '${pulled:-no digest}', not the pinned $LIBRELANE_IMAGE_DIGEST"
+            exit 1
+          fi
+          echo "IMAGE_DIGEST=$pulled" >> "$GITHUB_ENV"
+          docker image inspect --format '{{.Id}} {{.Os}}/{{.Architecture}} {{.Size}} bytes' "$image"
+          df -h /
+
+      - name: round trip (tools/roundtrip/ci.sh)
+        run: tools/roundtrip/ci.sh
+
+      - name: job summary
+        if: ${{ !cancelled() }}
+        env:
+          PDK_CACHE_HIT: ${{ steps.pdk.outputs.cache-hit }}
+        run: |
+          {
+            if [ -f out/roundtrip/ci/summary.md ]; then
+              cat out/roundtrip/ci/summary.md
+            else
+              echo "## RETRACE S4 round trip"
+              echo "tools/roundtrip/ci.sh wrote no summary: see the step log."
+            fi
+            echo
+            echo "Setup: LibreLane image ghcr.io/librelane/librelane:${LIBRELANE_VERSION}@${IMAGE_DIGEST:-not verified} (pinned ${LIBRELANE_IMAGE_DIGEST}), pulled in ${IMAGE_PULL_S:-?} s; PDK cache hit: ${PDK_CACHE_HIT:-false}; runner $(uname -m)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: upload the runs' final views and the reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: roundtrip-${{ github.run_id }}
+          if-no-files-found: warn
+          # an allowlist: reports and our own design's views only. out/roundtrip/ci/loop/ is left
+          # out: it holds the puzzle's extracted netlist and testbenches that re-encode
+          # upstream's example_inputs.vcd, which this repository does not redistribute.
+          path: |
+            out/roundtrip/ci/*.json
+            out/roundtrip/ci/*.log
+            out/roundtrip/ci/*.md
+            out/roundtrip/ci/*.tsv
+            out/roundtrip/ci/*.xml
+            out/roundtrip/ci/*.svg
+            out/roundtrip/ci/*.status
+            out/roundtrip/ci/check/
+            out/roundtrip/puzzle_run/*.status
+            out/roundtrip/puzzle_run/*.summary.json
+            out/roundtrip/puzzle_run/*/final/
+            out/roundtrip/puzzle_run/*/resolved.json
+            out/roundtrip/puzzle_run/*/*.log
+            out/roundtrip/puzzle_run/*/*-yosys-synthesis/*.nl.v
+            out/roundtrip/puzzle_run/*/*-magic-drc/reports/
+            out/roundtrip/puzzle_run/*/*-klayout-drc/reports/
+            out/roundtrip/puzzle_run/*/*-netgen-lvs/reports/
