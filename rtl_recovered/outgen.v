@@ -4,16 +4,19 @@
 //
 // Flop map:
 //   f88 f89 f90 f91 (dfxtp, no reset) -> `pos` (4-bit "playback position"):
-//       {q_f88,q_f89,q_f90,q_f91}, MSB..LSB. This is NOT a binary counter:
-//       it is a small 4-bit feedback register that, once printing starts,
-//       steps through the fixed permutation
+//       {q_f88,q_f89,q_f90,q_f91}, MSB..LSB. It is a binary counter that
+//       saturates at 15, with its bits wired in a permuted order (LSB to
+//       MSB: f89, f91, f90, f88), so read as {f88,f89,f90,f91} the raw value
+//       steps through
 //         0,4,1,5,2,6,3,7,8,12,9,13,10,14,11,15
-//       one step per clock, then locks at 15 (all-ones) forever. That is
-//       exactly 9 "live" steps (positions 0..8) before it locks, matching
-//       the 9-character messages below plus a silent (0x00) tail.
+//       one step per clock, then holds at 15 (all-ones). That is 15 printing
+//       steps (counts 0..14), enough for the 15-character success message;
+//       shorter messages below end in silent (0x00) bytes. (Corrected
+//       2026-09-21: earlier text said 9 steps and "not a binary counter".)
 //   f80 f81 f82 f83 f84 f85 f86 f87 (f80/f82/f85/f86 dfrtp reset-to-0,
-//       f81/f83/f84/f87 dfstp set-to-1, so reset value is 8'b10110110
-//       i.e. f80=0 f81=1 f82=0 f83=1 f84=1 f85=0 f86=0 f87=1) ->
+//       f81/f83/f84/f87 dfstp set-to-1, i.e. f80=0 f81=1 f82=0 f83=1 f84=1
+//       f85=0 f86=0 f87=1; in chain order f81..f87 below that is 8'hA5,
+//       corrected 2026-09-21 from an earlier 8'b10110110) ->
 //       `scrambler` (8-bit shift/feedback register). Read in physical
 //       shift-chain order oldest-to-newest, the chain is:
 //         f81 (oldest, shifts out) -> f80 -> f83 -> f82 -> f85 -> f84

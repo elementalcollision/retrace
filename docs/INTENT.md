@@ -181,11 +181,13 @@ directly to `success_latch` (f78).
 ### 2.6 `outgen` (`rtl_recovered/outgen.v`, flops f80-f91; owns `O[7:0]`)
 
 An 8-bit ASCII message printer. `pos` (f88-f91, `dfxtp_2`, **no reset**) is a 4-bit
-feedback register that, while `armed` (`q_f79`) is 1, steps through the fixed
-permutation `0,4,1,5,2,6,3,7,8,12,9,13,10,14,11,15` (9 live steps, then locks at 15);
+counter that, while `armed` (`q_f79`) is 1, counts up and saturates at 15. Its bits are wired
+in a permuted order (LSB to MSB: f89, f91, f90, f88), so the raw value `{f88,f89,f90,f91}` walks
+`0,4,1,5,2,6,3,7,8,12,9,13,10,14,11,15`: 15 printing steps (counts 0-14), then it holds at 15;
 while `armed=0` it is forced to 0 every cycle. The 8-bit `scrambler` register
 (f80-f87; f80/f82/f85/f86 reset to 0, f81/f83/f84/f87 async-**set** to 1, giving
-reset value `8'b1011_0110`, i.e. `scr_bit7..scr_bit0` = `1,0,1,1,0,1,1,0`) either
+reset value `8'hA5`, i.e. `scr_bit7..scr_bit0` = `1,0,1,0,0,1,0,1`; corrected 2026-09-21 from
+`8'b1011_0110`, found by the S3 ground truth) either
 shifts in a new LFSR-mixed bit of `I` (while `shift_en = enable & ~cnt_done`), or
 runs a second self-XOR update once per printed byte (while printing and not
 shifting), or holds. `O` is silent (`8'h00`) unless `armed & ~pos_locked`; while
@@ -202,7 +204,7 @@ case the sample trace exercises).
 | `scr_bit6` | f80 | scrambler bit 6 | 0 (dfrtp) |
 | `scr_bit5` | f83 | scrambler bit 5 | 1 (dfstp) |
 | `scr_bit4` | f82 | scrambler bit 4 | 0 (dfrtp) |
-| `scr_bit3` | f85 | scrambler bit 3 | 1 (dfstp) |
+| `scr_bit3` | f85 | scrambler bit 3 | 0 (dfrtp) |
 | `scr_bit2` | f84 | scrambler bit 2 | 1 (dfstp) |
 | `scr_bit1` | f86 | scrambler bit 1 | 0 (dfrtp) |
 | `scr_bit0` | f87 | scrambler bit 0 (chain-newest) | 1 (dfstp) |
