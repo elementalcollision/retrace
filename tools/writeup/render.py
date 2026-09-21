@@ -1,8 +1,11 @@
 """Render docs/WRITEUP.md into the published HTML page.
 
 The Markdown is the source of truth; this adds the page design, draws the solved grid
-(regions coloured, stars placed) in place of the ASCII grid, and draws the region map
-in place of its ASCII block.
+(regions coloured, stars placed) in place of the ASCII grid, draws the region map in
+place of its ASCII block, and turns the Markdown images of docs/figures into figures:
+the puzzle's SVG inline (it follows the page's light and dark themes), TEMPO's module
+sheet as a grid of transparent panels with HTML captions, and any other image as a file
+beside the page, copied to OUT_DIR/fig/.
 
     python -m tools.writeup.render OUT.html            # Claude artifact (body only, web fonts)
     python -m tools.writeup.render --site OUT.html     # theelementalcodices.com/artifacts/: a full
@@ -10,12 +13,17 @@ in place of its ASCII block.
 """
 
 import html
+import json
+import os
 import re
+import shutil
 import sys
 
 import markdown
 
 SRC = "docs/WRITEUP.md"
+FIG_DIR = "docs/figures"
+WIDE = {"tempo_modules.png", "lvs_planted.png"}
 TITLE = "Retracing Two Stars"
 
 CSS = """
@@ -70,6 +78,16 @@ h1 { font-size: clamp(34px, 5.2vw, 56px); margin: 10px 0 0; letter-spacing: -.01
 .region-map .board i { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: calc(var(--cell) * .42);
   color: var(--ink); }
 article { max-width: 68ch; margin: 40px auto 0; }
+.fig { margin: 26px 0 32px; }
+.fig.wide { width: min(1040px, calc(100vw - 40px)); margin-left: 50%; transform: translateX(-50%); }
+.fig img { display: block; max-width: 100%; height: auto; }
+.fig svg.lo { display: block; }
+.fig figcaption { font-size: 14px; line-height: 1.5; color: var(--muted); margin-top: 12px; max-width: 68ch; }
+.fig.wide figcaption { margin-inline: auto; }
+.fig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 20px; }
+.fig-panel span { display: block; font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 12px;
+  color: var(--muted); margin-bottom: 6px; }
+.fig-panel b { color: var(--ink); font-weight: 600; margin-right: .5em; }
 article h2 { font-size: 30px; margin: 56px 0 12px; padding-top: 14px; border-top: 1px solid var(--rule); }
 article h1 { display: none; }
 article p, article li { hyphens: auto; }
@@ -90,6 +108,7 @@ article p:first-of-type em { display: block; }
 footer { max-width: 68ch; margin: 64px auto 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule);
   padding-top: 14px; }
 @media (max-width: 760px) {
+  .fig-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .hero .board-wrap { justify-self: start; }
   body { font-size: 16px; }
@@ -152,7 +171,51 @@ DESCRIPTION = ("How RETRACE reverse-engineered Jane Street's ASIC puzzle from a 
                "unique solution, and what the method developed along the way.")
 
 
-def render(site=False):
+def _size(path):
+    from PIL import Image
+
+    with Image.open(path) as im:
+        return im.size
+
+
+def _figures(body):
+    """Markdown images of docs/figures, each followed by an italic caption paragraph, become
+    <figure>s. Returns (body, [figure files to publish beside the page as fig/NAME])."""
+    files = []
+    pat = re.compile(r'<p><img alt="([^"]*)" src="figures/([^"]+)" ?/?></p>\s*<p><em>(.*?)</em></p>', re.S)
+
+    def figure(m):
+        alt, name, cap = m.group(1), m.group(2), m.group(3)
+        if name.endswith(".svg"):
+            with open(f"{FIG_DIR}/{name}") as f:
+                inner = f.read()
+        elif name == "tempo_modules.png":
+            with open(f"{FIG_DIR}/tempo_modules.json") as f:
+                panels = json.load(f)["panels"]
+            cells = []
+            for p in panels:
+                files.append(p["file"])
+                w, h = _size(f"{FIG_DIR}/{p['file']}")
+                cells.append(f'<div class="fig-panel"><span><b>{html.escape(p["title"])}</b>{html.escape(p["subtitle"])}'
+                             f'</span><img src="fig/{p["file"]}" width="{w}" height="{h}" loading="lazy" '
+                             f'alt="{html.escape(p["title"])}: its cells highlighted on the die"></div>')
+            inner = f'<div class="fig-grid">{"".join(cells)}</div>'
+        else:
+            files.append(name)
+            w, h = _size(f"{FIG_DIR}/{name}")
+            inner = f'<img src="fig/{name}" width="{w}" height="{h}" loading="lazy" alt="{alt}">'
+        wide = " wide" if name in WIDE else ""
+        return f'<figure class="fig{wide}">{inner}<figcaption>{cap}</figcaption></figure>'
+
+    body = pat.sub(figure, body)
+    if 'src="figures/' in body:
+        raise ValueError("a figure without an italic caption paragraph after it")
+    return body, files
+
+
+def render(site=False, files=None):
+    """The page as a string. `files`, if given, is extended with the figure files the page
+    references (fig/NAME, from docs/figures)."""
     with open(SRC) as f:
         md = f.read()
     blocks = _blocks(md)
@@ -168,6 +231,9 @@ def render(site=False):
     body = body.replace("<p>REGION_MAP_PLACEHOLDER</p>",
                         f'<div class="region-map">{board(regions, label_regions=True)}'
                         f'<div class="board-cap">regions A-K, as decoded from the array block</div></div>')
+    body, figs = _figures(body)
+    if files is not None:
+        files.extend(figs)
     body = re.sub(r"<table>", '<div class="table"><table>', body)
     body = re.sub(r"</table>", "</table></div>", body)
 
@@ -220,7 +286,7 @@ def render(site=False):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="article">
 <title>{html.escape(TITLE)}</title>
-<!-- No external requests: system font stacks, inline SVG, no scripts. -->
+<!-- No external requests: system font stacks, inline SVG, images beside the page, no scripts. -->
 <style>{css}</style>
 </head>
 <body>
@@ -242,9 +308,16 @@ def main(argv=None):
     site = "--site" in argv
     argv = [a for a in argv if a != "--site"]
     out = argv[0] if argv else "out/writeup/index.html"
+    files = []
+    page = render(site, files)
     with open(out, "w") as f:
-        f.write(render(site))
-    print(out)
+        f.write(page)
+    if files:
+        figdir = os.path.join(os.path.dirname(out) or ".", "fig")
+        os.makedirs(figdir, exist_ok=True)
+        for name in files:
+            shutil.copy(f"{FIG_DIR}/{name}", os.path.join(figdir, name))
+    print(out, f"({len(files)} figure files in fig/)" if files else "")
     return 0
 
 

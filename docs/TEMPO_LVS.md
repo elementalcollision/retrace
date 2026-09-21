@@ -314,6 +314,27 @@ changes. `python -m tools.tempo.faults OUT.gds` writes the planted copy for insp
 TEMPO test file now has 19 tests and takes about 150 s here, with a 3.9 GB peak, because it
 holds the base extraction while it extracts the planted copy.
 
+## 4f. Where it failed: the short locator and the findings image (2026-09-21)
+
+A supply short says only that VDD and VSS are one net. `locate_supply_short` (in (e)) searches
+breadth-first over touching shapes (same layer, through a cut, or polygons of one pin) from every
+power pin, and stops at the first level that reaches a ground pin. The non-pin shapes on those
+shortest paths are the short: on the planted copy, the path is a neighbour's VDD pin, the
+planted Metal1 bar, and the filler's VSS pin, and `supply_short_at` reports the bar's box. It
+adds about a second to a run that finds a short, and nothing to one that does not.
+
+`python -m tools.tempo.lvs --json REPORT.json` writes the whole report, and
+`python -m tools.viz.lvs_where REPORT.json OUT.png` draws it on the die: the instances each check
+named, grouped by the checks that named them and by distance, ringed and labelled, with the
+short's location. TEMPO's CI draws it when the LVS fails and uploads it with the report; a
+manual run with `drill` plants the six faults of §4e and draws them, so the drawing step itself
+is exercised. `docs/figures/lvs_planted.png` is that drawing for the planted copy.
+
+TEMPO's layout by RTL module (`tools/viz/tempo.py`, `docs/figures/tempo_modules.png`) comes from
+the same DEF: register nets keep hierarchical names, those registers seed the labels, and every
+other cell takes the module of its nearest seed in the connectivity graph. Holding out a fifth of
+the seeds gives 462 of 496 back (93.1%); placement is not used.
+
 ## 5. Open items
 
 * **DEF `SPECIALNETS` is not read.** Power/ground routing correctness (that

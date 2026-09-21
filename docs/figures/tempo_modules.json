@@ -1,0 +1,101 @@
+{
+ "holdout": [
+  462,
+  496
+ ],
+ "cells": 35649,
+ "seeds": 2480,
+ "unassigned": 191,
+ "panels": [
+  {
+   "title": "u_core",
+   "subtitle": "tempo_core, 9,466 cells",
+   "file": "tempo_u_core.png",
+   "cells": 9466,
+   "holdout": [
+    137,
+    137
+   ]
+  },
+  {
+   "title": "u_tio",
+   "subtitle": "tempo_tio, 4,894 cells",
+   "file": "tempo_u_tio.png",
+   "cells": 4894,
+   "holdout": [
+    70,
+    91
+   ]
+  },
+  {
+   "title": "u_ser",
+   "subtitle": "tempo_ser_block, 11,287 cells",
+   "file": "tempo_u_ser.png",
+   "cells": 11287,
+   "holdout": [
+    160,
+    164
+   ]
+  },
+  {
+   "title": "u_crc",
+   "subtitle": "tempo_crc_block, 3,818 cells",
+   "file": "tempo_u_crc.png",
+   "cells": 3818,
+   "holdout": [
+    24,
+    24
+   ]
+  },
+  {
+   "title": "u_sys",
+   "subtitle": "tempo_sys, 2,283 cells",
+   "file": "tempo_u_sys.png",
+   "cells": 2283,
+   "holdout": [
+    48,
+    56
+   ]
+  },
+  {
+   "title": "u_host",
+   "subtitle": "tempo_host, 2,896 cells",
+   "file": "tempo_u_host.png",
+   "cells": 2896,
+   "holdout": [
+    22,
+    22
+   ]
+  },
+  {
+   "title": "u_arb",
+   "subtitle": "tempo_arb, 40 cells",
+   "file": "tempo_u_arb.png",
+   "cells": 40,
+   "holdout": [
+    1,
+    1
+   ]
+  },
+  {
+   "title": "u_mem",
+   "subtitle": "tempo_mem, 464 cells",
+   "file": "tempo_u_mem.png",
+   "cells": 464,
+   "holdout": [
+    0,
+    1
+   ]
+  },
+  {
+   "title": "clock tree",
+   "subtitle": "CTS buffers, 310 cells",
+   "file": "tempo_clock_tree.png",
+   "cells": 310,
+   "holdout": [
+    0,
+    0
+   ]
+  }
+ ]
+}

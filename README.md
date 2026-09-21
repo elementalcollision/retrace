@@ -23,6 +23,7 @@ ported to IHP `sg13cmos5l` as an independent LVS for our own Tiny Tapeout design
 | `rtl_recovered/` | the recovered, proven RTL of the puzzle |
 | `tools/solve/` | the two solving routes (z3 on the recovered rules; SymbiYosys on the netlist) |
 | `tools/tempo/lvs.py` | LVS of TEMPO's sign-off GDS against its DEF, netlist and LEF |
+| `tools/viz/` | layout overlays: the puzzle's die by recovered block, TEMPO's by RTL module, and where an LVS found something (`docs/figures/`) |
 | `tools/tempo/faults.py` | six planted layout faults (opens, shorts, a supply short and a rail cut off from the grid), each of which a check must report where it was planted |
 | `docs/` | PRD, approach, verification plan, status ledger, design intent, mutation report, solution, writeup |
 
@@ -34,7 +35,7 @@ and [ciel](https://github.com/fossi-foundation/ciel) for the PDK.
 
 ```bash
 git clone https://github.com/janestreet/asic-puzzle-2026 upstream   # the puzzle files (not redistributed here)
-python3 -m venv .venv && .venv/bin/pip install gdstk klayout shapely networkx pytest z3-solver markdown ciel
+python3 -m venv .venv && .venv/bin/pip install gdstk klayout shapely networkx pytest z3-solver markdown ciel pillow
 .venv/bin/ciel enable --pdk-root ~/pdk-sky130 --pdk-family sky130 8afc8346a57fe1ab7934ba5a6056ea8b43078e71
 mkdir -p pdk/sky130_fd_sc_hd && for d in lef lib verilog gds; do \
   cp -rL ~/pdk-sky130/sky130A/libs.ref/sky130_fd_sc_hd/$d pdk/sky130_fd_sc_hd/; done

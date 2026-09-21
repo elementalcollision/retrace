@@ -98,9 +98,9 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next
 
-Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21.
+Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21; S1 is done.
 
-Done (2026-09-21), items 1 and 2 of the review:
+Done (2026-09-21), after the review:
 * **The TEMPO LVS now checks the supplies.** The review found that nothing did: a Metal1 bar
   from VDD to VSS in a copy of the sign-off GDS passed (b), (c) and (e), because the supply
   nets are left out of (b) and (c) and (e) compared chip-level supply labels TEMPO does not
@@ -114,25 +114,29 @@ Done (2026-09-21), items 1 and 2 of the review:
   sites. `test/test_tempo.py` requires every check to report its own fault where it was
   planted and nothing elsewhere: 7 new tests, 19 in the file, about 150 s and a 3.9 GB peak.
 
+* **S1, overlays** (`tools/viz/`, `docs/figures/`, in the writeup). The puzzle's die by
+  recovered block: gates assigned by proven logic cone, not placement, so their clustering beside
+  their flops is the layout's own hint. TEMPO's die by RTL module, labelled from the register nets
+  that keep hierarchical names and spread by nearest seed (462 of 496 held-out seeds
+  recovered, 93%), also a candidate datasheet image (`tempo_modules.png`).
+  Where an LVS found something, drawn from the report, with a new supply-short locator
+  (`locate_supply_short`); TEMPO's CI draws it on failure, and a manual `drill` run plants the
+  six faults and draws them.
+
 Next, in priority order:
 
-1. **S1, overlays.** The writeup has no figures. Three renders: the puzzle's layout coloured
-   by recovered block, to show that the layout hints at function; TEMPO's layout coloured by
-   RTL module, from the net names, which keep the hierarchy (`u_top.u_core.rf`,
-   `u_top.u_ser.u_ser0`, ...) and could serve as datasheet images (TEMPO's open item 7); and
-   an LVS report image marking any mismatched nets, so a failing CI run shows where. Size: a day.
-2. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
+1. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
    runner in this public repo, not on TEMPO's self-hosted runner. It gives three things. It
    compares cell mix and area with the puzzle, which shows whether the puzzle is plain synthesis
    or padded by hand. It adds a second sky130 GDS whose source we know, larger than the
    warm-up. And it closes the loop: extract our own GDS and prove it equivalent to the
    recovered RTL. Size: a day or two.
-3. **S3, structure recognition.** This is an established research area, so it only pays as a
+2. **S3, structure recognition.** This is an established research area, so it only pays as a
    learning track. What makes it worth doing here is TEMPO as a labelled test set: 62k cells
    whose net names give the ground truth. First slice: shift registers, counters and word
    grouping by shared enable and reset, scored on TEMPO, with the puzzle as a small blind case.
    Size: large.
-4. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+3. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
    check it against. A table with no ground-truth design would be untested.
 
 Bump the RETRACE pin in TEMPO's `lvs.yaml` whenever `tools/retrace`, `tools/l2n`, `tools/tempo`

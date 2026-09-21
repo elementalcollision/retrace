@@ -245,3 +245,36 @@ def test_planted_e_supply_short_and_rail_open():
     assert e["supply_shorts"] == 1
     assert (e["power_nets"], e["ground_nets"]) == (2, 1)
     assert set(e["supply_stray_instances"]) == chosen["rail_open"]["stray"]
+
+
+def test_planted_supply_short_is_located_at_the_bar():
+    """locate_supply_short: the shortest VDD-to-GROUND path runs through the planted bar,
+    and its non-pin shapes (`at`) lie within the bar."""
+    chosen, report, _map = planted()
+    (site,) = report["e_sanity"]["supply_short_at"]
+    x0, y0, x1, y1 = site[0]["at"]
+    b0, c0, b1, c1 = chosen["supply_short"]["rect"]
+    assert b0 - 1e-3 <= x0 and x1 <= b1 + 1e-3 and c0 - 1e-3 <= y0 and y1 <= c1 + 1e-3, (site[0], chosen["supply_short"])
+
+
+def test_planted_lvs_where_rings_every_fault():
+    """tools.viz.lvs_where turns the report into rings on the die: every planted fault is
+    inside one, and the checks named on the rings are the ones that flagged it."""
+    from tools.viz import lvs_where
+    from tools.viz.tempo import design
+
+    chosen, report, name_map = planted()
+    die, d, _lef, _logic, _master = design()
+    flags, shorts = lvs_where.findings(report, die, d)
+    marks = lvs_where.marks(flags, shorts, die)
+
+    def ringed(box, check):
+        x0, y0, x1, y1 = box
+        return any(check in label and m[0] <= x0 + 1e-3 and x1 - 1e-3 <= m[2] and m[1] <= y0 + 1e-3 and y1 - 1e-3 <= m[3]
+                   for label, m in marks)
+
+    assert ringed(chosen["supply_short"]["rect"], "VDD-VSS short")
+    assert ringed(die.cells[chosen["mirror"]["def_name"]], "(a)")
+    assert any(ringed(die.cells[n], "off-grid supply") for n in chosen["rail_open"]["neighbourhood"] if n in die.cells)
+    for kind in ("via_open", "bridge", "sram_swap"):
+        assert any(ringed(die.cells[n], "(b)") for n in chosen[kind]["neighbourhood"] if n in die.cells), kind

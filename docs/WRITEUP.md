@@ -152,6 +152,15 @@ flop-to-flop dependency graph, together with placement, gave six blocks: `counte
 `array` (44), `left_top` (16), `left_bottom` (8), `check` (3) and `outgen` (12). The layout
 really is "arranged to hint": each block is a cluster on the die.
 
+![The puzzle's 200 by 300 um die drawn seven times, one panel per recovered block](figures/puzzle_blocks.svg)
+
+*Each panel highlights one block: its flops and every gate in the proven logic cone behind
+them (`tools/viz/puzzle.py`). The flops were grouped with the help of their placement, but the
+gates only by logic, so gates landing beside their own flops is the layout's hint, not ours.
+`array` owns the centre column and the cluster at bottom right; `check`'s gates are strung
+along the columns it reads. 14 gates are shared, 13 by two cones and one by five, and appear
+in each of those panels; the seventh panel is the 32 clock buffers.*
+
 **The V7 harness** (`tools/analysis/cone.py`) cuts the netlist at the flops. For each block it
 exports the exact gate logic as a "gold" module (inputs: ports and current flop values;
 outputs: next flop values and owned outputs). Recovered RTL for a block is accepted only if a
@@ -258,15 +267,23 @@ independent of LibreLane's Magic and Netgen (`tools/tempo/lvs.py`, `docs/TEMPO_L
 | placements vs DEF | 62,151 / 62,151 |
 | net partition vs DEF, and vs the final netlist | 35,542 / 35,542, both |
 | pins vs IHP LEF | 52 masters (51 cells and the SRAM), no mismatch |
-| electrical sanity | 0 undriven, 0 multiply driven nets |
+| electrical sanity | 0 undriven, 0 multiply driven nets; one power net and one ground net, not shorted |
 | cell geometry vs PDK | 51 / 51 masters identical |
 | extractor 1 vs KLayout (V4) | 35,543 / 35,543 multi-pin nets |
 
 It runs in about 20 s, and since 2026-09-19 it runs in TEMPO's CI after every sign-off
-(first run: the CI-built `v0.2-signoff` GDS, all checks passing). Four planted faults in copies of TEMPO's GDS (a deleted via, a flipped
-cell, two swapped SRAM pin labels, a Metal2 short) were each caught. Power connections (124,303
+(first run: the CI-built `v0.2-signoff` GDS, all checks passing). Power connections (124,303
 pins) and 157 single-pin nets are counted and excluded explicitly, because DEF's `NETS` and the
 netlist do not list them.
+
+![TEMPO's die, one panel per RTL module](figures/tempo_modules.png)
+
+*TEMPO's cells by RTL module, drawn from its own DEF (`tools/viz/tempo.py`). The netlist is
+flat and its gates are anonymous, but the nets that registers drive keep hierarchical names
+(`u_top.u_core.rf[3][7]`). Those registers seed the labels, and every other cell takes the
+module of its nearest seed in the connectivity graph. Hiding a fifth of the seeds and labelling
+from the rest gives 462 of 496 back (93%). Placement is not used, so
+the modules' clustering on the die is independent evidence that the labels are right.*
 
 What the port taught:
 
@@ -280,6 +297,25 @@ What the port taught:
   same macro passed it (the net-partition checks still caught the swap). A geometric check now
   requires every LEF pin rectangle to sit on the extracted conductor of the same name. It passes
   on TEMPO (553 rectangles), and swapping two labels, on the SRAM or on a `nand2`, fails it.
+* **The supply check could not fail.** It compared chip-level `VDD` and `VSS` labels, which
+  TEMPO's GDS does not have, and the partition checks leave the supply nets out. A Metal1 bar
+  from VDD to VSS inside a filler cell, in a copy of the sign-off GDS, passed every check. The
+  check now works from each pin's LEF `USE`: every power pin on one net, every ground pin on
+  another, never the same net. A short is located by a breadth-first search over touching
+  shapes from the power pins to the first ground pin; the shape between them is the short.
+* **Planted faults are now tests.** Six faults, one per failure class, are planted far apart in
+  one copy of the sign-off GDS (`tools/tempo/faults.py`), and TEMPO's CI requires every check to
+  report its own fault at the instances it touches and nothing anywhere else. When the LVS
+  fails, CI draws where (`tools/viz/lvs_where.py`):
+
+![The TEMPO LVS findings on a copy with six planted faults](figures/lvs_planted.png)
+
+*The LVS on a copy of the sign-off GDS with six planted faults, as CI would draw it. Each ring
+names the checks that flagged it: the long box is a VDD rail cut off from the power grid, (e)
+found the VDD-VSS short at the planted bar, the tinted SRAM carries the two swapped labels
+(which (d2) also names, pin by pin), and the rest are the removed via, the Metal2 bridge (two
+drivers on one net) and the mirrored cell ((a), with its nets undriven). A mismatched net is
+ringed wherever its cells are, so one fault can show in several places.*
 
 ## Easter eggs
 
@@ -299,9 +335,8 @@ What the port taught:
 Most of what follows is a new *combination* of established techniques (union-find extraction,
 LVS-style partition comparison, PDR equivalence, mutation testing) rather than a new algorithm.
 We have not done a prior-art search, so nothing here should be read as a novelty or
-patentability claim. Note also that the repository is Apache-2.0, which carries an express
-patent licence to users: anything meant to be protected needs a decision before the repository
-is made public. Each item names the code path that implements it.
+patentability claim. Note also that the repository is public under Apache-2.0, which carries an
+express patent licence to users. Each item names the code path that implements it.
 
 | # | Technique or finding | Code path | What is new here | Future applications |
 |---|---|---|---|---|
@@ -317,12 +352,16 @@ is made public. Each item names the code path that implements it.
 | 10 | **Technology-independent extractor** (`Tech` table; sky130 and IHP `sg13cmos5l`), including general 8-orientation placement and macro black-boxing | `tools/retrace/tech.py`, `tools/tempo/lvs.py` | the same extractor checks TEMPO's 62,151-instance sign-off GDS, independently of LibreLane's Magic and Netgen | a second LVS for every Tiny Tapeout or IHP shuttle design; gf180 and other open PDKs by adding a table |
 | 11 | **Bit-order audit discipline**: a register pattern is not a number until its bit weights are proven | lead-review corrections in `docs/INTENT.md` | caught two misreadings (11 for 22, `0xAE` for 121) that proven RTL could not | review checklists for recovered designs; any work that reads constants out of netlists |
 | 12 | **Tooling pitfalls found**: `wire O[3];` from bus-bit net names silently disconnects the port; hierarchical references are left undriven after Yosys `flatten`; gdstk may write a rewritten straight path back as a polygon | `tools/analysis/cone.py`, `docs/INTENT.md` §6, `docs/MUTATION.md` | each produced a *passing* check that was vacuous | lint rules for netlist emitters and formal harnesses; upstream bug reports |
+| 13 | **Planted-fault regression for an LVS**: six faults (via open, mirrored cell, Metal2 bridge, swapped macro labels, supply short, a rail cut off from the grid) planted far apart in one copy, sites chosen by rule, each required to be reported at its own instances and nowhere else | `tools/tempo/faults.py`, `test/test_tempo.py` | every check shown able to fail, and where, on every sign-off, for one extra extraction; it found a supply check that could not fail | qualifying any LVS or extraction flow on a real design; catching checks that silently stop working |
+| 14 | **Supply-short locator**: breadth-first search over touching shapes from every power pin to the first ground pin; the non-pin shapes on that shortest path are the short | `tools/tempo/lvs.py` (`locate_supply_short`) | turns "VDD and VSS are one net" into a place on the die | debugging shorts in any open flow; CI images that show where an LVS failed |
+| 15 | **Module map of a flat netlist**: seed cells from the register nets that keep hierarchical names, label the rest by nearest seed in the connectivity graph, check by holding out seeds; placement not used | `tools/viz/tempo.py`, `tools/viz/layout.py` | a flat, anonymous netlist drawn by RTL module, with a measured accuracy; the clustering on the die is independent evidence | floorplan review after synthesis flattens the design; datasheet figures; a labelled test set for structure recognition (PRD S3) |
 
 ## Lessons that transfer
 
-1. **Make every proof prove it can fail.** Three of our "passes" would have been vacuous
+1. **Make every proof prove it can fail.** Four of our "passes" would have been vacuous
    without a planted negative: the warm-up PDR proof, the per-block V7 harness (which really
-   was blind to `O`), and the uniqueness lemma.
+   was blind to `O`), the uniqueness lemma, and TEMPO's supply check, which read labels that
+   TEMPO's GDS does not have.
 2. **Disagreement is the most valuable signal.** The poly-joined pin bug fooled both
    extractors in the same way. Only a difference in how each *reported* that pin exposed it.
    Two independent implementations of the same step are worth their cost.

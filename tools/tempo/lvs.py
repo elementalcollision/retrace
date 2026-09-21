@@ -406,10 +406,78 @@ def check_supplies(ex, lef):
         stray.update(i for r in roots if r != main for i in by_root[r][use])
     return {
         "power_nets": len(power), "ground_nets": len(ground), "supply_shorts": len(shorted),
+        "supply_short_at": [locate_supply_short(ex, lef, r) for r in shorted],
         "supply_stray_instances": sorted(stray),
         "supplies_ok": len(power) == 1 and len(ground) == 1 and not shorted,
         "_roots": set(by_root),
     }
+
+
+def locate_supply_short(ex, lef, root, limit=3):
+    """Where a net holding both supplies joins them: a breadth-first search over touching
+    shapes (same layer, through a cut, or polygons of one pin) from every POWER pin shape
+    of `root`, stopped at the first level that reaches a GROUND pin shape. Returns the
+    bounding boxes (um) of up to `limit` of those shortest POWER-to-GROUND paths, each
+    with the shapes on it, and `at`, the box of the path's non-pin shapes: a short is
+    usually one shape between two pins, and `at` is that shape."""
+    import shapely
+
+    use = {}
+    siblings = {}
+    for inst in ex.instances:
+        pins = lef.get(inst["master"], {}).get("pins", {})
+        for pin, sids in inst["pins"].items():
+            u = pins.get(pin, {}).get("use")
+            for sid in sids:
+                siblings[sid] = sids
+                if u in ("POWER", "GROUND") and ex.uf.find(sid) == root:
+                    use[sid] = u
+    cut_geoms = [g for _c, g, _v in ex._cuts]
+    cut_tree = shapely.STRtree(cut_geoms)
+    cut_layers = [(ex.tech.conductor_named(c.below).layer, ex.tech.conductor_named(c.above).layer)
+                  for c, _g, _v in ex._cuts]
+
+    def neighbours(sid):
+        layer, _dt, geom, _owner = ex.shapes[sid]
+        tree, sids = ex.trees[layer]
+        out = [sids[i] for i in tree.query(geom, predicate="intersects").tolist()]
+        for k in cut_tree.query(geom, predicate="intersects").tolist():
+            below, above = cut_layers[k]
+            other = above if layer == below else below if layer == above else None
+            if other is not None and other in ex.trees:
+                t2, s2 = ex.trees[other]
+                out.extend(s2[i] for i in t2.query(cut_geoms[k], predicate="intersects").tolist())
+        out.extend(siblings.get(sid, ()))
+        return out
+
+    parent = {s: None for s, u in use.items() if u == "POWER"}
+    frontier, hits = sorted(parent), []
+    while frontier and not hits:
+        nxt = []
+        for a in frontier:
+            for b in neighbours(a):
+                if b in parent:
+                    continue
+                parent[b] = a
+                if use.get(b) == "GROUND":
+                    hits.append(b)
+                else:
+                    nxt.append(b)
+        frontier = nxt
+    found = []
+    for h in hits[:limit]:
+        path, s = [], h
+        while s is not None:
+            path.append(s)
+            s = parent[s]
+        x0, y0, x1, y1 = shapely.union_all([ex.shapes[s][2] for s in path]).bounds
+        joiners = [ex.shapes[s][2] for s in path if ex.shapes[s][3][0] != "pin"]
+        at = shapely.union_all(joiners).bounds if joiners else (x0, y0, x1, y1)
+        found.append({"bbox": [round(v, 3) for v in (x0, y0, x1, y1)], "at": [round(v, 3) for v in at],
+                      "path": [f"{ex.tech.conductor(ex.shapes[s][0]).name} {ex.shapes[s][3][0]}"
+                               + (f" {ex.shapes[s][3][1]}.{ex.shapes[s][3][2]}" if ex.shapes[s][3][0] == "pin" else "")
+                               for s in reversed(path)]})
+    return found
 
 
 # --- (f) cellcheck ------------------------------------------------------------
@@ -474,7 +542,8 @@ def run(gds=GDS, verbose=True):
     report["e_sanity"] = check_sanity(ex, lef)
     if verbose:
         e = report["e_sanity"]
-        supply_keys = ("power_nets", "ground_nets", "supply_shorts", "supply_stray_instances", "supplies_ok")
+        supply_keys = ("power_nets", "ground_nets", "supply_shorts", "supply_short_at", "supply_stray_instances",
+                       "supplies_ok")
         print("(e) sanity:", _brief({k: v for k, v in e.items() if k not in supply_keys}))
         print("(e) supplies:", _brief({k: e[k] for k in supply_keys}))
 
@@ -485,11 +554,23 @@ def run(gds=GDS, verbose=True):
     return ex, report
 
 
-def main():
-    _ex, report = run()
+def main(argv=None):
+    """python -m tools.tempo.lvs [--json REPORT.json] [GDS]: print the report (per-master
+    pin tables left out); --json also writes the whole report, which tools.viz.lvs_where
+    draws on the die."""
+    argv = list(sys.argv[1:] if argv is None else argv)
+    out = None
+    if "--json" in argv:
+        k = argv.index("--json")
+        out = argv[k + 1]
+        del argv[k:k + 2]
+    _ex, report = run(gds=argv[0] if argv else GDS)
     print(json.dumps(
         {k: v for k, v in report.items() if k not in ("d_pins_vs_lef", "d2_pin_geometry")},
         indent=1, default=str))
+    if out:
+        with open(out, "w") as f:
+            json.dump(report, f, indent=1, default=str)
     return 0
 
 
