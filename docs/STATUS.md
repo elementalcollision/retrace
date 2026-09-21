@@ -121,7 +121,9 @@ Done (2026-09-21), after the review:
   recovered, 93%), also a candidate datasheet image (`tempo_modules.png`).
   Where an LVS found something, drawn from the report, with a new supply-short locator
   (`locate_supply_short`); TEMPO's CI draws it on failure, and a manual `drill` run plants the
-  six faults and draws them.
+  six faults and draws them (first drill: run 35604542925, the same sites and 12 findings as
+  locally, 20 passed and 1 skipped). Published: the writeup on the site and as the Claude
+  artifact (version 5), with three figures.
 
 Next, in priority order:
 
