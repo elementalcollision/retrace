@@ -85,8 +85,11 @@ LibreLane's Magic/Netgen flow. All of TEMPO's files are read read-only, under
      are expanded per-bit using the LEF's pin-bit order).
    - **(d) pins vs LEF**: every master used, every instance's extracted pin
      set equals the IHP LEF's pin set for that master (bracket-normalised).
-   - **(e) V5-style sanity**: one driver per signal net, no floating input, no
-     VDD/VSS overlap, using LEF `DIRECTION`/`USE`.
+   - **(e) V5-style sanity**: one driver per signal net, no floating input, using
+     LEF `DIRECTION`/`USE`; and, since 2026-09-21, the supplies: every `POWER`
+     pin on one net, every `GROUND` pin on another, never the same net (§4e).
+     Until then (e) compared chip-level `VDD`/`VSS` text labels, which TEMPO's
+     GDS does not have, so that part could never fail here.
    - **(f) cellcheck**: `tools/retrace/cellcheck.py` (now takes a
      `--prefix`/parameter instead of a hardcoded sky130 prefix) compares every
      `sg13cmos5l_*` master embedded in the GDS with the PDK's own stdcell GDS.
@@ -150,7 +153,7 @@ exactly** — no unexplained mismatch was found or set aside:
 | (b) net partition vs DEF NETS | 35,542 / 35,542 parts, 0 only-one-side |
 | (c) net partition vs `nl.v` | 35,542 / 35,542 parts, 0 only-one-side, 0 unmapped `nl.v` instances |
 | (d) pins vs IHP LEF | 52 masters (51 std cells + the SRAM macro), 0 mismatched instances |
-| (e) electrical sanity | 0 undriven signal nets, 0 multiply-driven nets, VDD/VSS never overlap |
+| (e) electrical sanity | 0 undriven signal nets, 0 multiply-driven nets; 1 power net and 1 ground net, holding every `POWER` and every `GROUND` pin, not shorted (§4e) |
 | (f) cellcheck vs PDK stdcell GDS | 51 / 51 masters byte-identical |
 
 ## 4. Performance
@@ -272,15 +275,56 @@ the puzzle files are absent. The first CI run (35438357943, 2026-09-19) checked 
 `v0.2-signoff` GDS (run 35218140984): every check passes, identical to the local results, with
 11 tests passed and the sky130 guard skipped. Extraction took 44 s with a 1.9 GB peak.
 
+## 4e. The supply check and the planted faults as tests (2026-09-21)
+
+**The gap.** A review of the stretch goals found that nothing checked the supplies. Checks
+(b) and (c) leave the supply nets out, since DEF `NETS` and `nl.v` do not list them, and
+(e) compared chip-level `VDD`/`VSS` text labels, which TEMPO's GDS does not have, so it could
+never fail here. A Metal1 bar from rail to rail inside one `fill_2`, in a copy of the sign-off
+GDS, merged the two supplies into one net, and (b), (c) and (e) still reported full agreement.
+LibreLane's Magic/Netgen LVS covers TEMPO's supplies, so this was a hole in the second check,
+not a tape-out risk.
+
+**The fix.** `check_supplies` in `tools/tempo/lvs.py` groups every pin by its LEF `USE`: every
+`POWER` pin must be on one net, every `GROUND` pin on another, and no net may hold both. A
+short leaves one net holding both; a rail cut off from the grid becomes a second `POWER` net,
+and `supply_stray_instances` names the cells on it. On the sign-off GDS: 1 power net, 1 ground
+net, no short, no stray instance. (b) and (c) now also name the instances in any mismatched
+net (`mismatched_instances`), and (e) names those on undriven or multiply driven nets.
+
+**Planted faults, kept as tests.** The four faults of §4c ran once and were not in the test
+suite, so TEMPO's CI never re-ran them. `tools/tempo/faults.py` now plants six faults, one per
+failure class, far apart in one copy of the sign-off GDS, so CI pays for one extra extraction.
+Sites are chosen by rule from the base extraction, not by index, so a new sign-off GDS gets
+equivalent ones. Each fault records the DEF instances it touches, the six sets are disjoint,
+and the tests (`test/test_tempo.py`, `test_planted_*`) require every check to report its own
+fault there and nothing anywhere else:
+
+| Fault (site on the `v0.2-signoff` GDS) | Reported by |
+|---|---|
+| `via_open`: the only Via1 on `nand2_1_4800_22680.Y` removed | (b), (c); (e) its loads are undriven |
+| `mirror`: `mux2_1` `_36675_` mirrored N to FN in its own footprint | (a) exactly that cell; (b); (c) as `nl_only` |
+| `bridge`: Metal2 across a 0.28 um gap at (4.22, 289.38) um, joining two driven nets | (b), (c); (e) multiply driven, the 14 cells of the two nets |
+| `sram_swap`: the macro's `A_DIN<15>` and `A_BIST_DIN<15>` labels exchanged | (b), (c); (d2) exactly those two pins |
+| `supply_short`: Metal1 bar rail to rail inside `fill_2_21120_430920` | (e) one net holds both supplies |
+| `rail_open`: the 18 via stacks on the VDD rail at y = 574.56 um removed | (e) a second power net, its 596 cells named |
+
+(d) and (f) stay clean on the planted copy, as they should: no pin name set and no master
+changes. `python -m tools.tempo.faults OUT.gds` writes the planted copy for inspection. The
+TEMPO test file now has 19 tests and takes about 150 s here, with a 3.9 GB peak, because it
+holds the base extraction while it extracts the planted copy.
+
 ## 5. Open items
 
 * **DEF `SPECIALNETS` is not read.** Power/ground routing correctness (that
   the two supply nets this extractor finds are themselves correctly and
   fully connected, not just internally consistent) was not cross-checked
   against DEF's `SPECIALNETS` section, which was out of the files list for
-  this task. The extractor's own sanity check (e) does confirm every signal
-  net is driven and VDD/VSS never merge, which is the electrical property
-  that actually matters for LVS.
+  this task. Check (e) confirms every signal net is driven, and since
+  2026-09-21 that the supplies are two separate nets, each reaching every
+  pin of its `USE` (§4e): a short or a rail cut off from the grid fails it.
+  What it cannot see is a weakened grid that is still connected (a missing
+  strap or via stack beside others that remain).
 * **The `E`-orientation macro is the only rotated instance TEMPO places**, so
   the new W/FE/FW table entries are exercised (and correct, since they
   reproduce the macro's exact DEF placement) but not independently

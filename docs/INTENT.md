@@ -395,17 +395,15 @@ assumption beyond the initial reset** (about 2 s).
 * Negative test: changing the last byte of "TRY AGAIN" from "N" to "M" in a copy of
   `outgen.v` makes the proof FAIL at the `O` assertion.
 
-## 7. Open questions (not resolved by this pass)
+## 7. Questions this pass left open, since answered
 
-- **Why** the group-A `array` bins (0-10) use an irregular, non-numeric 8-bit
-  match rather than a clean address decode like bins 11-21 is unresolved (flagged
-  by the `array` block's own recovery as an open question; this integration pass
-  did not investigate further).
-- The success-case `outgen` message table (`msg_success_xor_base`, §4) is a fixed
-  constant XORed with the live scrambler byte; whether any reachable `I` sequence
-  that satisfies §3's `success` condition also drives the scrambler to decrypt it
-  into readable text is unknown and unexplored here (V8 scope).
-- `check.v`'s own file (out of this task's scope to re-verify) documents its SAT
-  proof status in its own recovery pass; this document takes that block's
-  behaviour as given, cross-checked only indirectly via the top-level proof in
-  §6.3, which covers `check`'s effect on `success` as part of the whole design.
+- **Why the group-A `array` bins (0-10) use an irregular 8-bit match** rather than a clean
+  address decode like bins 11-21: they are the Star Battle regions. Each group-A bin is one
+  irregular region of the 11 x 11 grid (4 to 28 cells), and each must hold exactly two stars
+  (`docs/SOLVE_ANALYTICAL.md` section 2, region map; `docs/SOLUTION.md`).
+- **Whether the success message decrypts to readable text:** it does. The only solving input
+  makes `O` print `(* TWO STARS *)` (`docs/SOLUTION.md`), and every message is demonstrated on
+  the extracted netlist (`test/test_messages.py`).
+- **`check.v`'s proof status:** `check` has its own per-block SAT proof against its gold cone,
+  like the other five blocks (`test/test_recovered.py::test_v7_block_equivalent[check]`), as
+  well as the end-to-end proof of section 6.3.

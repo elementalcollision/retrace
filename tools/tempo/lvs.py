@@ -11,7 +11,8 @@ files (all read-only, under $TEMPO_ROOT, default ~/Claude_Primary/Jane_Street_AS
   (c) net partition GDS-extracted (instance, pin) groups <-> nl.v connections, exact
   (d) pins          every master used, GDS-derived pin names <-> IHP LEF pin names
   (d2) pin geometry every LEF port rectangle lies on the extracted pin of the same name
-  (e) sanity        one driver per signal net, no floating inputs, supplies separate
+  (e) sanity        one driver per signal net, no floating inputs; every POWER pin on one
+                    net and every GROUND pin on another (no short, no open)
   (f) cellcheck     every std-cell master embedded in the GDS <-> the PDK's own cell GDS
 
 Run standalone:  .venv/bin/python -m tools.tempo.lvs
@@ -245,8 +246,9 @@ def compare_partitions(a, b):
     independent of key/net naming. Returns a report; empty `only_a`/`only_b`
     means exact agreement."""
     sa, sb = set(a.values()), set(b.values())
+    where = sorted({inst for part in sa ^ sb for inst, _pin in part if inst != "PIN"})
     return {"parts_a": len(sa), "parts_b": len(sb), "only_a": len(sa - sb), "only_b": len(sb - sa),
-            "agree": sa == sb}
+            "agree": sa == sb, "mismatched_instances": where}
 
 
 # --- (d) pins vs LEF ---------------------------------------------------------
@@ -346,9 +348,12 @@ def check_sanity(ex, lef):
         for p, info in m["pins"].items():
             pin_dir[(master, _norm_bus(p))] = info["direction"]
     master_of = {i["name"]: i["master"] for i in ex.instances}
-    no_driver, multi_driver, floating_input = [], [], []
+    supplies = check_supplies(ex, lef)
+    supply_roots = supplies.pop("_roots")
+    no_driver, multi_driver = [], []
+    no_driver_insts, multi_driver_insts = set(), set()
     for net in ex.nets:
-        if net["supply"]:
+        if net["supply"] or net["root"] in supply_roots:
             continue
         drivers = 0
         has_input = False
@@ -363,14 +368,47 @@ def check_sanity(ex, lef):
             continue  # top-level port: driven/loaded off-chip, not a defect here
         if drivers == 0 and has_input:
             no_driver.append(net["name"])
+            no_driver_insts.update(i for i, _p in net["pins"])
         elif drivers > 1:
             multi_driver.append(net["name"])
-    supply_overlap = set(ex.supply_labels.get("VDD", [])) & set(ex.supply_labels.get("VSS", []))
+            multi_driver_insts.update(i for i, _p in net["pins"])
     return {
-        "signal_nets": sum(1 for n in ex.nets if not n["supply"]),
+        "signal_nets": sum(1 for n in ex.nets if not (n["supply"] or n["root"] in supply_roots)),
         "no_driver": no_driver[:50], "no_driver_count": len(no_driver),
+        "no_driver_instances": sorted(no_driver_insts),
         "multi_driver": multi_driver[:50], "multi_driver_count": len(multi_driver),
-        "supply_names_overlap": bool(supply_overlap),
+        "multi_driver_instances": sorted(multi_driver_insts),
+        **supplies,
+    }
+
+
+def check_supplies(ex, lef):
+    """The supply half of (e), from the LEF `USE` of each pin rather than from supply
+    text labels (TEMPO's GDS has none, so a label-based check can never fire there):
+    every POWER pin must sit on one net, every GROUND pin on another, and no net may
+    hold both. A VDD-VSS short leaves one net holding both; a power open (a rail cut
+    off from the grid) leaves a second POWER net. `supply_stray_instances` names the
+    instances whose supply pin is not on the main net of its use (the one with the
+    most such pins); `_roots` is for check_sanity only."""
+    by_root = collections.defaultdict(lambda: {"POWER": [], "GROUND": []})
+    for inst in ex.instances:
+        pins = lef.get(inst["master"], {}).get("pins", {})
+        for pin, sids in inst["pins"].items():
+            use = pins.get(pin, {}).get("use")
+            if use in ("POWER", "GROUND"):
+                by_root[ex.uf.find(sids[0])][use].append(inst["name"])
+    power = [r for r, v in by_root.items() if v["POWER"]]
+    ground = [r for r, v in by_root.items() if v["GROUND"]]
+    shorted = [r for r, v in by_root.items() if v["POWER"] and v["GROUND"]]
+    stray = set()
+    for use, roots in (("POWER", power), ("GROUND", ground)):
+        main = max(roots, key=lambda r: len(by_root[r][use]), default=None)
+        stray.update(i for r in roots if r != main for i in by_root[r][use])
+    return {
+        "power_nets": len(power), "ground_nets": len(ground), "supply_shorts": len(shorted),
+        "supply_stray_instances": sorted(stray),
+        "supplies_ok": len(power) == 1 and len(ground) == 1 and not shorted,
+        "_roots": set(by_root),
     }
 
 
@@ -384,10 +422,15 @@ def check_cellcheck(gds=GDS, pdk_gds=STDCELL_GDS, prefix=IHP_SG13CMOS5L.prefix):
 
 # --- driver ------------------------------------------------------------------
 
-def run(verbose=True):
+def _brief(d):
+    """A report dict for printing: lists shown as counts plus their first few items."""
+    return {k: (v if not isinstance(v, list) else (len(v), v[:3]) if v else 0) for k, v in d.items()}
+
+
+def run(gds=GDS, verbose=True):
     report = {}
     lef = load_lef()
-    ex, dt, peak_mb = extract_tempo(lef=lef)
+    ex, dt, peak_mb = extract_tempo(gds=gds, lef=lef)
     report["extraction"] = {"seconds": dt, "peak_rss_mb": peak_mb, **ex.summary()}
     if verbose:
         print(f"extraction: {dt:.1f}s, {peak_mb:.0f} MB peak, {ex.summary()}")
@@ -407,7 +450,7 @@ def run(verbose=True):
     report["b_def_nets"]["gds_singleton_nets_excluded"] = gp_singletons
     report["b_def_nets"]["gds_supply_pins_excluded"] = supply_pins_excluded
     if verbose:
-        print("(b) vs DEF NETS:", report["b_def_nets"])
+        print("(b) vs DEF NETS:", _brief(report["b_def_nets"]))
 
     nlv_insts = parse_nl_verilog(NL_V)
     np_ = nlv_partition(nlv_insts, name_map, lef, set(ex.ports))
@@ -415,7 +458,7 @@ def run(verbose=True):
     report["c_nl_v"]["nl_instances"] = len(nlv_insts)
     report["c_nl_v"]["nl_only"] = sorted(set(nlv_insts) - set(name_map.values()))[:20]
     if verbose:
-        print("(c) vs nl.v:", report["c_nl_v"])
+        print("(c) vs nl.v:", _brief(report["c_nl_v"]))
 
     report["d_pins_vs_lef"] = check_pins_vs_lef(ex, lef)
     d_bad = {m: v for m, v in report["d_pins_vs_lef"].items() if v["mismatched_instances"]}
@@ -430,9 +473,12 @@ def run(verbose=True):
 
     report["e_sanity"] = check_sanity(ex, lef)
     if verbose:
-        print("(e) sanity:", {k: v for k, v in report["e_sanity"].items() if not isinstance(v, list)})
+        e = report["e_sanity"]
+        supply_keys = ("power_nets", "ground_nets", "supply_shorts", "supply_stray_instances", "supplies_ok")
+        print("(e) sanity:", _brief({k: v for k, v in e.items() if k not in supply_keys}))
+        print("(e) supplies:", _brief({k: e[k] for k in supply_keys}))
 
-    report["f_cellcheck"] = check_cellcheck()
+    report["f_cellcheck"] = check_cellcheck(gds=gds)
     if verbose:
         print(f"(f) cellcheck: {report['f_cellcheck']['identical']}/{report['f_cellcheck']['masters']} identical")
 

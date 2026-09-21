@@ -1,4 +1,4 @@
-# RETRACE — status (2026-09-19, sprints 0-4, G6, writeup)
+# RETRACE — status (2026-09-21, sprints 0-4, G6, writeup, stretch review)
 
 ## What exists
 
@@ -15,8 +15,8 @@
 | Intent (sprint 3) | **Recovered RTL proven equal to the netlist** (`rtl_recovered/`, `docs/INTENT.md`). Six blocks, each SAT-proven against its gold cone (V7, `tools/analysis/cone.py`); the integrated `puzzle_recovered` is proven sequentially equivalent to the extracted netlist by SymbiYosys `abc pdr` with no assumption beyond the initial reset (`tools/analysis/e2e.py`, ~2 s; a one-byte message change fails it), and replays the sample VCD (1248/0). All 92 flops are clocked by `clk` through buffers only; every reset/set pin is `rst_n`. |
 | Mutation | **130 layout mutants, 10 operators, both designs** (`docs/MUTATION.md`, `test/mutation/`): 90 killed, 39 equivalent (art, path end types, 5-20 nm near misses), 1 survived: a same-footprint `nor2_2`->`nand2_2` swap on the puzzle, which models a different chip rather than an extraction error and which the recovered-design proof (`e2e.py --gds`) now kills. |
 | **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
-| **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Four planted faults caught. The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
-| Tests | **64/64 pass** (~60 s): V1-V8, uniqueness lemma, messages, mutation smoke tests, TEMPO LVS (9, skipped without the TEMPO checkout). |
+| **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Six planted faults, one per failure class, are permanent tests and each is reported where it was planted (`tools/tempo/faults.py`); the supplies are checked since 2026-09-21 (`docs/TEMPO_LVS.md` §4e). The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
+| Tests | **74/74 pass** (~4 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, TEMPO LVS (19, including 7 on six planted faults; skipped without the TEMPO checkout). |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -98,50 +98,45 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next
 
-Goals G1-G7 are done. Stretch S2 (easter eggs) is done. Reviewed on 2026-09-21; in priority order:
+Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21.
 
-1. **The TEMPO LVS does not see a VDD-VSS short (found by the review).** Nothing checks that the
-   supplies are separate. The supply roots are left out of checks (b) and (c), and (e)'s
-   `supply_names_overlap` reads chip-level `VDD`/`VSS` text labels, which TEMPO's GDS does not
-   have, so it can never fire there. Probe: a Metal1 bar from rail to rail inside one `fill_2`
-   (`FILLER_0_1042`) in a copy of the sign-off GDS merges the two supply roots into one, and
-   (b), (c) and (e) still report full agreement. LibreLane's own Magic/Netgen LVS still covers
-   TEMPO, so this is a hole in the second check, not a tape-out risk today. Fix: a supply check
-   built from LEF `USE` (exactly one root holding every `POWER` pin, one holding every `GROUND`
-   pin, and they differ), with two negative controls: the short above, and a power open (the vias
-   removed from one rail). Correct `docs/TEMPO_LVS.md`, which claims "VDD/VSS never overlap" in
-   three places. Size: hours.
-2. **Make the planted TEMPO faults permanent tests.** The four faults from the port review (a
-   deleted Via1, a mirrored cell, swapped SRAM labels, a Metal2 bridge) ran once and are not in
-   `test/test_tempo.py`, so TEMPO's CI never re-runs them. Plant them, plus the two supply
-   faults, far apart in a single copy, so CI pays for one extra extraction (about 20 to 45 s),
-   and require each check to flag its own fault. Then bump the RETRACE pin in TEMPO's
-   `lvs.yaml`. Do this together with 1, as one change.
-3. **S1, overlays.** The writeup has no figures. Three renders: the puzzle's layout coloured
+Done (2026-09-21), items 1 and 2 of the review:
+* **The TEMPO LVS now checks the supplies.** The review found that nothing did: a Metal1 bar
+  from VDD to VSS in a copy of the sign-off GDS passed (b), (c) and (e), because the supply
+  nets are left out of (b) and (c) and (e) compared chip-level supply labels TEMPO does not
+  have. `check_supplies` (in (e)) now requires every `POWER` pin on one net, every `GROUND`
+  pin on another, never the same net; the sign-off GDS passes (1 and 1, no short).
+  `docs/TEMPO_LVS.md` §4e; its three claims that the supplies were checked are corrected.
+  `docs/INTENT.md` section 7 now records the answers to its three open questions.
+* **Planted faults are permanent tests.** `tools/tempo/faults.py` plants six faults (a via
+  open, a mirrored cell, a Metal2 bridge, swapped SRAM labels, a supply short, a rail cut off
+  from the grid) far apart in one copy, chosen by rule so a new sign-off gets equivalent
+  sites. `test/test_tempo.py` requires every check to report its own fault where it was
+  planted and nothing elsewhere: 7 new tests, 19 in the file, about 150 s and a 3.9 GB peak.
+
+Next, in priority order:
+
+1. **S1, overlays.** The writeup has no figures. Three renders: the puzzle's layout coloured
    by recovered block, to show that the layout hints at function; TEMPO's layout coloured by
    RTL module, from the net names, which keep the hierarchy (`u_top.u_core.rf`,
    `u_top.u_ser.u_ser0`, ...) and could serve as datasheet images (TEMPO's open item 7); and
    an LVS report image marking any mismatched nets, so a failing CI run shows where. Size: a day.
-4. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
+2. **S4, round trip.** Harden the recovered RTL with LibreLane for sky130 on a GitHub-hosted
    runner in this public repo, not on TEMPO's self-hosted runner. It gives three things. It
    compares cell mix and area with the puzzle, which shows whether the puzzle is plain synthesis
    or padded by hand. It adds a second sky130 GDS whose source we know, larger than the
    warm-up. And it closes the loop: extract our own GDS and prove it equivalent to the
    recovered RTL. Size: a day or two.
-5. **S3, structure recognition.** This is an established research area, so it only pays as a
+3. **S3, structure recognition.** This is an established research area, so it only pays as a
    learning track. What makes it worth doing here is TEMPO as a labelled test set: 62k cells
    whose net names give the ground truth. First slice: shift registers, counters and word
    grouping by shared enable and reset, scored on TEMPO, with the puzzle as a small blind case.
    Size: large.
-6. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+4. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
    check it against. A table with no ground-truth design would be untested.
 
-Housekeeping, with 1:
-* `docs/INTENT.md` section 7 is stale. The irregular group-A bins are the Star Battle regions
-  (`docs/SOLVE_ANALYTICAL.md`). The success message is readable (`test/test_messages.py`). The
-  `check` block has its own V7 proof and is covered by the end-to-end proof.
-* Bump TEMPO's pin only when `tools/retrace`, `tools/l2n`, `tools/tempo` or
-  `test/test_tempo.py` change. Nothing in them has changed since the pinned `2ff89c3`.
+Bump the RETRACE pin in TEMPO's `lvs.yaml` whenever `tools/retrace`, `tools/l2n`, `tools/tempo`
+or `test/test_tempo.py` change.
 
 Done since: easter eggs decoded (`tools/analysis/eastereggs.py`: the Morse strip reads PER ARENAM
 AD ASTRA; the met2 squares are a 57 x 57 logo of four broken rings), every message demonstrated

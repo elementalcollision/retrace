@@ -9,11 +9,14 @@ checked out, but must not break `pytest -q` anywhere else. The extraction
 """
 
 import functools
+import gc
 import os
+import tempfile
 
 import pytest
 
-from tools.tempo import lvs
+from tools.retrace.defparse import read_def
+from tools.tempo import faults, lvs
 
 pytestmark = pytest.mark.skipif(not os.path.isdir(lvs.TEMPO_ROOT), reason=f"{lvs.TEMPO_ROOT} not present")
 
@@ -97,13 +100,15 @@ def test_d2_negative_control_swapped_labels(master, a, b):
 
 def test_e_electrical_sanity():
     """Every signal net has exactly one driver (once power/ground-use LEF pins
-    are excluded, docs/TEMPO_LVS.md), no signal net floats undriven, and no
-    net mixes VDD and VSS."""
+    are excluded, docs/TEMPO_LVS.md), no signal net floats undriven, every POWER
+    pin is on one net and every GROUND pin on another, never the same one."""
     _ex, report = result()
     e = report["e_sanity"]
     assert e["no_driver_count"] == 0, e["no_driver"]
     assert e["multi_driver_count"] == 0, e["multi_driver"]
-    assert not e["supply_names_overlap"]
+    assert (e["power_nets"], e["ground_nets"], e["supply_shorts"]) == (1, 1, 0)
+    assert e["supply_stray_instances"] == []
+    assert e["supplies_ok"]
 
 
 def test_f_cellcheck_masters_match_pdk():
@@ -149,3 +154,94 @@ def test_sky130_extractor_output_is_unaffected():
     ex_default = Extraction("upstream/puzzle.gds", lef)
     ex_explicit = Extraction("upstream/puzzle.gds", lef, tech=SKY130_HD)
     assert ex_default.to_verilog({}, lef) == ex_explicit.to_verilog({}, lef)
+
+
+# --- planted faults (docs/TEMPO_LVS.md 4e) --------------------------------------
+# Six faults in one copy of the sign-off GDS (tools/tempo/faults.py), far apart, each
+# with the DEF instances it touches. Every check must report its own fault there and
+# nothing anywhere else. Costs one extra extraction.
+
+SIGNAL_FAULTS = ("via_open", "mirror", "bridge", "sram_swap")
+
+
+@functools.cache
+def planted():
+    ex, _report = result()
+    lef = lvs.load_lef()
+    name_map, _ = lvs.map_to_def(ex, read_def(lvs.DEF)["components"])
+    chosen = faults.choose(ex, lef, name_map)
+    with tempfile.TemporaryDirectory() as tmp:
+        gds = os.path.join(tmp, "tempo_faults.gds")
+        faults.plant(chosen, lvs.GDS, gds, lvs.TOP)
+        mutant, report = lvs.run(gds=gds, verbose=False)
+    del mutant  # keep only the report: one extraction in memory, not two
+    gc.collect()
+    return chosen, report, name_map
+
+
+def _hood(chosen, *kinds):
+    return set().union(*(chosen[k]["neighbourhood"] for k in kinds))
+
+
+def test_planted_fault_sites_are_disjoint():
+    """The fixture itself: six faults, and no two touch the same instance."""
+    chosen, _report, _map = planted()
+    assert set(chosen) == {"via_open", "mirror", "bridge", "sram_swap", "supply_short", "rail_open"}
+    kinds = [k for k in chosen if chosen[k].get("neighbourhood")]
+    for i, a in enumerate(kinds):
+        for b in kinds[i + 1:]:
+            assert not chosen[a]["neighbourhood"] & chosen[b]["neighbourhood"], (a, b)
+
+
+def test_planted_a_reports_the_mirrored_cell_only():
+    chosen, report, _map = planted()
+    a = report["a_placements"]
+    assert a["only_gds"] == [chosen["mirror"]["instance"]]
+    assert a["only_def"] == [chosen["mirror"]["def_name"]]
+
+
+@pytest.mark.parametrize("check", ["b_def_nets", "c_nl_v"])
+def test_planted_bc_report_each_signal_fault_and_nothing_else(check):
+    """Every instance in a mismatched net belongs to a planted signal fault, and each
+    fault shows up. In (c) the mirrored cell has no GDS match, so nl.v's side drops it
+    too and it is reported as `nl_only` instead of as a partition difference."""
+    chosen, report, _map = planted()
+    r = report[check]
+    where = set(r["mismatched_instances"])
+    assert not r["agree"]
+    assert where <= _hood(chosen, *SIGNAL_FAULTS), sorted(where - _hood(chosen, *SIGNAL_FAULTS))[:5]
+    shown = SIGNAL_FAULTS if check == "b_def_nets" else ("via_open", "bridge", "sram_swap")
+    for kind in shown:
+        assert where & chosen[kind]["neighbourhood"], kind
+    if check == "c_nl_v":
+        assert r["nl_only"] == [chosen["mirror"]["def_name"]]
+
+
+def test_planted_d2_flags_the_swapped_sram_pins():
+    _chosen, report, _map = planted()
+    bad = {m: v["bad"] for m, v in report["d2_pin_geometry"].items() if v["bad"]}
+    assert set(bad) == {faults.SRAM}
+    a, b = (lvs._norm_bus(p) for p in faults.SRAM_SWAP)
+    assert {(x["pin"], tuple(x["owners"])) for x in bad[faults.SRAM]} == {(a, (b,)), (b, (a,))}
+
+
+def test_planted_e_open_leaves_loads_undriven_and_bridge_doubles_drivers():
+    chosen, report, name_map = planted()
+    e = report["e_sanity"]
+    undriven = {name_map[i] for i in e["no_driver_instances"]}
+    doubled = {name_map[i] for i in e["multi_driver_instances"]}
+    assert undriven & chosen["via_open"]["neighbourhood"]
+    assert undriven <= _hood(chosen, "via_open", "mirror")
+    assert doubled & chosen["bridge"]["neighbourhood"]
+    assert doubled <= _hood(chosen, "bridge", "mirror")
+
+
+def test_planted_e_supply_short_and_rail_open():
+    """The short leaves one net holding both POWER and GROUND pins; the isolated rail
+    becomes a second POWER net, and the instances on it are exactly the rail's."""
+    chosen, report, _map = planted()
+    e = report["e_sanity"]
+    assert not e["supplies_ok"]
+    assert e["supply_shorts"] == 1
+    assert (e["power_nets"], e["ground_nets"]) == (2, 1)
+    assert set(e["supply_stray_instances"]) == chosen["rail_open"]["stray"]
