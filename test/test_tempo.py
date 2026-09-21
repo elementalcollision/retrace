@@ -28,7 +28,8 @@ def result():
 
 def test_extraction_runs_clean():
     """No unbound labels, open cuts, or missing pin geometry over the whole
-    62,151-instance design (docs/TEMPO_LVS.md 'Performance')."""
+    design (62,151 instances in the v0.2-signoff layout, docs/TEMPO_LVS.md
+    'Performance')."""
     ex, report = result()
     assert ex.summary()["diagnostics"] == {}
 
@@ -64,7 +65,8 @@ def test_c_net_partition_matches_nl_v():
 
 
 def test_d_pins_match_ihp_lef():
-    """Every master used (51 std cells + the SRAM macro) has the extracted pin
+    """Every master used (the std cells + the SRAM macro; 51 + 1 in the v0.2-signoff
+    layout) has the extracted pin
     set the IHP LEF declares, for every instance."""
     _ex, report = result()
     bad = {m: v for m, v in report["d_pins_vs_lef"].items() if v["mismatched_instances"]}
@@ -72,12 +74,16 @@ def test_d_pins_match_ihp_lef():
 
 
 def test_d2_pin_geometry_matches_ihp_lef():
-    """Every LEF port rectangle of every signal pin, for all 52 masters used, lies on
-    the extracted conductor of the same pin and on no other pin's (closes the
-    name-set blind spot of (d), docs/TEMPO_LVS.md 4c)."""
+    """Every LEF port rectangle of every signal pin, for every master the DEF places
+    (52 in the v0.2-signoff layout), lies on the extracted conductor of the same pin
+    and on no other pin's (closes the name-set blind spot of (d), docs/TEMPO_LVS.md
+    4c). The expected master set comes from the DEF rather than a fixed count, so the
+    test follows a re-hardened layout and still fails if (d2) skips a master (one
+    missing from the GDS or the LEF)."""
     _ex, report = result()
     d2 = report["d2_pin_geometry"]
-    assert len(d2) == 52
+    placed = {master for master, _x, _y, _orient in read_def(lvs.DEF)["components"].values()}
+    assert set(d2) == placed
     assert sum(v["rects_checked"] for v in d2.values()) > 500
     assert {m: v["bad"] for m, v in d2.items() if v["bad"]} == {}
 
