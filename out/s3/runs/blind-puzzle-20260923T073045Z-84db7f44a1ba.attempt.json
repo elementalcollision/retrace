@@ -1,0 +1,24 @@
+{
+ "attempt": "1e5c526bab75d5de",
+ "created": "2026-09-23T07:30:45+00:00",
+ "design": "puzzle",
+ "freeze": {
+  "freeze_hash": "1ee6a47894359fefa10b0507ac610db6d19fb1426c6626b7162e5f977e5c4838"
+ },
+ "gds": null,
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-ugss4m7y",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "puzzle",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
