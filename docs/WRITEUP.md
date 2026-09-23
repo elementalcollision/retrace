@@ -409,6 +409,17 @@ labels that are not sound. The reference is not clean either: one design in the 
 holdout was written from puzzle knowledge. Reporting a result whose denominator you distrust is
 less comfortable than reporting the number alone, and it is the only version worth publishing.
 
+**Then it was run again.** A result from ten designs is a small sample, so a second freeze drew ten
+more from the pool, excluding every design the first evaluation had already seen, and re-ran the
+same recognizer, byte for byte. What would count as "the same result" was written down and
+committed before the new seed existed. Counter recall on proved structures came out at 19 of 49
+(0.388) against the first run's 23 of 59 (0.390): by the pre-registered rule, **consistent**, and
+42 of 108 (0.389) over all twenty designs. Every figure was computed once from the raw records and
+recomputed independently with separate code; the two agreed on 213 of 216, and the other three
+differed only in the order of their random draws (`docs/S3_REPLICATION.md`). The replication also
+found a defect in the frozen labeller itself -- it cannot label a shift register that synthesis has
+partly removed -- which cost two drawn designs, and which the report records rather than hides.
+
 ## Easter eggs
 
 * A row of rectangles below the die, in two widths with a 1:3 ratio: Morse code for
@@ -517,7 +528,7 @@ yices and bitwuzla), Icarus Verilog, Verilator, z3, networkx; sky130 via ciel
 .venv/bin/python -m pytest -q test/test_tempo.py    # skips cleanly without the TEMPO checkout
 ```
 
-All tests pass (320 passed, 8 skipped). For a while after the blind evaluation one did not:
+All tests pass (358 passed, 9 skipped). For a while after the blind evaluation one did not:
 `test_permutation_counts_and_record_locations` required every record in `out/s3/runs` to be marked
 blind, but the protocol writes an *attempt* record there that carries no such mark, so the test had
 passed only while no blind run had ever been made. The test and the code it checks were both inside
