@@ -1,0 +1,6313 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:ttsky25b/tt_um_yorimichi_kittscanner",
+ "registers": [
+  {
+   "name": "i_debouncer.ena_out",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_144900_57120",
+     "rtl_bit": "i_debouncer.ena_out",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "i_debouncer.prescaler",
+   "width": 18,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_25760_19040",
+     "rtl_bit": "i_debouncer.prescaler[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_28980_16320",
+     "rtl_bit": "i_debouncer.prescaler[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_23920_24480",
+     "rtl_bit": "i_debouncer.prescaler[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_25300_29920",
+     "rtl_bit": "i_debouncer.prescaler[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_45080_35360",
+     "rtl_bit": "i_debouncer.prescaler[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_54280_35360",
+     "rtl_bit": "i_debouncer.prescaler[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_47840_29920",
+     "rtl_bit": "i_debouncer.prescaler[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_37720_27200",
+     "rtl_bit": "i_debouncer.prescaler[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_1_42780_21760",
+     "rtl_bit": "i_debouncer.prescaler[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_1_44160_19040",
+     "rtl_bit": "i_debouncer.prescaler[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfrtp_1_57040_16320",
+     "rtl_bit": "i_debouncer.prescaler[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfrtp_1_55660_19040",
+     "rtl_bit": "i_debouncer.prescaler[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfrtp_1_74980_19040",
+     "rtl_bit": "i_debouncer.prescaler[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfrtp_1_80040_24480",
+     "rtl_bit": "i_debouncer.prescaler[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfrtp_1_73600_13600",
+     "rtl_bit": "i_debouncer.prescaler[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfrtp_1_80500_27200",
+     "rtl_bit": "i_debouncer.prescaler[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfrtp_1_72220_35360",
+     "rtl_bit": "i_debouncer.prescaler[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfrtp_1_70840_38080",
+     "rtl_bit": "i_debouncer.prescaler[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_debouncer.psc_on",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_68540_40800",
+     "rtl_bit": "i_debouncer.psc_on",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_debouncer.reset_sync_ff",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_67620_43520",
+     "rtl_bit": "i_debouncer.reset_sync_ff",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_debouncer.sample_ff",
+   "width": 3,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {
+    "lanes": 1,
+    "depth": 3,
+    "direction": "toward MSB",
+    "serial_in": [
+     "i_debouncer.sync_ff[1]"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k-1] on 2 of 2 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_143060_54400",
+     "rtl_bit": "i_debouncer.sample_ff[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_141680_48960",
+     "rtl_bit": "i_debouncer.sample_ff[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_144900_51680",
+     "rtl_bit": "i_debouncer.sample_ff[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_debouncer.sync_ff",
+   "width": 2,
+   "kind": "synchronizer",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "debuncer",
+   "params": {
+    "stages": 2,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_141680_103360",
+     "rtl_bit": "i_debouncer.sync_ff[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_144900_100640",
+     "rtl_bit": "i_debouncer.sync_ff[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.mode_ff",
+   "width": 2,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_131100_100640",
+     "rtl_bit": "i_kitt_scan_core.mode_ff[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_127420_95200",
+     "rtl_bit": "i_kitt_scan_core.mode_ff[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.oinv_ff",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_119140_100640",
+     "rtl_bit": "i_kitt_scan_core.oinv_ff",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.osel_ff",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_114540_103360",
+     "rtl_bit": "i_kitt_scan_core.osel_ff",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pre_lvout",
+   "width": 8,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {
+    "lanes": 1,
+    "depth": 8,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'b1",
+     "1'bx"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k+1] on 7 of 7 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_104420_95200",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_106260_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_94300_95200",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_88320_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_81420_87040",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_61640_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_70840_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_115920_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_lvout[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pre_pwmout",
+   "width": 8,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "several bits written only with constants (independent control bits)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_96600_106080",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_93840_97920",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_70840_97920",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_51060_95200",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_30820_95200",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_28980_92480",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_26220_89760",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_45080_97920",
+     "rtl_bit": "i_kitt_scan_core.pre_pwmout[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.prescaler",
+   "width": 21,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_142600_32640",
+     "rtl_bit": "i_kitt_scan_core.prescaler[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_143060_27200",
+     "rtl_bit": "i_kitt_scan_core.prescaler[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_144900_19040",
+     "rtl_bit": "i_kitt_scan_core.prescaler[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_139840_21760",
+     "rtl_bit": "i_kitt_scan_core.prescaler[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_123740_19040",
+     "rtl_bit": "i_kitt_scan_core.prescaler[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_121900_24480",
+     "rtl_bit": "i_kitt_scan_core.prescaler[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_116380_21760",
+     "rtl_bit": "i_kitt_scan_core.prescaler[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_107180_21760",
+     "rtl_bit": "i_kitt_scan_core.prescaler[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_2_93380_24480",
+     "rtl_bit": "i_kitt_scan_core.prescaler[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_1_96600_27200",
+     "rtl_bit": "i_kitt_scan_core.prescaler[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfrtp_1_89700_32640",
+     "rtl_bit": "i_kitt_scan_core.prescaler[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfrtp_1_83720_43520",
+     "rtl_bit": "i_kitt_scan_core.prescaler[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfrtp_1_92920_43520",
+     "rtl_bit": "i_kitt_scan_core.prescaler[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfrtp_1_94760_40800",
+     "rtl_bit": "i_kitt_scan_core.prescaler[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfrtp_1_106260_43520",
+     "rtl_bit": "i_kitt_scan_core.prescaler[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfrtp_1_106720_46240",
+     "rtl_bit": "i_kitt_scan_core.prescaler[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfrtp_2_125120_46240",
+     "rtl_bit": "i_kitt_scan_core.prescaler[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfrtp_1_117760_48960",
+     "rtl_bit": "i_kitt_scan_core.prescaler[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfrtp_1_132020_43520",
+     "rtl_bit": "i_kitt_scan_core.prescaler[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfrtp_1_144440_38080",
+     "rtl_bit": "i_kitt_scan_core.prescaler[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 20,
+     "flop": "dfrtp_1_144900_35360",
+     "rtl_bit": "i_kitt_scan_core.prescaler[20]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.psc_enable",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_122820_57120",
+     "rtl_bit": "i_kitt_scan_core.psc_enable",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwm05",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_54740_97920",
+     "rtl_bit": "i_kitt_scan_core.pwm05",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwm10",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_45080_103360",
+     "rtl_bit": "i_kitt_scan_core.pwm10",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwm25",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_41860_100640",
+     "rtl_bit": "i_kitt_scan_core.pwm25",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwm_count",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_19320_38080",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_42320_38080",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_33120_38080",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_22080_51680",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_2_23000_57120",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_19320_46240",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_18860_43520",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_50140_51680",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_1_52900_46240",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_1_54740_48960",
+     "rtl_bit": "i_kitt_scan_core.pwm_count[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[0]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_92920_54400",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_99820_57120",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_93380_68000",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[1]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_85100_48960",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_82340_51680",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_85100_65280",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[2]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_69000_51680",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_66700_48960",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_64400_65280",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[3]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_45080_59840",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[3][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_47380_57120",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[3][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_57500_68000",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[3][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[4]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_34040_65280",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[4][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_30360_68000",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[4][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_56580_70720",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[4][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[5]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_25760_73440",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[5][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_24380_78880",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[5][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_55660_76160",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[5][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[6]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_24380_84320",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[6][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_28980_81600",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[6][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_57500_81600",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[6][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.pwmsel[7]",
+   "width": 3,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_41860_89760",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[7][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_35420_87040",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[7][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_55660_87040",
+     "rtl_bit": "i_kitt_scan_core.pwmsel[7][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.speed_ff",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_132020_103360",
+     "rtl_bit": "i_kitt_scan_core.speed_ff",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.state",
+   "width": 6,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "kitt_scan_core",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 2,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_120980_59840",
+     "rtl_bit": "i_kitt_scan_core.state[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_141220_92480",
+     "rtl_bit": "i_kitt_scan_core.state[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_144900_62560",
+     "rtl_bit": "i_kitt_scan_core.state[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_145820_87040",
+     "rtl_bit": "i_kitt_scan_core.state[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_144900_89760",
+     "rtl_bit": "i_kitt_scan_core.state[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_126500_62560",
+     "rtl_bit": "i_kitt_scan_core.state[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "i_kitt_scan_core.tgl_cnt",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [
+    "counter"
+   ],
+   "alt_reason": "a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "module_def": "kitt_scan_core",
+   "params": {},
+   "rule": "one bit with D = ~Q (a toggle); a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_31740_103360",
+     "rtl_bit": "i_kitt_scan_core.tgl_cnt",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfrtp_1_104420_95200": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_106260_43520": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_106260_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_106720_46240": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_107180_21760": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_115920_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_116380_21760": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_117760_48960": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_120980_59840": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_121900_24480": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_122820_57120": {
+   "registers": [
+    "i_kitt_scan_core.psc_enable"
+   ],
+   "primary": "i_kitt_scan_core.psc_enable"
+  },
+  "dfrtp_1_123740_19040": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_126500_62560": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_132020_43520": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_139840_21760": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_141220_92480": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_141680_103360": {
+   "registers": [
+    "i_debouncer.sync_ff"
+   ],
+   "primary": "i_debouncer.sync_ff"
+  },
+  "dfrtp_1_141680_48960": {
+   "registers": [
+    "i_debouncer.sample_ff"
+   ],
+   "primary": "i_debouncer.sample_ff"
+  },
+  "dfrtp_1_143060_27200": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_143060_54400": {
+   "registers": [
+    "i_debouncer.sample_ff"
+   ],
+   "primary": "i_debouncer.sample_ff"
+  },
+  "dfrtp_1_144440_38080": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_144900_100640": {
+   "registers": [
+    "i_debouncer.sync_ff"
+   ],
+   "primary": "i_debouncer.sync_ff"
+  },
+  "dfrtp_1_144900_19040": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_144900_35360": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_144900_51680": {
+   "registers": [
+    "i_debouncer.sample_ff"
+   ],
+   "primary": "i_debouncer.sample_ff"
+  },
+  "dfrtp_1_144900_62560": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_144900_89760": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_145820_87040": {
+   "registers": [
+    "i_kitt_scan_core.state"
+   ],
+   "primary": "i_kitt_scan_core.state"
+  },
+  "dfrtp_1_18860_43520": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_19320_38080": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_19320_46240": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_22080_51680": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_23920_24480": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_24380_78880": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[5]"
+  },
+  "dfrtp_1_24380_84320": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[6]"
+  },
+  "dfrtp_1_25300_29920": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_25760_73440": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[5]"
+  },
+  "dfrtp_1_26220_89760": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_28980_16320": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_28980_81600": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[6]"
+  },
+  "dfrtp_1_28980_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_30360_68000": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[4]"
+  },
+  "dfrtp_1_30820_95200": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_31740_103360": {
+   "registers": [
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "primary": "i_kitt_scan_core.tgl_cnt"
+  },
+  "dfrtp_1_33120_38080": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_34040_65280": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[4]"
+  },
+  "dfrtp_1_35420_87040": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[7]"
+  },
+  "dfrtp_1_37720_27200": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_41860_89760": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[7]"
+  },
+  "dfrtp_1_42320_38080": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_42780_21760": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_44160_19040": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_45080_103360": {
+   "registers": [
+    "i_kitt_scan_core.pwm10"
+   ],
+   "primary": "i_kitt_scan_core.pwm10"
+  },
+  "dfrtp_1_45080_35360": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_45080_59840": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[3]"
+  },
+  "dfrtp_1_45080_97920": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_47380_57120": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[3]"
+  },
+  "dfrtp_1_47840_29920": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_50140_51680": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_51060_95200": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_52900_46240": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_54280_35360": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_54740_48960": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_1_54740_97920": {
+   "registers": [
+    "i_kitt_scan_core.pwm05"
+   ],
+   "primary": "i_kitt_scan_core.pwm05"
+  },
+  "dfrtp_1_55660_19040": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_57040_16320": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_61640_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_66700_48960": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[2]"
+  },
+  "dfrtp_1_67620_43520": {
+   "registers": [
+    "i_debouncer.reset_sync_ff"
+   ],
+   "primary": "i_debouncer.reset_sync_ff"
+  },
+  "dfrtp_1_68540_40800": {
+   "registers": [
+    "i_debouncer.psc_on"
+   ],
+   "primary": "i_debouncer.psc_on"
+  },
+  "dfrtp_1_69000_51680": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[2]"
+  },
+  "dfrtp_1_70840_38080": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_70840_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_70840_97920": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_72220_35360": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_73600_13600": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_74980_19040": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_80040_24480": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_80500_27200": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_1_81420_87040": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_82340_51680": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[1]"
+  },
+  "dfrtp_1_83720_43520": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_85100_48960": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[1]"
+  },
+  "dfrtp_1_88320_92480": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_89700_32640": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_92920_43520": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_92920_54400": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[0]"
+  },
+  "dfrtp_1_93840_97920": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_94300_95200": {
+   "registers": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "primary": "i_kitt_scan_core.pre_lvout"
+  },
+  "dfrtp_1_94760_40800": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_96600_106080": {
+   "registers": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "primary": "i_kitt_scan_core.pre_pwmout"
+  },
+  "dfrtp_1_96600_27200": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_1_99820_57120": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[0]"
+  },
+  "dfrtp_2_125120_46240": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_2_127420_95200": {
+   "registers": [
+    "i_kitt_scan_core.mode_ff"
+   ],
+   "primary": "i_kitt_scan_core.mode_ff"
+  },
+  "dfrtp_2_131100_100640": {
+   "registers": [
+    "i_kitt_scan_core.mode_ff"
+   ],
+   "primary": "i_kitt_scan_core.mode_ff"
+  },
+  "dfrtp_2_132020_103360": {
+   "registers": [
+    "i_kitt_scan_core.speed_ff"
+   ],
+   "primary": "i_kitt_scan_core.speed_ff"
+  },
+  "dfrtp_2_142600_32640": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_2_144900_57120": {
+   "registers": [
+    "i_debouncer.ena_out"
+   ],
+   "primary": "i_debouncer.ena_out"
+  },
+  "dfrtp_2_23000_57120": {
+   "registers": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "primary": "i_kitt_scan_core.pwm_count"
+  },
+  "dfrtp_2_25760_19040": {
+   "registers": [
+    "i_debouncer.prescaler"
+   ],
+   "primary": "i_debouncer.prescaler"
+  },
+  "dfrtp_2_41860_100640": {
+   "registers": [
+    "i_kitt_scan_core.pwm25"
+   ],
+   "primary": "i_kitt_scan_core.pwm25"
+  },
+  "dfrtp_2_93380_24480": {
+   "registers": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "primary": "i_kitt_scan_core.prescaler"
+  },
+  "dfrtp_4_114540_103360": {
+   "registers": [
+    "i_kitt_scan_core.osel_ff"
+   ],
+   "primary": "i_kitt_scan_core.osel_ff"
+  },
+  "dfrtp_4_119140_100640": {
+   "registers": [
+    "i_kitt_scan_core.oinv_ff"
+   ],
+   "primary": "i_kitt_scan_core.oinv_ff"
+  },
+  "dfstp_1_55660_76160": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[5]"
+  },
+  "dfstp_1_55660_87040": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[7]"
+  },
+  "dfstp_1_56580_70720": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[4]"
+  },
+  "dfstp_1_57500_68000": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[3]"
+  },
+  "dfstp_1_57500_81600": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[6]"
+  },
+  "dfstp_1_64400_65280": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[2]"
+  },
+  "dfstp_1_85100_65280": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[1]"
+  },
+  "dfstp_1_93380_68000": {
+   "registers": [
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "primary": "i_kitt_scan_core.pwmsel[0]"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\i_debouncer.$add$debouncer.v:48$367",
+   "type": "$add",
+   "module": "i_debouncer",
+   "src": "debouncer.v:48",
+   "widths": {
+    "A": 18,
+    "B": 1,
+    "Y": 18
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_debouncer.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$eq$debouncer.v:55$368",
+   "type": "$eq",
+   "module": "i_debouncer",
+   "src": "debouncer.v:55",
+   "widths": {
+    "A": 18,
+    "B": 18,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 249999
+   },
+   "feeds": [
+    "i_debouncer.sample_ff"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$eq$debouncer.v:71$373",
+   "type": "$eq",
+   "module": "i_debouncer",
+   "src": "debouncer.v:71",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "i_debouncer.ena_out"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$lt$debouncer.v:47$365",
+   "type": "$lt",
+   "module": "i_debouncer",
+   "src": "debouncer.v:47",
+   "widths": {
+    "A": 18,
+    "B": 18,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 249999
+   },
+   "feeds": [
+    "i_debouncer.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$procmux$375",
+   "type": "$mux",
+   "module": "i_debouncer",
+   "src": "debouncer.v:72",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not debouncer.v:72>",
+   "feeds": [
+    "i_debouncer.ena_out"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$procmux$378",
+   "type": "$mux",
+   "module": "i_debouncer",
+   "src": "debouncer.v:71",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_debouncer.sample_ff == 3'b111)",
+   "feeds": [
+    "i_debouncer.ena_out"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_debouncer.$procmux$383",
+   "type": "$mux",
+   "module": "i_debouncer",
+   "src": "debouncer.v:47",
+   "widths": {
+    "A": 18,
+    "B": 18,
+    "S": 1,
+    "Y": 18
+   },
+   "signed": false,
+   "select": "(i_debouncer.psc_on & <lt debouncer.v:47>)",
+   "feeds": [
+    "i_debouncer.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$add$kitt_scan_core.v:105$99",
+   "type": "$add",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:105",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$add$kitt_scan_core.v:563$354",
+   "type": "$add",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:563",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$add$kitt_scan_core.v:77$91",
+   "type": "$add",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:77",
+   "widths": {
+    "A": 21,
+    "B": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$121",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$129",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$137",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$145",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$153",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$161",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$169",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:157$177",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$122",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$130",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$138",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$146",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$154",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$162",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$170",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:158$178",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$123",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$131",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$139",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$147",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$155",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$163",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$171",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:159$179",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$eq$kitt_scan_core.v:87$93",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:87",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.speed_ff",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1152_CMP4",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 28
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1152_CMP5",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 29
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1152_CMP6",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 30
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1153_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:375",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 23
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1154_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:361",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 22
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1155_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:348",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 21
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1156_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:336",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 20
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP1",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP2",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP3",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 16
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP4",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 17
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP5",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 18
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1157_CMP6",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:318",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 19
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1158_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:303",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1159_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:289",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1160_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:276",
+   "widths": {
+    "A": 6,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1161_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:225",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.speed_ff",
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1170_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 6,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1171_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:584",
+   "widths": {
+    "A": 6,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1172_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:573",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 59
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 52
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP1",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 53
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP2",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 54
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP3",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 55
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP4",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 56
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP5",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 57
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1173_CMP6",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:555",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 58
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1174_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:543",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 51
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1175_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:530",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 50
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1176_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:517",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 48
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1177_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:501",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 47
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1178_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:483",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 46
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1179_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:467",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 45
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1180_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:449",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 42
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1180_CMP1",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:449",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 43
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1180_CMP2",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:449",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 44
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1181_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:434",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 41
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1182_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:420",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 40
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1183_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:408",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 31
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1184_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 24
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1184_CMP1",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 25
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1184_CMP2",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 26
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1184_CMP3",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:390",
+   "widths": {
+    "A": 6,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 27
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$780_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$781_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:246",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$782_CMP0",
+   "type": "$eq",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:236",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:104$98",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:104",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 999
+   },
+   "feeds": [
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:116$101",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:116",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 249
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm25"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:117$104",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:117",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 99
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm10"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:118$107",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:118",
+   "widths": {
+    "A": 10,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 49
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:70$88",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:70",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1499999
+   },
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$lt$kitt_scan_core.v:76$90",
+   "type": "$lt",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:76",
+   "widths": {
+    "A": 21,
+    "B": 20,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 999999
+   },
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1169",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "((i_kitt_scan_core.state == 6'b111011) | (i_kitt_scan_core.state == 5'b10100) | (i_kitt_scan_core.state == 6'b110010) | (i_kitt_scan_core.state == 5'b11111) | (i_kitt_scan_core.state == 6'b101000) | (i_kitt_scan_core.state == 6'b110000) ...)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1223",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:225",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(<logic_not kitt_scan_core.v:215> | (i_kitt_scan_core.state == 1'b1))",
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.speed_ff"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1233",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "((i_kitt_scan_core.state == 6'b111011) | (i_kitt_scan_core.state == 5'b10100) | (i_kitt_scan_core.state == 6'b110010) | (i_kitt_scan_core.state == 5'b11111) | (i_kitt_scan_core.state == 6'b101000) | (i_kitt_scan_core.state == 6'b110000) ...)",
+   "feeds": [
+    "i_kitt_scan_core.psc_enable"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2027",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2033",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2039",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2045",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2051",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2057",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2063",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2069",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2075",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2081",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2087",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.speed_ff"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2093",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.psc_enable"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2099",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:203",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "uio_out[3]",
+   "feeds": [
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2312",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2315",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2318",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2321",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2324",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2327",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2330",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2333",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2336",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2339",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2342",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.speed_ff"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2345",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.psc_enable"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2348",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:192",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "i_debouncer.ena_out",
+   "feeds": [
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2456",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:104",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:104>",
+   "feeds": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2459",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:102",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.pwm_enable",
+   "feeds": [
+    "i_kitt_scan_core.pwm_count"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2468",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:76",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "S": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:76>",
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2472",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:70",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "S": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:70>",
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2474",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:69",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "S": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.speed_ff",
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$2477",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:67",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "S": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.psc_enable",
+   "feeds": [
+    "i_kitt_scan_core.prescaler"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:116$102",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:116",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:116>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm25"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:116$103",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:116",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.pwm_enable",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm25"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:117$105",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:117",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:117>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm10"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:117$106",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:117",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.pwm_enable",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm10"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:118$108",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:118",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<lt kitt_scan_core.v:118>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:118$109",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:118",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.pwm_enable",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwm05"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$127",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$135",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$143",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$151",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$159",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$167",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$175",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:156$183",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not kitt_scan_core.v:156>",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$126",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[0] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$134",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[1] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$142",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[2] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$150",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[3] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$158",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[4] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$166",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[5] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$174",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[6] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:157$182",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:157",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[7] == 1'b1)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$125",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[0] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$133",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[1] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$141",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[2] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$149",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[3] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$157",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[4] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$165",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[5] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$173",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[6] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:158$181",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:158",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[7] == 2'b10)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$124",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[0] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$132",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[1] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$140",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[2] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$148",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[3] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$156",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[4] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$164",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[5] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$172",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[6] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:159$180",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:159",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(i_kitt_scan_core.next_pwmsel[7] == 2'b11)",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:167$184",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:167",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.osel_ff",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:86$94",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:86",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.psc_enable",
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.speed_ff",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$ternary$kitt_scan_core.v:87$92",
+   "type": "$mux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:87",
+   "widths": {
+    "A": 21,
+    "B": 21,
+    "S": 1,
+    "Y": 21
+   },
+   "signed": false,
+   "select": "i_kitt_scan_core.speed_ff",
+   "feeds": [
+    "i_kitt_scan_core.mode_ff",
+    "i_kitt_scan_core.oinv_ff",
+    "i_kitt_scan_core.osel_ff",
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.psc_enable",
+    "i_kitt_scan_core.pwm05",
+    "i_kitt_scan_core.pwm10",
+    "i_kitt_scan_core.pwm25",
+    "i_kitt_scan_core.pwm_count",
+    "i_kitt_scan_core.pwmsel[0]",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[5]",
+    "i_kitt_scan_core.pwmsel[6]",
+    "i_kitt_scan_core.pwmsel[7]",
+    "i_kitt_scan_core.speed_ff",
+    "i_kitt_scan_core.state",
+    "i_kitt_scan_core.tgl_cnt"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1017",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1037",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1056",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1075",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1095",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 21,
+    "S": 7,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "7 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1116",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1138",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 8,
+    "B": 152,
+    "S": 19,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "19 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$1265",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 6,
+    "B": 48,
+    "S": 8,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "8 selects",
+   "feeds": [
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$446",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 3,
+    "B": 6,
+    "S": 2,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$631",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 3,
+    "B": 6,
+    "S": 2,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[2]",
+    "i_kitt_scan_core.pwmsel[4]",
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$668",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 3,
+    "B": 6,
+    "S": 2,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[1]",
+    "i_kitt_scan_core.pwmsel[3]",
+    "i_kitt_scan_core.pwmsel[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$705",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 3,
+    "B": 9,
+    "S": 3,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[0]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$742",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 8,
+    "B": 32,
+    "S": 4,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$779",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:254",
+   "widths": {
+    "A": 6,
+    "B": 24,
+    "S": 4,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$974",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 18,
+    "S": 6,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$procmux$996",
+   "type": "$pmux",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:597",
+   "widths": {
+    "A": 3,
+    "B": 21,
+    "S": 7,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "7 selects",
+   "feeds": [
+    "i_kitt_scan_core.pre_pwmout",
+    "i_kitt_scan_core.pwmsel[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$xor$kitt_scan_core.v:167$185",
+   "type": "$xor",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:167",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "Y": 8
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true,
+   "xor_group": 0
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$xor$kitt_scan_core.v:626$355",
+   "type": "$xor",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:626",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true,
+   "xor_group": 1
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$xor$kitt_scan_core.v:627$356",
+   "type": "$xor",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:627",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true,
+   "xor_group": 2
+  },
+  {
+   "cell": "$flatten\\i_kitt_scan_core.$xor$kitt_scan_core.v:628$357",
+   "type": "$xor",
+   "module": "i_kitt_scan_core",
+   "src": "kitt_scan_core.v:628",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true,
+   "xor_group": 3
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$5265",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "i_kitt_scan_core.pre_lvout",
+    "i_kitt_scan_core.state"
+   ],
+   "feeds_outputs": false
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "ttsky25b/tt_um_yorimichi_kittscanner",
+   "macro": "tt_um_yorimichi_kittscanner",
+   "title": "kitt_scanner",
+   "author": "yorimichi",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-sky-25b",
+   "shuttle_commit": "2595dd0d3c4148e6b0175ce6b5a670aca0a25b4c"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25b/2595dd0d3c4148e6b0175ce6b5a670aca0a25b4c/projects/tt_um_yorimichi_kittscanner/tt_um_yorimichi_kittscanner.oas",
+    "git_blob": "8d42eba2de8ac7d5e2352dee4020326da60f4c3a"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25b/2595dd0d3c4148e6b0175ce6b5a670aca0a25b4c/projects/tt_um_yorimichi_kittscanner/tt_um_yorimichi_kittscanner.v",
+    "git_blob": "5394f880de0413713a95f775b8047ff2952f5b07"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25b/2595dd0d3c4148e6b0175ce6b5a670aca0a25b4c/projects/tt_um_yorimichi_kittscanner/tt_um_yorimichi_kittscanner.lef",
+    "git_blob": "725a1f3f169ea249197f8c7791d28b449960a075"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25b/2595dd0d3c4148e6b0175ce6b5a670aca0a25b4c/projects/tt_um_yorimichi_kittscanner/LICENSE",
+    "git_blob": "29f81d812f3e768fa89638d1f72920dbfd1413a8"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/yorimichiykhm/ttsky-um_yorimichi_kittscanner",
+   "commit": "5830f9b6013a538b0c5e4f57c32d4a4bd854f675",
+   "top_module": "tt_um_yorimichi_kittscanner",
+   "source_files": [
+    "tt_um_yorimichi_kittscanner.v",
+    "kitt_scan_core.v",
+    "debouncer.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": [
+    {
+     "rule": "copy_lanes",
+     "registers": [
+      "i_kitt_scan_core.pre_lvout"
+     ],
+     "left_out": "bit 6 is not a single-path copy of bit 7"
+    }
+   ]
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/tt_um_yorimichi_kittscanner.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/kitt_scan_core.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/debouncer.v\nhierarchy -check -top tt_um_yorimichi_kittscanner\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/tt_um_yorimichi_kittscanner.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/kitt_scan_core.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/repo/src/debouncer.v\nhierarchy -check -top tt_um_yorimichi_kittscanner -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25b__tt_um_yorimichi_kittscanner/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/reset0": 105,
+   "posedge/reset1": 8
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 700,
+   "netlist_logic_instances": 700,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 693,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 32,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 28,
+   "registers_by_kind": {
+    "counter": 4,
+    "data_register": 9,
+    "flag": 12,
+    "shift_register": 2,
+    "synchronizer": 1
+   },
+   "units": 0,
+   "rtl_flop_bits": 113,
+   "netlist_flops": 113,
+   "netlist_flops_labelled": 113,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 113
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 4,
+   "rounds": 2,
+   "agree_per_round": [
+    113,
+    113
+   ],
+   "flops_checked": 113,
+   "match": 113,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 110,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 16,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 113,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/reset0": 105,
+     "posedge cell/reset1": 8
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/reset0": 105,
+     "posedge/reset1": 8
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 113,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 16
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {},
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

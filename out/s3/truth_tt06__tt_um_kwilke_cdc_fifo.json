@@ -1,0 +1,4524 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:tt06/tt_um_kwilke_cdc_fifo",
+ "registers": [
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[0]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_47380_62560",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_17480_51680",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_28980_70720",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_21160_54400",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[10]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_63480_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[10][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_77740_73440",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[10][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_80500_76160",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[10][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_62560_70720",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[10][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[11]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_83720_57120",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[11][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_78660_68000",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[11][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_82800_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[11][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_86020_59840",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[11][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[12]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_34040_95200",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[12][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_30820_78880",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[12][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_20700_89760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[12][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_18860_103360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[12][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[13]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_33120_103360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[13][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_18400_76160",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[13][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_17480_92480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[13][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_16100_100640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[13][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[14]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_30360_100640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[14][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_8280_78880",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[14][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_7820_89760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[14][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_8280_100640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[14][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[15]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_33580_89760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[15][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_6900_76160",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[15][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_6900_87040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[15][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_5980_97920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[15][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[16]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_40480_43520",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[16][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_28980_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[16][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_24380_29920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[16][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_18400_40800",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[16][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[17]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_33120_43520",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[17][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_21160_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[17][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_16100_29920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[17][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_10580_43520",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[17][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[18]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_32200_40800",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[18][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_11960_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[18][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_8280_29920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[18][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_7820_46240",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[18][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[19]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_34040_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[19][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_7820_24480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[19][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_6900_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[19][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_6440_40800",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[19][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[1]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_45080_70720",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_7820_54400",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_12880_70720",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_9660_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[20]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_123280_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[20][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_117300_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[20][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_123280_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[20][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_119140_24480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[20][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[21]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_132020_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[21][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_133400_24480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[21][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_130640_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[21][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_120520_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[21][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[22]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_133400_46240",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[22][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_132940_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[22][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_139840_43520",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[22][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_124200_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[22][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[23]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_106720_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[23][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_109480_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[23][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_106720_43520",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[23][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_109020_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[23][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[24]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_57040_46240",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[24][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_63020_16320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[24][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_52440_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[24][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_54740_16320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[24][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[25]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_57040_51680",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[25][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_62560_27200",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[25][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_52900_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[25][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_45540_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[25][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[26]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46000_51680",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[26][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_43700_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[26][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_39560_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[26][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_41860_24480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[26][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[27]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46920_54400",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[27][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_67620_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[27][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_40480_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[27][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_41860_29920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[27][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[28]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_80500_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[28][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_95680_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[28][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_81880_19040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[28][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_72680_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[28][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[29]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_68540_46240",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[29][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_92920_21760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[29][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_80960_16320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[29][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_68540_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[29][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[2]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_43700_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_32200_57120",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_28980_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_29440_62560",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[2][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[30]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_91080_48960",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[30][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_97060_32640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[30][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_83720_29920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[30][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_82800_38080",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[30][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[31]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_93380_46240",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[31][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_98440_27200",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[31][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_84640_27200",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[31][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_84180_35360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[31][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[3]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_43700_73440",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[3][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_6900_51680",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[3][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_7360_68000",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[3][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_8280_62560",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[3][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[4]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46920_81600",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[4][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_80500_87040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[4][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_80500_97920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[4][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_52900_95200",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[4][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[5]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46000_76160",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[5][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_71300_84320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[5][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_72680_92480",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[5][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_48300_89760",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[5][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[6]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46920_103360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[6][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_69920_100640",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[6][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_69920_103360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[6][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_54740_103360",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[6][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[7]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_42320_84320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[7][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_61180_87040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[7][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_64400_97920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[7][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_46920_97920",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[7][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[8]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_106260_76160",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[8][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_106260_73440",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[8][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_93380_84320",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[8][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_92920_87040",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[8][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.fifo_memory.memory[9]",
+   "width": 4,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "dpram",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_106260_59840",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[9][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_106260_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[9][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_94300_73440",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[9][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_97980_65280",
+     "rtl_bit": "kwilke_fifo.fifo_memory.memory[9][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.read_address_sync.data",
+   "width": 5,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "synchronizer",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_113620_81600",
+     "rtl_bit": "kwilke_fifo.read_address_sync.data[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_114540_87040",
+     "rtl_bit": "kwilke_fifo.read_address_sync.data[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_144900_57120",
+     "rtl_bit": "kwilke_fifo.read_address_sync.data[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_140760_87040",
+     "rtl_bit": "kwilke_fifo.read_address_sync.data[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_139840_81600",
+     "rtl_bit": "kwilke_fifo.read_address_sync.data[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.read_address_sync.out",
+   "width": 5,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "synchronizer",
+   "params": {},
+   "rule": "no enable, no mux, only the chip reset: a delayed copy of other registers",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_123740_84320",
+     "rtl_bit": "kwilke_fifo.read_address_sync.out[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_132940_84320",
+     "rtl_bit": "kwilke_fifo.read_address_sync.out[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_146740_59840",
+     "rtl_bit": "kwilke_fifo.read_address_sync.out[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_145820_84320",
+     "rtl_bit": "kwilke_fifo.read_address_sync.out[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_145360_78880",
+     "rtl_bit": "kwilke_fifo.read_address_sync.out[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.readstate.read_address",
+   "width": 5,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cdc_fifo_read_state",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_106260_92480",
+     "rtl_bit": "kwilke_fifo.readstate.read_address[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_105340_89760",
+     "rtl_bit": "kwilke_fifo.readstate.read_address[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_4_97980_100640",
+     "rtl_bit": "kwilke_fifo.readstate.read_address[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_106260_103360",
+     "rtl_bit": "kwilke_fifo.readstate.read_address[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_4_95220_103360",
+     "rtl_bit": "kwilke_fifo.readstate.read_address[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.write_address_sync.data",
+   "width": 5,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "synchronizer",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_138920_92480",
+     "rtl_bit": "kwilke_fifo.write_address_sync.data[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_120520_92480",
+     "rtl_bit": "kwilke_fifo.write_address_sync.data[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_108560_100640",
+     "rtl_bit": "kwilke_fifo.write_address_sync.data[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_138000_97920",
+     "rtl_bit": "kwilke_fifo.write_address_sync.data[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_135240_95200",
+     "rtl_bit": "kwilke_fifo.write_address_sync.data[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.write_address_sync.out",
+   "width": 5,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "synchronizer",
+   "params": {},
+   "rule": "no enable, no mux, only the chip reset: a delayed copy of other registers",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_144900_95200",
+     "rtl_bit": "kwilke_fifo.write_address_sync.out[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_122820_95200",
+     "rtl_bit": "kwilke_fifo.write_address_sync.out[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_115460_103360",
+     "rtl_bit": "kwilke_fifo.write_address_sync.out[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_147200_103360",
+     "rtl_bit": "kwilke_fifo.write_address_sync.out[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_147200_97920",
+     "rtl_bit": "kwilke_fifo.write_address_sync.out[4]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.write_address_sync.out__retimed",
+   "width": 1,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "synchronizer",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_147200_97920",
+     "rtl_bit": "kwilke_fifo.readstate.write_addr_decode.binary[4]",
+     "how": "retimed",
+     "holds": "kwilke_fifo.readstate.write_addr_decode.binary[4], one cycle ahead",
+     "function_of": [
+      "kwilke_fifo.write_address_sync.out[4]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "kwilke_fifo.writestate.write_address",
+   "width": 5,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cdc_fifo_write_state",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_132940_59840",
+     "rtl_bit": "kwilke_fifo.writestate.write_address[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_120520_73440",
+     "rtl_bit": "kwilke_fifo.writestate.write_address[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_4_120980_57120",
+     "rtl_bit": "kwilke_fifo.writestate.write_address[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_4_137080_54400",
+     "rtl_bit": "kwilke_fifo.writestate.write_address[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_4_113620_59840",
+     "rtl_bit": "kwilke_fifo.writestate.write_address[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfrtp_1_106260_103360": {
+   "registers": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "primary": "kwilke_fifo.readstate.read_address"
+  },
+  "dfrtp_1_106260_92480": {
+   "registers": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "primary": "kwilke_fifo.readstate.read_address"
+  },
+  "dfrtp_1_108560_100640": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.data"
+  },
+  "dfrtp_1_113620_81600": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.data"
+  },
+  "dfrtp_1_114540_87040": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.data"
+  },
+  "dfrtp_1_115460_103360": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.out"
+  },
+  "dfrtp_1_120520_73440": {
+   "registers": [
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "primary": "kwilke_fifo.writestate.write_address"
+  },
+  "dfrtp_1_120520_92480": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.data"
+  },
+  "dfrtp_1_122820_95200": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.out"
+  },
+  "dfrtp_1_123740_84320": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.out"
+  },
+  "dfrtp_1_132940_59840": {
+   "registers": [
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "primary": "kwilke_fifo.writestate.write_address"
+  },
+  "dfrtp_1_132940_84320": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.out"
+  },
+  "dfrtp_1_135240_95200": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.data"
+  },
+  "dfrtp_1_138000_97920": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.data"
+  },
+  "dfrtp_1_138920_92480": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.data"
+  },
+  "dfrtp_1_139840_81600": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.data"
+  },
+  "dfrtp_1_140760_87040": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.data"
+  },
+  "dfrtp_1_144900_57120": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.data"
+  },
+  "dfrtp_1_144900_95200": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.out"
+  },
+  "dfrtp_1_145360_78880": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.out"
+  },
+  "dfrtp_1_145820_84320": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.out"
+  },
+  "dfrtp_1_146740_59840": {
+   "registers": [
+    "kwilke_fifo.read_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.read_address_sync.out"
+  },
+  "dfrtp_1_147200_103360": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.out"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.out"
+  },
+  "dfrtp_1_147200_97920": {
+   "registers": [
+    "kwilke_fifo.write_address_sync.out",
+    "kwilke_fifo.write_address_sync.out__retimed"
+   ],
+   "primary": "kwilke_fifo.write_address_sync.out"
+  },
+  "dfrtp_2_105340_89760": {
+   "registers": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "primary": "kwilke_fifo.readstate.read_address"
+  },
+  "dfrtp_4_113620_59840": {
+   "registers": [
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "primary": "kwilke_fifo.writestate.write_address"
+  },
+  "dfrtp_4_120980_57120": {
+   "registers": [
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "primary": "kwilke_fifo.writestate.write_address"
+  },
+  "dfrtp_4_137080_54400": {
+   "registers": [
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "primary": "kwilke_fifo.writestate.write_address"
+  },
+  "dfrtp_4_95220_103360": {
+   "registers": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "primary": "kwilke_fifo.readstate.read_address"
+  },
+  "dfrtp_4_97980_100640": {
+   "registers": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "primary": "kwilke_fifo.readstate.read_address"
+  },
+  "dfxtp_1_10580_43520": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[17]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[17]"
+  },
+  "dfxtp_1_106260_59840": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[9]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[9]"
+  },
+  "dfxtp_1_106260_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[9]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[9]"
+  },
+  "dfxtp_1_106260_73440": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[8]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[8]"
+  },
+  "dfxtp_1_106260_76160": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[8]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[8]"
+  },
+  "dfxtp_1_106720_43520": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[23]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[23]"
+  },
+  "dfxtp_1_106720_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[23]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[23]"
+  },
+  "dfxtp_1_109020_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[23]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[23]"
+  },
+  "dfxtp_1_109480_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[23]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[23]"
+  },
+  "dfxtp_1_117300_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[20]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[20]"
+  },
+  "dfxtp_1_119140_24480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[20]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[20]"
+  },
+  "dfxtp_1_11960_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[18]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[18]"
+  },
+  "dfxtp_1_120520_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[21]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[21]"
+  },
+  "dfxtp_1_123280_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[20]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[20]"
+  },
+  "dfxtp_1_123280_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[20]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[20]"
+  },
+  "dfxtp_1_124200_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[22]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[22]"
+  },
+  "dfxtp_1_12880_70720": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[1]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[1]"
+  },
+  "dfxtp_1_130640_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[21]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[21]"
+  },
+  "dfxtp_1_132020_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[21]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[21]"
+  },
+  "dfxtp_1_132940_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[22]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[22]"
+  },
+  "dfxtp_1_133400_24480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[21]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[21]"
+  },
+  "dfxtp_1_133400_46240": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[22]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[22]"
+  },
+  "dfxtp_1_139840_43520": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[22]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[22]"
+  },
+  "dfxtp_1_16100_100640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[13]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[13]"
+  },
+  "dfxtp_1_16100_29920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[17]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[17]"
+  },
+  "dfxtp_1_17480_51680": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[0]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[0]"
+  },
+  "dfxtp_1_17480_92480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[13]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[13]"
+  },
+  "dfxtp_1_18400_40800": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[16]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[16]"
+  },
+  "dfxtp_1_18400_76160": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[13]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[13]"
+  },
+  "dfxtp_1_18860_103360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[12]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[12]"
+  },
+  "dfxtp_1_20700_89760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[12]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[12]"
+  },
+  "dfxtp_1_21160_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[17]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[17]"
+  },
+  "dfxtp_1_21160_54400": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[0]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[0]"
+  },
+  "dfxtp_1_24380_29920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[16]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[16]"
+  },
+  "dfxtp_1_28980_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[16]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[16]"
+  },
+  "dfxtp_1_28980_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[2]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[2]"
+  },
+  "dfxtp_1_28980_70720": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[0]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[0]"
+  },
+  "dfxtp_1_29440_62560": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[2]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[2]"
+  },
+  "dfxtp_1_30360_100640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[14]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[14]"
+  },
+  "dfxtp_1_30820_78880": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[12]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[12]"
+  },
+  "dfxtp_1_32200_40800": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[18]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[18]"
+  },
+  "dfxtp_1_32200_57120": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[2]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[2]"
+  },
+  "dfxtp_1_33120_103360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[13]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[13]"
+  },
+  "dfxtp_1_33120_43520": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[17]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[17]"
+  },
+  "dfxtp_1_33580_89760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[15]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[15]"
+  },
+  "dfxtp_1_34040_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[19]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[19]"
+  },
+  "dfxtp_1_34040_95200": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[12]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[12]"
+  },
+  "dfxtp_1_39560_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[26]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[26]"
+  },
+  "dfxtp_1_40480_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[27]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[27]"
+  },
+  "dfxtp_1_40480_43520": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[16]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[16]"
+  },
+  "dfxtp_1_41860_24480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[26]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[26]"
+  },
+  "dfxtp_1_41860_29920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[27]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[27]"
+  },
+  "dfxtp_1_42320_84320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[7]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[7]"
+  },
+  "dfxtp_1_43700_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[26]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[26]"
+  },
+  "dfxtp_1_43700_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[2]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[2]"
+  },
+  "dfxtp_1_43700_73440": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[3]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[3]"
+  },
+  "dfxtp_1_45080_70720": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[1]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[1]"
+  },
+  "dfxtp_1_45540_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[25]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[25]"
+  },
+  "dfxtp_1_46000_51680": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[26]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[26]"
+  },
+  "dfxtp_1_46000_76160": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[5]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[5]"
+  },
+  "dfxtp_1_46920_103360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[6]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[6]"
+  },
+  "dfxtp_1_46920_54400": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[27]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[27]"
+  },
+  "dfxtp_1_46920_81600": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[4]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[4]"
+  },
+  "dfxtp_1_46920_97920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[7]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[7]"
+  },
+  "dfxtp_1_47380_62560": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[0]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[0]"
+  },
+  "dfxtp_1_48300_89760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[5]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[5]"
+  },
+  "dfxtp_1_52440_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[24]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[24]"
+  },
+  "dfxtp_1_52900_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[25]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[25]"
+  },
+  "dfxtp_1_52900_95200": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[4]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[4]"
+  },
+  "dfxtp_1_54740_103360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[6]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[6]"
+  },
+  "dfxtp_1_54740_16320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[24]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[24]"
+  },
+  "dfxtp_1_57040_46240": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[24]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[24]"
+  },
+  "dfxtp_1_57040_51680": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[25]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[25]"
+  },
+  "dfxtp_1_5980_97920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[15]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[15]"
+  },
+  "dfxtp_1_61180_87040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[7]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[7]"
+  },
+  "dfxtp_1_62560_27200": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[25]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[25]"
+  },
+  "dfxtp_1_62560_70720": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[10]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[10]"
+  },
+  "dfxtp_1_63020_16320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[24]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[24]"
+  },
+  "dfxtp_1_63480_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[10]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[10]"
+  },
+  "dfxtp_1_64400_97920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[7]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[7]"
+  },
+  "dfxtp_1_6440_40800": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[19]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[19]"
+  },
+  "dfxtp_1_67620_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[27]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[27]"
+  },
+  "dfxtp_1_68540_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[29]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[29]"
+  },
+  "dfxtp_1_68540_46240": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[29]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[29]"
+  },
+  "dfxtp_1_6900_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[19]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[19]"
+  },
+  "dfxtp_1_6900_51680": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[3]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[3]"
+  },
+  "dfxtp_1_6900_76160": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[15]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[15]"
+  },
+  "dfxtp_1_6900_87040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[15]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[15]"
+  },
+  "dfxtp_1_69920_100640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[6]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[6]"
+  },
+  "dfxtp_1_69920_103360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[6]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[6]"
+  },
+  "dfxtp_1_71300_84320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[5]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[5]"
+  },
+  "dfxtp_1_72680_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[28]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[28]"
+  },
+  "dfxtp_1_72680_92480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[5]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[5]"
+  },
+  "dfxtp_1_7360_68000": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[3]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[3]"
+  },
+  "dfxtp_1_77740_73440": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[10]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[10]"
+  },
+  "dfxtp_1_7820_24480": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[19]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[19]"
+  },
+  "dfxtp_1_7820_46240": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[18]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[18]"
+  },
+  "dfxtp_1_7820_54400": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[1]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[1]"
+  },
+  "dfxtp_1_7820_89760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[14]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[14]"
+  },
+  "dfxtp_1_78660_68000": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[11]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[11]"
+  },
+  "dfxtp_1_80500_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[28]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[28]"
+  },
+  "dfxtp_1_80500_76160": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[10]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[10]"
+  },
+  "dfxtp_1_80500_87040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[4]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[4]"
+  },
+  "dfxtp_1_80500_97920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[4]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[4]"
+  },
+  "dfxtp_1_80960_16320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[29]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[29]"
+  },
+  "dfxtp_1_81880_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[28]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[28]"
+  },
+  "dfxtp_1_82800_38080": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[30]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[30]"
+  },
+  "dfxtp_1_82800_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[11]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[11]"
+  },
+  "dfxtp_1_8280_100640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[14]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[14]"
+  },
+  "dfxtp_1_8280_29920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[18]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[18]"
+  },
+  "dfxtp_1_8280_62560": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[3]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[3]"
+  },
+  "dfxtp_1_8280_78880": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[14]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[14]"
+  },
+  "dfxtp_1_83720_29920": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[30]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[30]"
+  },
+  "dfxtp_1_83720_57120": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[11]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[11]"
+  },
+  "dfxtp_1_84180_35360": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[31]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[31]"
+  },
+  "dfxtp_1_84640_27200": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[31]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[31]"
+  },
+  "dfxtp_1_86020_59840": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[11]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[11]"
+  },
+  "dfxtp_1_91080_48960": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[30]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[30]"
+  },
+  "dfxtp_1_92920_21760": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[29]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[29]"
+  },
+  "dfxtp_1_92920_87040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[8]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[8]"
+  },
+  "dfxtp_1_93380_46240": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[31]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[31]"
+  },
+  "dfxtp_1_93380_84320": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[8]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[8]"
+  },
+  "dfxtp_1_94300_73440": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[9]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[9]"
+  },
+  "dfxtp_1_95680_19040": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[28]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[28]"
+  },
+  "dfxtp_1_9660_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[1]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[1]"
+  },
+  "dfxtp_1_97060_32640": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[30]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[30]"
+  },
+  "dfxtp_1_97980_65280": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[9]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[9]"
+  },
+  "dfxtp_1_98440_27200": {
+   "registers": [
+    "kwilke_fifo.fifo_memory.memory[31]"
+   ],
+   "primary": "kwilke_fifo.fifo_memory.memory[31]"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$122_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 31
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$123_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 30
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$124_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 29
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$125_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 28
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$126_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 27
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$127_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 26
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$128_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 25
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$129_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 24
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$130_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 23
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$131_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 22
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$132_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 21
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$133_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 20
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$134_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 19
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$135_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 18
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$136_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 17
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$137_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 16
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$138_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$139_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$140_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$141_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$142_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$143_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$144_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$145_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$146_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$147_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$148_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$149_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$150_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$151_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$152_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$162_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 31
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[31]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$168_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 30
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[30]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$175_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 29
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[29]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$183_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 28
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[28]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$192_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 27
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[27]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$202_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 26
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[26]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$213_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 25
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[25]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$225_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 24
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[24]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$238_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 23
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[23]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$252_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 22
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[22]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$267_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 21
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[21]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$283_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 20
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[20]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$300_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 19
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[19]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$318_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 18
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[18]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$337_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 17
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[17]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$357_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 16
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[16]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$378_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[15]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$400_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[14]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$423_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[13]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$447_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[12]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$472_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[11]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$498_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[10]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$525_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[9]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$553_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[8]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$582_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$612_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$643_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$675_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$708_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$742_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$777_CMP0",
+   "type": "$eq",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:22",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\fifo_memory.$procmux$121",
+   "type": "$pmux",
+   "module": "kwilke_fifo.fifo_memory",
+   "src": "dpram.sv:18",
+   "widths": {
+    "A": 4,
+    "B": 128,
+    "S": 32,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "32 selects",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.$add$cdc_fifo_read_state.sv:36$90",
+   "type": "$add",
+   "module": "kwilke_fifo.readstate",
+   "src": "cdc_fifo_read_state.sv:36",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.$eq$cdc_fifo_read_state.sv:30$86",
+   "type": "$eq",
+   "module": "kwilke_fifo.readstate",
+   "src": "cdc_fifo_read_state.sv:30",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\read_addr_encode.$xor$binary_to_gray.sv:8$108",
+   "type": "$xor",
+   "module": "kwilke_fifo.readstate.read_addr_encode",
+   "src": "binary_to_gray.sv:8",
+   "widths": {
+    "A": 4,
+    "B": 5,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.read_address_sync.data"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\write_addr_decode.$reduce_xor$gray_to_binary.sv:10$112",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.readstate.write_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 1
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\write_addr_decode.$reduce_xor$gray_to_binary.sv:10$114",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.readstate.write_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 2
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\write_addr_decode.$reduce_xor$gray_to_binary.sv:10$116",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.readstate.write_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 3
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\write_addr_decode.$reduce_xor$gray_to_binary.sv:10$118",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.readstate.write_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 4
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\readstate.\\write_addr_decode.$reduce_xor$gray_to_binary.sv:10$120",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.readstate.write_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.readstate.read_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 5
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.$add$cdc_fifo_write_state.sv:14$91",
+   "type": "$add",
+   "module": "kwilke_fifo.writestate",
+   "src": "cdc_fifo_write_state.sv:14",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.$eq$cdc_fifo_write_state.sv:14$92",
+   "type": "$eq",
+   "module": "kwilke_fifo.writestate",
+   "src": "cdc_fifo_write_state.sv:14",
+   "widths": {
+    "A": 32,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\read_addr_decode.$reduce_xor$gray_to_binary.sv:10$112",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.writestate.read_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 6
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\read_addr_decode.$reduce_xor$gray_to_binary.sv:10$114",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.writestate.read_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 7
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\read_addr_decode.$reduce_xor$gray_to_binary.sv:10$116",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.writestate.read_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 8
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\read_addr_decode.$reduce_xor$gray_to_binary.sv:10$118",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.writestate.read_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 9
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\read_addr_decode.$reduce_xor$gray_to_binary.sv:10$120",
+   "type": "$reduce_xor",
+   "module": "kwilke_fifo.writestate.read_addr_decode",
+   "src": "gray_to_binary.sv:10",
+   "widths": {
+    "A": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.fifo_memory.memory[0]",
+    "kwilke_fifo.fifo_memory.memory[10]",
+    "kwilke_fifo.fifo_memory.memory[11]",
+    "kwilke_fifo.fifo_memory.memory[12]",
+    "kwilke_fifo.fifo_memory.memory[13]",
+    "kwilke_fifo.fifo_memory.memory[14]",
+    "kwilke_fifo.fifo_memory.memory[15]",
+    "kwilke_fifo.fifo_memory.memory[16]",
+    "kwilke_fifo.fifo_memory.memory[17]",
+    "kwilke_fifo.fifo_memory.memory[18]",
+    "kwilke_fifo.fifo_memory.memory[19]",
+    "kwilke_fifo.fifo_memory.memory[1]",
+    "kwilke_fifo.fifo_memory.memory[20]",
+    "kwilke_fifo.fifo_memory.memory[21]",
+    "kwilke_fifo.fifo_memory.memory[22]",
+    "kwilke_fifo.fifo_memory.memory[23]",
+    "kwilke_fifo.fifo_memory.memory[24]",
+    "kwilke_fifo.fifo_memory.memory[25]",
+    "kwilke_fifo.fifo_memory.memory[26]",
+    "kwilke_fifo.fifo_memory.memory[27]",
+    "kwilke_fifo.fifo_memory.memory[28]",
+    "kwilke_fifo.fifo_memory.memory[29]",
+    "kwilke_fifo.fifo_memory.memory[2]",
+    "kwilke_fifo.fifo_memory.memory[30]",
+    "kwilke_fifo.fifo_memory.memory[31]",
+    "kwilke_fifo.fifo_memory.memory[3]",
+    "kwilke_fifo.fifo_memory.memory[4]",
+    "kwilke_fifo.fifo_memory.memory[5]",
+    "kwilke_fifo.fifo_memory.memory[6]",
+    "kwilke_fifo.fifo_memory.memory[7]",
+    "kwilke_fifo.fifo_memory.memory[8]",
+    "kwilke_fifo.fifo_memory.memory[9]",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   "feeds_outputs": true,
+   "xor_group": 10
+  },
+  {
+   "cell": "$flatten\\kwilke_fifo.\\writestate.\\write_addr_encode.$xor$binary_to_gray.sv:8$108",
+   "type": "$xor",
+   "module": "kwilke_fifo.writestate.write_addr_encode",
+   "src": "binary_to_gray.sv:8",
+   "widths": {
+    "A": 4,
+    "B": 5,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "kwilke_fifo.write_address_sync.data"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 11
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "tt06/tt_um_kwilke_cdc_fifo",
+   "macro": "tt_um_kwilke_cdc_fifo",
+   "title": "Clock Domain Crossing FIFO",
+   "author": "Kenneth Wilke",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-06",
+   "shuttle_commit": "e489ecbad5ceda454c5b4ca0b86b81bc24bfe40c"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-06/e489ecbad5ceda454c5b4ca0b86b81bc24bfe40c/projects/tt_um_kwilke_cdc_fifo/tt_um_kwilke_cdc_fifo.gds",
+    "git_blob": "1b01750260c858b82c36e821547d6b1e7ce691b4"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-06/e489ecbad5ceda454c5b4ca0b86b81bc24bfe40c/projects/tt_um_kwilke_cdc_fifo/tt_um_kwilke_cdc_fifo.v",
+    "git_blob": "df78ee6750c9cf11e88b37ab0c7827b4909cdc6f"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-06/e489ecbad5ceda454c5b4ca0b86b81bc24bfe40c/projects/tt_um_kwilke_cdc_fifo/tt_um_kwilke_cdc_fifo.lef",
+    "git_blob": "f49c65d88b55383af8fd64298b0686d0bfddbaa9"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-06/e489ecbad5ceda454c5b4ca0b86b81bc24bfe40c/projects/tt_um_kwilke_cdc_fifo/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/KennethWilke/tt06-cdc-fifo",
+   "commit": "287342574432c10868820e04fdf03eae875ccf4c",
+   "top_module": "tt_um_kwilke_cdc_fifo",
+   "source_files": [
+    "project.v",
+    "cdc_fifo.sv",
+    "dpram.sv",
+    "cdc_fifo_read_state.sv",
+    "cdc_fifo_write_state.sv",
+    "binary_to_gray.sv",
+    "gray_to_binary.sv",
+    "synchronizer.sv"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/dpram.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo_read_state.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo_write_state.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/binary_to_gray.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/gray_to_binary.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/synchronizer.sv\nhierarchy -check -top tt_um_kwilke_cdc_fifo\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/dpram.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo_read_state.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/cdc_fifo_write_state.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/binary_to_gray.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/gray_to_binary.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/repo/src/synchronizer.sv\nhierarchy -check -top tt_um_kwilke_cdc_fifo -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt06__tt_um_kwilke_cdc_fifo/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 128,
+   "posedge/reset0": 30
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [
+   "kwilke_fifo.write_address_sync.out__retimed"
+  ],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 841,
+   "netlist_logic_instances": 841,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 851,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 34,
+   "ports_disagree": [],
+   "non_port_net_labels": 835,
+   "non_port_net_labels_rtl_like": 188,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 39,
+   "registers_by_kind": {
+    "counter": 2,
+    "data_register": 4,
+    "other": 1,
+    "register_file_word": 32
+   },
+   "units": 0,
+   "rtl_flop_bits": 158,
+   "netlist_flops": 158,
+   "netlist_flops_labelled": 158,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 158
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 2,
+   "rounds": 2,
+   "agree_per_round": [
+    158,
+    158
+   ],
+   "flops_checked": 158,
+   "match": 158,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 158,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 6,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 157,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 128,
+     "posedge cell/reset0": 29
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 128,
+     "posedge/reset0": 29
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 158,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 6
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {
+    "proven": 1
+   },
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

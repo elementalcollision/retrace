@@ -1,0 +1,13 @@
+=== ttsky26b/tt_um_fidel_makatia_digital_tapeout (ttsky26b__tt_um_fidel_makatia_digital_tapeout) 2026-09-23T16:23:53Z
+  simulation round 1: 311 of 451 flops agree
+  simulation round 2: 312 of 451 flops agree
+  simulation round 3: 311 of 451 flops agree
+  simulation round 4: 312 of 451 flops agree
+  simulation round 5: 312 of 451 flops agree
+  simulation round 6: 311 of 451 flops agree
+  simulation round 7: 313 of 451 flops agree
+  simulation round 8: 312 of 451 flops agree
+pilot ttsky26b/tt_um_fidel_makatia_digital_tapeout: 68 registers {'counter': 7, 'data_register': 12, 'flag': 10, 'fsm_state': 3, 'other': 1, 'register_file_word': 32, 'shift_register': 1, 'synchronizer': 2}; 451 of 451 flops labelled, 0 shadow, 0 unmapped; units by rule: ['u_soc.u_gpio.gpio_in_sync1 + u_soc.u_gpio.gpio_in_sync2 (sync_chain)']; proof: 143 flops refuted: ['_2340_', '_2341_', '_2342_', '_2343_', '_2344_']; invariants not proven: ['merged u_soc.u_ctrl.opcode[6]', 'merged u_soc.u_ctrl.opcode[7]', 'merged u_soc.u_ctrl.operand[7]']; check_truth: ['u_soc.u_uart.shift_reg: lanes x depth != flops']; {'download': 0.3, 'read_netlist': 0.1, 'extract': 1.4, 'join': 0.0, 'rtl_yosys': 0.5, 'classify': 0.0, 'load_models': 0.2, 'simulate': 0.1, 'prove': 0.2, 'total': 2.9}
+{"id": "ttsky26b/tt_um_fidel_makatia_digital_tapeout", "design_id": "ttsky26b__tt_um_fidel_makatia_digital_tapeout", "macro": "tt_um_fidel_makatia_digital_tapeout", "ok": false, "error": "RuntimeError: check_truth: ['u_soc.u_uart.shift_reg: lanes x depth != flops']"}
+label_driver rc=1
+freeze check: freeze holds

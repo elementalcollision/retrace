@@ -1,0 +1,2131 @@
+{
+ "A_pooling_precondition": {
+  "B1_evaluation_recognizer_sources_distinct": 1,
+  "B1_records_agree_among_themselves": true,
+  "holds_for_all": true,
+  "oos12_equal_current_tree": true,
+  "per_R_record": [
+   {
+    "design": "tt04__tt_um_jayraj4021_SAP1_cpu",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "ttsky26b__tt_um_tiny_8bit_cpu",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "tt06__tt_um_SJ",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "tt06__tt_um_kwilke_cdc_fifo",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "tt05__tt_um_digital_clock_sellicott",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "tt05__tt_um_nickjhay_processor",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "ttsky26a__tt_um_parakeet",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   },
+   {
+    "design": "ttcad25a__tt_um_space_invaders_game",
+    "evaluations_with_recognizer_sources_mismatch": 0,
+    "oos12_count": 12,
+    "oos12_mismatches": [],
+    "other_code_files_differing_from_B1": [
+     "tools/s3/freeze.py",
+     "tools/s3/run.py",
+     "tools/s3/thirdparty.py"
+    ],
+    "recognizer_sources_count": 10,
+    "recognizer_sources_mismatches": []
+   }
+  ]
+ },
+ "B_primary_counter_verified_found": {
+  "B1": {
+   "n": 59,
+   "rate": 0.3898305084745763,
+   "x": 23
+  },
+  "R": {
+   "n": 49,
+   "rate": 0.3877551020408163,
+   "x": 19
+  },
+  "R_minus_B1": -0.0020754064337599742,
+  "bootstrap": {
+   "B1": {
+    "ci": [
+     0.21621621621621623,
+     0.6458333333333334
+    ],
+    "undefined": 0
+   },
+   "R": {
+    "ci": [
+     0.22448979591836735,
+     0.6285714285714286
+    ],
+    "undefined": 0
+   },
+   "R_minus_B1": {
+    "ci": [
+     -0.30665041007231947,
+     0.2930741522914776
+    ],
+    "draw_order": "R_first",
+    "undefined": 0
+   },
+   "pooled_one_set": {
+    "ci": [
+     0.25833333333333336,
+     0.5533980582524272
+    ],
+    "undefined": 0
+   },
+   "pooled_stratified_B1_then_R": {
+    "ci": [
+     0.2616822429906542,
+     0.5517241379310345
+    ],
+    "undefined": 0
+   }
+  },
+  "bootstrap_B1_first_diff": {
+   "ci": [
+    -0.31213154116884323,
+    0.28529463183874954
+   ],
+   "draw_order": "B1_first",
+   "undefined": 0
+  },
+  "clopper_pearson": {
+   "B1": [
+    0.26549146659474887,
+    0.5256214912235491
+   ],
+   "R": [
+    0.25197448279077606,
+    0.5376145090797706
+   ],
+   "pooled": [
+    0.29656308138152576,
+    0.48746999792037327
+   ]
+  },
+  "designs_with_registers": {
+   "B1": 10,
+   "R": 9
+  },
+  "fisher_p_R_vs_B1": 1.0,
+  "pooled": {
+   "n": 108,
+   "rate": 0.3888888888888889,
+   "x": 42
+  },
+  "verdict": "consistent with freeze 1"
+ },
+ "C_counter_all_structures_found": {
+  "B1": {
+   "n": 59,
+   "rate": 0.6949152542372882,
+   "x": 41
+  },
+  "R": {
+   "n": 49,
+   "rate": 0.6326530612244898,
+   "x": 31
+  },
+  "R_minus_B1": -0.06226219301279834,
+  "bootstrap": {
+   "B1": {
+    "ci": [
+     0.5,
+     0.8904163099315068
+    ],
+    "undefined": 0
+   },
+   "R": {
+    "ci": [
+     0.42371251629726203,
+     0.8627450980392157
+    ],
+    "undefined": 0
+   },
+   "R_minus_B1": {
+    "ci": [
+     -0.3446715065954697,
+     0.25367123962868643
+    ],
+    "draw_order": "R_first",
+    "undefined": 0
+   },
+   "pooled_one_set": {
+    "ci": [
+     0.5230733944954129,
+     0.8190501519756839
+    ],
+    "undefined": 0
+   },
+   "pooled_stratified_B1_then_R": {
+    "ci": [
+     0.5238095238095238,
+     0.8182059961315278
+    ],
+    "undefined": 0
+   }
+  },
+  "bootstrap_B1_first_diff": {
+   "ci": [
+    -0.34921068179132697,
+    0.24383320319500276
+   ],
+   "draw_order": "B1_first",
+   "undefined": 0
+  },
+  "clopper_pearson": {
+   "B1": [
+    0.561337449412378,
+    0.8081440117879843
+   ],
+   "R": [
+    0.4828776911693927,
+    0.7657758444633889
+   ],
+   "pooled": [
+    0.5694766635432598,
+    0.7544551973092481
+   ]
+  },
+  "designs_with_registers": {
+   "B1": 10,
+   "R": 9
+  },
+  "fisher_p_R_vs_B1": 0.5423243863567835,
+  "pooled": {
+   "n": 108,
+   "rate": 0.6666666666666666,
+   "x": 72
+  },
+  "verdict": "consistent with freeze 1"
+ },
+ "D2_counter_found_tierA_removed": {
+  "B1": {
+   "n": 48,
+   "x": 37
+  },
+  "R": {
+   "n": 39,
+   "x": 22
+  }
+ },
+ "D_primary_tierA_removed": {
+  "B1": {
+   "n": 48,
+   "rate": 0.4375,
+   "x": 21
+  },
+  "R": {
+   "n": 39,
+   "rate": 0.41025641025641024,
+   "x": 16
+  },
+  "R_minus_B1": -0.027243589743589758,
+  "bootstrap": {
+   "B1": {
+    "ci": [
+     0.22033898305084745,
+     0.7297297297297297
+    ],
+    "undefined": 0
+   },
+   "R": {
+    "ci": [
+     0.15789473684210525,
+     0.675
+    ],
+    "undefined": 0
+   },
+   "R_minus_B1": {
+    "ci": [
+     -0.4117675231011945,
+     0.31946333646028746
+    ],
+    "draw_order": "R_first",
+    "undefined": 0
+   },
+   "pooled_one_set": {
+    "ci": [
+     0.25,
+     0.6190476190476191
+    ],
+    "undefined": 0
+   },
+   "pooled_stratified_B1_then_R": {
+    "ci": [
+     0.2545454545454545,
+     0.6233766233766234
+    ],
+    "undefined": 0
+   }
+  },
+  "bootstrap_B1_first_diff": {
+   "ci": [
+    -0.4143198757763975,
+    0.3168402195095544
+   ],
+   "draw_order": "B1_first",
+   "undefined": 0
+  },
+  "clopper_pearson": {
+   "B1": [
+    0.294801241333832,
+    0.5881916411593546
+   ],
+   "R": [
+    0.25566779688623276,
+    0.5790013305951471
+   ],
+   "pooled": [
+    0.3198745993522193,
+    0.5359342317532994
+   ]
+  },
+  "designs_with_registers": {
+   "B1": 10,
+   "R": 9
+  },
+  "fisher_p_R_vs_B1": 0.8304161611794137,
+  "pooled": {
+   "n": 87,
+   "rate": 0.42528735632183906,
+   "x": 37
+  },
+  "verdict": "consistent with freeze 1"
+ },
+ "E_per_kind": {
+  "B1": {
+   "lenient": {
+    "counter": {
+     "designs_with_registers": 10,
+     "exact": 28,
+     "found": 41,
+     "registers": 59,
+     "structures": 72,
+     "verified_exact": 15,
+     "verified_found": 23,
+     "verified_structures": 34
+    },
+    "lfsr_crc": {
+     "designs_with_registers": 1,
+     "exact": 0,
+     "found": 0,
+     "registers": 9,
+     "structures": 2,
+     "verified_exact": 0,
+     "verified_found": 0,
+     "verified_structures": 2
+    },
+    "shift_register": {
+     "designs_with_registers": 4,
+     "exact": 1,
+     "found": 1,
+     "registers": 8,
+     "structures": 1,
+     "verified_exact": 1,
+     "verified_found": 1,
+     "verified_structures": 1
+    },
+    "synchronizer": {
+     "designs_with_registers": 4,
+     "exact": 17,
+     "found": 17,
+     "registers": 18,
+     "structures": 3,
+     "verified_exact": 17,
+     "verified_found": 17,
+     "verified_structures": 3
+    }
+   },
+   "strict": {
+    "counter": {
+     "designs_with_registers": 10,
+     "exact": 28,
+     "found": 41,
+     "registers": 59,
+     "structures": 72,
+     "verified_exact": 15,
+     "verified_found": 23,
+     "verified_structures": 34
+    },
+    "lfsr_crc": {
+     "designs_with_registers": 1,
+     "exact": 0,
+     "found": 0,
+     "registers": 9,
+     "structures": 2,
+     "verified_exact": 0,
+     "verified_found": 0,
+     "verified_structures": 2
+    },
+    "shift_register": {
+     "designs_with_registers": 4,
+     "exact": 1,
+     "found": 1,
+     "registers": 8,
+     "structures": 1,
+     "verified_exact": 1,
+     "verified_found": 1,
+     "verified_structures": 1
+    },
+    "synchronizer": {
+     "designs_with_registers": 4,
+     "exact": 17,
+     "found": 17,
+     "registers": 18,
+     "structures": 3,
+     "verified_exact": 17,
+     "verified_found": 17,
+     "verified_structures": 3
+    }
+   }
+  },
+  "R": {
+   "lenient": {
+    "counter": {
+     "designs_with_registers": 9,
+     "exact": 20,
+     "found": 31,
+     "registers": 49,
+     "structures": 56,
+     "verified_exact": 12,
+     "verified_found": 19,
+     "verified_structures": 33
+    },
+    "lfsr_crc": {
+     "designs_with_registers": 0,
+     "exact": 0,
+     "found": 0,
+     "registers": 0,
+     "structures": 1,
+     "verified_exact": 0,
+     "verified_found": 0,
+     "verified_structures": 1
+    },
+    "shift_register": {
+     "designs_with_registers": 5,
+     "exact": 6,
+     "found": 6,
+     "registers": 9,
+     "structures": 12,
+     "verified_exact": 5,
+     "verified_found": 5,
+     "verified_structures": 6
+    },
+    "synchronizer": {
+     "designs_with_registers": 5,
+     "exact": 6,
+     "found": 6,
+     "registers": 10,
+     "structures": 3,
+     "verified_exact": 6,
+     "verified_found": 6,
+     "verified_structures": 3
+    }
+   },
+   "strict": {
+    "counter": {
+     "designs_with_registers": 9,
+     "exact": 20,
+     "found": 31,
+     "registers": 49,
+     "structures": 56,
+     "verified_exact": 12,
+     "verified_found": 19,
+     "verified_structures": 33
+    },
+    "lfsr_crc": {
+     "designs_with_registers": 0,
+     "exact": 0,
+     "found": 0,
+     "registers": 0,
+     "structures": 1,
+     "verified_exact": 0,
+     "verified_found": 0,
+     "verified_structures": 1
+    },
+    "shift_register": {
+     "designs_with_registers": 5,
+     "exact": 4,
+     "found": 4,
+     "registers": 9,
+     "structures": 12,
+     "verified_exact": 3,
+     "verified_found": 3,
+     "verified_structures": 6
+    },
+    "synchronizer": {
+     "designs_with_registers": 5,
+     "exact": 6,
+     "found": 6,
+     "registers": 10,
+     "structures": 3,
+     "verified_exact": 6,
+     "verified_found": 6,
+     "verified_structures": 3
+    }
+   }
+  }
+ },
+ "F_grouping": {
+  "B1": {
+   "ami_max": 1.0,
+   "ami_mean": 0.8425470012001617,
+   "ami_mean_minus_floor": 0.8425470012001464,
+   "ami_median": 0.8310414294352451,
+   "ami_min": 0.6641448957434805,
+   "chance_floor": 1.5344832663138863e-14,
+   "n": 10,
+   "per_design": {
+    "tt03p5__tt_um_Reloj_top": 0.7971469594059704,
+    "tt03p5__tt_um_thorkn_vgaclock": 1.0,
+    "tt05__tt_um_kskyou": 0.9476863137394868,
+    "tt05__tt_um_toivoh_synth": 0.838163127134775,
+    "tt07__tt_um_toivoh_basilisc_2816": 0.6641448957434805,
+    "tt07__tt_um_vzayakov_top": 0.7492489157820656,
+    "tt09__tt_um_pwm_top": 0.6764766231533296,
+    "ttsky25a__tt_um_sjsu_vga_music": 0.9286834453067935,
+    "ttsky25a__tt_um_td4": 1.0,
+    "ttsky26c__tt_um_joonatanalanampa_cordic": 0.823919731735715
+   },
+   "random_blocks_ami_mean": -0.0009608109491547284,
+   "singletons_ami_mean": 1.5344832663138863e-14,
+   "spread_mean_agrees": true
+  },
+  "R": {
+   "ami_max": 1.0,
+   "ami_mean": 0.7560610782887839,
+   "ami_mean_minus_floor": 0.7560610782887232,
+   "ami_median": 0.8431995916257937,
+   "ami_min": 0.030731402565702254,
+   "chance_floor": 6.077684895856475e-14,
+   "n": 10,
+   "per_design": {
+    "tt04__tt_um_jayraj4021_SAP1_cpu": 0.9247802659318287,
+    "tt05__tt_um_digital_clock_sellicott": 0.8265092202663287,
+    "tt05__tt_um_nickjhay_processor": 0.030731402565702254,
+    "tt06__tt_um_SJ": 0.7592314401537893,
+    "tt06__tt_um_kwilke_cdc_fifo": 1.0,
+    "ttcad25a__tt_um_space_invaders_game": 0.6437799384731838,
+    "ttsky25b__tt_um_ieeeuoftasic_simproc": 0.9606667242870686,
+    "ttsky25b__tt_um_yorimichi_kittscanner": 0.5699824005187686,
+    "ttsky26a__tt_um_parakeet": 0.8598899629852587,
+    "ttsky26b__tt_um_tiny_8bit_cpu": 0.9850394277059097
+   },
+   "random_blocks_ami_mean": -0.0006567658049659154,
+   "singletons_ami_mean": 6.077684895856475e-14,
+   "spread_mean_agrees": true
+  }
+ },
+ "G_tiers": {
+  "B1": {
+   "all_kinds": {
+    "A": 23,
+    "A1": 16,
+    "A2": 7,
+    "B": 2,
+    "C": 69,
+    "total": 94
+   },
+   "by_tier_found": {
+    "A1": {
+     "found": 5,
+     "registers": 16,
+     "verified_found": 3
+    },
+    "A2": {
+     "found": 0,
+     "registers": 7,
+     "verified_found": 0
+    },
+    "B": {
+     "found": 1,
+     "registers": 2,
+     "verified_found": 1
+    },
+    "C": {
+     "found": 53,
+     "registers": 69,
+     "verified_found": 37
+    }
+   },
+   "counter": {
+    "A": 11,
+    "A1": 7,
+    "A2": 4,
+    "B": 1,
+    "C": 47,
+    "total": 59
+   },
+   "flop_level": {
+    "refuted": 209,
+    "refuted_and_mismatching": 112,
+    "structure_kind_flops": 885
+   },
+   "per_design": {
+    "tt03p5__tt_um_Reloj_top": {
+     "A1": 2,
+     "A2": 2,
+     "C": 16
+    },
+    "tt03p5__tt_um_thorkn_vgaclock": {
+     "C": 6
+    },
+    "tt05__tt_um_kskyou": {
+     "C": 3
+    },
+    "tt05__tt_um_toivoh_synth": {
+     "B": 1,
+     "C": 6
+    },
+    "tt07__tt_um_toivoh_basilisc_2816": {
+     "A1": 11,
+     "A2": 5,
+     "B": 1,
+     "C": 1
+    },
+    "tt07__tt_um_vzayakov_top": {
+     "A1": 2,
+     "C": 20
+    },
+    "tt09__tt_um_pwm_top": {
+     "C": 4
+    },
+    "ttsky25a__tt_um_sjsu_vga_music": {
+     "A1": 1,
+     "C": 6
+    },
+    "ttsky25a__tt_um_td4": {
+     "C": 1
+    },
+    "ttsky26c__tt_um_joonatanalanampa_cordic": {
+     "C": 6
+    }
+   },
+   "tier_B_width_variant_extra": 0
+  },
+  "R": {
+   "all_kinds": {
+    "A": 12,
+    "A1": 5,
+    "A2": 7,
+    "B": 3,
+    "C": 53,
+    "total": 68
+   },
+   "by_tier_found": {
+    "A1": {
+     "found": 4,
+     "registers": 5,
+     "verified_found": 2
+    },
+    "A2": {
+     "found": 6,
+     "registers": 7,
+     "verified_found": 1
+    },
+    "B": {
+     "found": 3,
+     "registers": 3,
+     "verified_found": 3
+    },
+    "C": {
+     "found": 28,
+     "registers": 53,
+     "verified_found": 22
+    }
+   },
+   "counter": {
+    "A": 10,
+    "A1": 3,
+    "A2": 7,
+    "B": 3,
+    "C": 36,
+    "total": 49
+   },
+   "flop_level": {
+    "refuted": 52,
+    "refuted_and_mismatching": 27,
+    "structure_kind_flops": 545
+   },
+   "per_design": {
+    "tt04__tt_um_jayraj4021_SAP1_cpu": {
+     "C": 1
+    },
+    "tt05__tt_um_digital_clock_sellicott": {
+     "A1": 1,
+     "B": 2,
+     "C": 9
+    },
+    "tt05__tt_um_nickjhay_processor": {
+     "C": 2
+    },
+    "tt06__tt_um_SJ": {
+     "A1": 4,
+     "C": 9
+    },
+    "tt06__tt_um_kwilke_cdc_fifo": {
+     "C": 2
+    },
+    "ttcad25a__tt_um_space_invaders_game": {
+     "A2": 7,
+     "B": 1,
+     "C": 8
+    },
+    "ttsky25b__tt_um_ieeeuoftasic_simproc": {
+     "C": 6
+    },
+    "ttsky25b__tt_um_yorimichi_kittscanner": {
+     "C": 7
+    },
+    "ttsky26a__tt_um_parakeet": {
+     "C": 9
+    },
+    "ttsky26b__tt_um_tiny_8bit_cpu": {}
+   },
+   "tier_B_width_variant_extra": 0
+  }
+ },
+ "checks": {
+  "distinct_answers": {
+   "tt03p5__tt_um_Reloj_top": 1,
+   "tt03p5__tt_um_thorkn_vgaclock": 1,
+   "tt04__tt_um_jayraj4021_SAP1_cpu": 1,
+   "tt05__tt_um_digital_clock_sellicott": 1,
+   "tt05__tt_um_kskyou": 1,
+   "tt05__tt_um_nickjhay_processor": 1,
+   "tt05__tt_um_toivoh_synth": 1,
+   "tt06__tt_um_SJ": 1,
+   "tt06__tt_um_kwilke_cdc_fifo": 1,
+   "tt07__tt_um_toivoh_basilisc_2816": 1,
+   "tt07__tt_um_vzayakov_top": 1,
+   "tt09__tt_um_pwm_top": 1,
+   "ttcad25a__tt_um_space_invaders_game": 1,
+   "ttsky25a__tt_um_sjsu_vga_music": 1,
+   "ttsky25a__tt_um_td4": 1,
+   "ttsky25b__tt_um_ieeeuoftasic_simproc": 1,
+   "ttsky25b__tt_um_yorimichi_kittscanner": 1,
+   "ttsky26a__tt_um_parakeet": 1,
+   "ttsky26b__tt_um_tiny_8bit_cpu": 1,
+   "ttsky26c__tt_um_joonatanalanampa_cordic": 1
+  },
+  "own_matching_mismatches": {},
+  "truth_hash_ok": {
+   "tt03p5__tt_um_Reloj_top": true,
+   "tt03p5__tt_um_thorkn_vgaclock": true,
+   "tt04__tt_um_jayraj4021_SAP1_cpu": true,
+   "tt05__tt_um_digital_clock_sellicott": true,
+   "tt05__tt_um_kskyou": true,
+   "tt05__tt_um_nickjhay_processor": true,
+   "tt05__tt_um_toivoh_synth": true,
+   "tt06__tt_um_SJ": true,
+   "tt06__tt_um_kwilke_cdc_fifo": true,
+   "tt07__tt_um_toivoh_basilisc_2816": true,
+   "tt07__tt_um_vzayakov_top": true,
+   "tt09__tt_um_pwm_top": true,
+   "ttcad25a__tt_um_space_invaders_game": true,
+   "ttsky25a__tt_um_sjsu_vga_music": true,
+   "ttsky25a__tt_um_td4": true,
+   "ttsky25b__tt_um_ieeeuoftasic_simproc": true,
+   "ttsky25b__tt_um_yorimichi_kittscanner": true,
+   "ttsky26a__tt_um_parakeet": true,
+   "ttsky26b__tt_um_tiny_8bit_cpu": true,
+   "ttsky26c__tt_um_joonatanalanampa_cordic": true
+  },
+  "valid": {
+   "tt03p5__tt_um_Reloj_top": true,
+   "tt03p5__tt_um_thorkn_vgaclock": true,
+   "tt04__tt_um_jayraj4021_SAP1_cpu": true,
+   "tt05__tt_um_digital_clock_sellicott": true,
+   "tt05__tt_um_kskyou": true,
+   "tt05__tt_um_nickjhay_processor": true,
+   "tt05__tt_um_toivoh_synth": true,
+   "tt06__tt_um_SJ": true,
+   "tt06__tt_um_kwilke_cdc_fifo": true,
+   "tt07__tt_um_toivoh_basilisc_2816": true,
+   "tt07__tt_um_vzayakov_top": true,
+   "tt09__tt_um_pwm_top": true,
+   "ttcad25a__tt_um_space_invaders_game": true,
+   "ttsky25a__tt_um_sjsu_vga_music": true,
+   "ttsky25a__tt_um_td4": true,
+   "ttsky25b__tt_um_ieeeuoftasic_simproc": true,
+   "ttsky25b__tt_um_yorimichi_kittscanner": true,
+   "ttsky26a__tt_um_parakeet": true,
+   "ttsky26b__tt_um_tiny_8bit_cpu": true,
+   "ttsky26c__tt_um_joonatanalanampa_cordic": true
+  }
+ },
+ "designs": {
+  "B1": [
+   "tt09__tt_um_pwm_top",
+   "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "tt05__tt_um_toivoh_synth",
+   "ttsky25a__tt_um_td4",
+   "tt03p5__tt_um_Reloj_top",
+   "tt03p5__tt_um_thorkn_vgaclock",
+   "tt07__tt_um_toivoh_basilisc_2816",
+   "ttsky25a__tt_um_sjsu_vga_music",
+   "tt07__tt_um_vzayakov_top",
+   "tt05__tt_um_kskyou"
+  ],
+  "R": [
+   "tt04__tt_um_jayraj4021_SAP1_cpu",
+   "ttsky26b__tt_um_tiny_8bit_cpu",
+   "tt06__tt_um_SJ",
+   "tt06__tt_um_kwilke_cdc_fifo",
+   "ttsky25b__tt_um_yorimichi_kittscanner",
+   "tt05__tt_um_digital_clock_sellicott",
+   "tt05__tt_um_nickjhay_processor",
+   "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "ttsky26a__tt_um_parakeet",
+   "ttcad25a__tt_um_space_invaders_game"
+  ],
+  "excluded": []
+ },
+ "per_design": {
+  "B1": [
+   {
+    "counter": {
+     "found": 1,
+     "registers": 4,
+     "verified_found": 1
+    },
+    "counter_tierA_removed": {
+     "found": 1,
+     "registers": 4,
+     "verified_found": 1
+    },
+    "design": "tt09__tt_um_pwm_top",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 42
+    },
+    "grouping": {
+     "ami": 0.6764766231533296,
+     "ari": 0.5112030002884893,
+     "n": 47,
+     "random_blocks_ami_mean": 0.019141164201283613,
+     "singletons_ami": 1.0876349488312639e-14,
+     "spread_ami_mean": 0.6764766231533296
+    },
+    "tiers": {
+     "C": 4
+    },
+    "tiers_counter": {
+     "C": 4
+    }
+   },
+   {
+    "counter": {
+     "found": 3,
+     "registers": 3,
+     "verified_found": 3
+    },
+    "counter_tierA_removed": {
+     "found": 3,
+     "registers": 3,
+     "verified_found": 3
+    },
+    "design": "ttsky26c__tt_um_joonatanalanampa_cordic",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 93
+    },
+    "grouping": {
+     "ami": 0.823919731735715,
+     "ari": 0.750629670190412,
+     "n": 191,
+     "random_blocks_ami_mean": 0.0118695753754738,
+     "singletons_ami": -1.9220820760878438e-13,
+     "spread_ami_mean": 0.823919731735715
+    },
+    "tiers": {
+     "C": 6
+    },
+    "tiers_counter": {
+     "C": 3
+    }
+   },
+   {
+    "counter": {
+     "found": 2,
+     "registers": 5,
+     "verified_found": 1
+    },
+    "counter_tierA_removed": {
+     "found": 2,
+     "registers": 5,
+     "verified_found": 1
+    },
+    "design": "tt05__tt_um_toivoh_synth",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 47
+    },
+    "grouping": {
+     "ami": 0.838163127134775,
+     "ari": 0.7059415702101262,
+     "n": 264,
+     "random_blocks_ami_mean": 0.00360022168941588,
+     "singletons_ami": 3.024243698464557e-14,
+     "spread_ami_mean": 0.838163127134775
+    },
+    "tiers": {
+     "B": 1,
+     "C": 6
+    },
+    "tiers_counter": {
+     "B": 1,
+     "C": 4
+    }
+   },
+   {
+    "counter": {
+     "found": 0,
+     "registers": 1,
+     "verified_found": 0
+    },
+    "counter_tierA_removed": {
+     "found": 0,
+     "registers": 1,
+     "verified_found": 0
+    },
+    "design": "ttsky25a__tt_um_td4",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 4
+    },
+    "grouping": {
+     "ami": 1.0,
+     "ari": 1.0,
+     "n": 145,
+     "random_blocks_ami_mean": -0.0018963407783858521,
+     "singletons_ami": 2.264422109883658e-13,
+     "spread_ami_mean": 1.0
+    },
+    "tiers": {
+     "C": 1
+    },
+    "tiers_counter": {
+     "C": 1
+    }
+   },
+   {
+    "counter": {
+     "found": 7,
+     "registers": 14,
+     "verified_found": 4
+    },
+    "counter_tierA_removed": {
+     "found": 6,
+     "registers": 10,
+     "verified_found": 3
+    },
+    "design": "tt03p5__tt_um_Reloj_top",
+    "flop_level": {
+     "refuted": 54,
+     "refuted_and_mismatching": 14,
+     "structure_kind_flops": 326
+    },
+    "grouping": {
+     "ami": 0.7971469594059704,
+     "ari": 0.6701243676628446,
+     "n": 385,
+     "random_blocks_ami_mean": 0.005656832483306601,
+     "singletons_ami": 8.85710861932391e-14,
+     "spread_ami_mean": 0.7971469594059704
+    },
+    "tiers": {
+     "A1": 2,
+     "A2": 2,
+     "C": 16
+    },
+    "tiers_counter": {
+     "A1": 2,
+     "A2": 2,
+     "C": 10
+    }
+   },
+   {
+    "counter": {
+     "found": 6,
+     "registers": 6,
+     "verified_found": 6
+    },
+    "counter_tierA_removed": {
+     "found": 6,
+     "registers": 6,
+     "verified_found": 6
+    },
+    "design": "tt03p5__tt_um_thorkn_vgaclock",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 61
+    },
+    "grouping": {
+     "ami": 1.0,
+     "ari": 1.0,
+     "n": 61,
+     "random_blocks_ami_mean": -0.017238764603652583,
+     "singletons_ami": -5.644740292343797e-15,
+     "spread_ami_mean": 1.0
+    },
+    "tiers": {
+     "C": 6
+    },
+    "tiers_counter": {
+     "C": 6
+    }
+   },
+   {
+    "counter": {
+     "found": 2,
+     "registers": 5,
+     "verified_found": 0
+    },
+    "counter_tierA_removed": {
+     "found": 1,
+     "registers": 1,
+     "verified_found": 0
+    },
+    "design": "tt07__tt_um_toivoh_basilisc_2816",
+    "flop_level": {
+     "refuted": 128,
+     "refuted_and_mismatching": 75,
+     "structure_kind_flops": 137
+    },
+    "grouping": {
+     "ami": 0.6641448957434805,
+     "ari": 0.6463948163638608,
+     "n": 198,
+     "random_blocks_ami_mean": 0.003688127649909563,
+     "singletons_ami": 2.488071478805344e-13,
+     "spread_ami_mean": 0.6641448957434805
+    },
+    "tiers": {
+     "A1": 11,
+     "A2": 5,
+     "B": 1,
+     "C": 1
+    },
+    "tiers_counter": {
+     "A1": 2,
+     "A2": 2,
+     "C": 1
+    }
+   },
+   {
+    "counter": {
+     "found": 5,
+     "registers": 6,
+     "verified_found": 5
+    },
+    "counter_tierA_removed": {
+     "found": 5,
+     "registers": 5,
+     "verified_found": 5
+    },
+    "design": "ttsky25a__tt_um_sjsu_vga_music",
+    "flop_level": {
+     "refuted": 8,
+     "refuted_and_mismatching": 4,
+     "structure_kind_flops": 65
+    },
+    "grouping": {
+     "ami": 0.9286834453067935,
+     "ari": 0.9363747435395007,
+     "n": 70,
+     "random_blocks_ami_mean": -0.018801631807768854,
+     "singletons_ami": 2.0039304086506015e-14,
+     "spread_ami_mean": 0.9286834453067934
+    },
+    "tiers": {
+     "A1": 1,
+     "C": 6
+    },
+    "tiers_counter": {
+     "A1": 1,
+     "C": 5
+    }
+   },
+   {
+    "counter": {
+     "found": 12,
+     "registers": 12,
+     "verified_found": 2
+    },
+    "counter_tierA_removed": {
+     "found": 10,
+     "registers": 10,
+     "verified_found": 1
+    },
+    "design": "tt07__tt_um_vzayakov_top",
+    "flop_level": {
+     "refuted": 19,
+     "refuted_and_mismatching": 19,
+     "structure_kind_flops": 92
+    },
+    "grouping": {
+     "ami": 0.7492489157820656,
+     "ari": 0.6907801601106776,
+     "n": 192,
+     "random_blocks_ami_mean": -0.009235266128822672,
+     "singletons_ami": -2.367190943233121e-13,
+     "spread_ami_mean": 0.7492489157820656
+    },
+    "tiers": {
+     "A1": 2,
+     "C": 20
+    },
+    "tiers_counter": {
+     "A1": 2,
+     "C": 10
+    }
+   },
+   {
+    "counter": {
+     "found": 3,
+     "registers": 3,
+     "verified_found": 1
+    },
+    "counter_tierA_removed": {
+     "found": 3,
+     "registers": 3,
+     "verified_found": 1
+    },
+    "design": "tt05__tt_um_kskyou",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 18
+    },
+    "grouping": {
+     "ami": 0.9476863137394868,
+     "ari": 0.9529445352851099,
+     "n": 148,
+     "random_blocks_ami_mean": -0.00639202757230678,
+     "singletons_ami": -3.695816676577464e-14,
+     "spread_ami_mean": 0.9476863137394866
+    },
+    "tiers": {
+     "C": 3
+    },
+    "tiers_counter": {
+     "C": 3
+    }
+   }
+  ],
+  "R": [
+   {
+    "counter": {
+     "found": 1,
+     "registers": 1,
+     "verified_found": 1
+    },
+    "counter_tierA_removed": {
+     "found": 1,
+     "registers": 1,
+     "verified_found": 1
+    },
+    "design": "tt04__tt_um_jayraj4021_SAP1_cpu",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 4
+    },
+    "grouping": {
+     "ami": 0.9247802659318287,
+     "ari": 0.9513798639247764,
+     "n": 53,
+     "random_blocks_ami_mean": -0.005222532238759848,
+     "singletons_ami": -3.470056163611257e-14,
+     "spread_ami_mean": 0.9247802659318287
+    },
+    "tiers": {
+     "C": 1
+    },
+    "tiers_counter": {
+     "C": 1
+    }
+   },
+   {
+    "counter": {
+     "found": 0,
+     "registers": 0,
+     "verified_found": 0
+    },
+    "counter_tierA_removed": {
+     "found": 0,
+     "registers": 0,
+     "verified_found": 0
+    },
+    "design": "ttsky26b__tt_um_tiny_8bit_cpu",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 0
+    },
+    "grouping": {
+     "ami": 0.9850394277059097,
+     "ari": 0.9821846337504334,
+     "n": 232,
+     "random_blocks_ami_mean": 0.0006750866744157992,
+     "singletons_ami": 3.226699095055603e-13,
+     "spread_ami_mean": 0.9850394277059097
+    },
+    "tiers": {},
+    "tiers_counter": {}
+   },
+   {
+    "counter": {
+     "found": 3,
+     "registers": 12,
+     "verified_found": 2
+    },
+    "counter_tierA_removed": {
+     "found": 0,
+     "registers": 9,
+     "verified_found": 0
+    },
+    "design": "tt06__tt_um_SJ",
+    "flop_level": {
+     "refuted": 20,
+     "refuted_and_mismatching": 20,
+     "structure_kind_flops": 38
+    },
+    "grouping": {
+     "ami": 0.7592314401537893,
+     "ari": 0.2604154359359584,
+     "n": 685,
+     "random_blocks_ami_mean": 8.001335800690065e-05,
+     "singletons_ami": 1.7556874279050124e-12,
+     "spread_ami_mean": 0.7592314401537893
+    },
+    "tiers": {
+     "A1": 4,
+     "C": 9
+    },
+    "tiers_counter": {
+     "A1": 3,
+     "C": 9
+    }
+   },
+   {
+    "counter": {
+     "found": 2,
+     "registers": 2,
+     "verified_found": 0
+    },
+    "counter_tierA_removed": {
+     "found": 2,
+     "registers": 2,
+     "verified_found": 0
+    },
+    "design": "tt06__tt_um_kwilke_cdc_fifo",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 10
+    },
+    "grouping": {
+     "ami": 1.0,
+     "ari": 1.0,
+     "n": 158,
+     "random_blocks_ami_mean": -6.670190199695239e-05,
+     "singletons_ami": -8.566817565584496e-13,
+     "spread_ami_mean": 1.0
+    },
+    "tiers": {
+     "C": 2
+    },
+    "tiers_counter": {
+     "C": 2
+    }
+   },
+   {
+    "counter": {
+     "found": 2,
+     "registers": 4,
+     "verified_found": 2
+    },
+    "counter_tierA_removed": {
+     "found": 2,
+     "registers": 4,
+     "verified_found": 2
+    },
+    "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 68
+    },
+    "grouping": {
+     "ami": 0.5699824005187686,
+     "ari": 0.31683398138329205,
+     "n": 113,
+     "random_blocks_ami_mean": 0.01801712172674086,
+     "singletons_ami": 2.5621610837997463e-14,
+     "spread_ami_mean": 0.5699824005187686
+    },
+    "tiers": {
+     "C": 7
+    },
+    "tiers_counter": {
+     "C": 4
+    }
+   },
+   {
+    "counter": {
+     "found": 7,
+     "registers": 8,
+     "verified_found": 7
+    },
+    "counter_tierA_removed": {
+     "found": 7,
+     "registers": 8,
+     "verified_found": 7
+    },
+    "design": "tt05__tt_um_digital_clock_sellicott",
+    "flop_level": {
+     "refuted": 7,
+     "refuted_and_mismatching": 7,
+     "structure_kind_flops": 236
+    },
+    "grouping": {
+     "ami": 0.8265092202663287,
+     "ari": 0.644720600027218,
+     "n": 305,
+     "random_blocks_ami_mean": -0.0013020555796315837,
+     "singletons_ami": -1.2520838424379482e-13,
+     "spread_ami_mean": 0.8265092202663287
+    },
+    "tiers": {
+     "A1": 1,
+     "B": 2,
+     "C": 9
+    },
+    "tiers_counter": {
+     "B": 2,
+     "C": 6
+    }
+   },
+   {
+    "counter": {
+     "found": 1,
+     "registers": 1,
+     "verified_found": 0
+    },
+    "counter_tierA_removed": {
+     "found": 1,
+     "registers": 1,
+     "verified_found": 0
+    },
+    "design": "tt05__tt_um_nickjhay_processor",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 15
+    },
+    "grouping": {
+     "ami": 0.030731402565702254,
+     "ari": 0.009802099144527189,
+     "n": 201,
+     "random_blocks_ami_mean": -0.005327804505698195,
+     "singletons_ami": 9.08641392047723e-13,
+     "spread_ami_mean": 0.030731402565702254
+    },
+    "tiers": {
+     "C": 2
+    },
+    "tiers_counter": {
+     "C": 1
+    }
+   },
+   {
+    "counter": {
+     "found": 4,
+     "registers": 4,
+     "verified_found": 1
+    },
+    "counter_tierA_removed": {
+     "found": 4,
+     "registers": 4,
+     "verified_found": 1
+    },
+    "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 30
+    },
+    "grouping": {
+     "ami": 0.9606667242870686,
+     "ari": 0.936563273698994,
+     "n": 706,
+     "random_blocks_ami_mean": -0.0014341278401611881,
+     "singletons_ami": -1.8799522963527317e-12,
+     "spread_ami_mean": 0.9606667242870686
+    },
+    "tiers": {
+     "C": 6
+    },
+    "tiers_counter": {
+     "C": 4
+    }
+   },
+   {
+    "counter": {
+     "found": 2,
+     "registers": 5,
+     "verified_found": 2
+    },
+    "counter_tierA_removed": {
+     "found": 2,
+     "registers": 5,
+     "verified_found": 2
+    },
+    "design": "ttsky26a__tt_um_parakeet",
+    "flop_level": {
+     "refuted": 0,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 53
+    },
+    "grouping": {
+     "ami": 0.8598899629852587,
+     "ari": 0.9052419780656117,
+     "n": 77,
+     "random_blocks_ami_mean": -0.0032857142288390097,
+     "singletons_ami": -1.1019771124711423e-14,
+     "spread_ami_mean": 0.8598899629852588
+    },
+    "tiers": {
+     "C": 9
+    },
+    "tiers_counter": {
+     "C": 5
+    }
+   },
+   {
+    "counter": {
+     "found": 9,
+     "registers": 12,
+     "verified_found": 4
+    },
+    "counter_tierA_removed": {
+     "found": 3,
+     "registers": 5,
+     "verified_found": 3
+    },
+    "design": "ttcad25a__tt_um_space_invaders_game",
+    "flop_level": {
+     "refuted": 25,
+     "refuted_and_mismatching": 0,
+     "structure_kind_flops": 91
+    },
+    "grouping": {
+     "ami": 0.6437799384731838,
+     "ari": 0.5267340760216311,
+     "n": 197,
+     "random_blocks_ami_mean": -0.008700943513735937,
+     "singletons_ami": 5.027109192051543e-13,
+     "spread_ami_mean": 0.6437799384731838
+    },
+    "tiers": {
+     "A2": 7,
+     "B": 1,
+     "C": 8
+    },
+    "tiers_counter": {
+     "A2": 7,
+     "B": 1,
+     "C": 4
+    }
+   }
+  ]
+ },
+ "sources": {
+  "OUT_OF_SAMPLE_SOURCES": [
+   "recognize.py",
+   "controls.py",
+   "counter.py",
+   "lfsr.py",
+   "shift.py",
+   "group.py",
+   "netlist.py",
+   "params.py",
+   "schema.py",
+   "verify.py",
+   "corpus.py",
+   "score.py"
+  ],
+  "RECOGNIZER_SOURCES": [
+   "recognize.py",
+   "controls.py",
+   "counter.py",
+   "lfsr.py",
+   "shift.py",
+   "group.py",
+   "netlist.py",
+   "params.py",
+   "schema.py",
+   "verify.py"
+  ]
+ },
+ "tier_rows_R": [
+  {
+   "design": "tt04__tt_um_jayraj4021_SAP1_cpu",
+   "found": true,
+   "kind": "counter",
+   "register": "pc.pc_address",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "shift_register",
+   "register": "DUT.U1.PEStartEN",
+   "tier": "A1",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": true,
+   "kind": "counter",
+   "register": "DUT.U1.countPE",
+   "tier": "A1",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": true,
+   "kind": "counter",
+   "register": "DUT.U1.countRow",
+   "tier": "A1",
+   "verified_found": true
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": true,
+   "kind": "counter",
+   "register": "DUT.U1.countTile",
+   "tier": "A1",
+   "verified_found": true
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U10.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U2.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U3.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U4.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U5.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U6.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U7.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U8.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_SJ",
+   "found": false,
+   "kind": "counter",
+   "register": "DUT.U9.counter",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_kwilke_cdc_fifo",
+   "found": true,
+   "kind": "counter",
+   "register": "kwilke_fifo.readstate.read_address",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt06__tt_um_kwilke_cdc_fifo",
+   "found": true,
+   "kind": "counter",
+   "register": "kwilke_fifo.writestate.write_address",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": true,
+   "kind": "shift_register",
+   "register": "i_debouncer.sample_ff",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": false,
+   "kind": "shift_register",
+   "register": "i_kitt_scan_core.pre_lvout",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": true,
+   "kind": "counter",
+   "register": "i_debouncer.prescaler",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": false,
+   "kind": "counter",
+   "register": "i_kitt_scan_core.prescaler",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": true,
+   "kind": "counter",
+   "register": "i_kitt_scan_core.pwm_count",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": false,
+   "kind": "counter",
+   "register": "i_kitt_scan_core.state",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_yorimichi_kittscanner",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "i_debouncer.sync_ff",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": false,
+   "kind": "shift_register",
+   "register": "clock_inst.mode0_db_inst.samples",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": false,
+   "kind": "shift_register",
+   "register": "clock_inst.mode1_db_inst.samples",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "shift_register",
+   "register": "clock_inst.shift_out_inst.shift_out_inst.serial_data",
+   "tier": "A1",
+   "verified_found": false
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "shift_register",
+   "register": "clock_inst.shift_out_stb_delay",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.clock_gen_inst.sysclk_div_inst.counter",
+   "tier": "B",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.clock_inst.time_reg_inst.hours_count_inst.counter",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.clock_inst.time_reg_inst.minutes_count_inst.counter",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.clock_inst.time_reg_inst.seconds_count_inst.counter",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.refclk_div_inst.counter",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.refclk_gen_inst.refclk_div_inst.counter",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": false,
+   "kind": "counter",
+   "register": "clock_inst.shift_out_inst.shift_out_inst.transfer_state",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt05__tt_um_digital_clock_sellicott",
+   "found": true,
+   "kind": "counter",
+   "register": "clock_inst.shift_out_inst.shift_reg_div_inst.counter",
+   "tier": "B",
+   "verified_found": true
+  },
+  {
+   "design": "tt05__tt_um_nickjhay_processor",
+   "found": true,
+   "kind": "counter",
+   "register": "text_idx",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "tt05__tt_um_nickjhay_processor",
+   "found": false,
+   "kind": "synchronizer",
+   "register": "sys_in1_buffer",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "counter",
+   "register": "U1.UART1.UART_RX1.clkCount",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "counter",
+   "register": "U1.UART1.UART_RX1.index",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "counter",
+   "register": "U1.UART1.UART_TX1.clkCount",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "counter",
+   "register": "U1.UART1.UART_TX1.index",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "U1.UART1.UART_RX1.regIn",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "U1.UART1.UART_RX1.regInMeta",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "shift_register",
+   "register": "driver.driver.shift_reg",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": false,
+   "kind": "counter",
+   "register": "race_stage",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": false,
+   "kind": "counter",
+   "register": "speed",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": false,
+   "kind": "counter",
+   "register": "stage_timer",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "counter",
+   "register": "vga_sync_gen.hpos",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "counter",
+   "register": "vga_sync_gen.vpos",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "driver.driver.pmod_clk_sync",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "driver.driver.pmod_data_sync",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26a__tt_um_parakeet",
+   "found": true,
+   "kind": "synchronizer",
+   "register": "driver.driver.pmod_latch_sync",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "shift_register",
+   "register": "lfsr",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "abullet_y",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "barrier_health[0]",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "barrier_health[1]",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "barrier_health[2]",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "barrier_health[3]",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "group_x",
+   "tier": "B",
+   "verified_found": true
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "counter",
+   "register": "pb_y",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "counter",
+   "register": "score",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "shooter_lives",
+   "tier": "A2",
+   "verified_found": true
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "shooter_x",
+   "tier": "A2",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": true,
+   "kind": "counter",
+   "register": "sync_gen.hpos",
+   "tier": "C",
+   "verified_found": true
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "counter",
+   "register": "sync_gen.vpos",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "synchronizer",
+   "register": "prev_button0",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "synchronizer",
+   "register": "prev_button1",
+   "tier": "C",
+   "verified_found": false
+  },
+  {
+   "design": "ttcad25a__tt_um_space_invaders_game",
+   "found": false,
+   "kind": "synchronizer",
+   "register": "prev_button2",
+   "tier": "C",
+   "verified_found": false
+  }
+ ]
+}

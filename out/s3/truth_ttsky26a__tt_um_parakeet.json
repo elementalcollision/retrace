@@ -1,0 +1,3572 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:ttsky26a/tt_um_parakeet",
+ "registers": [
+  {
+   "name": "driver.driver.data_reg",
+   "width": 12,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_121440_92480",
+     "rtl_bit": "driver.driver.data_reg[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_120520_97920",
+     "rtl_bit": "driver.driver.data_reg[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_119600_95200",
+     "rtl_bit": "driver.driver.data_reg[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_113620_92480",
+     "rtl_bit": "driver.driver.data_reg[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_121900_76160",
+     "rtl_bit": "driver.driver.data_reg[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_122360_68000",
+     "rtl_bit": "driver.driver.data_reg[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_121900_70720",
+     "rtl_bit": "driver.driver.data_reg[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_120060_73440",
+     "rtl_bit": "driver.driver.data_reg[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_112240_87040",
+     "rtl_bit": "driver.driver.data_reg[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_119140_78880",
+     "rtl_bit": "driver.driver.data_reg[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_118220_81600",
+     "rtl_bit": "driver.driver.data_reg[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_119140_84320",
+     "rtl_bit": "driver.driver.data_reg[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.pmod_clk_prev",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_147660_100640",
+     "rtl_bit": "driver.driver.pmod_clk_prev",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.pmod_clk_sync",
+   "width": 2,
+   "kind": "synchronizer",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {
+    "stages": 2,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_132020_103360",
+     "rtl_bit": "driver.driver.pmod_clk_sync[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_144440_103360",
+     "rtl_bit": "driver.driver.pmod_clk_sync[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.pmod_data_sync",
+   "width": 2,
+   "kind": "synchronizer",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {
+    "stages": 2,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_123740_106080",
+     "rtl_bit": "driver.driver.pmod_data_sync[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_135240_100640",
+     "rtl_bit": "driver.driver.pmod_data_sync[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.pmod_latch_prev",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_119140_100640",
+     "rtl_bit": "driver.driver.pmod_latch_prev",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.pmod_latch_sync",
+   "width": 2,
+   "kind": "synchronizer",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {
+    "stages": 2,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_109940_103360",
+     "rtl_bit": "driver.driver.pmod_latch_sync[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_117760_103360",
+     "rtl_bit": "driver.driver.pmod_latch_sync[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "driver.driver.shift_reg",
+   "width": 12,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "gamepad_pmod_driver",
+   "params": {
+    "lanes": 1,
+    "depth": 12,
+    "direction": "toward MSB",
+    "serial_in": [
+     "driver.driver.pmod_data_sync[1]"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k-1] on 11 of 11 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_138920_97920",
+     "rtl_bit": "driver.driver.shift_reg[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_141220_92480",
+     "rtl_bit": "driver.driver.shift_reg[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_144900_95200",
+     "rtl_bit": "driver.driver.shift_reg[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_144900_89760",
+     "rtl_bit": "driver.driver.shift_reg[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_145360_84320",
+     "rtl_bit": "driver.driver.shift_reg[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_144440_70720",
+     "rtl_bit": "driver.driver.shift_reg[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_144900_68000",
+     "rtl_bit": "driver.driver.shift_reg[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_144900_73440",
+     "rtl_bit": "driver.driver.shift_reg[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_144900_78880",
+     "rtl_bit": "driver.driver.shift_reg[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_145360_81600",
+     "rtl_bit": "driver.driver.shift_reg[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_136620_78880",
+     "rtl_bit": "driver.driver.shift_reg[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_135700_81600",
+     "rtl_bit": "driver.driver.shift_reg[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "race_stage",
+   "width": 3,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_parakeet",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 5,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_46460_103360",
+     "rtl_bit": "race_stage[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_52440_100640",
+     "rtl_bit": "race_stage[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_47380_95200",
+     "rtl_bit": "race_stage[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "road_z",
+   "width": 12,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_parakeet",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_81880_87040",
+     "rtl_bit": "road_z[0]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_85100_78880",
+     "rtl_bit": "road_z[1]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_92000_76160",
+     "rtl_bit": "road_z[2]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_103960_78880",
+     "rtl_bit": "road_z[3]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_103040_73440",
+     "rtl_bit": "road_z[4]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_104420_68000",
+     "rtl_bit": "road_z[5]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_116380_59840",
+     "rtl_bit": "road_z[6]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": null,
+     "rtl_bit": "road_z[7]",
+     "note": "unused (removed)"
+    },
+    {
+     "index": 8,
+     "flop": null,
+     "rtl_bit": "road_z[8]",
+     "note": "unused (removed)"
+    },
+    {
+     "index": 9,
+     "flop": null,
+     "rtl_bit": "road_z[9]",
+     "note": "unused (removed)"
+    },
+    {
+     "index": 10,
+     "flop": null,
+     "rtl_bit": "road_z[10]",
+     "note": "unused (removed)"
+    },
+    {
+     "index": 11,
+     "flop": null,
+     "rtl_bit": "road_z[11]",
+     "note": "unused (removed)"
+    }
+   ]
+  },
+  {
+   "name": "speed",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_parakeet",
+   "params": {
+    "direction": "updown",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_83260_103360",
+     "rtl_bit": "speed[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_71300_100640",
+     "rtl_bit": "speed[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_97980_103360",
+     "rtl_bit": "speed[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_102120_95200",
+     "rtl_bit": "speed[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "stage_timer",
+   "width": 8,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_parakeet",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 256,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_28520_95200",
+     "rtl_bit": "stage_timer[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_17940_95200",
+     "rtl_bit": "stage_timer[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_17940_92480",
+     "rtl_bit": "stage_timer[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_7820_100640",
+     "rtl_bit": "stage_timer[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_7820_106080",
+     "rtl_bit": "stage_timer[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_9200_103360",
+     "rtl_bit": "stage_timer[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_29440_100640",
+     "rtl_bit": "stage_timer[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_31280_103360",
+     "rtl_bit": "stage_timer[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vblank_d",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_parakeet",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_59340_87040",
+     "rtl_bit": "vblank_d",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.hpos",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_7360_65280",
+     "rtl_bit": "vga_sync_gen.hpos[0]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_5980_62560",
+     "rtl_bit": "vga_sync_gen.hpos[1]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_70380_62560",
+     "rtl_bit": "vga_sync_gen.hpos[2]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_64400_59840",
+     "rtl_bit": "vga_sync_gen.hpos[3]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_82340_65280",
+     "rtl_bit": "vga_sync_gen.hpos[4]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_85100_68000",
+     "rtl_bit": "vga_sync_gen.hpos[5]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_82800_70720",
+     "rtl_bit": "vga_sync_gen.hpos[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_76360_73440",
+     "rtl_bit": "vga_sync_gen.hpos[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_68540_73440",
+     "rtl_bit": "vga_sync_gen.hpos[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_68080_76160",
+     "rtl_bit": "vga_sync_gen.hpos[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.hpos__retimed",
+   "width": 6,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_5980_62560",
+     "rtl_bit": "dx_road[1]",
+     "how": "retimed",
+     "holds": "dx_road[1], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[1:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_64400_59840",
+     "rtl_bit": "dx_road[3]",
+     "how": "retimed",
+     "holds": "dx_road[3], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_70380_62560",
+     "rtl_bit": "dx_road[2]",
+     "how": "retimed",
+     "holds": "dx_road[2], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[2:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_7360_65280",
+     "rtl_bit": "dx_road[0]",
+     "how": "retimed",
+     "holds": "dx_road[0], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_82340_65280",
+     "rtl_bit": "dx_road[4]",
+     "how": "retimed",
+     "holds": "dx_road[4], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[4:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_85100_68000",
+     "rtl_bit": "dx_road[5]",
+     "how": "retimed",
+     "holds": "dx_road[5], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.hpos[5:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.hsync",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_62560_97920",
+     "rtl_bit": "vga_sync_gen.hsync",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.vpos",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_5980_89760",
+     "rtl_bit": "vga_sync_gen.vpos[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_9660_87040",
+     "rtl_bit": "vga_sync_gen.vpos[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_17480_87040",
+     "rtl_bit": "vga_sync_gen.vpos[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_6440_84320",
+     "rtl_bit": "vga_sync_gen.vpos[3]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_11500_76160",
+     "rtl_bit": "vga_sync_gen.vpos[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_7820_68000",
+     "rtl_bit": "vga_sync_gen.vpos[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_12420_70720",
+     "rtl_bit": "vga_sync_gen.vpos[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_27140_78880",
+     "rtl_bit": "vga_sync_gen.vpos[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_33120_84320",
+     "rtl_bit": "vga_sync_gen.vpos[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_34500_87040",
+     "rtl_bit": "vga_sync_gen.vpos[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.vpos__retimed",
+   "width": 1,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_6440_84320",
+     "rtl_bit": "depth_idx[0]",
+     "how": "retimed",
+     "holds": "depth_idx[0], one cycle ahead",
+     "function_of": [
+      "vga_sync_gen.vpos[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.vsync",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_63020_103360",
+     "rtl_bit": "vga_sync_gen.vsync",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [
+  {
+   "name": "driver.driver.pmod_clk_sync + driver.driver.pmod_data_sync + driver.driver.pmod_latch_sync (copy_lanes)",
+   "kind": "synchronizer",
+   "registers": [
+    "driver.driver.pmod_clk_sync",
+    "driver.driver.pmod_data_sync",
+    "driver.driver.pmod_latch_sync"
+   ],
+   "reason": "rule copy_lanes: 3 lanes of depth 2 with input-pin heads, flop controls: sync reset !rst_n, sync reset value 0. equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+   "flops": [
+    "dfxtp_2_109940_103360",
+    "dfxtp_2_117760_103360",
+    "dfxtp_2_132020_103360",
+    "dfxtp_2_144440_103360",
+    "dfxtp_2_123740_106080",
+    "dfxtp_2_135240_100640"
+   ],
+   "params": {
+    "stages": 2,
+    "order": [
+     [
+      "dfxtp_2_109940_103360",
+      "dfxtp_2_117760_103360"
+     ],
+     [
+      "dfxtp_2_132020_103360",
+      "dfxtp_2_144440_103360"
+     ],
+     [
+      "dfxtp_2_123740_106080",
+      "dfxtp_2_135240_100640"
+     ]
+    ]
+   },
+   "rules": [
+    "copy_lanes"
+   ]
+  }
+ ],
+ "flops": {
+  "dfxtp_2_102120_95200": {
+   "registers": [
+    "speed"
+   ],
+   "primary": "speed"
+  },
+  "dfxtp_2_103040_73440": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_103960_78880": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_104420_68000": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_109940_103360": {
+   "registers": [
+    "driver.driver.pmod_latch_sync"
+   ],
+   "primary": "driver.driver.pmod_latch_sync"
+  },
+  "dfxtp_2_112240_87040": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_113620_92480": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_11500_76160": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_116380_59840": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_117760_103360": {
+   "registers": [
+    "driver.driver.pmod_latch_sync"
+   ],
+   "primary": "driver.driver.pmod_latch_sync"
+  },
+  "dfxtp_2_118220_81600": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_119140_100640": {
+   "registers": [
+    "driver.driver.pmod_latch_prev"
+   ],
+   "primary": "driver.driver.pmod_latch_prev"
+  },
+  "dfxtp_2_119140_78880": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_119140_84320": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_119600_95200": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_120060_73440": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_120520_97920": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_121440_92480": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_121900_70720": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_121900_76160": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_122360_68000": {
+   "registers": [
+    "driver.driver.data_reg"
+   ],
+   "primary": "driver.driver.data_reg"
+  },
+  "dfxtp_2_123740_106080": {
+   "registers": [
+    "driver.driver.pmod_data_sync"
+   ],
+   "primary": "driver.driver.pmod_data_sync"
+  },
+  "dfxtp_2_12420_70720": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_132020_103360": {
+   "registers": [
+    "driver.driver.pmod_clk_sync"
+   ],
+   "primary": "driver.driver.pmod_clk_sync"
+  },
+  "dfxtp_2_135240_100640": {
+   "registers": [
+    "driver.driver.pmod_data_sync"
+   ],
+   "primary": "driver.driver.pmod_data_sync"
+  },
+  "dfxtp_2_135700_81600": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_136620_78880": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_138920_97920": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_141220_92480": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144440_103360": {
+   "registers": [
+    "driver.driver.pmod_clk_sync"
+   ],
+   "primary": "driver.driver.pmod_clk_sync"
+  },
+  "dfxtp_2_144440_70720": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144900_68000": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144900_73440": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144900_78880": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144900_89760": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_144900_95200": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_145360_81600": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_145360_84320": {
+   "registers": [
+    "driver.driver.shift_reg"
+   ],
+   "primary": "driver.driver.shift_reg"
+  },
+  "dfxtp_2_147660_100640": {
+   "registers": [
+    "driver.driver.pmod_clk_prev"
+   ],
+   "primary": "driver.driver.pmod_clk_prev"
+  },
+  "dfxtp_2_17480_87040": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_17940_92480": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_17940_95200": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_27140_78880": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_28520_95200": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_29440_100640": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_31280_103360": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_33120_84320": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_34500_87040": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_46460_103360": {
+   "registers": [
+    "race_stage"
+   ],
+   "primary": "race_stage"
+  },
+  "dfxtp_2_47380_95200": {
+   "registers": [
+    "race_stage"
+   ],
+   "primary": "race_stage"
+  },
+  "dfxtp_2_52440_100640": {
+   "registers": [
+    "race_stage"
+   ],
+   "primary": "race_stage"
+  },
+  "dfxtp_2_59340_87040": {
+   "registers": [
+    "vblank_d"
+   ],
+   "primary": "vblank_d"
+  },
+  "dfxtp_2_5980_62560": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_5980_89760": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_62560_97920": {
+   "registers": [
+    "vga_sync_gen.hsync"
+   ],
+   "primary": "vga_sync_gen.hsync"
+  },
+  "dfxtp_2_63020_103360": {
+   "registers": [
+    "vga_sync_gen.vsync"
+   ],
+   "primary": "vga_sync_gen.vsync"
+  },
+  "dfxtp_2_64400_59840": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_6440_84320": {
+   "registers": [
+    "vga_sync_gen.vpos",
+    "vga_sync_gen.vpos__retimed"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_68080_76160": {
+   "registers": [
+    "vga_sync_gen.hpos"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_68540_73440": {
+   "registers": [
+    "vga_sync_gen.hpos"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_70380_62560": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_71300_100640": {
+   "registers": [
+    "speed"
+   ],
+   "primary": "speed"
+  },
+  "dfxtp_2_7360_65280": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_76360_73440": {
+   "registers": [
+    "vga_sync_gen.hpos"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_7820_100640": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_7820_106080": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_7820_68000": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_81880_87040": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_82340_65280": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_82800_70720": {
+   "registers": [
+    "vga_sync_gen.hpos"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_83260_103360": {
+   "registers": [
+    "speed"
+   ],
+   "primary": "speed"
+  },
+  "dfxtp_2_85100_68000": {
+   "registers": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.hpos__retimed"
+   ],
+   "primary": "vga_sync_gen.hpos"
+  },
+  "dfxtp_2_85100_78880": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_92000_76160": {
+   "registers": [
+    "road_z"
+   ],
+   "primary": "road_z"
+  },
+  "dfxtp_2_9200_103360": {
+   "registers": [
+    "stage_timer"
+   ],
+   "primary": "stage_timer"
+  },
+  "dfxtp_2_9660_87040": {
+   "registers": [
+    "vga_sync_gen.vpos"
+   ],
+   "primary": "vga_sync_gen.vpos"
+  },
+  "dfxtp_2_97980_103360": {
+   "registers": [
+    "speed"
+   ],
+   "primary": "speed"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$procmux$222",
+   "type": "$mux",
+   "module": "driver",
+   "src": "project.v:130",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "gp_a_held",
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\driver.\\decoder.$eq$gamepad_pmod_single.v:147$129",
+   "type": "$eq",
+   "module": "driver.decoder",
+   "src": "gamepad_pmod_single.v:147",
+   "widths": {
+    "A": 12,
+    "B": 12,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4095
+   },
+   "feeds": [
+    "race_stage",
+    "road_z",
+    "speed",
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\driver.\\decoder.$ternary$gamepad_pmod_single.v:149$133",
+   "type": "$mux",
+   "module": "driver.decoder",
+   "src": "gamepad_pmod_single.v:149",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "S": 1,
+    "Y": 9
+   },
+   "signed": false,
+   "select": "driver.decoder.reg_empty",
+   "feeds": [
+    "race_stage",
+    "road_z",
+    "speed",
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$209",
+   "type": "$mux",
+   "module": "driver.decoder",
+   "src": "project.v:126",
+   "widths": {
+    "A": 12,
+    "B": 12,
+    "S": 1,
+    "Y": 12
+   },
+   "signed": false,
+   "select": "gp_start_held",
+   "feeds": [
+    "road_z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$227",
+   "type": "$mux",
+   "module": "driver.decoder",
+   "src": "project.v:126",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "gp_start_held",
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$238",
+   "type": "$mux",
+   "module": "driver.decoder",
+   "src": "project.v:103",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "gp_start_held",
+   "feeds": [
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$249",
+   "type": "$mux",
+   "module": "driver.decoder",
+   "src": "project.v:103",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "gp_start_held",
+   "feeds": [
+    "race_stage"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:108$16",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:108",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "race_stage"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:110$18",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:110",
+   "widths": {
+    "A": 8,
+    "B": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:131$22",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:131",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:138$25",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:138",
+   "widths": {
+    "A": 12,
+    "B": 4,
+    "Y": 12
+   },
+   "signed": false,
+   "feeds": [
+    "road_z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:171$31",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:171",
+   "widths": {
+    "A": 7,
+    "B": 7,
+    "Y": 7
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$eq$project.v:176$34",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:176",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1023
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$eq$project.v:213$91",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:213",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$eq$project.v:218$96",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:218",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "race_stage"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$eq$project.v:94$10",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:94",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "road_z",
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$project.v:94$11",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:94",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "road_z",
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$project.v:96$13",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:96",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 255
+   },
+   "feeds": [
+    "race_stage",
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$176_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:164",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 31
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$177_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:163",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 30
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$178_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:163",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 29
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$179_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:162",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 28
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$180_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:162",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 27
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$181_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:161",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 26
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$182_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:161",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 25
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$183_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:160",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 24
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$184_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:160",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 23
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$185_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:159",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 22
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$186_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:159",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 21
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$187_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:158",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 20
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$188_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:158",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 19
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$189_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:157",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 18
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$190_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:157",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 17
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$191_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:156",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 16
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$192_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:156",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$193_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:155",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$194_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:155",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$195_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:154",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$196_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:154",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$197_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:153",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$198_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:153",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$199_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:152",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$200_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:152",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$201_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:151",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$202_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:151",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$203_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:150",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$204_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:150",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$205_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:149",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$206_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:149",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:143$26",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:143",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 240
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:188$40",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:188",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 240
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:194$47",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:194",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 340
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:196$54",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:196",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 346
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:200$63",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:200",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 272
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:202$70",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:202",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 278
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:204$77",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:204",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 288
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:70$4",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:70",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 480
+   },
+   "feeds": [
+    "race_stage",
+    "road_z",
+    "speed",
+    "stage_timer",
+    "vblank_d"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$lt$project.v:188$41",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:188",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 400
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:194$48",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:194",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 368
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:196$55",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:196",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 362
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:202$71",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:202",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 294
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:204$78",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:204",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 300
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$mul$project.v:170$30",
+   "type": "$mul",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:170",
+   "widths": {
+    "A": 11,
+    "B": 12,
+    "Y": 23
+   },
+   "signed": true,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$217",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:133",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(speed[0] | speed[1] | speed[2] | speed[3])",
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$220",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:131",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(speed != 4'b1111)",
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$224",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:129",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "driving",
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$235",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:106",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "stage_done",
+   "feeds": [
+    "stage_timer"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$246",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:106",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "stage_done",
+   "feeds": [
+    "race_stage"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.v:108$17",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:108",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "(race_stage == 3'b100)",
+   "feeds": [
+    "race_stage"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.v:120$19",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:120",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "driving",
+   "feeds": [
+    "road_z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.v:179$36",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:179",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "chk_grass",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:180$37",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:180",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "wy[5]",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:181$38",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:181",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "on_road",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:182$39",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:182",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "is_floor",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:212$95",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:212",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "<logic_not project.v:212>",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:213$94",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:213",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "(race_stage == 1'b1)",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:219$98",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:219",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "show_go",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:222$100",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:222",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "banner_on",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:223$101",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:223",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "vis",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$294",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$296",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ne$project.v:131$21",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:131",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ne$project.v:210$89",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:210",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$175",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:164",
+   "widths": {
+    "A": 11,
+    "B": 352,
+    "S": 32,
+    "Y": 11
+   },
+   "signed": false,
+   "select": "32 selects",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$sub$project.v:133$24",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:133",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "speed"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$sub$project.v:144$27",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:144",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 240
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$sub$project.v:169$29",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 11
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 320
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$xor$project.v:173$32",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:173",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true,
+   "xor_group": 0
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$add$hvsync_generator.v:50$111",
+   "type": "$add",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:50",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "vga_sync_gen.hpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$add$hvsync_generator.v:61$117",
+   "type": "$add",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:61",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "vga_sync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$eq$hvsync_generator.v:40$102",
+   "type": "$eq",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:40",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 799
+   },
+   "feeds": [
+    "vga_sync_gen.hpos",
+    "vga_sync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$eq$hvsync_generator.v:41$104",
+   "type": "$eq",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:41",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 524
+   },
+   "feeds": [
+    "vga_sync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$ge$hvsync_generator.v:46$107",
+   "type": "$ge",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:46",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 656
+   },
+   "feeds": [
+    "vga_sync_gen.hsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$ge$hvsync_generator.v:56$113",
+   "type": "$ge",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:56",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 490
+   },
+   "feeds": [
+    "vga_sync_gen.vsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ge$project.v:189$43",
+   "type": "$ge",
+   "module": "vga_sync_gen",
+   "src": "project.v:189",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 80
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:203$73",
+   "type": "$ge",
+   "module": "vga_sync_gen",
+   "src": "project.v:203",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 94
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:205$80",
+   "type": "$ge",
+   "module": "vga_sync_gen",
+   "src": "project.v:205",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 86
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$hvsync_generator.v:46$108",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:46",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 751
+   },
+   "feeds": [
+    "vga_sync_gen.hsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$hvsync_generator.v:56$114",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:56",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 491
+   },
+   "feeds": [
+    "vga_sync_gen.vsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$lt$hvsync_generator.v:65$118",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:65",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 640
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$lt$hvsync_generator.v:65$119",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "hvsync_generator.v:65",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 480
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:189$45",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "project.v:189",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 130
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:201$68",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "project.v:201",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 124
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:203$75",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "project.v:203",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 116
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:205$82",
+   "type": "$lt",
+   "module": "vga_sync_gen",
+   "src": "project.v:205",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 102
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "ttsky26a/tt_um_parakeet",
+   "macro": "tt_um_parakeet",
+   "title": "parakeet",
+   "author": "fivetonsofflax",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-sky-26a",
+   "shuttle_commit": "071ada00384fe1282ca50d4d7aae5867e183c086"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26a/071ada00384fe1282ca50d4d7aae5867e183c086/projects/tt_um_parakeet/tt_um_parakeet.oas",
+    "git_blob": "0b2452bf2bf2b45747e59aa629d395994a9993a4"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26a/071ada00384fe1282ca50d4d7aae5867e183c086/projects/tt_um_parakeet/tt_um_parakeet.v",
+    "git_blob": "441cbd74f012401f5fd9cba16c571046b4a5cc08"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26a/071ada00384fe1282ca50d4d7aae5867e183c086/projects/tt_um_parakeet/tt_um_parakeet.lef",
+    "git_blob": "8cab4ec1a32bc88af9c7cb152cf8e0b0bc6b5ce0"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26a/071ada00384fe1282ca50d4d7aae5867e183c086/projects/tt_um_parakeet/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/Fivetonsofflax/ttsky-um-parakeet",
+   "commit": "6f6177af93df2d758c09029397365cd443e0c47f",
+   "top_module": "tt_um_parakeet",
+   "source_files": [
+    "project.v",
+    "hvsync_generator.v",
+    "gamepad_pmod_single.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [
+    {
+     "rule": "copy_lanes",
+     "kind": "synchronizer",
+     "registers": [
+      "driver.driver.pmod_clk_sync",
+      "driver.driver.pmod_data_sync",
+      "driver.driver.pmod_latch_sync"
+     ],
+     "flops": 6,
+     "detail": "3 lanes of depth 2 with input-pin heads, flop controls: sync reset !rst_n, sync reset value 0",
+     "added": "driver.driver.pmod_clk_sync + driver.driver.pmod_data_sync + driver.driver.pmod_latch_sync (copy_lanes)"
+    }
+   ],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/hvsync_generator.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/gamepad_pmod_single.v\nhierarchy -check -top tt_um_parakeet\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/hvsync_generator.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/repo/src/gamepad_pmod_single.v\nhierarchy -check -top tt_um_parakeet -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26a__tt_um_parakeet/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 77
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [
+   "vga_sync_gen.hpos__retimed",
+   "vga_sync_gen.vpos__retimed"
+  ],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 1115,
+   "netlist_logic_instances": 1115,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 1117,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 29,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 18,
+   "registers_by_kind": {
+    "accumulator": 1,
+    "counter": 5,
+    "data_register": 1,
+    "flag": 5,
+    "other": 2,
+    "shift_register": 1,
+    "synchronizer": 3
+   },
+   "units": 1,
+   "rtl_flop_bits": 82,
+   "netlist_flops": 77,
+   "netlist_flops_labelled": 77,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 77,
+    "unused (removed)": 5
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [
+   "frame_count"
+  ],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 4,
+   "rounds": 2,
+   "agree_per_round": [
+    70,
+    70
+   ],
+   "flops_checked": 77,
+   "match": 70,
+   "mismatch": [
+    "_1765_",
+    "_1766_",
+    "_1767_",
+    "_1768_",
+    "_1769_",
+    "_1770_",
+    "_1771_"
+   ],
+   "unchecked": [],
+   "exercised": 61,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 70,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 70
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 70
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 70,
+   "refuted": [
+    "_1765_",
+    "_1766_",
+    "_1767_",
+    "_1768_",
+    "_1769_",
+    "_1770_",
+    "_1771_"
+   ],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 8
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {
+    "proven": 7
+   },
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": [
+   "7 flops refuted: ['_1765_', '_1766_', '_1767_', '_1768_', '_1769_']"
+  ]
+ }
+}

@@ -1,0 +1,163 @@
+Permutations: K = 5 (5 valid), 1 distinct answers up to ids; scored-kind structure sets: common 14 of union 14, pairwise Jaccard {'min': 1.0, 'mean': 1.0, 'max': 1.0}
+  metric                                                  mean     min     max
+  macro_f1_registers                                     0.180   0.180   0.180
+  macro_f1_registers_exact                               0.120   0.120   0.120
+  micro_f1_registers                                     0.600   0.600   0.600
+  macro_f1_bits                                          0.212   0.212   0.212
+  macro_f1_registers_verified                            0.105   0.105   0.105
+  ami                                                    0.644   0.644   0.644
+  ari                                                    0.527   0.527   0.527
+  params_accuracy                                        0.833   0.833   0.833
+  params_certified_accuracy                              0.750   0.750   0.750
+  params_certified_compared                              8.000   8.000   8.000
+  params_transcribed_accuracy                            0.900   0.900   0.900
+  params_transcribed_compared                           10.000  10.000  10.000
+  verified                                               8.000   8.000   8.000
+  unknown                                                0.000   0.000   0.000
+  verified_vacuous_hold                                  1.000   1.000   1.000
+  verified_with_unchecked_params                         8.000   8.000   8.000
+  verified_with_dead_bits                                0.000   0.000   0.000
+  verified_load_hidden_share_mean                        0.535   0.535   0.535
+  verified_load_hidden_share_max                         1.000   1.000   1.000
+  shift_register.found_r                                 0.000   0.000   0.000
+  shift_register.exact_r                                 0.000   0.000   0.000
+  shift_register.verified_found_r                        0.000   0.000   0.000
+  shift_register.unverified_structures                   0.000   0.000   0.000
+  counter.found_p                                        0.692   0.692   0.692
+  counter.found_r                                        0.750   0.750   0.750
+  counter.exact_r                                        0.500   0.500   0.500
+  counter.verified_found_r                               0.333   0.333   0.333
+  counter.unverified_structures                          6.000   6.000   6.000
+  lfsr_crc.found_p                                       0.000   0.000   0.000
+  lfsr_crc.unverified_structures                         0.000   0.000   0.000
+  synchronizer.found_r                                   0.000   0.000   0.000
+  synchronizer.exact_r                                   0.000   0.000   0.000
+  synchronizer.verified_found_r                          0.000   0.000   0.000
+  synchronizer.unverified_structures                     0.000   0.000   0.000
+  order.counter.width<=2.within.score                    1.000   1.000   1.000
+  order.counter.width>=3.within.score                    1.000   1.000   1.000
+  order.data_register.width>=3.within.score              0.500   0.500   0.500
+
+First permutation (p1), in full:
+S3 score: design tt:ttcad25a/tt_um_space_invaders_game  truth 92b8fa876e52
+truth: 76 registers with flops (0 without), 197 flops, 0 shadow flops, 0 unmapped flops excluded, 0 declared units (0 synchronizer chain units)
+result: 60 structures (60 with labelled flops; by kind {'counter': 13, 'lfsr_crc': 1, 'data_register': 14, 'flag': 30, 'register_file_word': 2}), 60 groups over 197 flops; dropped: 0 flops (0 unmapped, 0 unknown) in 0 structures
+proofs: 36 structures claim 'proven'; 8 verified by the harness (harness (tools/s3/verify.py)); harness outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}; reason buckets {'unscored kind': 46, 'verified': 8, 'hold': 6}
+  scored kinds: shift_register 0/0 verified; counter 7/13 verified; lfsr_crc 1/1 verified; synchronizer 0/0 verified; unscored kinds: 46 structures
+
+Honesty (found = the recognizer's answer matched the register; verified = it matched a structure the HARNESS proved; 60/60 structures carry a verdict):
+  kind             regs strs    found R verif R  gap   verified/structures   unverified by reason
+  shift_register      1    0      0.000   0.000    0           0/0           -
+  counter            12   13      0.750   0.333    5           7/13          hold 6
+  lfsr_crc            0    1          -       -    0           1/1           -
+  synchronizer        3    0      0.000   0.000    0           0/0           -
+  every unverified structure by reason: {'unscored kind': 46, 'hold': 6} (including 46 of unscored kinds)
+  verified structures: 8 (8 with a verdict); vacuous hold 1 (emptied by {'verified': 1}); with a load case 4
+  load_hidden_share of the verified set: mean 0.535 max 1.000 over the 4 that name a load case; mean 0.268 over all 8 verified (a structure with no load case hides nothing)
+  params of the verified set: 8 carry an UNCHECKED parameter, 0 only certified ones; unchecked names {'load': 7, 'form': 1}
+    bit_order: pinned by the polynomial reconstruction (stage orientation: stage)
+  liveness: 0 verified structures carry a dead bit; 1 of 8 carry NO per-bit liveness obligation (only counter does); lfsr_crc polynomial certified 1/1
+  LIMITATION: found and verified are reported separately because the harness certifies fewer structures than the recognizer finds. On the development design the gap is the hold obligation: the count condition pins a reload register whose complement is not a bounded set of cubes, so no legal set of VERIFIED cases (the defining case, when_down and the reset cases) covers the space and the hold region cannot be discharged -- and an opaque load case may not be the thing that empties it. This is an ACCEPTED limitation of this freeze, not a recognizer miss and not a contract to widen (lead decision, 2026-09-23).
+    reason hold: control.hold is required for a counter and a shift_register and either was not claimed or the hold region could not be discharged (an opaque load case may not be what empties it)
+    reason unscored kind: not one of the four STRUCTURE_KINDS, so it is never verified
+
+OUT-OF-SAMPLE estimate, synthetic corpus holdout (tools/s3/corpus.py): 40 designs, 80 runs (128 train), from out/s3/honesty/corpus_holdout_eval.json
+  aggregation: per_register_and_unit; measured on the code in this tree (12 recognizer / harness sources hash as recorded)
+  kind                         found             exact    train: found / exact
+  shift_register       20/30  0.6667     18/30  0.6000    0.6944 / 0.6944
+  counter              28/44  0.6364     28/44  0.6364    0.7653 / 0.7296
+  lfsr_crc             14/14  1.0000     14/14  1.0000    1.0000 / 1.0000
+  synchronizer          6/6   1.0000      4/6   0.6667    0.8000 / 0.7000
+  grouping AMI mean 0.8453 median 1.0; false-positive structures {'counter': 2, 'synchronizer': 4}
+  caveat: The corpus is SYNTHETIC and was written by the same project as the recognizer; several of its classes (cohort 2) were added because the generalisation regression set showed them missing (changes.jsonl C23, C31). It is the best out-of-sample estimate that survives this round, not an independent one.
+  caveat: The generalisation regression sets (out/s3/review_generalisation, review_generalisation2) are NO LONGER held out: counter.py, lfsr.py, shift.py, controls.py and verify.py all consulted them (changes.jsonl C25).
+  caveat: TEMPO is the development design: every TEMPO figure is in-sample. Four recognizer fixes were traced from TEMPO misses by truth name (changes.jsonl C27-C30), and PC03, PC06, PC07, PC09, C01-C06, C10 and C21(d) were selected on TEMPO.
+  caveat: These rates come from ONE seeded corpus evaluation; they carry no confidence interval.
+  caveat: They describe the recognizer AND the harness verifier as of source.code_sha256: 'found' means the harness verified the structure, so a change to tools/s3/verify.py moves them as surely as a change to a recognizer module (review[1] issue 2).
+  caveat: THE false_positive_structures COLUMN OVERSTATES; found / exact and their denominators do NOT. out/s3/review_generalisation2/evaluate.py's outcomes() builds its item list from truth registers whose kind is in STRUCTURE_KINDS, so a 'flag' register's alt_kinds are never consulted. Under the truth's TOGGLE_RULE a 1-bit toggle is kind 'flag' with alt_kinds ['counter'] -- the truth EXPLICITLY ACCEPTS a counter over it -- yet such a prediction matches no item there and is scored a false positive. Counted on the evaluation this document was derived from, as false-positive structures of width 1 lying entirely in one truth register of kind 'flag': holdout 2 of 6, train 10 of 16. The overstatement is in the CONSERVATIVE direction. tools/s3/score.py -- the scorer every published table comes from -- does not make this error: score.Truth builds accepts from alt_kinds for EVERY truth register, a flag included. The scoring rule is left as it is on purpose: changing it would move a published out-of-sample number without a lead decision (changes.jsonl T04, T14).
+
+Register level, all structures: found | exact  (P = structures matched / structures, R = registers found / registers; IoU > 0.5, one to one; R75 = found at IoU >= 0.75; * = support < 3)
+  kind           mode      regs strs       P     R    F1 |     P     R    F1 |   R75  mIoU   designs found all/any/total
+  shift_register strict      1*    0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/1
+  counter        strict     12    13   0.692 0.750 0.720 | 0.462 0.500 0.480 | 0.583 0.901   6/6/9
+  lfsr_crc       strict      0*    1   0.000     - 0.000 | 0.000     - 0.000 |     -     -   0/0/0
+  synchronizer   strict      3     0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/3
+  F1 strict: macro found 0.180 exact 0.120; micro found 0.600 exact 0.400
+  shift_register lenient     1*    0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/1
+  counter        lenient    12    13   0.692 0.750 0.720 | 0.462 0.500 0.480 | 0.583 0.901   6/6/9
+  lfsr_crc       lenient     0*    1   0.000     - 0.000 | 0.000     - 0.000 |     -     -   0/0/0
+  synchronizer   lenient     3     0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/3
+  F1 lenient: macro found 0.180 exact 0.120; micro found 0.600 exact 0.400
+Bit level, all structures (one class per flop):  kind             pred  supp   P     R     F1   | lenient P R F1
+                             shift_register      0     8     - 0.000 0.000 |     - 0.000 0.000
+                             counter            59    80 1.000 0.738 0.849 | 1.000 0.738 0.849
+                             lfsr_crc            8     0 0.000     - 0.000 | 0.000     - 0.000
+                             synchronizer        0     3     - 0.000 0.000 |     - 0.000 0.000
+  F1 bits: macro strict 0.212 lenient 0.212; micro strict 0.747 lenient 0.747; flops in structures of several kinds 0
+
+Register level, harness-verified structures only: found | exact  (P = structures matched / structures, R = registers found / registers; IoU > 0.5, one to one; R75 = found at IoU >= 0.75; * = support < 3)
+  kind           mode      regs strs       P     R    F1 |     P     R    F1 |   R75  mIoU   designs found all/any/total
+  shift_register strict      1*    0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/1
+  counter        strict     12     7   0.571 0.333 0.421 | 0.286 0.167 0.211 | 0.250 0.889   4/4/9
+  lfsr_crc       strict      0*    1   0.000     - 0.000 | 0.000     - 0.000 |     -     -   0/0/0
+  synchronizer   strict      3     0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/3
+  F1 strict: macro found 0.105 exact 0.053; micro found 0.333 exact 0.167
+  shift_register lenient     1*    0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/1
+  counter        lenient    12     7   0.571 0.333 0.421 | 0.286 0.167 0.211 | 0.250 0.889   4/4/9
+  lfsr_crc       lenient     0*    1   0.000     - 0.000 | 0.000     - 0.000 |     -     -   0/0/0
+  synchronizer   lenient     3     0       - 0.000 0.000 |     - 0.000 0.000 | 0.000     -   0/0/3
+  F1 lenient: macro found 0.105 exact 0.053; micro found 0.333 exact 0.167
+Bit level, harness-verified structures only (one class per flop):  kind             pred  supp   P     R     F1   | lenient P R F1
+                             shift_register      0     8     - 0.000 0.000 |     - 0.000 0.000
+                             counter            37    80 1.000 0.463 0.632 | 1.000 0.463 0.632
+                             lfsr_crc            8     0 0.000     - 0.000 | 0.000     - 0.000
+                             synchronizer        0     3     - 0.000 0.000 |     - 0.000 0.000
+  F1 bits: macro strict 0.158 lenient 0.158; micro strict 0.544 lenient 0.544; flops in structures of several kinds 0
+strict synchronizers: a synchronizer register that is a member of a declared chain unit (a synchronizer unit whose members are all synchronizer registers) is scored strictly through its chain units only
+
+Order (Kendall concordance over the truth's ordered pairs; unasserted pairs are ties worth 1/2; chance under random order; kappa = (score - chance) / (1 - chance)):
+  counter width<=2: 1/1 ordered, 1 all correct; within lanes 1.000 (coverage 1.00, chance 0.500, kappa 1.000) over 1 pairs
+  counter width>=3: 8/8 ordered, 8 all correct; within lanes 1.000 (coverage 1.00, chance 0.500, kappa 1.000) over 110 pairs
+  data_register width>=3: 0/2 ordered, 0 all correct; within lanes 0.500 (coverage 0.00, chance 0.500, kappa 0.000) over 81 pairs
+Parameters (only where the truth knows them): 15/18 correct (0.833; majority-value baseline 0.611, kappa 0.571); informative parameters 15/18 (0.833, baseline 0.611)
+  split (a compared parameter is CERTIFIED only when the harness VERIFIED the matched structure and named the parameter in the verdict's params_checked; every other compared parameter is TRANSCRIBED -- copied from the recognizer's answer and never checked):
+    CERTIFIED   6/8 (0.750)  over 2 parameter name(s): counter.direction, counter.step
+    TRANSCRIBED 9/10 (0.900)  over 2 parameter name(s): counter.direction, counter.step
+  counter.direction            9/9  majority 5/9  certified 4/4 transcribed 5/5
+  counter.step                 6/9  majority 6/9  certified 2/4 transcribed 4/5
+
+Grouping (truth partition = primary register of each flop; ungrouped flops are singletons):
+  all_flops (n=197, truth blocks 74, predicted 60): AMI 0.644  ARI 0.527  NMI 0.862  pair P/R/F1 0.502/0.585/0.540  purity 0.777/0.817  exact words 9/24 (lenient 9)  splits 11 merges 6
+    baselines: singletons AMI 0.000 ARI 0.000 NMI 0.837; random blocks (5 draws) AMI -0.009 ARI -0.004 NMI 0.632
+  multi_flop_registers (n=147, truth blocks 24, predicted 47): AMI 0.785  ARI 0.690  NMI 0.895  pair P/R/F1 0.879/0.585/0.702  purity 0.952/0.755  exact words 9/24 (lenient 9)  splits 11 merges 2
+    baselines: singletons AMI -0.000 ARI 0.000 NMI 0.752; random blocks (5 draws) AMI -0.003 ARI -0.002 NMI 0.411
+
+Baselines (strict, all structures):
+  majority_class: every flop its own structure of kind counter (the structure kind owning the most truth flops); groups: singletons
+    found R shift_register 0.000, counter 0.000, lfsr_crc     -, synchronizer 0.000; bit F1 shift_register 0.000, counter 0.578, lfsr_crc     -, synchronizer 0.000; F1 registers macro 0.000 micro 0.000; bits macro 0.193 micro 0.556
+  structural: copy graph: edge j->i when flop j is the only flop, other than i itself and the 'control flops' (flops in the next-state support of more than 5% of all flops), in the support of i's next-state function; components of >= 2 flops are groups; a simple path of >= 3 flops is a shift_register ordered head to tail, a 2-flop path whose head has no such flop in its support is a synchronizer, other components are data_register (unscored)
+    found R shift_register 0.000, counter 0.000, lfsr_crc     -, synchronizer 0.000; bit F1 shift_register 0.000, counter 0.000, lfsr_crc     -, synchronizer 0.000; F1 registers macro 0.000 micro 0.000; bits macro 0.000 micro 0.000; AMI 0.273 ARI 0.223
+
+[p1] recognizer: ok=True rc=0 wall 88.309 s, child peak RSS 286.5 MB (self-reported), OS sandbox sandbox-exec, audit-hook denials 0
+[p1] proofs: 8/60 structures verified by the harness (36 claimed proven; outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}); answer 8804c725a583
+[p1] of the verified: vacuous hold 1; with unchecked params 8; with dead bits 0; load_hidden_share mean 0.5351 max 1.0 over 4; unverified by reason {'unscored kind': 46, 'hold': 6}
+[p1] canonical order: {"classes_final": 6419, "classes_stable": 6361, "individualized": 28, "rounds": 64, "seconds": 0.048, "tied_cells": 0, "tied_nets": 0}
+[p2] recognizer: ok=True rc=0 wall 88.741 s, child peak RSS 289.1 MB (self-reported), OS sandbox sandbox-exec, audit-hook denials 0
+[p2] proofs: 8/60 structures verified by the harness (36 claimed proven; outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}); answer 8804c725a583
+[p2] of the verified: vacuous hold 1; with unchecked params 8; with dead bits 0; load_hidden_share mean 0.5351 max 1.0 over 4; unverified by reason {'unscored kind': 46, 'hold': 6}
+[p2] canonical order: {"classes_final": 6419, "classes_stable": 6361, "individualized": 28, "rounds": 64, "seconds": 0.046, "tied_cells": 0, "tied_nets": 0}
+[p3] recognizer: ok=True rc=0 wall 88.403 s, child peak RSS 287.4 MB (self-reported), OS sandbox sandbox-exec, audit-hook denials 0
+[p3] proofs: 8/60 structures verified by the harness (36 claimed proven; outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}); answer 8804c725a583
+[p3] of the verified: vacuous hold 1; with unchecked params 8; with dead bits 0; load_hidden_share mean 0.5351 max 1.0 over 4; unverified by reason {'unscored kind': 46, 'hold': 6}
+[p3] canonical order: {"classes_final": 6419, "classes_stable": 6361, "individualized": 28, "rounds": 64, "seconds": 0.046, "tied_cells": 0, "tied_nets": 0}
+[p4] recognizer: ok=True rc=0 wall 88.636 s, child peak RSS 310.5 MB (self-reported), OS sandbox sandbox-exec, audit-hook denials 0
+[p4] proofs: 8/60 structures verified by the harness (36 claimed proven; outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}); answer 8804c725a583
+[p4] of the verified: vacuous hold 1; with unchecked params 8; with dead bits 0; load_hidden_share mean 0.5351 max 1.0 over 4; unverified by reason {'unscored kind': 46, 'hold': 6}
+[p4] canonical order: {"classes_final": 6419, "classes_stable": 6361, "individualized": 28, "rounds": 64, "seconds": 0.046, "tied_cells": 0, "tied_nets": 0}
+[p5] recognizer: ok=True rc=0 wall 88.793 s, child peak RSS 286.3 MB (self-reported), OS sandbox sandbox-exec, audit-hook denials 0
+[p5] proofs: 8/60 structures verified by the harness (36 claimed proven; outcomes {'unscored kind': 46, 'verified': 8, 'hold': 6}); answer 8804c725a583
+[p5] of the verified: vacuous hold 1; with unchecked params 8; with dead bits 0; load_hidden_share mean 0.5351 max 1.0 over 4; unverified by reason {'unscored kind': 46, 'hold': 6}
+[p5] canonical order: {"classes_final": 6419, "classes_stable": 6361, "individualized": 28, "rounds": 64, "seconds": 0.046, "tied_cells": 0, "tied_nets": 0}
+modules ['tools.s3.recognize', 'tools.s3.shift', 'tools.s3.params', 'tools.s3.netlist', 'tools.s3.controls', 'tools.s3.lfsr', 'tools.s3.group', 'tools.s3.counter']; netlist f8fef33a2d64
+timings (s): {'extract_and_load_s': 2.167, 'total_s': 94.108}; harness peak RSS 298.7 MB
+wrote out/s3/runs/blind-ttcad25a__tt_um_space_invaders_game-20260923T165200Z-120ddfb7dc8a.json

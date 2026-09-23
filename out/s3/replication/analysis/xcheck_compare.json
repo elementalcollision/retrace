@@ -1,0 +1,2966 @@
+[
+ {
+  "figure": "A precondition holds for all 10",
+  "independent": true,
+  "canonical": true,
+  "agree": true
+ },
+ {
+  "figure": "A designs excluded from pooling",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A 12 OUT_OF_SAMPLE_SOURCES names",
+  "independent": [
+   "controls.py",
+   "corpus.py",
+   "counter.py",
+   "group.py",
+   "lfsr.py",
+   "netlist.py",
+   "params.py",
+   "recognize.py",
+   "schema.py",
+   "score.py",
+   "shift.py",
+   "verify.py"
+  ],
+  "canonical": [
+   "controls.py",
+   "corpus.py",
+   "counter.py",
+   "group.py",
+   "lfsr.py",
+   "netlist.py",
+   "params.py",
+   "recognize.py",
+   "schema.py",
+   "score.py",
+   "shift.py",
+   "verify.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A 12 hashes equal current tree",
+  "independent": true,
+  "canonical": true,
+  "agree": true
+ },
+ {
+  "figure": "A tt04__tt_um_jayraj4021_SAP1_cpu oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt04__tt_um_jayraj4021_SAP1_cpu recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt04__tt_um_jayraj4021_SAP1_cpu evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A tt04__tt_um_jayraj4021_SAP1_cpu other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26b__tt_um_tiny_8bit_cpu oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26b__tt_um_tiny_8bit_cpu recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26b__tt_um_tiny_8bit_cpu evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26b__tt_um_tiny_8bit_cpu other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_SJ oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_SJ recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_SJ evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_SJ other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_kwilke_cdc_fifo oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_kwilke_cdc_fifo recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_kwilke_cdc_fifo evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A tt06__tt_um_kwilke_cdc_fifo other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_yorimichi_kittscanner oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_yorimichi_kittscanner recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_yorimichi_kittscanner evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_yorimichi_kittscanner other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_digital_clock_sellicott oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_digital_clock_sellicott recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_digital_clock_sellicott evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_digital_clock_sellicott other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_nickjhay_processor oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_nickjhay_processor recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_nickjhay_processor evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A tt05__tt_um_nickjhay_processor other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_ieeeuoftasic_simproc oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_ieeeuoftasic_simproc recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_ieeeuoftasic_simproc evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A ttsky25b__tt_um_ieeeuoftasic_simproc other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26a__tt_um_parakeet oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26a__tt_um_parakeet recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26a__tt_um_parakeet evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A ttsky26a__tt_um_parakeet other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "A ttcad25a__tt_um_space_invaders_game oos12 mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttcad25a__tt_um_space_invaders_game recognizer_sources mismatches",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "A ttcad25a__tt_um_space_invaders_game evaluations with recognizer_sources mismatch",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "A ttcad25a__tt_um_space_invaders_game other code files differing from B1 (informational)",
+  "independent": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "canonical": [
+   "tools/s3/freeze.py",
+   "tools/s3/run.py",
+   "tools/s3/thirdparty.py"
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary R num/den",
+  "independent": [
+   19,
+   49
+  ],
+  "canonical": [
+   19,
+   49
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary R rate",
+  "independent": 0.3877551020408163,
+  "canonical": 0.3877551020408163,
+  "agree": true
+ },
+ {
+  "figure": "B primary R bootstrap 95%",
+  "independent": [
+   0.22448979591836735,
+   0.6285714285714286
+  ],
+  "canonical": [
+   0.22448979591836735,
+   0.6285714285714286
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary R designs_with_registers",
+  "independent": 9,
+  "canonical": 9,
+  "agree": true
+ },
+ {
+  "figure": "B primary B1 num/den",
+  "independent": [
+   23,
+   59
+  ],
+  "canonical": [
+   23,
+   59
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary B1 rate",
+  "independent": 0.3898305084745763,
+  "canonical": 0.3898305084745763,
+  "agree": true
+ },
+ {
+  "figure": "B primary B1 bootstrap 95%",
+  "independent": [
+   0.21621621621621623,
+   0.6458333333333334
+  ],
+  "canonical": [
+   0.21621621621621623,
+   0.6458333333333334
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary B1 designs_with_registers",
+  "independent": 10,
+  "canonical": 10,
+  "agree": true
+ },
+ {
+  "figure": "B primary R-B1 difference",
+  "independent": -0.0020754064337599742,
+  "canonical": -0.0020754064337599742,
+  "agree": true
+ },
+ {
+  "figure": "B primary R-B1 bootstrap 95% (my scheme: one generator, R matrix drawn first)",
+  "independent": [
+   -0.30665041007231947,
+   0.2930741522914776
+  ],
+  "canonical": [
+   -0.31213154116884323,
+   0.28529463183874954
+  ],
+  "agree": false
+ },
+ {
+  "figure": "B primary R-B1 bootstrap 95% (B1 matrix drawn first, as canonical documents)",
+  "independent": [
+   -0.31213154116884323,
+   0.28529463183874954
+  ],
+  "canonical": [
+   -0.31213154116884323,
+   0.28529463183874954
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary pooled num/den",
+  "independent": [
+   42,
+   108
+  ],
+  "canonical": [
+   42,
+   108
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary pooled rate",
+  "independent": 0.3888888888888889,
+  "canonical": 0.3888888888888889,
+  "agree": true
+ },
+ {
+  "figure": "B primary pooled bootstrap, 20 designs as one set",
+  "independent": [
+   0.25833333333333336,
+   0.5533980582524272
+  ],
+  "canonical": [
+   0.25833333333333336,
+   0.5533980582524272
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary pooled bootstrap, stratified (B1 then R)",
+  "independent": [
+   0.2616822429906542,
+   0.5517241379310345
+  ],
+  "canonical": [
+   0.2616822429906542,
+   0.5517241379310345
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary Fisher two-sided p",
+  "independent": 1.0,
+  "canonical": 1.0,
+  "agree": true
+ },
+ {
+  "figure": "B primary Clopper-Pearson R",
+  "independent": [
+   0.25197448279077606,
+   0.5376145090797706
+  ],
+  "canonical": [
+   0.25197448279077606,
+   0.5376145090797704
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary Clopper-Pearson B1",
+  "independent": [
+   0.26549146659474887,
+   0.5256214912235491
+  ],
+  "canonical": [
+   0.26549146659474887,
+   0.5256214912235491
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B primary Clopper-Pearson pooled",
+  "independent": [
+   0.29656308138152576,
+   0.48746999792037327
+  ],
+  "canonical": [
+   0.29656308138152576,
+   0.48746999792037327
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B verdict",
+  "independent": "consistent with freeze 1",
+  "canonical": "consistent with freeze 1",
+  "agree": true
+ },
+ {
+  "figure": "B per-design R tt04__tt_um_jayraj4021_SAP1_cpu (registers, verified_found, found)",
+  "independent": [
+   1,
+   1,
+   1
+  ],
+  "canonical": [
+   1,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R ttsky26b__tt_um_tiny_8bit_cpu (registers, verified_found, found)",
+  "independent": [
+   0,
+   0,
+   0
+  ],
+  "canonical": [
+   0,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R tt06__tt_um_SJ (registers, verified_found, found)",
+  "independent": [
+   12,
+   2,
+   3
+  ],
+  "canonical": [
+   12,
+   2,
+   3
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R tt06__tt_um_kwilke_cdc_fifo (registers, verified_found, found)",
+  "independent": [
+   2,
+   0,
+   2
+  ],
+  "canonical": [
+   2,
+   0,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R ttsky25b__tt_um_yorimichi_kittscanner (registers, verified_found, found)",
+  "independent": [
+   4,
+   2,
+   2
+  ],
+  "canonical": [
+   4,
+   2,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R tt05__tt_um_digital_clock_sellicott (registers, verified_found, found)",
+  "independent": [
+   8,
+   7,
+   7
+  ],
+  "canonical": [
+   8,
+   7,
+   7
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R tt05__tt_um_nickjhay_processor (registers, verified_found, found)",
+  "independent": [
+   1,
+   0,
+   1
+  ],
+  "canonical": [
+   1,
+   0,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R ttsky25b__tt_um_ieeeuoftasic_simproc (registers, verified_found, found)",
+  "independent": [
+   4,
+   1,
+   4
+  ],
+  "canonical": [
+   4,
+   1,
+   4
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R ttsky26a__tt_um_parakeet (registers, verified_found, found)",
+  "independent": [
+   5,
+   2,
+   2
+  ],
+  "canonical": [
+   5,
+   2,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design R ttcad25a__tt_um_space_invaders_game (registers, verified_found, found)",
+  "independent": [
+   12,
+   4,
+   9
+  ],
+  "canonical": [
+   12,
+   4,
+   9
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt09__tt_um_pwm_top (registers, verified_found, found)",
+  "independent": [
+   4,
+   1,
+   1
+  ],
+  "canonical": [
+   4,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 ttsky26c__tt_um_joonatanalanampa_cordic (registers, verified_found, found)",
+  "independent": [
+   3,
+   3,
+   3
+  ],
+  "canonical": [
+   3,
+   3,
+   3
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt05__tt_um_toivoh_synth (registers, verified_found, found)",
+  "independent": [
+   5,
+   1,
+   2
+  ],
+  "canonical": [
+   5,
+   1,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 ttsky25a__tt_um_td4 (registers, verified_found, found)",
+  "independent": [
+   1,
+   0,
+   0
+  ],
+  "canonical": [
+   1,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt03p5__tt_um_Reloj_top (registers, verified_found, found)",
+  "independent": [
+   14,
+   4,
+   7
+  ],
+  "canonical": [
+   14,
+   4,
+   7
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt03p5__tt_um_thorkn_vgaclock (registers, verified_found, found)",
+  "independent": [
+   6,
+   6,
+   6
+  ],
+  "canonical": [
+   6,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt07__tt_um_toivoh_basilisc_2816 (registers, verified_found, found)",
+  "independent": [
+   5,
+   0,
+   2
+  ],
+  "canonical": [
+   5,
+   0,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 ttsky25a__tt_um_sjsu_vga_music (registers, verified_found, found)",
+  "independent": [
+   6,
+   5,
+   5
+  ],
+  "canonical": [
+   6,
+   5,
+   5
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt07__tt_um_vzayakov_top (registers, verified_found, found)",
+  "independent": [
+   12,
+   2,
+   12
+  ],
+  "canonical": [
+   12,
+   2,
+   12
+  ],
+  "agree": true
+ },
+ {
+  "figure": "B per-design B1 tt05__tt_um_kskyou (registers, verified_found, found)",
+  "independent": [
+   3,
+   1,
+   3
+  ],
+  "canonical": [
+   3,
+   1,
+   3
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R num/den",
+  "independent": [
+   31,
+   49
+  ],
+  "canonical": [
+   31,
+   49
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R rate",
+  "independent": 0.6326530612244898,
+  "canonical": 0.6326530612244898,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R bootstrap 95%",
+  "independent": [
+   0.42371251629726203,
+   0.8627450980392157
+  ],
+  "canonical": [
+   0.42371251629726203,
+   0.8627450980392157
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R designs_with_registers",
+  "independent": 9,
+  "canonical": 9,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found B1 num/den",
+  "independent": [
+   41,
+   59
+  ],
+  "canonical": [
+   41,
+   59
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found B1 rate",
+  "independent": 0.6949152542372882,
+  "canonical": 0.6949152542372882,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found B1 bootstrap 95%",
+  "independent": [
+   0.5,
+   0.8904163099315068
+  ],
+  "canonical": [
+   0.5,
+   0.8904163099315068
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found B1 designs_with_registers",
+  "independent": 10,
+  "canonical": 10,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R-B1 difference",
+  "independent": -0.06226219301279834,
+  "canonical": -0.06226219301279834,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found R-B1 bootstrap 95% (my scheme: one generator, R matrix drawn first)",
+  "independent": [
+   -0.3446715065954697,
+   0.25367123962868643
+  ],
+  "canonical": [
+   -0.34921068179132697,
+   0.24383320319500276
+  ],
+  "agree": false
+ },
+ {
+  "figure": "C counter all-structures found R-B1 bootstrap 95% (B1 matrix drawn first, as canonical documents)",
+  "independent": [
+   -0.34921068179132697,
+   0.24383320319500276
+  ],
+  "canonical": [
+   -0.34921068179132697,
+   0.24383320319500276
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found pooled num/den",
+  "independent": [
+   72,
+   108
+  ],
+  "canonical": [
+   72,
+   108
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found pooled rate",
+  "independent": 0.6666666666666666,
+  "canonical": 0.6666666666666666,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found pooled bootstrap, 20 designs as one set",
+  "independent": [
+   0.5230733944954129,
+   0.8190501519756839
+  ],
+  "canonical": [
+   0.5230733944954129,
+   0.8190501519756839
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found pooled bootstrap, stratified (B1 then R)",
+  "independent": [
+   0.5238095238095238,
+   0.8182059961315278
+  ],
+  "canonical": [
+   0.5238095238095238,
+   0.8182059961315278
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found Fisher two-sided p",
+  "independent": 0.5423243863567835,
+  "canonical": 0.5423243863567835,
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found Clopper-Pearson R",
+  "independent": [
+   0.4828776911693927,
+   0.7657758444633889
+  ],
+  "canonical": [
+   0.4828776911693927,
+   0.7657758444633889
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found Clopper-Pearson B1",
+  "independent": [
+   0.561337449412378,
+   0.8081440117879843
+  ],
+  "canonical": [
+   0.561337449412378,
+   0.8081440117879841
+  ],
+  "agree": true
+ },
+ {
+  "figure": "C counter all-structures found Clopper-Pearson pooled",
+  "independent": [
+   0.5694766635432598,
+   0.7544551973092481
+  ],
+  "canonical": [
+   0.5694766635432598,
+   0.7544551973092481
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter strict: registers, structures, found, exact",
+  "independent": [
+   49,
+   56,
+   31,
+   20
+  ],
+  "canonical": [
+   49,
+   56,
+   31,
+   20
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter strict: verified structures, verified found, verified exact",
+  "independent": [
+   33,
+   19,
+   12
+  ],
+  "canonical": [
+   33,
+   19,
+   12
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter strict: designs with registers",
+  "independent": 9,
+  "canonical": 9,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc strict: registers, structures, found, exact",
+  "independent": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "canonical": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc strict: verified structures, verified found, verified exact",
+  "independent": [
+   1,
+   0,
+   0
+  ],
+  "canonical": [
+   1,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc strict: designs with registers",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register strict: registers, structures, found, exact",
+  "independent": [
+   9,
+   12,
+   4,
+   4
+  ],
+  "canonical": [
+   9,
+   12,
+   4,
+   4
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register strict: verified structures, verified found, verified exact",
+  "independent": [
+   6,
+   3,
+   3
+  ],
+  "canonical": [
+   6,
+   3,
+   3
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register strict: designs with registers",
+  "independent": 5,
+  "canonical": 5,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer strict: registers, structures, found, exact",
+  "independent": [
+   10,
+   3,
+   6,
+   6
+  ],
+  "canonical": [
+   10,
+   3,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer strict: verified structures, verified found, verified exact",
+  "independent": [
+   3,
+   6,
+   6
+  ],
+  "canonical": [
+   3,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer strict: designs with registers",
+  "independent": 5,
+  "canonical": 5,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter lenient: registers, structures, found, exact",
+  "independent": [
+   49,
+   56,
+   31,
+   20
+  ],
+  "canonical": [
+   49,
+   56,
+   31,
+   20
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter lenient: verified structures, verified found, verified exact",
+  "independent": [
+   33,
+   19,
+   12
+  ],
+  "canonical": [
+   33,
+   19,
+   12
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R counter lenient: designs with registers",
+  "independent": 9,
+  "canonical": 9,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc lenient: registers, structures, found, exact",
+  "independent": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "canonical": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc lenient: verified structures, verified found, verified exact",
+  "independent": [
+   1,
+   0,
+   0
+  ],
+  "canonical": [
+   1,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R lfsr_crc lenient: designs with registers",
+  "independent": 0,
+  "canonical": 0,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register lenient: registers, structures, found, exact",
+  "independent": [
+   9,
+   12,
+   6,
+   6
+  ],
+  "canonical": [
+   9,
+   12,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register lenient: verified structures, verified found, verified exact",
+  "independent": [
+   6,
+   5,
+   5
+  ],
+  "canonical": [
+   6,
+   5,
+   5
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R shift_register lenient: designs with registers",
+  "independent": 5,
+  "canonical": 5,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer lenient: registers, structures, found, exact",
+  "independent": [
+   10,
+   3,
+   6,
+   6
+  ],
+  "canonical": [
+   10,
+   3,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer lenient: verified structures, verified found, verified exact",
+  "independent": [
+   3,
+   6,
+   6
+  ],
+  "canonical": [
+   3,
+   6,
+   6
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind R synchronizer lenient: designs with registers",
+  "independent": 5,
+  "canonical": 5,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter strict: registers, structures, found, exact",
+  "independent": [
+   59,
+   72,
+   41,
+   28
+  ],
+  "canonical": [
+   59,
+   72,
+   41,
+   28
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter strict: verified structures, verified found, verified exact",
+  "independent": [
+   34,
+   23,
+   15
+  ],
+  "canonical": [
+   34,
+   23,
+   15
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter strict: designs with registers",
+  "independent": 10,
+  "canonical": 10,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc strict: registers, structures, found, exact",
+  "independent": [
+   9,
+   2,
+   0,
+   0
+  ],
+  "canonical": [
+   9,
+   2,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc strict: verified structures, verified found, verified exact",
+  "independent": [
+   2,
+   0,
+   0
+  ],
+  "canonical": [
+   2,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc strict: designs with registers",
+  "independent": 1,
+  "canonical": 1,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register strict: registers, structures, found, exact",
+  "independent": [
+   8,
+   1,
+   1,
+   1
+  ],
+  "canonical": [
+   8,
+   1,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register strict: verified structures, verified found, verified exact",
+  "independent": [
+   1,
+   1,
+   1
+  ],
+  "canonical": [
+   1,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register strict: designs with registers",
+  "independent": 4,
+  "canonical": 4,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer strict: registers, structures, found, exact",
+  "independent": [
+   18,
+   3,
+   17,
+   17
+  ],
+  "canonical": [
+   18,
+   3,
+   17,
+   17
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer strict: verified structures, verified found, verified exact",
+  "independent": [
+   3,
+   17,
+   17
+  ],
+  "canonical": [
+   3,
+   17,
+   17
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer strict: designs with registers",
+  "independent": 4,
+  "canonical": 4,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter lenient: registers, structures, found, exact",
+  "independent": [
+   59,
+   72,
+   41,
+   28
+  ],
+  "canonical": [
+   59,
+   72,
+   41,
+   28
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter lenient: verified structures, verified found, verified exact",
+  "independent": [
+   34,
+   23,
+   15
+  ],
+  "canonical": [
+   34,
+   23,
+   15
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 counter lenient: designs with registers",
+  "independent": 10,
+  "canonical": 10,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc lenient: registers, structures, found, exact",
+  "independent": [
+   9,
+   2,
+   0,
+   0
+  ],
+  "canonical": [
+   9,
+   2,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc lenient: verified structures, verified found, verified exact",
+  "independent": [
+   2,
+   0,
+   0
+  ],
+  "canonical": [
+   2,
+   0,
+   0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 lfsr_crc lenient: designs with registers",
+  "independent": 1,
+  "canonical": 1,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register lenient: registers, structures, found, exact",
+  "independent": [
+   8,
+   1,
+   1,
+   1
+  ],
+  "canonical": [
+   8,
+   1,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register lenient: verified structures, verified found, verified exact",
+  "independent": [
+   1,
+   1,
+   1
+  ],
+  "canonical": [
+   1,
+   1,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 shift_register lenient: designs with registers",
+  "independent": 4,
+  "canonical": 4,
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer lenient: registers, structures, found, exact",
+  "independent": [
+   18,
+   3,
+   17,
+   17
+  ],
+  "canonical": [
+   18,
+   3,
+   17,
+   17
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer lenient: verified structures, verified found, verified exact",
+  "independent": [
+   3,
+   17,
+   17
+  ],
+  "canonical": [
+   3,
+   17,
+   17
+  ],
+  "agree": true
+ },
+ {
+  "figure": "E per-kind B1 synchronizer lenient: designs with registers",
+  "independent": 4,
+  "canonical": 4,
+  "agree": true
+ },
+ {
+  "figure": "F grouping R AMI mean/median/min/max",
+  "independent": [
+   0.7560610782887839,
+   0.8431995916257937,
+   0.030731402565702254,
+   1.0
+  ],
+  "canonical": [
+   0.7560610782887839,
+   0.8431995916257937,
+   0.030731402565702254,
+   1.0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "F grouping R singletons AMI mean",
+  "independent": 6.077684895856475e-14,
+  "canonical": 6.077684895856475e-14,
+  "agree": true
+ },
+ {
+  "figure": "F grouping R random-block AMI mean",
+  "independent": -0.0006567658049659154,
+  "canonical": -0.0006567658049659154,
+  "agree": true
+ },
+ {
+  "figure": "F grouping R chance floor (higher baseline)",
+  "independent": 6.077684895856475e-14,
+  "canonical": 6.077684895856475e-14,
+  "agree": true
+ },
+ {
+  "figure": "F grouping R AMI mean minus floor",
+  "independent": 0.7560610782887232,
+  "canonical": 0.7560610782887232,
+  "agree": true
+ },
+ {
+  "figure": "F grouping B1 AMI mean/median/min/max",
+  "independent": [
+   0.8425470012001617,
+   0.8310414294352451,
+   0.6641448957434805,
+   1.0
+  ],
+  "canonical": [
+   0.8425470012001617,
+   0.8310414294352451,
+   0.6641448957434805,
+   1.0
+  ],
+  "agree": true
+ },
+ {
+  "figure": "F grouping B1 singletons AMI mean",
+  "independent": 1.5344832663138863e-14,
+  "canonical": 1.5344832663138863e-14,
+  "agree": true
+ },
+ {
+  "figure": "F grouping B1 random-block AMI mean",
+  "independent": -0.0009608109491547284,
+  "canonical": -0.0009608109491547284,
+  "agree": true
+ },
+ {
+  "figure": "F grouping B1 chance floor (higher baseline)",
+  "independent": 1.5344832663138863e-14,
+  "canonical": 1.5344832663138863e-14,
+  "agree": true
+ },
+ {
+  "figure": "F grouping B1 AMI mean minus floor",
+  "independent": 0.8425470012001464,
+  "canonical": 0.8425470012001464,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI tt04__tt_um_jayraj4021_SAP1_cpu",
+  "independent": 0.9247802659318287,
+  "canonical": 0.9247802659318287,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI ttsky26b__tt_um_tiny_8bit_cpu",
+  "independent": 0.9850394277059097,
+  "canonical": 0.9850394277059097,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI tt06__tt_um_SJ",
+  "independent": 0.7592314401537893,
+  "canonical": 0.7592314401537893,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI tt06__tt_um_kwilke_cdc_fifo",
+  "independent": 1.0,
+  "canonical": 1.0,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI ttsky25b__tt_um_yorimichi_kittscanner",
+  "independent": 0.5699824005187686,
+  "canonical": 0.5699824005187686,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI tt05__tt_um_digital_clock_sellicott",
+  "independent": 0.8265092202663287,
+  "canonical": 0.8265092202663287,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI tt05__tt_um_nickjhay_processor",
+  "independent": 0.030731402565702254,
+  "canonical": 0.030731402565702254,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI ttsky25b__tt_um_ieeeuoftasic_simproc",
+  "independent": 0.9606667242870686,
+  "canonical": 0.9606667242870686,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI ttsky26a__tt_um_parakeet",
+  "independent": 0.8598899629852587,
+  "canonical": 0.8598899629852587,
+  "agree": true
+ },
+ {
+  "figure": "F per-design AMI ttcad25a__tt_um_space_invaders_game",
+  "independent": 0.6437799384731838,
+  "canonical": 0.6437799384731838,
+  "agree": true
+ },
+ {
+  "figure": "G tiers R all_kinds A1/A2/B/C",
+  "independent": [
+   5,
+   7,
+   3,
+   53
+  ],
+  "canonical": [
+   5,
+   7,
+   3,
+   53
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G tiers R counter A1/A2/B/C",
+  "independent": [
+   3,
+   7,
+   3,
+   36
+  ],
+  "canonical": [
+   3,
+   7,
+   3,
+   36
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G flop level R (flops, refuted, refuted+mismatch)",
+  "independent": [
+   545,
+   52,
+   27
+  ],
+  "canonical": [
+   545,
+   52,
+   27
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G tiers B1 all_kinds A1/A2/B/C",
+  "independent": [
+   16,
+   7,
+   2,
+   69
+  ],
+  "canonical": [
+   16,
+   7,
+   2,
+   69
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G tiers B1 counter A1/A2/B/C",
+  "independent": [
+   7,
+   4,
+   1,
+   47
+  ],
+  "canonical": [
+   7,
+   4,
+   1,
+   47
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G flop level B1 (flops, refuted, refuted+mismatch)",
+  "independent": [
+   885,
+   209,
+   112
+  ],
+  "canonical": [
+   885,
+   209,
+   112
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R tier A1: registers, found, verified found",
+  "independent": [
+   5,
+   4,
+   2
+  ],
+  "canonical": [
+   5,
+   4,
+   2
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R tier A2: registers, found, verified found",
+  "independent": [
+   7,
+   6,
+   1
+  ],
+  "canonical": [
+   7,
+   6,
+   1
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R tier B: registers, found, verified found",
+  "independent": [
+   3,
+   3,
+   3
+  ],
+  "canonical": [
+   3,
+   3,
+   3
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R tier C: registers, found, verified found",
+  "independent": [
+   53,
+   28,
+   22
+  ],
+  "canonical": [
+   53,
+   28,
+   22
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R per-register row keys",
+  "independent": [
+   [
+    "tt04__tt_um_jayraj4021_SAP1_cpu",
+    "counter",
+    "pc.pc_address"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_gen_inst.sysclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.hours_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.minutes_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.seconds_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.refclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.refclk_gen_inst.refclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.shift_out_inst.shift_out_inst.transfer_state"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.shift_out_inst.shift_reg_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.mode0_db_inst.samples"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.mode1_db_inst.samples"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.shift_out_inst.shift_out_inst.serial_data"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.shift_out_stb_delay"
+   ],
+   [
+    "tt05__tt_um_nickjhay_processor",
+    "counter",
+    "text_idx"
+   ],
+   [
+    "tt05__tt_um_nickjhay_processor",
+    "synchronizer",
+    "sys_in1_buffer"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countPE"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countRow"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countTile"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U10.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U2.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U3.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U4.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U5.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U6.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U7.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U8.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U9.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "shift_register",
+    "DUT.U1.PEStartEN"
+   ],
+   [
+    "tt06__tt_um_kwilke_cdc_fifo",
+    "counter",
+    "kwilke_fifo.readstate.read_address"
+   ],
+   [
+    "tt06__tt_um_kwilke_cdc_fifo",
+    "counter",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "abullet_y"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[0]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[1]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[2]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[3]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "group_x"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "pb_y"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "score"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "shooter_lives"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "shooter_x"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "sync_gen.hpos"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "sync_gen.vpos"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "shift_register",
+    "lfsr"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button0"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button1"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button2"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_RX1.clkCount"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_RX1.index"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_TX1.clkCount"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_TX1.index"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "synchronizer",
+    "U1.UART1.UART_RX1.regIn"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "synchronizer",
+    "U1.UART1.UART_RX1.regInMeta"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_debouncer.prescaler"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.prescaler"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.pwm_count"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.state"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "shift_register",
+    "i_debouncer.sample_ff"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "shift_register",
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "synchronizer",
+    "i_debouncer.sync_ff"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "race_stage"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "speed"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "stage_timer"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "vga_sync_gen.hpos"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "vga_sync_gen.vpos"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "shift_register",
+    "driver.driver.shift_reg"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_clk_sync"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_data_sync"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_latch_sync"
+   ]
+  ],
+  "canonical": [
+   [
+    "tt04__tt_um_jayraj4021_SAP1_cpu",
+    "counter",
+    "pc.pc_address"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_gen_inst.sysclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.hours_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.minutes_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.clock_inst.time_reg_inst.seconds_count_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.refclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.refclk_gen_inst.refclk_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.shift_out_inst.shift_out_inst.transfer_state"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "counter",
+    "clock_inst.shift_out_inst.shift_reg_div_inst.counter"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.mode0_db_inst.samples"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.mode1_db_inst.samples"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.shift_out_inst.shift_out_inst.serial_data"
+   ],
+   [
+    "tt05__tt_um_digital_clock_sellicott",
+    "shift_register",
+    "clock_inst.shift_out_stb_delay"
+   ],
+   [
+    "tt05__tt_um_nickjhay_processor",
+    "counter",
+    "text_idx"
+   ],
+   [
+    "tt05__tt_um_nickjhay_processor",
+    "synchronizer",
+    "sys_in1_buffer"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countPE"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countRow"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U1.countTile"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U10.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U2.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U3.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U4.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U5.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U6.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U7.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U8.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "counter",
+    "DUT.U9.counter"
+   ],
+   [
+    "tt06__tt_um_SJ",
+    "shift_register",
+    "DUT.U1.PEStartEN"
+   ],
+   [
+    "tt06__tt_um_kwilke_cdc_fifo",
+    "counter",
+    "kwilke_fifo.readstate.read_address"
+   ],
+   [
+    "tt06__tt_um_kwilke_cdc_fifo",
+    "counter",
+    "kwilke_fifo.writestate.write_address"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "abullet_y"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[0]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[1]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[2]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "barrier_health[3]"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "group_x"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "pb_y"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "score"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "shooter_lives"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "shooter_x"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "sync_gen.hpos"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "counter",
+    "sync_gen.vpos"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "shift_register",
+    "lfsr"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button0"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button1"
+   ],
+   [
+    "ttcad25a__tt_um_space_invaders_game",
+    "synchronizer",
+    "prev_button2"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_RX1.clkCount"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_RX1.index"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_TX1.clkCount"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "counter",
+    "U1.UART1.UART_TX1.index"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "synchronizer",
+    "U1.UART1.UART_RX1.regIn"
+   ],
+   [
+    "ttsky25b__tt_um_ieeeuoftasic_simproc",
+    "synchronizer",
+    "U1.UART1.UART_RX1.regInMeta"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_debouncer.prescaler"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.prescaler"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.pwm_count"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "counter",
+    "i_kitt_scan_core.state"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "shift_register",
+    "i_debouncer.sample_ff"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "shift_register",
+    "i_kitt_scan_core.pre_lvout"
+   ],
+   [
+    "ttsky25b__tt_um_yorimichi_kittscanner",
+    "synchronizer",
+    "i_debouncer.sync_ff"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "race_stage"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "speed"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "stage_timer"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "vga_sync_gen.hpos"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "counter",
+    "vga_sync_gen.vpos"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "shift_register",
+    "driver.driver.shift_reg"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_clk_sync"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_data_sync"
+   ],
+   [
+    "ttsky26a__tt_um_parakeet",
+    "synchronizer",
+    "driver.driver.pmod_latch_sync"
+   ]
+  ],
+  "agree": true
+ },
+ {
+  "figure": "G R per-register tier/found/verified_found disagreements",
+  "independent": [],
+  "canonical": [],
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers tt04__tt_um_jayraj4021_SAP1_cpu",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 1
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 1
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers ttsky26b__tt_um_tiny_8bit_cpu",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 0
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 0
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers tt06__tt_um_SJ",
+  "independent": {
+   "A": 4,
+   "B": 0,
+   "C": 9
+  },
+  "canonical": {
+   "A": 4,
+   "B": 0,
+   "C": 9
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers tt06__tt_um_kwilke_cdc_fifo",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 2
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 2
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers ttsky25b__tt_um_yorimichi_kittscanner",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 7
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 7
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers tt05__tt_um_digital_clock_sellicott",
+  "independent": {
+   "A": 1,
+   "B": 2,
+   "C": 9
+  },
+  "canonical": {
+   "A": 1,
+   "B": 2,
+   "C": 9
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers tt05__tt_um_nickjhay_processor",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 2
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 2
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers ttsky25b__tt_um_ieeeuoftasic_simproc",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 6
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 6
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers ttsky26a__tt_um_parakeet",
+  "independent": {
+   "A": 0,
+   "B": 0,
+   "C": 9
+  },
+  "canonical": {
+   "A": 0,
+   "B": 0,
+   "C": 9
+  },
+  "agree": true
+ },
+ {
+  "figure": "G per-design tiers ttcad25a__tt_um_space_invaders_game",
+  "independent": {
+   "A": 7,
+   "B": 1,
+   "C": 8
+  },
+  "canonical": {
+   "A": 7,
+   "B": 1,
+   "C": 8
+  },
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R num/den",
+  "independent": [
+   16,
+   39
+  ],
+  "canonical": [
+   16,
+   39
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R rate",
+  "independent": 0.41025641025641024,
+  "canonical": 0.41025641025641024,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R bootstrap 95%",
+  "independent": [
+   0.15789473684210525,
+   0.675
+  ],
+  "canonical": [
+   0.15789473684210525,
+   0.675
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R designs_with_registers",
+  "independent": 9,
+  "canonical": 9,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed B1 num/den",
+  "independent": [
+   21,
+   48
+  ],
+  "canonical": [
+   21,
+   48
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed B1 rate",
+  "independent": 0.4375,
+  "canonical": 0.4375,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed B1 bootstrap 95%",
+  "independent": [
+   0.22033898305084745,
+   0.7297297297297297
+  ],
+  "canonical": [
+   0.22033898305084745,
+   0.7297297297297297
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed B1 designs_with_registers",
+  "independent": 10,
+  "canonical": 10,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R-B1 difference",
+  "independent": -0.027243589743589758,
+  "canonical": -0.027243589743589758,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed R-B1 bootstrap 95% (my scheme: one generator, R matrix drawn first)",
+  "independent": [
+   -0.4117675231011945,
+   0.31946333646028746
+  ],
+  "canonical": [
+   -0.4143198757763975,
+   0.3168402195095544
+  ],
+  "agree": false
+ },
+ {
+  "figure": "D primary, Tier A removed R-B1 bootstrap 95% (B1 matrix drawn first, as canonical documents)",
+  "independent": [
+   -0.4143198757763975,
+   0.3168402195095544
+  ],
+  "canonical": [
+   -0.4143198757763975,
+   0.3168402195095544
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed pooled num/den",
+  "independent": [
+   37,
+   87
+  ],
+  "canonical": [
+   37,
+   87
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed pooled rate",
+  "independent": 0.42528735632183906,
+  "canonical": 0.42528735632183906,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed pooled bootstrap, 20 designs as one set",
+  "independent": [
+   0.25,
+   0.6190476190476191
+  ],
+  "canonical": [
+   0.25,
+   0.6190476190476191
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed pooled bootstrap, stratified (B1 then R)",
+  "independent": [
+   0.2545454545454545,
+   0.6233766233766234
+  ],
+  "canonical": [
+   0.2545454545454545,
+   0.6233766233766234
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed Fisher two-sided p",
+  "independent": 0.8304161611794137,
+  "canonical": 0.8304161611794137,
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed Clopper-Pearson R",
+  "independent": [
+   0.25566779688623276,
+   0.5790013305951471
+  ],
+  "canonical": [
+   0.25566779688623276,
+   0.5790013305951469
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed Clopper-Pearson B1",
+  "independent": [
+   0.294801241333832,
+   0.5881916411593546
+  ],
+  "canonical": [
+   0.294801241333832,
+   0.5881916411593546
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D primary, Tier A removed Clopper-Pearson pooled",
+  "independent": [
+   0.3198745993522193,
+   0.5359342317532994
+  ],
+  "canonical": [
+   0.3198745993522193,
+   0.5359342317532994
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D counter found, Tier A removed, R",
+  "independent": [
+   22,
+   39
+  ],
+  "canonical": [
+   22,
+   39
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D all kinds, Tier A removed, R: registers, found, verified found",
+  "independent": [
+   56,
+   31,
+   25
+  ],
+  "canonical": [
+   56,
+   31,
+   25
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D counter found, Tier A removed, B1",
+  "independent": [
+   37,
+   48
+  ],
+  "canonical": [
+   37,
+   48
+  ],
+  "agree": true
+ },
+ {
+  "figure": "D all kinds, Tier A removed, B1: registers, found, verified found",
+  "independent": [
+   71,
+   54,
+   38
+  ],
+  "canonical": [
+   71,
+   54,
+   38
+  ],
+  "agree": true
+ }
+]

@@ -1,0 +1,4 @@
+=== tt08/tt_um_zoom_zoom (tt08__tt_um_zoom_zoom) 2026-09-23T16:24:13Z
+{"id": "tt08/tt_um_zoom_zoom", "design_id": "tt08__tt_um_zoom_zoom", "macro": "tt_um_zoom_zoom", "ok": false, "error": "ValueError: unexpected gate $print"}
+label_driver rc=1
+freeze check: freeze holds

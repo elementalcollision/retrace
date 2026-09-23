@@ -1,0 +1,10 @@
+=== ttsky26c/tt_um_tpcannon7_fir (ttsky26c__tt_um_tpcannon7_fir) 2026-09-23T15:43:23Z
+  simulation round 1: 985 of 1010 flops agree
+  simulation round 2: 985 of 1010 flops agree
+  simulation round 3: 985 of 1010 flops agree
+  z3: 500 of 1010 flops, 593 s
+  z3: 1000 of 1010 flops, 593 s
+pilot ttsky26c/tt_um_tpcannon7_fir: 96 registers {'accumulator': 1, 'counter': 2, 'data_register': 77, 'flag': 5, 'fsm_state': 2, 'other': 2, 'shift_register': 7}; 1010 of 1010 flops labelled, 0 shadow, 0 unmapped; units by rule: ['spi.mosi_sync + spi.sclk_sync (copy_lanes)', 'spi.cs_n_sync + spi.fir_mode_sync (copy_lanes)']; proof: 25 flops refuted: ['_4772_', '_4851_', '_4852_', '_4853_', '_4854_']; 19 flops unknown: ['_4825_', '_4826_', '_4827_', '_4828_', '_4829_']; outputs not proven: ['uio_out']; check_truth: ['spi.tx_buf: lanes x depth != flops']; {'download': 0.4, 'read_netlist': 0.2, 'extract': 2.6, 'join': 0.0, 'rtl_yosys': 2.1, 'classify': 0.0, 'load_models': 0.2, 'simulate': 0.1, 'prove': 592.7, 'total': 598.3}
+{"id": "ttsky26c/tt_um_tpcannon7_fir", "design_id": "ttsky26c__tt_um_tpcannon7_fir", "macro": "tt_um_tpcannon7_fir", "ok": false, "error": "RuntimeError: check_truth: ['spi.tx_buf: lanes x depth != flops']"}
+label_driver rc=1
+freeze check: freeze holds
