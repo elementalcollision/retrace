@@ -160,9 +160,15 @@ Done (2026-09-21), after the review:
 
 Next, in priority order:
 
-1. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+1. **Unblock the next S3 freeze.** `freeze.checklist()` now prints 11 blocking items — one per blind
+   *attempt* record in `out/s3/runs` — because both it and `test_s3.py`'s record-location test require
+   every `*.json` there to carry a top-level `blind: true`, which `run.py`'s attempt records do not
+   have. `checklist clear` is step 6 of `freeze.FREEZE_ORDER`, so no superseding freeze can be written
+   until the rule skips `*.attempt.json` (or attempts move to their own directory). All three files are
+   inside the current freeze, so this is the first edit of the next one. `docs/S3.md` §14.
+2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
    check it against. A table with no ground-truth design would be untested.
-2. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
+3. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
    ignores via cuts drawn as top-level polygons (Magic's stream-out; `tools/roundtrip/check.py`
    binds them); the puzzle's placement mechanism (dense clusters) is not reproduced;
    `mutate.py`'s `master_swap` description claims identical connectivity, which is wrong for
