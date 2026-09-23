@@ -1,4 +1,4 @@
-# RETRACE — status (2026-09-21, sprints 0-4, G6, writeup, stretch S1/S2/S4)
+# RETRACE — status (2026-09-23, sprints 0-4, G6, writeup, stretch S1/S2/S3/S4)
 
 ## What exists
 
@@ -16,7 +16,8 @@
 | Mutation | **130 layout mutants, 10 operators, both designs** (`docs/MUTATION.md`, `test/mutation/`): 90 killed, 39 equivalent (art, path end types, 5-20 nm near misses), 1 survived: a same-footprint `nor2_2`->`nand2_2` swap on the puzzle, which models a different chip rather than an extraction error and which the recovered-design proof (`e2e.py --gds`) now kills. |
 | **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
 | **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Six planted faults, one per failure class, are permanent tests and each is reported where it was planted (`tools/tempo/faults.py`); the supplies are checked since 2026-09-21 (`docs/TEMPO_LVS.md` §4e). The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
-| Tests | **111 passed, 3 skipped** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI). |
+| **S3 structure recognition** | **Done (frozen, blind-evaluated).** `tools/s3/` recognises counters, shift registers, LFSR/CRCs, synchronizers and word grouping in an anonymous netlist; `verify.py` builds each kind's defining template itself and proves it under extent, liveness, coverage and hold obligations. Frozen in `232cfe6` with a 128-bit draw seed; 10 third-party Tiny Tapeout designs drawn after the freeze from an 84-design pool pre-registered by structure-blind criteria, labelled by the frozen labeller, run once each under 5 permutations (`out/s3/runs/`, hash-chained ledger). Blind: 59/94 registers found, 41 certified; 215 claims against 40 harness proofs; zero permutation variance. Report `docs/S3.md`, design `docs/S3_DESIGN.md`. |
+| Tests | **308 passed, 1 failed, 7 skipped** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI), S3 (`test_s3.py`, `test_s3_verify.py`). **The one failure is a defect in the freeze, not a regression**: `test_permutation_counts_and_record_locations` requires every `*.json` in `out/s3/runs` to carry a top-level `blind: true`, but the blind protocol writes an *attempt* record there with no `blind` key, so the test passes only while no blind run has been made. `freeze.checklist()` has the same rule and the same blind spot. Test and `run.py` are both inside the freeze; the fix belongs in a superseding freeze (`docs/S3.md` §14). |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -98,7 +99,7 @@ undriven (fixed; the outgen reviewer found it). See INTENT.md §3 and §6.1.
 
 ## Next
 
-Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21; S1 and S4 are done.
+Goals G1-G7 are done. Stretch S2 (easter eggs) is done. The stretch goals were reviewed on 2026-09-21; S1, S3 and S4 are done.
 
 Done (2026-09-21), after the review:
 * **The TEMPO LVS now checks the supplies.** The review found that nothing did: a Metal1 bar
@@ -137,16 +138,31 @@ Done (2026-09-21), after the review:
   CI: `.github/workflows/roundtrip.yml`; first run 35647684519 passed on x86_64 in 13 min, with
   synthesis, DEF, netlists and extracted netlist byte-identical to the macOS arm64 run.
 
+* **S3, structure recognition** (`tools/s3/`, `docs/S3_DESIGN.md`, `docs/S3.md`). Counters, shift
+  registers, LFSR/CRCs, synchronizers and word grouping in a netlist with every name stripped,
+  where the *harness* builds each kind's defining template from the declared kind, order and
+  parameters and proves it on its own graph under extent, liveness, coverage and hold obligations
+  (`tools/s3/verify.py`). Frozen in `232cfe6` — code, protocol, truths and a 128-bit draw seed —
+  after a candidate pool of 84 third-party Tiny Tapeout designs had been registered by
+  structure-blind criteria. Ten designs were then drawn with that seed, labelled by the frozen
+  labeller (no reserve needed) and run once each under 5 permutations, the puzzle last as frozen
+  code on a known design. **Blind: 59 of 94 structure-kind registers found (0.628), 41 certified
+  (0.436); the recogniser claimed 215 structures proven and the harness proved 40.** counter is the
+  only kind with support (41/59 found, 23 certified, below the pre-published 0.636, p = 0.017);
+  synchronizer 17/18, shift 1/8, lfsr_crc 0/9 all in one design. Bit order perfect on every found
+  counter; grouping AMI 0.8425, a larger lift over its own chance floor than the reference's.
+  Zero permutation variance over all 55 runs. Reported with what it costs: 23 of the 94 registers
+  carry labels the labeller's own z3 proof contradicts, one design of the pre-published holdout is
+  puzzle-shaped (contamination K2), and two *certified* counter moduli were wrong. The report was
+  fact-checked in four adversarial rounds (about 70 findings, all resolved against the frozen
+  records) and its evidence — the ten blind truths, the labels and the analysis directory — is
+  committed so every denominator is checkable.
+
 Next, in priority order:
 
-1. **S3, structure recognition.** This is an established research area, so it only pays as a
-   learning track. What makes it worth doing here is TEMPO as a labelled test set: 62k cells
-   whose net names give the ground truth (`tools/viz/tempo.py` already labels them by module).
-   First slice: shift registers, counters and word grouping by shared enable and reset, scored
-   on TEMPO, with the puzzle as a small blind case. Size: large.
-2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
+1. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
    check it against. A table with no ground-truth design would be untested.
-3. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
+2. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
    ignores via cuts drawn as top-level polygons (Magic's stream-out; `tools/roundtrip/check.py`
    binds them); the puzzle's placement mechanism (dense clusters) is not reproduced;
    `mutate.py`'s `master_swap` description claims identical connectivity, which is wrong for

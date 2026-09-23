@@ -367,6 +367,48 @@ repeats the hardening and every check on a GitHub-hosted x86-64 runner in about 
 first run gave byte-identical synthesis, DEF, netlists and extracted netlist to the arm64 run
 they were developed on.
 
+## 9. Naming what is in an anonymous netlist, and a blind test of it
+
+The last stretch goal asks a different question: given a netlist with every name stripped, can a
+program say *this is a counter, this is a shift register, these flops are one word* — and can that
+answer be **proved** rather than believed? (`docs/S3.md` is the full report, every figure sourced.)
+
+**The design point is who builds the template.** A recogniser that says "proven" has proved
+nothing. So the harness, not the recogniser, constructs each kind's defining template from the
+kind, bit order and parameters it was given, and checks it on its own copy of the netlist, under
+four obligations: extent (no counter narrower than two bits, no shift register shallower than
+three), liveness (every claimed bit must be able to move, so a structure cannot be padded with
+passengers), coverage (a reset case a higher-priority one shadows is vacuous), and hold (a
+counter must say when it holds, and an opaque load case may not be the thing that empties that
+region). A restatement of a flop's own next-state function therefore verifies nothing. On the
+blind set the recogniser claimed 215 structures "proven"; the harness proved **40**.
+
+**The evaluation was pre-registered.** The candidate pool — 84 third-party Tiny Tapeout designs
+on sky130, chosen by criteria that look at no design's structure beyond its size and cell library
+— was registered before the recogniser existed. Code, protocol, truths and a 128-bit draw seed
+were frozen in one commit; ten designs were then drawn with that seed, labelled by the frozen
+labeller, and each run once. No design was replaced by a reserve, and the harness refuses to
+start if anything under `tools/s3/` has changed.
+
+**What it found.** 59 of 94 structure-kind registers found (0.628), the structure behind 41 of
+them certified (0.436). Only `counter` has enough support to be called a rate: 41 of 59 found, 23
+certified — **below** the estimate published before the freeze (0.636, Fisher p = 0.017).
+Synchronizers 17 of 18, shift registers 1 of 8, and LFSR/CRC 0 of 9, all nine of which sit in one
+design. Two things held up: bit order, perfect on every counter it found (2,797 pairs, against a
+chance of 0.5), and word grouping, whose AMI of 0.8425 sits level with its reference in absolute
+terms and further above its own chance floor than the reference sits above its.
+
+**What it cost is the more useful half.** Every found-but-uncertified register in the whole blind
+set is one obligation — the hold rule refusing a structure whose hold region empties only once an
+opaque load is conjoined in — which is the rule working, and a ceiling on what this slice can
+certify. Two certified counter moduli were nonetheless *wrong*, which the report names rather than
+averages away. And a quarter of the ground truth is not established: on 23 of the 94 registers the
+frozen labeller's own equivalence proof contradicts its own labels, 16 of them in the single
+design that supplies every LFSR register — so the kind that scored zero was measured against
+labels that are not sound. The reference is not clean either: one design in the pre-published
+holdout was written from puzzle knowledge. Reporting a result whose denominator you distrust is
+less comfortable than reporting the number alone, and it is the only version worth publishing.
+
 ## Easter eggs
 
 * A row of rectangles below the die, in two widths with a 1:3 ratio: Morse code for
@@ -407,6 +449,9 @@ express patent licence to users. Each item names the code path that implements i
 | 15 | **Module map of a flat netlist**: seed cells from the register nets that keep hierarchical names, label the rest by nearest seed in the connectivity graph, check by holding out seeds; placement not used | `tools/viz/tempo.py`, `tools/viz/layout.py` | a flat, anonymous netlist drawn by RTL module, with a measured accuracy; the clustering on the die is independent evidence | floorplan review after synthesis flattens the design; datasheet figures; a labelled test set for structure recognition (PRD S3) |
 | 16 | **Flow forensics and a calibrated round trip**: identify a third party's flow and version from its GDS (PDK pin, clock-tree rules and dummy loads, naming, tap/pin/PDN geometry), calibrate synthesis on a known design until the netlist matches by name, harden the recovered RTL, and prove the two layouts equivalent | `tools/roundtrip/` | reproduces Jane Street's floorplan exactly and proves their layout and ours implement the same machine | provenance of shuttle and third-party GDS; reproducing a published flow; carrying recovered designs through a real flow as a regression |
 
+| 17 | **Kind-bound verification of a recovered structure**: the harness, not the recogniser, builds each kind's defining template from the declared kind, order and parameters and proves it on its own graph, under extent, liveness, coverage and hold obligations a padded or carved-out structure cannot pass | `tools/s3/verify.py`, `tools/s3/schema.py` | separates "the recogniser says proven" (215) from "the harness proved it" (40) on the same run, and the gap is reported per structure with its reason | qualifying any netlist-structure recogniser; accepting machine-proposed structure in reverse engineering, IP audits or legacy-netlist modernisation |
+| 18 | **Pre-registered blind evaluation for a reverse-engineering tool**: register the candidate pool by structure-blind criteria before the code exists, freeze code, protocol, truths and a random seed in one commit, draw the test set with that seed afterwards, and publish the misses with their causes | `tools/s3/freeze.py`, `tools/s3/thirdparty.py`, `docs/S3.md` | a self-deception budget spent up front: a hash-chained attempt ledger, a contamination record naming every path by which knowledge reached development, and a refusal to start if any frozen file changed | honest benchmarking of EDA and security tools, where the author writes the tool, the test set and the scoring |
+
 ## Lessons that transfer
 
 1. **Make every proof prove it can fail.** Four of our "passes" would have been vacuous
@@ -432,6 +477,17 @@ express patent licence to users. Each item names the code path that implements i
 7. **A matching count is not a match.** One synthesis strategy gives exactly the puzzle's 696
    cells from our RTL, and the wrong gate mix. Calibrating on the warm-up, where the answer is
    known down to net names, is what made the strategy question answerable at all.
+8. **Decide how you will be wrong before you can see the answer.** The blind evaluation's value
+   came almost entirely from choices made before the test set existed: pool criteria that look at
+   no design's structure, a seed drawn and committed in advance, a rule that a design may be
+   replaced only if labelling fails and never because it looks hard, and a written contamination
+   record. Every one of them removed a decision we would otherwise have made *after* seeing a
+   number we did not like.
+9. **Check the reference, not just the result.** The blind grouping score looked like a tie with
+   its published reference until someone asked what chance looked like on each side: a random
+   partition already scores 0.70 on the synthetic reference and 0.00 on real third-party designs.
+   The same reference turned out to contain a design written from puzzle knowledge. A benchmark
+   number is a claim about two populations, and only one of them is usually examined.
 
 ## How this was built
 
