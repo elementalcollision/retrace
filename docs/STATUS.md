@@ -16,8 +16,8 @@
 | Mutation | **130 layout mutants, 10 operators, both designs** (`docs/MUTATION.md`, `test/mutation/`): 90 killed, 39 equivalent (art, path end types, 5-20 nm near misses), 1 survived: a same-footprint `nor2_2`->`nand2_2` swap on the puzzle, which models a different chip rather than an extraction error and which the recovered-design proof (`e2e.py --gds`) now kills. |
 | **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
 | **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Six planted faults, one per failure class, are permanent tests and each is reported where it was planted (`tools/tempo/faults.py`); the supplies are checked since 2026-09-21 (`docs/TEMPO_LVS.md` §4e). The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
-| **S3 structure recognition** | **Done (frozen, blind-evaluated).** `tools/s3/` recognises counters, shift registers, LFSR/CRCs, synchronizers and word grouping in an anonymous netlist; `verify.py` builds each kind's defining template itself and proves it under extent, liveness, coverage and hold obligations. Frozen in `232cfe6` with a 128-bit draw seed; 10 third-party Tiny Tapeout designs drawn after the freeze from an 84-design pool pre-registered by structure-blind criteria, labelled by the frozen labeller, run once each under 5 permutations (`out/s3/runs/`, hash-chained ledger). Blind: 59/94 registers found, 41 certified; 215 claims against 40 harness proofs; zero permutation variance. Report `docs/S3.md`, design `docs/S3_DESIGN.md`. |
-| Tests | **308 passed, 1 failed, 7 skipped** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI), S3 (`test_s3.py`, `test_s3_verify.py`). **The one failure is a defect in the freeze, not a regression**: `test_permutation_counts_and_record_locations` requires every `*.json` in `out/s3/runs` to carry a top-level `blind: true`, but the blind protocol writes an *attempt* record there with no `blind` key, so the test passes only while no blind run has been made. `freeze.checklist()` has the same rule and the same blind spot. Test and `run.py` are both inside the freeze; the fix belongs in a superseding freeze (`docs/S3.md` §14). |
+| **S3 structure recognition** | **Done (frozen, blind-evaluated).** `tools/s3/` recognises counters, shift registers, LFSR/CRCs, synchronizers and word grouping in an anonymous netlist; `verify.py` builds each kind's defining template itself and proves it under extent, liveness, coverage and hold obligations. Frozen in `232cfe6` with a 128-bit draw seed; 10 third-party Tiny Tapeout designs drawn after the freeze from an 84-design pool pre-registered by structure-blind criteria, labelled by the frozen labeller, run once each under 5 permutations (`out/s3/runs/`, hash-chained ledger). Blind: 59/94 registers found, 41 certified; 215 claims against 40 harness proofs; zero permutation variance. Report `docs/S3.md`, design `docs/S3_DESIGN.md`. Superseded by **Freeze 2** (`20e014987880`, `docs/S3.md` §17), which fixed four defects the evaluation exposed without touching the recognizer. |
+| Tests | **320 passed, 8 skipped, 0 failed** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI), S3 (`test_s3.py`, `test_s3_verify.py`), and the top-level-cut extractor tests (`test_topcuts.py`; its TEMPO test runs with `TEMPO_ROOT=out/s3/tempo_snapshot`). The record-location failure that Freeze 1's blind runs exposed is fixed in Freeze 2. |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -158,21 +158,33 @@ Done (2026-09-21), after the review:
   records) and its evidence — the ten blind truths, the labels and the analysis directory — is
   committed so every denominator is checkable.
 
+* **S3 Freeze 2** (freeze `20e014987880`, commit `8d800bf`; `docs/S3.md` §17). A housekeeping freeze that
+  supersedes freeze 1 after its blind evaluation, run through the whole of `freeze.FREEZE_ORDER` (checklist
+  clear, TEMPO leakage pass, `freeze holds`). `F01`: `freeze.run_strays()` is the one rule for `out/s3/runs`,
+  admitting an attempt record only when the hash-chained ledger names that path with that sha256 (a reviewer
+  found the first version let `"blind": true` bypass the proof). `F02`: `tools/retrace/extract.py` binds via
+  cuts drawn in the top cell instead of dropping them silently (`top_cuts=False` keeps the old behaviour);
+  a proven no-op on the puzzle, warm-up and TEMPO, whose netlist hashes equal freeze 1's. `F03`/`F04`: the
+  summary headline and the master-swap description corrected. `F05`/K16: freeze 1's ten drawn designs are
+  spent. No recognizer, verifier, scorer or corpus file changed, so the out-of-sample estimate stands.
+  Freeze 2 records no blind draw.
+
 Next, in priority order:
 
-1. **Unblock the next S3 freeze.** `freeze.checklist()` now prints 11 blocking items — one per blind
-   *attempt* record in `out/s3/runs` — because both it and `test_s3.py`'s record-location test require
-   every `*.json` there to carry a top-level `blind: true`, which `run.py`'s attempt records do not
-   have. `checklist clear` is step 6 of `freeze.FREEZE_ORDER`, so no superseding freeze can be written
-   until the rule skips `*.attempt.json` (or attempts move to their own directory). All three files are
-   inside the current freeze, so this is the first edit of the next one. `docs/S3.md` §14.
-2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with a DEF and a netlist to
-   check it against. A table with no ground-truth design would be untested.
-3. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): `tools/retrace/extract.py` silently
-   ignores via cuts drawn as top-level polygons (Magic's stream-out; `tools/roundtrip/check.py`
-   binds them); the puzzle's placement mechanism (dense clusters) is not reproduced;
-   `mutate.py`'s `master_swap` description claims identical connectivity, which is wrong for
-   pairs whose pin geometry differs.
+1. **Bump the RETRACE pin in TEMPO's `lvs.yaml`** (TEMPO's repo, owned by the TEMPO session): Freeze 2
+   changed `tools/retrace/extract.py` and `tools/retrace/mutate.py`. On TEMPO the extractor change is a
+   proven no-op (TEMPO has no top-level cut shape; its netlist hash is unchanged and `test/test_tempo.py`
+   passes), so the bump is bookkeeping, not a behaviour change.
+2. **Before any further S3 evaluation**: make `tools/s3/thirdparty.py` `draw()` exclude freeze 1's ten
+   spent designs (contamination K16; it ranks over the whole candidate list today). Then the choice is a
+   second S3 slice (the shift-register handoff that caused 7 of 8 blind misses; the labeller's LFSR rules)
+   or stopping here.
+3. **A GF180MCU `Tech` table**: defer until there is a GF180 design with ground truth to check it against.
+   S3 showed on sky130 that a DEF is not strictly needed (a published gate-level netlist plus the
+   instance names in the layout gave exact truth); whether GF180 flows keep those names is unchecked.
+4. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): the puzzle's placement mechanism (dense
+   clusters) is not reproduced; timing is not gated. (The silent top-level-cut drop and the master-swap
+   description were fixed in Freeze 2.)
 
 Bump the RETRACE pin in TEMPO's `lvs.yaml` whenever `tools/retrace`, `tools/l2n`, `tools/tempo`
 or `test/test_tempo.py` change.
