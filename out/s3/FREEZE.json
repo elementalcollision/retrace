@@ -1,6 +1,9 @@
 {
- "blind_candidates": null,
- "blind_seed": "811809a08f85586aed09fc5e0ef46452",
+ "blind_candidates": {
+  "path": "out/s3/blind/candidates.json",
+  "sha256": "316a6492a5fdd9822d33cb6c51559c22a5001f1316d19cc8b3491262dc7b50c1"
+ },
+ "blind_seed": "36818e09a9555c29aa45b6917dbce15f",
  "class_map": {
   "aliases": {
    "data": "data_register",
@@ -1114,8 +1117,172 @@
   ],
   "summary": "No recognizer code ran on the puzzle or on a third-party design (review[1] issue 8, which checked run records, scripts, logs, shell history and 97 transcripts). Puzzle knowledge did reach recognizer development: the first corpus builder read the puzzle truth and four puzzle-shaped corpus families followed; puzzle register names and measurements reached recognizer authors through a test, a review and a prompt; the design's corpus table itself was written with the puzzle known. The puzzle score is therefore 'frozen code, known design, puzzle-informed development', never blind. Added 2026-09-22 (review[2] issue 5): corpus cohort 2 was written from the generalisation regression set's findings and has now been checked for puzzle shapes (K12, two partial matches recorded); the regression set is no longer held out and one corpus HOLDOUT design had a threshold fitted to it (K13); the corpus/regression duplicate crc12_d16_ar has been dropped (K14). Added 2026-09-23 (review[1] of the freeze round, major): the SECOND regression set, out/s3/review_generalisation2, is no longer held out either -- five entries (C40, C49, C52, C53, C57) were fitted to five of its designs, which K13's singular wording hid (K15). Neither regression set is now a generalisation estimate."
  },
- "created": "2026-09-23T15:25:56+00:00",
- "draw": null,
+ "created": "2026-09-23T15:38:55+00:00",
+ "draw": {
+  "eligible": 74,
+  "excluded": [
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt03p5__tt_um_Reloj_top.gds",
+     "cache: layout/tt03p5__tt_um_Reloj_top.gds",
+     "cache: layout/tt03p5__tt_um_Reloj_top.prep.gds",
+     "cache: rtl/tt03p5__tt_um_Reloj_top.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt da01fb9dfcfa0e0f under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt03p5__tt_um_Reloj_top-20260923T070322Z-a821516b2a2a.json",
+     "run: out/s3/runs/blind-tt03p5__tt_um_Reloj_top-20260923T070322Z-b306fc93f0e1.attempt.json",
+     "truth: out/s3/truth_tt03p5__tt_um_Reloj_top.json"
+    ],
+    "id": "tt03p5/tt_um_Reloj_top"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt03p5__tt_um_thorkn_vgaclock.gds",
+     "cache: layout/tt03p5__tt_um_thorkn_vgaclock.gds",
+     "cache: layout/tt03p5__tt_um_thorkn_vgaclock.prep.gds",
+     "cache: rtl/tt03p5__tt_um_thorkn_vgaclock.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 76ac104b0392ef20 under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt03p5__tt_um_thorkn_vgaclock-20260923T071042Z-125a2a84ef23.attempt.json",
+     "run: out/s3/runs/blind-tt03p5__tt_um_thorkn_vgaclock-20260923T071042Z-606b627a02fa.json",
+     "truth: out/s3/truth_tt03p5__tt_um_thorkn_vgaclock.json"
+    ],
+    "id": "tt03p5/tt_um_thorkn_vgaclock"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt05__tt_um_kskyou.gds",
+     "cache: layout/tt05__tt_um_kskyou.gds",
+     "cache: layout/tt05__tt_um_kskyou.prep.gds",
+     "cache: rtl/tt05__tt_um_kskyou.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 28983a5cab53d151 under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt05__tt_um_kskyou-20260923T072856Z-13ba663ae60c.json",
+     "run: out/s3/runs/blind-tt05__tt_um_kskyou-20260923T072856Z-6f6b7d446f2f.attempt.json",
+     "truth: out/s3/truth_tt05__tt_um_kskyou.json"
+    ],
+    "id": "tt05/tt_um_kskyou"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt05__tt_um_toivoh_synth.gds",
+     "cache: layout/tt05__tt_um_toivoh_synth.gds",
+     "cache: layout/tt05__tt_um_toivoh_synth.prep.gds",
+     "cache: rtl/tt05__tt_um_toivoh_synth.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 4325410fcca47dcc under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt05__tt_um_toivoh_synth-20260923T065720Z-7726a13a515d.json",
+     "run: out/s3/runs/blind-tt05__tt_um_toivoh_synth-20260923T065720Z-c6f59da68873.attempt.json",
+     "truth: out/s3/truth_tt05__tt_um_toivoh_synth.json"
+    ],
+    "id": "tt05/tt_um_toivoh_synth"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt07__tt_um_toivoh_basilisc_2816.gds",
+     "cache: layout/tt07__tt_um_toivoh_basilisc_2816.gds",
+     "cache: layout/tt07__tt_um_toivoh_basilisc_2816.prep.gds",
+     "cache: rtl/tt07__tt_um_toivoh_basilisc_2816.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt c4b1eb2474043b1b under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt07__tt_um_toivoh_basilisc_2816-20260923T071314Z-3a9e4b54474d.attempt.json",
+     "run: out/s3/runs/blind-tt07__tt_um_toivoh_basilisc_2816-20260923T071314Z-ec77d9db88ef.json",
+     "truth: out/s3/truth_tt07__tt_um_toivoh_basilisc_2816.json"
+    ],
+    "id": "tt07/tt_um_toivoh_basilisc_2816"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt07__tt_um_vzayakov_top.gds",
+     "cache: layout/tt07__tt_um_vzayakov_top.gds",
+     "cache: layout/tt07__tt_um_vzayakov_top.prep.gds",
+     "cache: rtl/tt07__tt_um_vzayakov_top.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 78544b0a503b06af under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt07__tt_um_vzayakov_top-20260923T071718Z-1d030723fd27.attempt.json",
+     "run: out/s3/runs/blind-tt07__tt_um_vzayakov_top-20260923T071718Z-2c662362bf31.json",
+     "truth: out/s3/truth_tt07__tt_um_vzayakov_top.json"
+    ],
+    "id": "tt07/tt_um_vzayakov_top"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/tt09__tt_um_pwm_top.gds",
+     "cache: layout/tt09__tt_um_pwm_top.gds",
+     "cache: layout/tt09__tt_um_pwm_top.prep.gds",
+     "cache: rtl/tt09__tt_um_pwm_top.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt eecffa74018ab777 under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-tt09__tt_um_pwm_top-20260923T065352Z-c8f61bba8b4e.json",
+     "run: out/s3/runs/blind-tt09__tt_um_pwm_top-20260923T065352Z-ea54fe9c7f13.attempt.json",
+     "truth: out/s3/truth_tt09__tt_um_pwm_top.json"
+    ],
+    "id": "tt09/tt_um_pwm_top"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/ttsky25a__tt_um_sjsu_vga_music.gds",
+     "cache: layout/ttsky25a__tt_um_sjsu_vga_music.gds",
+     "cache: layout/ttsky25a__tt_um_sjsu_vga_music.prep.gds",
+     "cache: rtl/ttsky25a__tt_um_sjsu_vga_music.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 9ffb0c41a8367ea9 under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-ttsky25a__tt_um_sjsu_vga_music-20260923T071525Z-bc5daa2ceef1.attempt.json",
+     "run: out/s3/runs/blind-ttsky25a__tt_um_sjsu_vga_music-20260923T071525Z-c3d1391efe1f.json",
+     "truth: out/s3/truth_ttsky25a__tt_um_sjsu_vga_music.json"
+    ],
+    "id": "ttsky25a/tt_um_sjsu_vga_music"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/ttsky25a__tt_um_td4.gds",
+     "cache: layout/ttsky25a__tt_um_td4.gds",
+     "cache: layout/ttsky25a__tt_um_td4.prep.gds",
+     "cache: rtl/ttsky25a__tt_um_td4.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt c6f41505f271a117 under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-ttsky25a__tt_um_td4-20260923T070128Z-4b16b78fd8be.json",
+     "run: out/s3/runs/blind-ttsky25a__tt_um_td4-20260923T070128Z-8f9016f7706f.attempt.json",
+     "truth: out/s3/truth_ttsky25a__tt_um_td4.json"
+    ],
+    "id": "ttsky25a/tt_um_td4"
+   },
+   {
+    "evidence": [
+     "anon: out/s3/blind/anon/ttsky26c__tt_um_joonatanalanampa_cordic.gds",
+     "cache: layout/ttsky26c__tt_um_joonatanalanampa_cordic.gds",
+     "cache: layout/ttsky26c__tt_um_joonatanalanampa_cordic.oas",
+     "cache: layout/ttsky26c__tt_um_joonatanalanampa_cordic.prep.gds",
+     "cache: rtl/ttsky26c__tt_um_joonatanalanampa_cordic.tar.gz",
+     "labels: drawn under freeze 1ee6a4789435 (out/s3/blind/labels.json)",
+     "ledger: attempt 80bc9522e634567d under freeze 1ee6a4789435",
+     "run: out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-90e4754651b4.json",
+     "run: out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-9b61865b3c56.attempt.json",
+     "truth: out/s3/truth_ttsky26c__tt_um_joonatanalanampa_cordic.json"
+    ],
+    "id": "ttsky26c/tt_um_joonatanalanampa_cordic"
+   }
+  ],
+  "max_reserves": 10,
+  "n": 10,
+  "rule": "tools/s3/thirdparty.py draw(blind_seed, n, exclude=the ids of draw.excluded): the candidates in draw.excluded (designs an earlier blind evaluation has seen, computed once when this freeze was written: freeze.spent_designs) are removed first; then the n remaining candidates with the lowest sha256(seed|id), then reserves in the same order",
+  "strata": {
+   "tt02": 6,
+   "tt03p5": 6,
+   "tt04": 6,
+   "tt05": 6,
+   "tt06": 6,
+   "tt07": 6,
+   "tt08": 6,
+   "tt09": 6,
+   "ttcad25a": 6,
+   "ttsky25a": 6,
+   "ttsky25b": 6,
+   "ttsky26a": 6,
+   "ttsky26b": 6,
+   "ttsky26c": 6
+  }
+ },
  "extractor_code": {
   "tools/retrace/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "tools/retrace/cellcheck.py": "6ee8148b75a123a50bd1128cf010f73a9ec16d13f3b93469f5a73b1583748657",
@@ -1127,8 +1294,8 @@
   "tools/retrace/tech.py": "67fce891d9d8c858927c733899fd959c500e9dc1b45f90e764e1bb5dd016e97b",
   "tools/retrace/vcdtb.py": "a3ba0903ffa9800fed9cd4551d7f6a72870831f88d1fbf6a9ba56d64a3224410"
  },
- "freeze_hash": "cd07cd0bce0d31c30c92b04eadc9c27de55c7e6784a80a394daa4fded7730940",
- "git_head": "1f134ff8238c5035d8580a58f600c9de23251afc",
+ "freeze_hash": "1196c56304e3fdd8076345085860288b829228d8d47a84ca2e5909114c62b9bc",
+ "git_head": "95f7effacd63ebacc90c956ab6d7a328ead685d6",
  "info_code": {
   "tools/tempo/lvs.py": "81a10a1b8e3c013e80a4e8a0aca3dd0dca160ad8ea32dd2efaabcfc1ee7b151f"
  },
@@ -1152,7 +1319,7 @@
   }
  },
  "notes": [
-  "Freeze 3 (2026-09-23) supersedes freeze 2 (20e014987880, commit 8d800bf). It records NO blind draw. It lands F06: the next freeze that records a draw will exclude, and record, every candidate an earlier evaluation has seen (today exactly freeze 1's ten, contamination K16). score.OUT_OF_SAMPLE_SOURCES and tools/retrace are unchanged."
+  "Freeze 4 (2026-09-23) supersedes freeze 3 (cd07cd0bce0d, commit 50f320c) to record the replication draw. The recognizer, verifier, scorer and corpus code are byte-identical to freeze 1's blind runs (checked against all 11 records). draw.excluded holds freeze 1's ten spent designs (contamination K16)."
  ],
  "packages": {
   "gdstk": "1.0.1",
@@ -1173,10 +1340,10 @@
  },
  "records": {
   "out/s3/contamination.json": "3cbab9a79c74fa32bfd63c64331caf1866f6360bfd09c98dca0781e1704af3f6",
-  "tools/s3/changes.jsonl": "791b0b8987f421904cf4a371c648d08ed8566600be1e4e2252522faed7dc2ade"
+  "tools/s3/changes.jsonl": "84b2d03711563aae9aa3fbceee35e2d4ad3fd0e0e28950ac32455b8ee4a56fa3"
  },
  "records_evidence": {
-  "checked": 1034,
+  "checked": 1036,
   "missing": [
    "tools/s3/changes.jsonl:C25: out/s3/corpus/crc12_d16_ar/rtl.v: missing",
    "tools/s3/changes.jsonl:C25: out/s3/corpus/crc12_d16_ar/truth.json: missing",
@@ -1264,15 +1431,15 @@
    "tools/s3/changes.jsonl:C30: tools/s3/group.py: recorded 26f0e202bc5e, now cfec4232c61f",
    "tools/s3/changes.jsonl:C31: tools/s3/params.py: recorded 5f2ec454b4ae, now f7c7ce733333",
    "tools/s3/changes.jsonl:C32: tools/s3/params.py: recorded 5f2ec454b4ae, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C33: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C33: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C33: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C34: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C34: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C34: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C35: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C35: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C35: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C36: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C36: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C36: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C37: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C37: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C37: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C38.RESET_NEAR: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C38.RESET_NEAR: out/s3/honesty/params_coverage.json: recorded b6aadded02a8, now 5e534ca58fd1",
@@ -1340,10 +1507,10 @@
    "tools/s3/changes.jsonl:C41: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C41: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
    "tools/s3/changes.jsonl:C41: out/s3/corpus/manifest.json: recorded 58f8763327e3, now c5b2ff283bb6",
-   "tools/s3/changes.jsonl:C41: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C41: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C42: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C42: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
-   "tools/s3/changes.jsonl:C42: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C42: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C43: tools/s3/recognize.py: recorded 80c53d85735b, now 15b72f5864f6",
    "tools/s3/changes.jsonl:C43: tools/s3/run.py: recorded ee7fb5d7834e, now f0a9e19d724c",
    "tools/s3/changes.jsonl:C43: test/test_s3.py: recorded 71d6ae7934b2, now 7c6ae3eee9c0",
@@ -1353,9 +1520,9 @@
    "tools/s3/changes.jsonl:C45: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
    "tools/s3/changes.jsonl:C45: out/s3/honesty/holdout_rates.py: recorded 5d72b16cc50b, now db5b5b9a5fe2",
    "tools/s3/changes.jsonl:C45: test/test_s3.py: recorded 71d6ae7934b2, now 7c6ae3eee9c0",
-   "tools/s3/changes.jsonl:C45: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C45: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C47: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
-   "tools/s3/changes.jsonl:C47: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C47: out/s3/honesty/summary.json: recorded f06d581875da, now 8c77d29a9800",
    "tools/s3/changes.jsonl:C46: out/s3/contamination.json: recorded d7ee687dc415, now 3cbab9a79c74",
    "tools/s3/changes.jsonl:C46: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C46: out/s3/corpus/manifest.json: recorded 58f8763327e3, now c5b2ff283bb6",
@@ -1400,7 +1567,7 @@
    "tools/s3/changes.jsonl:H06: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now 23295b37bad8",
    "tools/s3/changes.jsonl:H08: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now 8033b21f850d",
    "tools/s3/changes.jsonl:H08: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
-   "tools/s3/changes.jsonl:H09: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:H09: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 8c77d29a9800",
    "tools/s3/changes.jsonl:H09: out/s3/honesty/summarise.py: recorded b21f29abb414, now 84854a2f1edf",
    "tools/s3/changes.jsonl:H09: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:MC01: tools/s3/counter.py: recorded d8e6e8ad3adf, now 0072137626cc",
@@ -1434,7 +1601,7 @@
    "tools/s3/changes.jsonl:I06: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:I06: out/s3/honesty/corpus_holdout_eval.json: recorded a31151701689, now 02cb7c0dfe3a",
    "tools/s3/changes.jsonl:T01: out/s3/honesty/summarise.py: recorded b21f29abb414, now 84854a2f1edf",
-   "tools/s3/changes.jsonl:T01: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:T01: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 8c77d29a9800",
    "tools/s3/changes.jsonl:T02: out/s3/contamination.json: recorded bc3cce995e92, now 3cbab9a79c74",
    "tools/s3/changes.jsonl:T02: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now 23295b37bad8",
    "tools/s3/changes.jsonl:T05: test/test_s3.py: recorded c5053f9e0e9a, now 7c6ae3eee9c0",
@@ -1516,8 +1683,8 @@
    "out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-90e4754651b4.json",
    "out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-9b61865b3c56.attempt.json"
   ],
-  "previous_freeze": "20e014987880f11946b5e0eaba22c257014aabab732d5307fe436b0b860c0365",
-  "reason": "Freeze 3, a housekeeping freeze: a blind draw can no longer offer a design an earlier evaluation has seen (F06; contamination K16's open item). spent_designs() is recorded as draw.excluded under freeze_hash when a draw is recorded, check() gains a count and a tripwire, run.py normalises --design. No recognizer, verifier, scorer or corpus file changed."
+  "previous_freeze": "cd07cd0bce0d31c30c92b04eadc9c27de55c7e6784a80a394daa4fded7730940",
+  "reason": "Freeze 4, the replication draw: no code change; a second blind draw of 10 from the candidates freeze 1 did not spend, to re-run the unchanged recognizer on a fresh sample (changes.jsonl R01; the analysis plan docs/S3_REPLICATION_PLAN.md was committed before this seed existed, 95f7eff)."
  },
  "truth": {
   "puzzle": {
