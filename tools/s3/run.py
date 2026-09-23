@@ -1566,6 +1566,11 @@ def permutations_for(blind, permutations=None, leakage_arm=False):
 
 def run(design, gds=None, top=None, blind=False, rerun_reason=None, timeout=DEFAULT_TIMEOUT, truth_path=None,
         entry=ENTRY, baseline=True, write=True, echo=print, runs=None, permutations=None, leakage_arm=False, jobs=1):
+    # ONE spelling from here on: the preflight, the second-attempt guard, the record's name and
+    # field, the ledger and the truth path all see score.design_id()'s file-safe id. "tt09/tt_um_x"
+    # (what `freeze draw` prints) would otherwise put a "/" in the record name, and "tt:tt09__tt_um_x"
+    # would reach the ledger verbatim. "puzzle" and "tempo" are unchanged.
+    design = score.design_id(design)
     t_all = time.perf_counter()
     created = _utc().isoformat(timespec="seconds")
     fr, rerun, attempt = None, None, None

@@ -2776,6 +2776,1324 @@ def test_freeze_accepts_drawn_truths_only(tmp_path):
     assert any("labeller" in b for b in bad) and any("thirdparty.py: changed" in b for b in bad)
 
 
+# the draw never offers a design an earlier blind evaluation has seen. thirdparty.draw() ranks the
+# whole candidate list, so without an exclusion a new seed could redraw one of freeze 1's ten
+# (contamination.json K16). The exclusion is computed ONCE at `freeze write` and recorded in
+# FREEZE.json draw.excluded: freeze.draw() re-derives the draw for check() and run.py's preflight,
+# and a live exclusion would grow as the new draw's own designs are labelled and run.
+
+FREEZE1_COMMIT, FREEZE2_COMMIT = "232cfe6", "8d800bf"
+FREEZE1_HASH = "1ee6a47894359fefa10b0507ac610db6d19fb1426c6626b7162e5f977e5c4838"
+FREEZE1_SEED = "c644e6e442341d9f50d0120e16956d99"
+FREEZE1_BLIND = ["tt09/tt_um_pwm_top", "ttsky26c/tt_um_joonatanalanampa_cordic", "tt05/tt_um_toivoh_synth",
+                 "ttsky25a/tt_um_td4", "tt03p5/tt_um_Reloj_top", "tt03p5/tt_um_thorkn_vgaclock",
+                 "tt07/tt_um_toivoh_basilisc_2816", "ttsky25a/tt_um_sjsu_vga_music", "tt07/tt_um_vzayakov_top",
+                 "tt05/tt_um_kskyou"]
+FREEZE1_RESERVE = ["ttsky25b/tt_um_ieeeuoftasic_simproc", "ttsky25b/tt_um_Jsilicon",
+                   "tt06/tt_um_mbalestrini_usb_cdc_devices", "tt09/tt_um_histogramming",
+                   "tt06/tt_um_MATTHIAS_M_PAL_TOP_WRAPPER", "ttcad25a/tt_um_UartMain",
+                   "tt09/tt_um_arandomdev_fir_engine_top", "tt04/tt_um_jayraj4021_SAP1_cpu",
+                   "ttsky26a/tt_um_signal_detector", "tt06/tt_um_kwilke_cdc_fifo"]
+CANDIDATES = os.path.join(ROOT, F.CANDIDATES_REL)
+# the labeller's committed record of what it did under a freeze (out/s3/blind/make_labels.py)
+LABELS = os.path.join("out", "s3", "blind", "labels.json")
+
+
+def _candidates_or_skip():
+    if not os.path.exists(CANDIDATES):
+        pytest.skip(f"no {F.CANDIDATES_REL} in this checkout")
+    return CANDIDATES
+
+
+def _git_show_json(rev, rel):
+    if shutil.which("git") is None:
+        pytest.skip("git absent")
+    p = subprocess.run(["git", "-C", ROOT, "show", f"{rev}:{rel}"], capture_output=True, text=True)
+    if p.returncode != 0:
+        pytest.skip(f"{rev}:{rel} unavailable in this checkout ({p.stderr.strip()[:200]})")
+    return json.loads(p.stdout)
+
+
+def _candidate_list(root, ids):
+    cands = [{"id": i, "stratum": i.split("/")[0]} for i in ids]
+    p = os.path.join(root, F.CANDIDATES_REL)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, "w") as f:
+        json.dump({"candidates": cands, "candidates_sha256": F.canonical_hash(cands), "excluded": []}, f)
+    return p
+
+
+def test_draw_without_exclusion_is_freeze_1s_draw():
+    """O1: thirdparty.draw(freeze 1's seed, 10) with no exclusion (none given, an empty tuple, an
+    empty list) is exactly freeze 1's blind ten and first ten reserves, in order, and carries no
+    "excluded" key: the exclusion parameter changed nothing about the draw without it."""
+    from tools.s3 import thirdparty as TP
+    path = _candidates_or_skip()
+    d = TP.draw(FREEZE1_SEED, 10, path=path)
+    assert d["blind"] == FREEZE1_BLIND
+    assert d["reserve"][:10] == FREEZE1_RESERVE
+    assert list(d) == ["seed", "candidates_sha256", "blind", "reserve"]
+    assert TP.draw(FREEZE1_SEED, 10, path=path, exclude=()) == d == TP.draw(FREEZE1_SEED, 10, path=path, exclude=[])
+
+
+def test_freeze_draw_reproduces_freeze_1_and_is_none_under_freeze_2():
+    """O1: freeze.draw() on freeze 1's own FREEZE.json (git show 232cfe6, a record with no
+    draw.excluded) re-derives freeze 1's draw exactly, reserves cut at its max_reserves = 10; on
+    freeze 2's record (8d800bf), which records no draw, and on the working tree's FREEZE.json while
+    that is still freeze 2's, it returns None."""
+    _candidates_or_skip()
+    fr1 = _git_show_json(FREEZE1_COMMIT, F.FREEZE_REL)
+    assert fr1["freeze_hash"] == FREEZE1_HASH and fr1["blind_seed"] == FREEZE1_SEED
+    assert "excluded" not in fr1["draw"]
+    assert F.sha256_file(os.path.join(ROOT, fr1["blind_candidates"]["path"])) == fr1["blind_candidates"]["sha256"]
+    assert F.draw(fr1, ROOT) == {"blind": FREEZE1_BLIND, "reserve": FREEZE1_RESERVE}
+    assert F.drawn_ids(fr1, ROOT) == {S.design_id(x) for x in FREEZE1_BLIND + FREEZE1_RESERVE}
+    fr2 = _git_show_json(FREEZE2_COMMIT, F.FREEZE_REL)
+    assert fr2.get("draw") is None and F.draw(fr2, ROOT) is None and F.drawn_ids(fr2, ROOT) == set()
+    cur = F.load(ROOT)
+    if cur is not None and cur.get("freeze_hash") == fr2["freeze_hash"]:
+        assert F.draw(cur, ROOT) is None
+
+
+def _labels_texts(root):
+    """Every version of labels.json: the working tree's and each one git history (any ref and the
+    reflog) holds, read with plain git, independently of freeze.py."""
+    texts = []
+    p = os.path.join(root, LABELS)
+    if os.path.exists(p):
+        with open(p) as f:
+            texts.append(f.read())
+    if shutil.which("git"):
+        log = subprocess.run(["git", "-C", root, "log", "--all", "--reflog", "--full-history", "--format=%H", "--",
+                              LABELS], capture_output=True, text=True)
+        for h in log.stdout.split():
+            show = subprocess.run(["git", "-C", root, "show", f"{h}:{LABELS}"], capture_output=True, text=True)
+            if show.returncode == 0:
+                texts.append(show.stdout)
+    return texts
+
+
+def _only_freeze_1_evidence(root, cands):
+    """Whether the blind-evaluation evidence in `root` is still freeze 1's alone: no ledger attempt
+    of a candidate under another freeze (or of a candidate outside freeze 1's ten), and no run
+    record, anonymised layout, truth file (on disk or in git history), cached download or labels.json
+    entry (drawn, replaced, or a reserve used) of a candidate outside the ten. Read from plain file
+    names, plain git and score.design_id(), independently of spent_designs(), so that the exact
+    assertion it gates is not circular."""
+    ten = {S.design_id(x) for x in FREEZE1_BLIND}
+    fids = {S.design_id(c): c for c in cands}
+    others = {fid: c for fid, c in fids.items() if fid not in ten}
+    for e in F.ledger_entries(root)[0]:
+        fid = S.design_id(e.get("design")) if isinstance(e.get("design"), str) else None
+        if e.get("event") == "attempt" and fid in fids and (e.get("freeze_hash") != FREEZE1_HASH or fid in others):
+            return False
+    names = []
+    for d in (os.path.join(root, F.RUNS_REL), os.path.join(root, F.ANON_REL), os.path.join(root, "out", "s3"),
+              *(os.path.join(base, k) for base in F._cache_dirs(root) for k in F.CACHE_KINDS)):
+        names += os.listdir(d) if os.path.isdir(d) else []
+    if shutil.which("git"):
+        p = subprocess.run(["git", "-C", root, "log", "--all", "--reflog", "--full-history", "--format=",
+                            "--name-only", "--", "out/s3/truth_*.json"], capture_output=True, text=True)
+        names += [os.path.basename(x) for x in p.stdout.split()]
+    for fid, c in others.items():
+        forms = (f"blind-{fid}-", f"{fid}.gds", f"truth_{fid}.json", F._cache_form(c) + ".")
+        if any(n.startswith(forms) for n in names):
+            return False
+    for text in _labels_texts(root):
+        try:
+            doc = json.loads(text)
+        except ValueError:
+            continue
+        if not isinstance(doc, dict):
+            continue
+        dr = doc.get("draw") if isinstance(doc.get("draw"), dict) else {}
+        named = list(dr.get("blind") or [])
+        if type(doc.get("reserves_used")) is int:
+            named += list(dr.get("reserve") or [])[:doc["reserves_used"]]
+        for r in list(doc.get("designs") or []) + list(doc.get("replacements") or []):
+            named += [r.get("id"), r.get("design_id"), r.get("replaces")] if isinstance(r, dict) else [r]
+        if any(S.design_id(x) in others for x in named if isinstance(x, str)):
+            return False
+    return True
+
+
+def test_spent_designs_are_exactly_freeze_1s_ten():
+    """O2: on this tree, spent_designs() holds freeze 1's ten drawn designs, each with evidence
+    from the ledger (an attempt under freeze 1), from labels.json (drawn under freeze 1) and from
+    its blind run records, truth file, anonymised layout and every cached download of it where
+    those are on disk -- and none of the excluded pilot and probe designs (whose downloads are in
+    the cache too), not the puzzle, and none of the ten reserves labels.json LISTS (reserves_used
+    is 0, no row replaces a drawn design: listed, never used).
+
+    It is EXACTLY the ten -- no reserve, no other candidate -- while the tree holds no evidence
+    beyond freeze 1's evaluation (_only_freeze_1_evidence: today it holds none, so today the check
+    is exact). Once a later freeze is evaluated its designs are spent too, and the test asserts only
+    that the ten still are, instead of turning into a false alarm."""
+    _candidates_or_skip()
+    if not os.path.exists(os.path.join(ROOT, F.LEDGER_REL)):
+        pytest.skip(f"no {F.LEDGER_REL} in this checkout")
+    spent = F.spent_designs(ROOT)
+    with open(CANDIDATES) as f:
+        doc = json.load(f)
+    assert set(FREEZE1_BLIND) <= set(spent), sorted(set(FREEZE1_BLIND) - set(spent))
+    if _only_freeze_1_evidence(ROOT, [c["id"] for c in doc["candidates"]]):
+        assert sorted(spent) == sorted(FREEZE1_BLIND), sorted(set(spent) - set(FREEZE1_BLIND))
+        assert not set(spent) & set(FREEZE1_RESERVE)
+    not_candidates = {e["id"] for e in doc["excluded"]}
+    assert not_candidates and not set(spent) & not_candidates
+    runs = os.path.join(ROOT, F.RUNS_REL)
+    labelled = os.path.exists(os.path.join(ROOT, LABELS))
+    for x in FREEZE1_BLIND:
+        fid, ev = S.design_id(x), spent[x]
+        assert any(e.startswith("ledger: ") and FREEZE1_HASH[:12] in e for e in ev), (x, ev)
+        if labelled:
+            assert f"labels: drawn under freeze {FREEZE1_HASH[:12]} ({LABELS})" in ev, (x, ev)
+        truth = os.path.join("out", "s3", f"truth_{fid}.json")
+        if os.path.exists(os.path.join(ROOT, truth)):
+            assert f"truth: {truth}" in ev, (x, ev)
+        anon = os.path.join(F.ANON_REL, f"{fid}.gds")
+        if os.path.exists(os.path.join(ROOT, anon)):
+            assert f"anon: {anon}" in ev, (x, ev)
+        for n in os.listdir(runs) if os.path.isdir(runs) else []:
+            if n.startswith(f"blind-{fid}-") and n.endswith(".json"):
+                assert f"run: {os.path.join(F.RUNS_REL, n)}" in ev, (x, n)
+        for kind in F.CACHE_KINDS:
+            d = os.path.join(ROOT, F.CACHE_REL, kind)
+            for n in os.listdir(d) if os.path.isdir(d) else []:
+                if n.startswith(fid + "."):
+                    assert f"cache: {kind}/{n}" in ev, (x, n)
+        assert all(e.split(": ", 1)[0] in ("ledger", "run", "truth", "anon", "cache", "labels") for e in ev)
+        assert not any(ROOT in e or ".." in e for e in ev), ev    # portable: no machine path
+
+
+def test_the_real_tree_test_survives_a_later_evaluation(tmp_path, monkeypatch):
+    """H11's other half: evidence of a later evaluation -- here a download of a candidate outside
+    freeze 1's draw, in a second cache, with no ledger attempt yet (the labeller fetches before any
+    blind run) -- makes that candidate spent. test_spent_designs_are_exactly_freeze_1s_ten() then
+    sees evidence beyond freeze 1's and asserts only that the ten are still spent, instead of
+    failing as a false alarm."""
+    _candidates_or_skip()
+    if not os.path.exists(os.path.join(ROOT, F.LEDGER_REL)):
+        pytest.skip(f"no {F.LEDGER_REL} in this checkout")
+    with open(CANDIDATES) as f:
+        cands = [c["id"] for c in json.load(f)["candidates"]]
+    other = next(c for c in cands if c not in FREEZE1_BLIND + FREEZE1_RESERVE)
+    (tmp_path / "layout").mkdir()
+    (tmp_path / "layout" / (F._cache_form(other) + ".gds")).write_text("")
+    real = F._cache_dirs
+    monkeypatch.setattr(F, "_cache_dirs", lambda root: real(root) + [str(tmp_path)])
+    assert F.spent_designs(ROOT)[other] == [f"cache: layout/{F._cache_form(other)}.gds"]
+    assert not _only_freeze_1_evidence(ROOT, cands)
+    test_spent_designs_are_exactly_freeze_1s_ten()
+
+
+def test_spent_designs_map_candidates_forward(tmp_path):
+    """spent_designs() maps each CANDIDATE forward to the forms a source carries, never a file-safe
+    id back by splitting on "__": an attempt of tt06__tt_um_a__b spends tt06/tt_um_a__b and not
+    tt06/tt_um_a, and neither does its cached tt06__tt_um_a__b.gds. A truth counts by its file name
+    and by its design field; the ledger, truths and cache of non-candidates (the puzzle,
+    TEMPO, a probe) spend nothing; no candidate list, nothing is spent."""
+    root = str(tmp_path)
+    assert F.spent_designs(root) == {}
+    _candidate_list(root, ["tt06/tt_um_a", "tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e",
+                           "tt09/tt_um_f"])
+    for design in ("tt06__tt_um_a__b", "puzzle", "tempo", "tt05__tt_um_probe"):
+        F.ledger_append({"event": "attempt", "attempt": design, "design": design, "freeze_hash": "e" * 64}, root)
+    F.ledger_append({"event": "finish", "attempt": "x", "design": "tt09__tt_um_f"}, root)   # not an attempt
+    out = os.path.join(root, "out", "s3")
+    for name, design in (("tt07__tt_um_c", "tt:tt07/tt_um_c"), ("renamed", "tt:tt08/tt_um_d"),
+                         ("puzzle", "puzzle"), ("tempo", "tempo")):
+        with open(os.path.join(out, f"truth_{name}.json"), "w") as f:
+            json.dump({"design": design}, f)
+    for kind, name in (("layout", "tt09__tt_um_e.prep.gds"), ("layout", "tt06__tt_um_a__b.gds"),
+                       ("rtl", "tt05__tt_um_probe.tar.gz"), ("work", "tt06__tt_um_a.gds")):
+        os.makedirs(os.path.join(root, F.CACHE_REL, kind), exist_ok=True)
+        open(os.path.join(root, F.CACHE_REL, kind, name), "w").close()
+    spent = F.spent_designs(root)
+    assert set(spent) == {"tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e"}
+    assert spent["tt06/tt_um_a__b"] == ["cache: layout/tt06__tt_um_a__b.gds",
+                                        f"ledger: attempt tt06__tt_um_a__b under freeze {'e' * 12}"]
+    assert spent["tt07/tt_um_c"] == ["truth: " + os.path.join("out", "s3", "truth_tt07__tt_um_c.json")]
+    assert spent["tt08/tt_um_d"] == ["truth: " + os.path.join("out", "s3", "truth_renamed.json")]
+    assert spent["tt09/tt_um_e"] == ["cache: layout/tt09__tt_um_e.prep.gds"]
+
+
+def test_spent_designs_normalise_every_design_spelling(tmp_path, monkeypatch):
+    """run.run() normalises --design with score.design_id() before anything records it (H5), but
+    run._open_attempt() writes the design it is given verbatim, so a direct call (as this test
+    makes) or an older run.py leaves a ledger attempt spelled any way score.design_id() accepts; a
+    truth's "design" field is matched by score.load_truth() the same way. So spent_designs()
+    normalises both before comparing: an attempt _open_attempt() records as "tt:tt07__tt_um_c", and
+    attempts spelled "tt09/tt_um_e" and "tt:tt06/tt_um_a__b", and truths whose field is
+    "tt08/tt_um_d" or "tt09__tt_um_f" under unrelated file names, each spend their candidate. Still
+    forward: "tt:tt06/tt_um_a__b" spends tt06/tt_um_a__b and not tt06/tt_um_a, and non-candidates
+    in any spelling (the puzzle, TEMPO, a probe) spend nothing."""
+    root = str(tmp_path)
+    _candidate_list(root, ["tt06/tt_um_a", "tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e",
+                           "tt09/tt_um_f", "tt10/tt_um_g"])
+    monkeypatch.setattr(R, "RUNS", os.path.join(root, F.RUNS_REL))
+    monkeypatch.setattr(R, "LEDGER_ROOT", root)
+    rec = R._open_attempt("tt:tt07__tt_um_c", "2026-09-23T00:00:00Z", {"freeze_hash": "d" * 64}, None, None)
+    assert [e["design"] for e in F.ledger_entries(root, history=False)[0]] == ["tt:tt07__tt_um_c"]  # verbatim
+    for design in ("tt09/tt_um_e", "tt:tt06/tt_um_a__b", "tt:puzzle", "tt:tempo", "tt05/tt_um_probe"):
+        F.ledger_append({"event": "attempt", "attempt": design, "design": design, "freeze_hash": "e" * 64}, root)
+    out = os.path.join(root, "out", "s3")
+    for name, design in (("renamed", "tt08/tt_um_d"), ("other", "tt09__tt_um_f"), ("probe", "tt05/tt_um_probe")):
+        with open(os.path.join(out, f"truth_{name}.json"), "w") as f:
+            json.dump({"design": design}, f)
+    spent = F.spent_designs(root)
+    assert set(spent) == {"tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e", "tt09/tt_um_f"}
+    assert spent["tt07/tt_um_c"] == [f"ledger: attempt {rec['id']} under freeze {'d' * 12}",
+                                     f"run: {os.path.relpath(os.path.join(root, rec['record']), root)}"]  # its record
+    assert spent["tt09/tt_um_e"] == [f"ledger: attempt tt09/tt_um_e under freeze {'e' * 12}"]
+    assert spent["tt06/tt_um_a__b"] == [f"ledger: attempt tt:tt06/tt_um_a__b under freeze {'e' * 12}"]
+    assert spent["tt08/tt_um_d"] == ["truth: " + os.path.join("out", "s3", "truth_renamed.json")]
+    assert spent["tt09/tt_um_f"] == ["truth: " + os.path.join("out", "s3", "truth_other.json")]
+
+
+def test_draw_exclusion_removes_ids_before_ranking(tmp_path):
+    """O3: draw(seed, n, exclude=S) holds no id of S among the drawn designs or the reserves, and
+    is the unexcluded ranking with S taken out, order kept (so a reserve moves up into the drawn
+    designs); an id that is not a candidate removes nothing, a bare string is refused, and the
+    candidate list's own hash is still checked. freeze.draw() passes the RECORDED draw.excluded,
+    and an empty record draws as a record without one."""
+    from tools.s3 import thirdparty as TP
+    ids = [f"tt0{i % 10}/tt_um_c{i}" for i in range(30)] + ["tt06/tt_um_a__b"]
+    os.makedirs(tmp_path / "tools" / "s3")
+    shutil.copy(os.path.join(ROOT, F.THIRDPARTY_REL), tmp_path / "tools" / "s3" / "thirdparty.py")
+    lists = [(_candidate_list(str(tmp_path), ids), "0f" * 16, 5, str(tmp_path))]
+    if os.path.exists(CANDIDATES):
+        lists.append((CANDIDATES, FREEZE1_SEED, 10, ROOT))
+    for path, seed, n, base in lists:
+        full = TP.draw(seed, n, path=path)
+        rank = full["blind"] + full["reserve"]
+        excl = {rank[0], rank[n - 1], rank[n], rank[-1], "tt99/tt_um_not_a_candidate"}
+        d = TP.draw(seed, n, path=path, exclude=excl)
+        kept = [x for x in rank if x not in excl]
+        assert not (set(d["blind"]) | set(d["reserve"])) & excl
+        assert d["blind"] == kept[:n] and d["reserve"] == kept[n:] and len(kept) == len(rank) - 4
+        assert d["excluded"] == sorted(excl - {"tt99/tt_um_not_a_candidate"})
+        assert TP.draw(seed, n, path=path, exclude={"tt99/tt_um_not_a_candidate"})["blind"] == full["blind"]
+        with pytest.raises(TypeError):
+            TP.draw(seed, n, path=path, exclude=rank[0])
+        fr = {"blind_seed": seed, "blind_candidates": {"path": os.path.relpath(path, base)},
+              "draw": {"n": n, "max_reserves": 3}}
+        assert F.draw(fr, base) == {"blind": full["blind"], "reserve": full["reserve"][:3]}
+        fr["draw"]["excluded"] = []
+        assert F.draw(fr, base) == {"blind": full["blind"], "reserve": full["reserve"][:3]}
+        fr["draw"]["excluded"] = [{"id": x, "evidence": ["test"]} for x in sorted(excl)]
+        assert F.draw(fr, base) == {"blind": kept[:n], "reserve": kept[n:n + 3]}
+    doc = json.load(open(lists[0][0]))
+    doc["candidates"].pop()
+    json.dump(doc, open(lists[0][0], "w"))
+    with pytest.raises(SystemExit, match="candidates changed"):
+        TP.draw("0f" * 16, 5, path=lists[0][0], exclude={ids[0]})
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+@pytest.mark.parametrize("how", ["ledger", "ledger tt:", "ledger slash", "truth", "cache"])
+def test_spent_exclusion_is_recorded_once_and_the_draw_never_moves(tmp_path, monkeypatch, how):
+    """O4, the reproducibility property. A candidate an earlier evaluation has seen (a ledger
+    attempt -- its design file-safe, "tt:"-prefixed or with a slash, as an older run.py, which did
+    not yet normalise --design, could record it --, a truth file, or a cached download) BEFORE
+    `freeze write` -- chosen as the one the
+    unexcluded draw would pick first -- is recorded in draw.excluded and not drawn; the recorded
+    exclusion is inside freeze_hash. Then the evaluation is simulated: every drawn design and
+    reserve gets a truth, a committed ledger attempt and a cached download, which makes all of them
+    spent to a LIVE computation. The draw under the freeze does not move and check() still holds:
+    freeze.draw() reads the record, not spent_designs()."""
+    root, g = _mini_repo(tmp_path, candidates=8)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    seed = "5eed" * 8
+    monkeypatch.setattr(F.secrets, "token_hex", lambda nbytes=None: seed)
+    tp = F._thirdparty(root)
+    unexcluded = tp.draw(seed, 2, path=cpath)
+    spent = unexcluded["blind"][0]
+    source = how.split()[0]
+    spelling = {"ledger tt:": lambda x: "tt:" + S.design_id(x), "ledger slash": lambda x: x}.get(how, S.design_id)
+
+    def seen(x, fh, attempt, cache=True, spell=S.design_id):
+        F.ledger_append({"event": "attempt", "attempt": attempt, "design": spell(x), "freeze_hash": fh,
+                         "record": f"{F.RUNS_REL}/blind-{S.design_id(x)}-{attempt}{F.ATTEMPT_SUFFIX}"}, root)
+        F.ledger_append({"event": "finish", "attempt": attempt}, root)
+        if cache:
+            d = os.path.join(root, F.CACHE_REL, "layout")
+            os.makedirs(d, exist_ok=True)
+            open(os.path.join(d, F._cache_form(x) + ".gds"), "w").close()
+
+    supersede = None
+    if source == "ledger":
+        seen(spent, "e" * 64, "earlier", cache=False, spell=spelling)
+        g("add", "-f", F.LEDGER_REL)
+        _commit(g, "an earlier freeze's blind attempt")
+        supersede = "test: an earlier freeze was evaluated"
+    elif how == "truth":
+        _drawn_truth(root, spent)
+    else:
+        d = os.path.join(root, F.CACHE_REL, "rtl")
+        os.makedirs(d)
+        open(os.path.join(d, F._cache_form(spent) + ".tar.gz"), "w").close()
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1, supersede=supersede)
+    g("add", "tools", F.CANDIDATES_REL)
+    g("add", "-f", F.FREEZE_REL, F.CONTAMINATION_REL)
+    _commit(g, "freeze")
+    assert F.check(root) == []
+    assert fr["blind_seed"] == seed and "draw.excluded" in fr["draw"]["rule"]
+    assert [e["id"] for e in fr["draw"]["excluded"]] == [spent]
+    ev = fr["draw"]["excluded"][0]["evidence"]
+    assert ev and all(e.startswith(f"{source}: ") for e in ev), ev
+    assert "1 design(s) an earlier blind evaluation has seen excluded" in F.write_summary(fr)
+    d = F.draw(fr, root)
+    rank = [x for x in unexcluded["blind"] + unexcluded["reserve"] if x != spent]
+    assert spent not in d["blind"] + d["reserve"] and d == {"blind": rank[:2], "reserve": rank[2:3]}
+    ids = F.drawn_ids(fr, root)
+    tampered = F.load(root)
+    tampered["draw"]["excluded"] = []
+    assert any("edited by hand" in b for b in F.check(root, tampered, require_commit=False))
+    # the tripwire (H1): the same cut WITH freeze_hash recomputed still does not hold when the
+    # evidence was fixed at write (a ledger attempt under another freeze, a frozen truth); a cached
+    # download alone is not (this freeze's own downloads add to the cache), so it is not read
+    cut = F.load(root)
+    del cut["draw"]["excluded"]
+    cut["freeze_hash"] = F.freeze_hash(cut)
+    bad = F.check(root, cut, require_commit=False)
+    assert not any("edited by hand" in b for b in bad)
+    tripped = [b for b in bad if b.startswith("draw.excluded omits")]
+    if source in ("ledger", "truth"):
+        assert tripped and all(b.startswith(f"draw.excluded omits {spent}:") for b in tripped), bad
+    else:
+        assert tripped == [], tripped
+
+    # the evaluation: truths, committed ledger attempts and downloads of every drawn design
+    for x in d["blind"] + d["reserve"]:
+        _drawn_truth(root, x)
+        seen(x, fr["freeze_hash"], f"a-{S.design_id(x)}")
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "ledger")
+    assert set(F.spent_designs(root)) == set(d["blind"] + d["reserve"]) | {spent}   # live has moved
+    assert F.draw(F.load(root), root) == d and F.drawn_ids(F.load(root), root) == ids
+    assert F.check(root) == []
+
+
+def _blind_record(root, name, body):
+    runs = os.path.join(root, F.RUNS_REL)
+    os.makedirs(runs, exist_ok=True)
+    with open(os.path.join(runs, name), "w") as f:
+        f.write(body if isinstance(body, str) else json.dumps(body))
+    return os.path.join(F.RUNS_REL, name)
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_check_trips_on_a_cut_draw_excluded_and_holds_through_the_evaluation(tmp_path):
+    """H1, check()'s tripwire. Before the freeze an earlier evaluation left a committed ledger
+    attempt (spelled "tt:<shuttle>/<macro>"), a blind run record with no ledger line, and a truth
+    of three candidates; `freeze write` excludes all three and check() holds. A FREEZE.json whose
+    draw.excluded is removed, or loses one id, and whose freeze_hash is RECOMPUTED (so "edited by
+    hand" does not fire) does not hold: check() names each spent candidate the draw can offer. Then
+    this freeze's own evaluation runs -- a truth, a committed ledger attempt, blind run records,
+    an anonymised layout and a download for every drawn design and reserve, and a committed
+    labels.json naming them (one replaced, the reserve used), all under this freeze's hash -- and
+    check() on the true record stays []: the tripwire reads the ledger, run records and labels.json
+    only under another freeze, and the truths of the frozen block only."""
+    root, g = _mini_repo(tmp_path, candidates=7)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    led, rec, tru = "tt00/tt_um_c0", "tt01/tt_um_c1", "tt02/tt_um_c2"
+    F.ledger_append({"event": "attempt", "attempt": "old", "design": f"tt:{led}", "freeze_hash": "e" * 64}, root)
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "an earlier freeze's blind attempt")
+    _blind_record(root, f"blind-{S.design_id(rec)}-20260101T000000Z-0123456789ab.json",
+                  {"design": S.design_id(rec), "blind": True, "freeze": {"freeze_hash": "e" * 64}})
+    _drawn_truth(root, tru)
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1, supersede="test: an earlier evaluation")
+    g("add", "tools", F.CANDIDATES_REL)
+    g("add", "-f", F.FREEZE_REL, F.CONTAMINATION_REL)
+    _commit(g, "freeze")
+    assert [e["id"] for e in fr["draw"]["excluded"]] == [led, rec, tru] and fr["draw"]["eligible"] == 4
+    assert F.check(root) == []
+
+    def recut(keep):
+        cut = F.load(root)
+        if keep is None:
+            del cut["draw"]["excluded"]
+        else:
+            cut["draw"]["excluded"] = [e for e in cut["draw"]["excluded"] if e["id"] in keep]
+        cut["freeze_hash"] = F.freeze_hash(cut)
+        bad = F.check(root, cut, require_commit=False)
+        assert not any("edited by hand" in b for b in bad)
+        return {b.split(":", 1)[0][len("draw.excluded omits "):] for b in bad if b.startswith("draw.excluded omits")}
+
+    assert recut(None) == {led, rec, tru}
+    assert recut({rec, tru}) == {led} and recut({led, tru}) == {rec} and recut({led, rec}) == {tru}
+    assert recut({led, rec, tru}) == set()
+
+    d = F.draw(fr, root)
+    for x in d["blind"] + d["reserve"]:
+        fid = S.design_id(x)
+        _drawn_truth(root, x)
+        F.ledger_append({"event": "attempt", "attempt": f"a-{fid}", "design": fid, "freeze_hash": fr["freeze_hash"],
+                         "record": f"{F.RUNS_REL}/blind-{fid}-20260201T000000Z-0123456789ab.attempt.json"}, root)
+        F.ledger_append({"event": "finish", "attempt": f"a-{fid}"}, root)
+        for suffix in (".attempt", ""):
+            _blind_record(root, f"blind-{fid}-20260201T000000Z-0123456789ab{suffix}.json",
+                          {"design": fid, "blind": True, "freeze": {"freeze_hash": fr["freeze_hash"]}})
+        for sub, name in ((F.ANON_REL, f"{fid}.gds"), (os.path.join(F.CACHE_REL, "layout"), f"{fid}.gds")):
+            os.makedirs(os.path.join(root, sub), exist_ok=True)
+            open(os.path.join(root, sub, name), "w").close()
+    _write_labels(root, _labels_doc(fr["freeze_hash"], d["blind"], d["reserve"],
+                                    [(d["blind"][0], True, None), (d["blind"][1], False, None),
+                                     (d["reserve"][0], True, d["blind"][1])], reserves_used=1))
+    g("add", "-f", F.LEDGER_REL, LABELS)
+    _commit(g, "ledger and labels")
+    assert set(F.spent_designs(root)) == {led, rec, tru} | set(d["blind"] + d["reserve"])   # live has moved
+    assert F.draw(F.load(root), root) == d
+    assert F.check(root) == []
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_spent_designs_count_run_records_anon_layouts_and_deleted_truths(tmp_path):
+    """H2: three more sources spend a candidate, each only adding, each mapped forward. A blind run
+    record in out/s3/runs, result or attempt, with no ledger line: by its design field in any
+    spelling, and by the design its file name carries even when it cannot be read. An anonymised
+    layout out/s3/blind/anon/<id>.gds. A truth file git history holds that is gone from disk: by
+    its file name and by its design field. A record or layout of tt06__tt_um_a__b does not spend
+    tt06/tt_um_a, and the puzzle's and a probe's spend nothing."""
+    root = str(tmp_path / "repo")
+    ids = ["tt06/tt_um_a", "tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e", "tt09/tt_um_f",
+           "tt10/tt_um_g", "tt11/tt_um_h", "tt12/tt_um_i"]
+    _candidate_list(root, ids)
+    g = lambda *a: subprocess.run(["git", "-C", root, *a], check=True, capture_output=True)  # noqa: E731
+    g("init", "-q")
+    stamp = "20260101T000000Z-0123456789ab"
+    runs = {"c": _blind_record(root, f"blind-tt07__tt_um_c-{stamp}.json",
+                               {"design": "tt:tt07/tt_um_c", "blind": True, "freeze": {"freeze_hash": "e" * 64}}),
+            "d": _blind_record(root, f"blind-tt:tt08__tt_um_d-{stamp}.attempt.json", "{not json"),
+            "h": _blind_record(root, f"blind-renamed-{stamp}.json", {"design": "tt11/tt_um_h"}),
+            "ab": _blind_record(root, f"blind-tt06__tt_um_a__b-{stamp}.json", {"design": "tt06__tt_um_a__b"})}
+    _blind_record(root, f"blind-puzzle-{stamp}.json", {"design": "puzzle"})
+    anon = os.path.join(root, F.ANON_REL)
+    os.makedirs(anon)
+    for n in ("tt09__tt_um_e.gds", "tt05__tt_um_probe.gds", "puzzle.gds"):
+        open(os.path.join(anon, n), "w").close()
+    out = os.path.join(root, "out", "s3")
+    for name, design in (("tt09__tt_um_f", "tt:tt09/tt_um_f"), ("renamed", "tt10/tt_um_g"),
+                         ("tt12__tt_um_i", "tt:tt12/tt_um_i")):
+        with open(os.path.join(out, f"truth_{name}.json"), "w") as f:
+            json.dump({"design": design}, f)
+    g("add", "out/s3")
+    _commit(g, "truths")
+    g("rm", "-q", "out/s3/truth_tt09__tt_um_f.json", "out/s3/truth_renamed.json")
+    _commit(g, "two truths deleted")
+    spent = F.spent_designs(root)
+    assert set(spent) == {"tt06/tt_um_a__b", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e", "tt09/tt_um_f",
+                          "tt10/tt_um_g", "tt11/tt_um_h", "tt12/tt_um_i"}
+    assert spent["tt07/tt_um_c"] == [f"run: {runs['c']}"]
+    assert spent["tt08/tt_um_d"] == [f"run: {runs['d']}"]
+    assert spent["tt11/tt_um_h"] == [f"run: {runs['h']}"]
+    assert spent["tt06/tt_um_a__b"] == [f"run: {runs['ab']}"]
+    assert spent["tt09/tt_um_e"] == [f"anon: {os.path.join(F.ANON_REL, 'tt09__tt_um_e.gds')}"]
+    assert spent["tt09/tt_um_f"] == ["truth: out/s3/truth_tt09__tt_um_f.json (deleted from disk; in git history)"]
+    assert spent["tt10/tt_um_g"] == ["truth: out/s3/truth_renamed.json (deleted from disk; in git history)"]
+    assert spent["tt12/tt_um_i"] == ["truth: " + os.path.join("out", "s3", "truth_tt12__tt_um_i.json")]  # on disk
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_ledger_history_reads_a_merged_and_deleted_side_branch(tmp_path, monkeypatch):
+    """H3: a ledger version committed on a side branch that was merged with its ledger resolved to
+    the other side's (git merge -s ours) and then deleted is skipped by `git log --all -- <ledger>`
+    under default history simplification, and read with --full-history. Its attempt then counts
+    for blind_results() (under the design's other spellings too, and not for another design or
+    freeze), all_blind_attempts() and spent_designs(); run.py's second-attempt guard refuses the
+    design; and a line in both the working tree and history counts once."""
+    root, g = _mini_repo(tmp_path)
+    main = subprocess.run(["git", "-C", root, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True,
+                          text=True, check=True).stdout.strip()
+    fh = "e" * 64
+    g("checkout", "-q", "-b", "side")
+    F.ledger_append({"event": "attempt", "attempt": "s1", "design": "tt01__tt_um_c1", "freeze_hash": fh}, root)
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "side: a blind attempt")
+    side = subprocess.run(["git", "-C", root, "rev-parse", "HEAD"], capture_output=True, text=True,
+                          check=True).stdout.strip()
+    g("checkout", "-q", main)
+    g("-c", "user.email=t@t", "-c", "user.name=t", "merge", "-q", "-s", "ours", "--no-edit", "side")
+    g("branch", "-q", "-D", "side")
+    assert not os.path.exists(os.path.join(root, F.LEDGER_REL))
+    log = lambda *extra: subprocess.run(["git", "-C", root, "log", "--all", *extra, "--format=%H", "--",  # noqa: E731
+                                         F.LEDGER_REL], capture_output=True, text=True, check=True).stdout.split()
+    assert side not in log() and side in log("--full-history")     # what the flag changes
+    assert [e["attempt"] for e in F.ledger_entries(root)[0]] == ["s1"]
+    for spelling in ("tt01__tt_um_c1", "tt01/tt_um_c1", "tt:tt01/tt_um_c1"):
+        assert F.blind_results(spelling, fh, root) == ["ledger attempt s1 (None)"]
+    assert F.blind_results("tt01__tt_um_c1", "0" * 64, root) == [] == F.blind_results("tt02__tt_um_c2", fh, root)
+    assert F.all_blind_attempts(root) == [f"tt01__tt_um_c1 under {fh[:12]} (attempt s1)"]
+    assert "tt01/tt_um_c1" in F.spent_designs(root)
+    monkeypatch.setattr(R.freeze, "check", lambda *a, **k: [])
+    monkeypatch.setattr(R.freeze, "load", lambda *a, **k: {"freeze_hash": fh, "truth": {}})
+    monkeypatch.setattr(R.freeze, "blind_results", functools.partial(F.blind_results, root=root))
+    with pytest.raises(SystemExit, match="already has a blind attempt"):
+        R.run("tt:tt01/tt_um_c1", gds="/nonexistent.gds", blind=True, write=False, echo=lambda *a: None)
+    g("checkout", side, "--", F.LEDGER_REL)                         # the same line in the working tree too
+    assert [e["attempt"] for e in F.ledger_entries(root)[0]] == ["s1"]
+
+
+def test_spent_evidence_names_no_machine_path(tmp_path, monkeypatch):
+    """H4: cache evidence is recorded in FREEZE.json, so it is relative to the cache root under a
+    named base ("cache: layout/<name>"), the same string whether the file is in out/s3/blind/cache
+    or in a RETRACE_TT_CACHE outside the repository, named absolutely or by a ../ path: never a
+    machine path."""
+    root = str(tmp_path / "repo")
+    _candidate_list(root, ["tt06/tt_um_a", "tt07/tt_um_c", "tt08/tt_um_d"])
+    ext = tmp_path / "elsewhere" / "cache"
+    for kind, name in (("layout", "tt06__tt_um_a.gds"), ("rtl", "tt07__tt_um_c.tar.gz")):
+        (ext / kind).mkdir(parents=True, exist_ok=True)
+        (ext / kind / name).write_text("")
+    inside = os.path.join(root, F.CACHE_REL, "layout")
+    os.makedirs(inside)
+    for name in ("tt06__tt_um_a.gds", "tt08__tt_um_d.prep.gds"):
+        open(os.path.join(inside, name), "w").close()
+    monkeypatch.setattr(F, "ROOT", root)        # RETRACE_TT_CACHE is read for the checkout itself only
+    monkeypatch.chdir(root)
+    want = {"tt06/tt_um_a": ["cache: layout/tt06__tt_um_a.gds"], "tt07/tt_um_c": ["cache: rtl/tt07__tt_um_c.tar.gz"],
+            "tt08/tt_um_d": ["cache: layout/tt08__tt_um_d.prep.gds"]}
+    for env in (str(ext), os.path.relpath(ext, root)):
+        monkeypatch.setenv("RETRACE_TT_CACHE", env)
+        assert F._cache_dirs(root)[1:] == [env]
+        spent = F.spent_designs(root)
+        assert spent == want, spent
+        assert str(tmp_path) not in json.dumps(spent) and ".." not in json.dumps(spent)
+
+
+def test_run_normalises_the_design_at_the_source(tmp_path, monkeypatch):
+    """H5: run.py's run() converts --design once with score.design_id() before anything uses it.
+    "tt:tt09__tt_um_x", "tt09/tt_um_x" (what `freeze draw` prints; its "/" used to reach the record
+    name and crash _write_record with FileNotFoundError after the preflight passed) and
+    "tt:tt09/tt_um_x" reach the preflight, the attempt record's name and field and the ledger as
+    tt09__tt_um_x; "puzzle" and "tempo" are unchanged. blind_results() compares normalised ids, so
+    the second-attempt guard finds a design's attempts under any spelling, including records and
+    ledger lines an older run.py wrote verbatim and a record that cannot be read."""
+    root = str(tmp_path)
+    fh = "f" * 64
+    monkeypatch.setattr(R, "ROOT", root)
+    monkeypatch.setattr(R, "RUNS", os.path.join(root, F.RUNS_REL))
+    monkeypatch.setattr(R, "LEDGER_ROOT", root)
+    seen = []
+    monkeypatch.setattr(R, "_blind_preflight",
+                        lambda design, gds, rr: (seen.append(design), ({"freeze_hash": fh}, None, bool(gds)))[1])
+    monkeypatch.setattr(R, "design_files", lambda design, gds=None: [gds] if gds else [])
+    monkeypatch.setattr(R, "stage_sources", lambda src_dir, entry: (src_dir, {}))
+
+    def stop(design, gds=None, top=None):
+        raise RuntimeError(f"stopped after the attempt of {design}")
+    monkeypatch.setattr(R, "load_design", stop)
+    spellings = ("tt:tt09__tt_um_x", "tt09/tt_um_x", "tt:tt09/tt_um_x", "tt09__tt_um_x")
+    for spelling in spellings:
+        with pytest.raises(RuntimeError, match=r"of tt09__tt_um_x$"):
+            R.run(spelling, gds=os.path.join(root, "x.gds"), blind=True, echo=lambda *a: None)
+    assert seen == ["tt09__tt_um_x"] * 4
+    attempts = [e for e in F.ledger_entries(root, history=False)[0] if e.get("event") == "attempt"]
+    assert [e["design"] for e in attempts] == ["tt09__tt_um_x"] * 4
+    names = sorted(os.listdir(os.path.join(root, F.RUNS_REL)))
+    assert len(names) == 4 and all(n.startswith("blind-tt09__tt_um_x-") and n.endswith(F.ATTEMPT_SUFFIX)
+                                   for n in names)
+    for keep in ("puzzle", "tempo"):
+        with pytest.raises(SystemExit, match=f"truth_{keep}.json"):   # no truth under this root
+            R.run(keep, blind=True, echo=lambda *a: None)
+        assert seen[-1] == keep
+    for spelling in spellings:
+        assert len(F.blind_results(spelling, fh, root)) == 4
+    # what an older run.py wrote verbatim: a ledger attempt, a record and an unreadable record
+    F.ledger_append({"event": "attempt", "attempt": "old", "design": "tt:tt09/tt_um_y", "freeze_hash": fh}, root)
+    old = _blind_record(root, "blind-tt09__tt_um_y-20260101T000000Z-0123456789ab.json",
+                        {"design": "tt09/tt_um_y", "blind": True, "freeze": {"freeze_hash": fh}})
+    bad = _blind_record(root, "blind-tt:tt09__tt_um_y-20260101T000000Z-ba9876543210.json", "{not json")
+    for spelling in ("tt09__tt_um_y", "tt09/tt_um_y", "tt:tt09__tt_um_y"):
+        assert F.blind_results(spelling, fh, root) == [old, bad, "ledger attempt old (None)"]
+    assert F.blind_results("tt09__tt_um_y", "0" * 64, root) == [bad]   # unreadable: counted whatever its freeze
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_write_refuses_a_short_draw(tmp_path):
+    """H6: thirdparty.draw() takes what is left after the exclusion without complaint, so write()
+    refuses (SystemExit, nothing written) a draw of n when fewer than n candidates remain, and
+    records the eligible pool size beside draw.excluded."""
+    root, g = _mini_repo(tmp_path, candidates=4)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    d = os.path.join(root, F.CACHE_REL, "layout")
+    os.makedirs(d)
+    for i in range(3):
+        open(os.path.join(d, f"tt0{i}__tt_um_c{i}.gds"), "w").close()
+    with pytest.raises(SystemExit, match=r"draw of 2: only 1 of 4 candidates remain after excluding the 3"):
+        F.write(root, candidates=cpath, draw_n=2)
+    assert F.load(root) is None
+    fr = F.write(root, candidates=cpath, draw_n=1, max_reserves=0)
+    assert fr["draw"]["eligible"] == 1 and len(fr["draw"]["excluded"]) == 3
+    assert F.draw(fr, root) == {"blind": ["tt03/tt_um_c3"], "reserve": []}
+    assert "1 candidate(s) eligible" in F.write_summary(fr)
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_write_refuses_a_draw_while_the_ledger_has_problems(tmp_path):
+    """H7: the ledger is the evidence for draw.excluded, so write() refuses to record a draw when
+    ledger_entries() reports a problem in the working tree (a broken hash chain) or in git history
+    (a committed version with an unparsable line) -- the latter even with a clean working tree.
+    The pre-freeze checklist blocks on the same problems, history included."""
+    root, g = _mini_repo(tmp_path)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    lp = os.path.join(root, F.LEDGER_REL)
+    F.ledger_append({"event": "attempt", "attempt": "a1", "design": "toy", "freeze_hash": "e" * 64}, root)
+    good = open(lp).read()
+    with open(lp, "a") as f:
+        f.write(json.dumps({"schema": F.LEDGER_SCHEMA, "prev": "0" * 64, "event": "finish", "attempt": "a1"}) + "\n")
+    assert F.ledger_entries(root, history=False)[1]
+    with pytest.raises(SystemExit, match="refusing to record a draw: the blind ledger"):
+        F.write(root, candidates=cpath, draw_n=2, supersede="test")
+    open(lp, "w").write(good + "{not json\n")
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "a damaged ledger")
+    open(lp, "w").write(good)
+    assert F.ledger_entries(root, history=False)[1] == [] and F.ledger_entries(root)[1]
+    with pytest.raises(SystemExit, match="unparsable line"):
+        F.write(root, candidates=cpath, draw_n=2, supersede="test")
+    assert F.load(root) is None
+    bad = F.checklist(root, leakage=False, echo=lambda *a: None)
+    assert any(b.startswith("blind ledger: ") and "unparsable line" in b for b in bad), bad
+
+
+# the review round after H1-H11: labels.json as a source (F1), an unreadable history (F2), the
+# reflog (F3), non-object ledger lines (F4), write()'s self-check (F5) and check() of draw.eligible (F6)
+
+def _labels_doc(fh, blind, reserve, rows=(), reserves_used=0):
+    """A labels.json laid out as out/s3/blind/make_labels.py writes it: the freeze, the draw (the
+    drawn designs and the LISTED reserves), one row per design the labeller worked on (a reserve
+    used names the drawn design it `replaces`), those replacement rows again, and the number of
+    reserves used. `rows`: (id, ok, replaces)."""
+    designs = [{"n": i, "id": x, "design_id": S.design_id(x), "ok": ok, "replaces": rep}
+               for i, (x, ok, rep) in enumerate(rows, 1)]
+    return {"schema": "retrace-s3-blind-labels/1", "freeze": {"freeze_hash": fh},
+            "draw": {"blind": list(blind), "reserve": list(reserve)},
+            "replacements": [r for r in designs if r["replaces"]], "reserves_used": reserves_used,
+            "designs": designs}
+
+
+def _write_labels(root, doc):
+    p = os.path.join(root, LABELS)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, "w") as f:
+        f.write(doc if isinstance(doc, str) else json.dumps(doc, indent=1))
+    return p
+
+
+def _drop_object(root, rev):
+    """Delete the loose object `rev` names from root's repository (a damaged history); returns a
+    function that puts it back."""
+    sha = subprocess.run(["git", "-C", root, "rev-parse", rev], capture_output=True, text=True,
+                         check=True).stdout.strip()
+    p = os.path.join(root, ".git", "objects", sha[:2], sha[2:])
+    saved = p + ".saved"
+    os.rename(p, saved)
+    return lambda: os.rename(saved, p)
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_spent_designs_read_labels_json_drawn_replaced_and_used_reserves(tmp_path):
+    """F1: out/s3/blind/labels.json (committed) records what the labeller did under a freeze. A
+    drawn design it fetched but could not label is replaced by the next reserve and never run, so
+    no ledger line, run record, truth or anonymised layout names it, and its download sits in the
+    git-ignored cache a fresh clone lacks: labels.json is its only evidence. spent_designs() reads
+    every version of it (working tree and git history) and spends what it names as drawn
+    (draw.blind, a design row), replaced (a row's "replaces") or used as a reserve (a row that
+    replaces one, a replacements row, the first reserves_used of draw.reserve), mapped forward with
+    score.design_id() so any spelling counts -- never a reserve that is merely listed. A version
+    that is not JSON or not an object, and a non-candidate, add nothing."""
+    root = str(tmp_path / "repo")
+    ids = [f"tt0{i}/tt_um_c{i}" for i in range(10)]
+    _candidate_list(root, ids)
+    g = lambda *a: subprocess.run(["git", "-C", root, *a], check=True, capture_output=True)  # noqa: E731
+    g("init", "-q")
+    fa, fb = "a" * 64, "b" * 64
+    # under freeze A: c0 and c1 drawn; c1 could not be labelled and the first reserve, c2, replaced it
+    _write_labels(root, _labels_doc(fa, ids[0:2], ids[2:5], [(ids[0], True, None), (ids[1], False, None),
+                                                           (ids[2], True, ids[1])], reserves_used=1))
+    g("add", "-f", LABELS)
+    _commit(g, "labels under freeze A")
+    for text in ("{not json", "[1]", "5"):
+        _write_labels(root, text)
+        g("add", "-f", LABELS)
+        _commit(g, "a damaged labels.json")
+    # under freeze B (working tree only): c5 drawn, spelled "tt:"; the puzzle is no candidate; one
+    # reserve used, recorded by the count alone, which is the first listed one (c7), not c8
+    _write_labels(root, _labels_doc(fb, ["tt:tt05/tt_um_c5", "puzzle"], [ids[7], ids[8]], reserves_used=1))
+    ev = lambda what, fh: f"labels: {what} under freeze {fh[:12]} ({LABELS})"  # noqa: E731
+    want = {ids[0]: [ev("drawn", fa)], ids[1]: [ev("drawn", fa), ev("replaced", fa)],
+            ids[2]: [ev("reserve used", fa)], ids[5]: [ev("drawn", fb)], ids[7]: [ev("reserve used", fb)]}
+    assert F.spent_designs(root) == want
+    os.remove(os.path.join(root, LABELS))       # a fresh clone's view: history alone, no cache
+    assert F.spent_designs(root) == {k: want[k] for k in ids[0:3]}
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_real_labels_json_names_the_ten_and_lists_ten_unused_reserves():
+    """F1 on the real file: labels.json names freeze 1's ten as drawn and LISTS its ten reserves,
+    with reserves_used 0, no replacement row and no row that replaces a drawn design: the listed
+    reserves were never used, so they are not spent."""
+    p = os.path.join(ROOT, LABELS)
+    if not os.path.exists(p):
+        pytest.skip(f"no {LABELS} in this checkout")
+    with open(p) as f:
+        doc = json.load(f)
+    if doc["freeze"]["freeze_hash"] != FREEZE1_HASH:
+        pytest.skip("labels.json is no longer freeze 1's")
+    assert doc["draw"] == {"blind": FREEZE1_BLIND, "reserve": FREEZE1_RESERVE}
+    assert doc["reserves_used"] == 0 and doc["replacements"] == []
+    assert [r["id"] for r in doc["designs"]] == FREEZE1_BLIND and all(r["replaces"] is None for r in doc["designs"])
+    spent = F.spent_designs(ROOT)
+    assert not set(spent) & set(FREEZE1_RESERVE)
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_an_unreadable_ledger_history_is_a_problem_in_a_git_repository(tmp_path):
+    """F2: ledger_entries() took a failed `git log` as "no history". In a git repository (git
+    rev-parse succeeds) a history that cannot be read is now a problem, so write() refuses to
+    record a draw (H7) and the pre-freeze checklist blocks: here the tree object of out/s3 in the
+    commit that holds the ledger is missing, so `git log -- <ledger>` fails. So is a committed
+    version git lists but cannot show (its blob is missing), while a commit that DELETED the ledger
+    (git lists it, and it has no such file) is not. A root that is not a git repository still has
+    no history and no problem."""
+    root, g = _mini_repo(tmp_path)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    F.ledger_append({"event": "attempt", "attempt": "a1", "design": "tt01__tt_um_c1", "freeze_hash": "e" * 64}, root)
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "ledger")
+    assert F.ledger_entries(root)[1] == []
+    restore = _drop_object(root, "HEAD:out/s3")
+    assert subprocess.run(["git", "-C", root, "rev-parse", "--git-dir"], capture_output=True).returncode == 0
+    entries, problems = F.ledger_entries(root)
+    assert [e["attempt"] for e in entries] == ["a1"]                   # the working tree still counts
+    assert len(problems) == 1 and problems[0].startswith("ledger (git history): ") and "could not be read" in \
+        problems[0], problems
+    with pytest.raises(SystemExit, match="refusing to record a draw: the blind ledger"):
+        F.write(root, candidates=cpath, draw_n=2, supersede="test")
+    assert F.load(root) is None
+    bad = F.checklist(root, leakage=False, echo=lambda *a: None)
+    assert f"blind ledger: {problems[0]}" in bad, bad
+    restore()
+    assert F.ledger_entries(root)[1] == []
+    g("rm", "-q", F.LEDGER_REL)
+    _commit(g, "the ledger deleted")          # git log lists this commit; it has no ledger: no problem
+    assert [e["attempt"] for e in F.ledger_entries(root)[0]] == ["a1"] and F.ledger_entries(root)[1] == []
+    _drop_object(root, f"HEAD~1:{F.LEDGER_REL}")
+    entries, problems = F.ledger_entries(root)
+    assert entries == [] and len(problems) == 1 and "could not be read" in problems[0], problems
+    plain = str(tmp_path / "plain")
+    F.ledger_append({"event": "attempt", "attempt": "p1", "design": "toy", "freeze_hash": "e" * 64}, plain)
+    assert [e["attempt"] for e in F.ledger_entries(plain)[0]] == ["p1"] and F.ledger_entries(plain)[1] == []
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_an_unreadable_truth_or_labels_history_blocks_the_draw(tmp_path, monkeypatch, capsys):
+    """F2 for the other two history reads spent_designs() makes (truth files, labels.json): in a
+    git repository whose history of them cannot be read -- the tree object of out/s3/blind is
+    missing, which the ledger's own read never needs -- spent_designs() reports it in `problems`,
+    build() refuses to record a draw (nothing written), the checklist blocks and `freeze spent`
+    exits 1 naming it. Without a git repository there is no problem."""
+    root, g = _mini_repo(tmp_path)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    _write_labels(root, _labels_doc("a" * 64, ["tt01/tt_um_c1"], []))
+    g("add", "-f", LABELS)
+    _commit(g, "labels")
+    probs = []
+    assert list(F.spent_designs(root, problems=probs)) == ["tt01/tt_um_c1"] and probs == []
+    _drop_object(root, "HEAD:out/s3/blind")
+    assert F.ledger_entries(root)[1] == []
+    probs = []
+    assert list(F.spent_designs(root, problems=probs)) == ["tt01/tt_um_c1"]    # the working tree still counts
+    assert any(p.startswith(f"{LABELS} (git history): ") for p in probs), probs
+    assert any(p.startswith("truth files (git history): ") for p in probs), probs
+    with pytest.raises(SystemExit, match="refusing to record a draw: the evidence for draw.excluded"):
+        F.write(root, candidates=cpath, draw_n=2)
+    assert F.load(root) is None
+    bad = F.checklist(root, leakage=False, echo=lambda *a: None)
+    assert all(f"draw.excluded evidence: {p}" in bad for p in probs), bad
+    monkeypatch.setattr(F, "ROOT", root)
+    with pytest.raises(SystemExit) as e:
+        F.main(["spent"])
+    assert e.value.code == 1
+    out = capsys.readouterr()
+    assert list(json.loads(out.out)) == ["tt01/tt_um_c1"] and "problem: " in out.err
+    plain = str(tmp_path / "plain")
+    _candidate_list(plain, ["tt01/tt_um_c1"])
+    _write_labels(plain, _labels_doc("a" * 64, ["tt01/tt_um_c1"], []))
+    probs = []
+    assert list(F.spent_designs(plain, problems=probs)) == ["tt01/tt_um_c1"] and probs == []
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+@pytest.mark.parametrize("how", ["reset", "amend"])
+def test_history_reads_versions_only_the_reflog_holds(tmp_path, how):
+    """F3: a ledger version orphaned by `git reset --hard` or `git commit --amend` is on no ref, so
+    `git log --all --full-history` skips it; with --reflog it is read while the reflog holds it.
+    Its attempt counts (ledger_entries, blind_results, spent_designs), and so do a truth file and a
+    labels.json orphaned with it (whose listed reserve is still not spent); a line in both the
+    working tree and history counts once."""
+    root, g = _mini_repo(tmp_path)
+    fh = "e" * 64
+    F.ledger_append({"event": "attempt", "attempt": "gone", "design": "tt01__tt_um_c1", "freeze_hash": fh}, root)
+    truth = os.path.relpath(_drawn_truth(root, "tt02/tt_um_c2"), root)
+    _write_labels(root, _labels_doc(fh, ["tt03/tt_um_c3"], ["tt04/tt_um_c4"], [("tt03/tt_um_c3", True, None)]))
+    g("add", "-f", F.LEDGER_REL, truth, LABELS)
+    _commit(g, "an attempt, a truth and labels")
+    orphan = subprocess.run(["git", "-C", root, "rev-parse", "HEAD"], capture_output=True, text=True,
+                            check=True).stdout.strip()
+    if how == "reset":
+        g("reset", "-q", "--hard", "HEAD~1")
+    else:
+        g("rm", "-q", truth, LABELS)
+        os.remove(os.path.join(root, F.LEDGER_REL))
+        F.ledger_append({"event": "attempt", "attempt": "kept", "design": "tt00__tt_um_c0", "freeze_hash": fh}, root)
+        g("add", "-f", F.LEDGER_REL)
+        g("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "--amend", "-m", "rewritten")
+    log = lambda *extra: subprocess.run(["git", "-C", root, "log", "--all", *extra, "--format=%H"],  # noqa: E731
+                                        capture_output=True, text=True, check=True).stdout.split()
+    assert orphan not in log("--full-history") and orphan in log("--reflog", "--full-history")
+    assert not os.path.exists(os.path.join(root, truth)) and not os.path.exists(os.path.join(root, LABELS))
+    attempts = [e["attempt"] for e in F.ledger_entries(root)[0]]
+    assert "gone" in attempts and attempts.count("kept") == (how == "amend")
+    assert F.blind_results("tt01/tt_um_c1", fh, root) == ["ledger attempt gone (None)"]
+    spent = F.spent_designs(root)
+    assert {"tt01/tt_um_c1", "tt02/tt_um_c2", "tt03/tt_um_c3"} <= set(spent) and "tt04/tt_um_c4" not in spent
+    assert spent["tt02/tt_um_c2"] == [f"truth: {truth} (deleted from disk; in git history)"]
+    assert spent["tt03/tt_um_c3"] == [f"labels: drawn under freeze {fh[:12]} ({LABELS})"]
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_ledger_lines_that_are_json_but_not_objects_are_unparsable(tmp_path):
+    """F4: a ledger line that is valid JSON but not an object ("[1]", "5", "null", '"s"') crashed
+    ledger_entries() with AttributeError, and every reader with it (spent_designs(),
+    blind_results(), write()). It is an unparsable line: a reported problem that still counts, in
+    the working tree and in a committed version."""
+    root, g = _mini_repo(tmp_path)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    lp = os.path.join(root, F.LEDGER_REL)
+    F.ledger_append({"event": "attempt", "attempt": "a1", "design": "tt01__tt_um_c1", "freeze_hash": "e" * 64}, root)
+    good = open(lp).read()
+    for junk in ("[1]", "5", "null", '"s"'):
+        with open(lp, "w") as f:
+            f.write(good + junk + "\n")
+        entries, problems = F.ledger_entries(root, history=False)
+        assert [e.get("event") for e in entries] == ["attempt", "unparsable"]
+        assert f"ledger (working tree): unparsable line {junk}" in problems, problems
+        assert "tt01/tt_um_c1" in F.spent_designs(root)
+        assert F.blind_results("tt01__tt_um_c1", "e" * 64, root)
+    with open(lp, "w") as f:
+        f.write(good + "[1]\n")
+    g("add", "-f", F.LEDGER_REL)
+    _commit(g, "a ledger with a line that is not an object")
+    with open(lp, "w") as f:
+        f.write(good)
+    assert F.ledger_entries(root, history=False)[1] == []
+    assert any(p.endswith("unparsable line [1]") for p in F.ledger_entries(root)[1])
+    with pytest.raises(SystemExit, match="unparsable line"):
+        F.write(root, candidates=cpath, draw_n=2, supersede="test")
+    assert F.load(root) is None
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+@pytest.mark.parametrize("how", ["truth", "ledger"])
+def test_write_self_checks_the_draw_it_built(tmp_path, monkeypatch, how):
+    """F5: build() computes spent_designs() first and truth_hashes() after it, so a truth labelled,
+    or an attempt logged under another freeze, in between is in the frozen truth block (or the
+    ledger) and not in draw.excluded. write() runs draw_excluded_problems() on the record it just
+    built and refuses (SystemExit, nothing written) when it reports anything; with no race the same
+    write records the design as excluded."""
+    root, g = _mini_repo(tmp_path)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    late = "tt02/tt_um_c2"
+    real = F.spent_designs
+
+    def racing(*a, **k):
+        out = real(*a, **k)
+        if how == "truth":
+            _drawn_truth(root, late)
+        else:
+            F.ledger_append({"event": "attempt", "attempt": "late", "design": S.design_id(late),
+                             "freeze_hash": "e" * 64}, root)
+        return out
+    monkeypatch.setattr(F, "spent_designs", racing)
+    with pytest.raises(SystemExit, match=r"self-check[\s\S]*draw.excluded omits tt02/tt_um_c2"):
+        F.write(root, candidates=cpath, draw_n=2, max_reserves=1)
+    assert F.load(root) is None
+    monkeypatch.setattr(F, "spent_designs", real)
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1, supersede="test" if how == "ledger" else None)
+    assert [e["id"] for e in fr["draw"]["excluded"]] == [late]
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_check_verifies_draw_eligible(tmp_path):
+    """F6: check() verifies draw.eligible = the candidates of the pinned list minus the
+    draw.excluded ids that are candidates. The count catches an INCONSISTENT cut: an entry removed
+    from draw.excluded while draw.eligible keeps its value, with freeze_hash recomputed -- here of
+    a design whose only evidence is a cached download or an anonymised layout, which the tripwire
+    (draw_excluded_problems) cannot read, since this freeze's own evaluation adds to both -- and a
+    record whose draw.excluded is gone (with or without draw.eligible) or whose draw.eligible is
+    wrong or not an integer; an excluded id that is no candidate changes no count. The count does
+    NOT catch a COORDINATED cut (draw.eligible raised by one to match): for a design seen only in
+    the cache or an anonymised layout that cut is NOT reliably detectable by check() (it can surface
+    only incidentally, through the added-truth rule or, once the evaluation has recorded under
+    freeze_hash, the tripwire), and the git history of out/s3/FREEZE.json (the freeze commit) shows it
+    (test_check_catches_a_coordinated_cut_only_where_its_evidence_is_read)."""
+    root, g = _mini_repo(tmp_path, candidates=6)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    os.makedirs(os.path.join(root, F.CACHE_REL, "layout"))
+    open(os.path.join(root, F.CACHE_REL, "layout", "tt00__tt_um_c0.gds"), "w").close()
+    os.makedirs(os.path.join(root, F.ANON_REL))
+    open(os.path.join(root, F.ANON_REL, "tt01__tt_um_c1.gds"), "w").close()
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1)
+    g("add", "tools", F.CANDIDATES_REL)
+    g("add", "-f", F.FREEZE_REL, F.CONTAMINATION_REL)
+    _commit(g, "freeze")
+    assert [e["id"] for e in fr["draw"]["excluded"]] == ["tt00/tt_um_c0", "tt01/tt_um_c1"]
+    assert fr["draw"]["eligible"] == 4 and F.check(root) == []
+
+    def cut(edit):
+        rec = F.load(root)
+        edit(rec["draw"])
+        rec["freeze_hash"] = F.freeze_hash(rec)
+        bad = F.check(root, rec, require_commit=False)
+        assert not any("edited by hand" in b or b.startswith("draw.excluded omits") for b in bad), bad
+        return [b for b in bad if b.startswith("draw.eligible")]
+
+    assert cut(lambda d: None) == []
+    for x in ("tt00/tt_um_c0", "tt01/tt_um_c1"):
+        assert cut(lambda d: d.update(excluded=[e for e in d["excluded"] if e["id"] != x])), x
+    assert cut(lambda d: d.pop("excluded"))
+    assert cut(lambda d: (d.pop("excluded"), d.pop("eligible")))
+    for v in (3, 5, True, "4", None):
+        assert cut(lambda d: d.update(eligible=v)), v
+    assert cut(lambda d: d.update(excluded=d["excluded"] + [{"id": "tt99/tt_um_zz", "evidence": ["x"]}])) == []
+
+
+# the review round after F1-F8: labels.json in check()'s tripwire (T1), honest docstrings (T2), a
+# shallow clone is an unreadable history (T3), labels.json's designs[] rows on their own (T4)
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_check_catches_a_coordinated_cut_only_where_its_evidence_is_read(tmp_path):
+    """T1, the cut the last review demonstrated: remove one entry from draw.excluded, raise
+    draw.eligible by one, recompute freeze_hash and commit. The count then agrees again, so only
+    the tripwire can catch it, and it now reads labels.json (working tree and every committed
+    version) as spent_designs() does: a design an earlier freeze's labels.json records as drawn
+    (c0), drawn and replaced (c1) or used as a reserve (c2) is caught. A design whose only evidence
+    is a cached download (c3), an anonymised layout (c4), a blind run record that cannot be read
+    (c6, spent by its file name) or a truth deleted from disk before the freeze (c7, in git history
+    only) is NOT: check() holds, and only the freeze commit's FREEZE.json in git history still
+    lists it.
+
+    Then this freeze's own evaluation: its labeller writes labels.json under THIS freeze's hash,
+    naming its drawn designs, one it replaced and the reserve it used, all of which the draw can
+    offer. check() stays [] with that labels.json in the working tree and after it is committed;
+    and the earlier freeze's labels.json, now in git history only, still catches the cut. From
+    then on a recomputed freeze_hash also makes this freeze's own labels.json another freeze's,
+    so the tripwire names its designs after ANY coordinated cut, the cache-only c3's included
+    (c3 itself is never named): the cut passes only before the evaluation records anything."""
+    root, g = _mini_repo(tmp_path, candidates=10)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    fpath = os.path.join(root, F.FREEZE_REL)
+    c = [f"tt0{i}/tt_um_c{i}" for i in range(10)]
+    other = "a" * 64
+    # an earlier freeze's labeller: c0 and c1 drawn, c1 could not be labelled and the first reserve,
+    # c2, replaced it; c5 is only listed
+    _write_labels(root, _labels_doc(other, c[0:2], [c[2], c[5]],
+                                    [(c[0], True, None), (c[1], False, None), (c[2], True, c[1])], reserves_used=1))
+    g("add", "-f", LABELS)
+    _commit(g, "labels under an earlier freeze")
+    for sub, name in ((os.path.join(F.CACHE_REL, "layout"), F._cache_form(c[3]) + ".gds"),
+                      (F.ANON_REL, S.design_id(c[4]) + ".gds")):
+        os.makedirs(os.path.join(root, sub), exist_ok=True)
+        open(os.path.join(root, sub, name), "w").close()
+    # two more kinds of evidence spent_designs() reads and the tripwire does not: a blind run record
+    # that cannot be read (c6: spent by its file name alone; no freeze to tell), and a truth deleted
+    # from disk before the freeze (c7: in git history only, so not in the frozen truth block)
+    _blind_record(root, f"blind-{S.design_id(c[6])}-20260101T000000Z-0123456789ab.json", "{not json")
+    truth7 = os.path.relpath(_drawn_truth(root, c[7]), root)
+    g("add", "-f", truth7)
+    _commit(g, "a truth")
+    g("rm", "-q", truth7)
+    _commit(g, "the truth deleted")
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1, supersede="test: an earlier evaluation")
+    g("add", "tools", F.CANDIDATES_REL)
+    g("add", "-f", F.FREEZE_REL, F.CONTAMINATION_REL)
+    _commit(g, "freeze")
+    freeze_commit = subprocess.run(["git", "-C", root, "rev-parse", "HEAD"], capture_output=True, text=True,
+                                   check=True).stdout.strip()
+    assert [e["id"] for e in fr["draw"]["excluded"]] == c[0:5] + c[6:8] and fr["draw"]["eligible"] == 3
+    assert F.check(root) == []
+    with open(fpath) as f:
+        frozen = f.read()
+
+    def coordinated_cut(x):
+        """The reviewer's edit of x, committed; check()'s full answer on it. The freeze commit's
+        record still lists x (what the history shows); the true record is then put back."""
+        rec = F.load(root)
+        rec["draw"]["excluded"] = [e for e in rec["draw"]["excluded"] if e["id"] != x]
+        rec["draw"]["eligible"] += 1
+        rec["freeze_hash"] = F.freeze_hash(rec)
+        with open(fpath, "w") as f:
+            json.dump(rec, f, indent=1, sort_keys=True)
+        g("add", "-f", F.FREEZE_REL)
+        _commit(g, f"cut {x}")
+        bad = F.check(root)
+        assert F.draw_eligible_problems(F.load(root), root) == []            # the count agrees again
+        assert x in [e["id"] for e in _git_show_json_at(root, freeze_commit, F.FREEZE_REL)["draw"]["excluded"]]
+        assert x not in [e["id"] for e in F.load(root)["draw"]["excluded"]]
+        with open(fpath, "w") as f:
+            f.write(frozen)
+        g("add", "-f", F.FREEZE_REL)
+        _commit(g, f"restore {x}")
+        assert F.check(root) == []
+        return bad
+
+    for x, what in ((c[0], ["drawn"]), (c[1], ["drawn", "replaced"]), (c[2], ["reserve used"])):
+        bad = coordinated_cut(x)
+        assert bad and all(b.startswith(f"draw.excluded omits {x}: {LABELS} records it as ") for b in bad), bad
+        assert sorted(b.split(" records it as ", 1)[1].split(" under freeze ")[0] for b in bad) == what, bad
+        assert all(f"under freeze {other[:12]}, an earlier evaluation" in b for b in bad), bad
+    for x in (c[3], c[4], c[6], c[7]):
+        assert coordinated_cut(x) == []     # NOT reliably detectable by check(): the freeze commit shows it
+
+    # this freeze's own evaluation: labels.json under this freeze's hash, drawn, replaced, reserve used
+    d = F.draw(fr, root)
+    assert not set(d["blind"] + d["reserve"]) & set(c[0:5] + c[6:8])
+    _write_labels(root, _labels_doc(fr["freeze_hash"], d["blind"], d["reserve"],
+                                    [(d["blind"][0], True, None), (d["blind"][1], False, None),
+                                     (d["reserve"][0], True, d["blind"][1])], reserves_used=1))
+    assert F.draw_excluded_problems(F.load(root), root) == [] and F.check(root) == []
+    g("add", "-f", LABELS)
+    _commit(g, "labels under this freeze")
+    assert F.check(root) == []
+    assert set(F.spent_designs(root)) == set(c[0:5] + c[6:8]) | set(d["blind"] + d["reserve"])   # live has moved
+    with open(os.path.join(root, LABELS)) as f:
+        assert json.load(f)["freeze"]["freeze_hash"] == fr["freeze_hash"]     # the earlier one: history only
+
+    def named(bad):
+        """{(candidate, what, freeze hash[:12])} of check()'s labels.json tripwire lines; asserts
+        that every line is one."""
+        pat = re.compile(rf"^draw\.excluded omits (\S+): {re.escape(LABELS)} records it as (.+) under freeze "
+                         r"(\w+), an earlier evaluation, yet the draw can offer it \(draw\.excluded edited\?\)$")
+        assert all(pat.match(b) for b in bad), bad
+        return {pat.match(b).groups() for b in bad}
+
+    own = fr["freeze_hash"][:12]
+    labelled = {(x, "drawn", own) for x in d["blind"]} | {(d["blind"][1], "replaced", own),
+                                                          (d["reserve"][0], "reserve used", own)}
+    # the earlier freeze's labels.json, now in git history only, still catches the cut of c1. The
+    # recomputed freeze_hash also turns this freeze's own labels.json into "another freeze's", so
+    # its designs are named too: once the evaluation has recorded anything under the true hash,
+    # any recomputed hash trips the tripwire -- a cut of c3 (cache only) included, though c3 itself
+    # is never named. Before that first record (above), the cut of c3 or c4 passed.
+    assert named(coordinated_cut(c[1])) == {(c[1], "drawn", other[:12]), (c[1], "replaced", other[:12])} | labelled
+    assert named(coordinated_cut(c[3])) == labelled
+
+
+def _git_show_json_at(root, rev, rel):
+    return json.loads(subprocess.run(["git", "-C", root, "show", f"{rev}:{rel}"], capture_output=True, text=True,
+                                     check=True).stdout)
+
+
+def test_labels_json_designs_row_alone_spends_a_used_reserve(tmp_path):
+    """T4: _labels_named()'s designs[] branch on its own. A labels.json that records a used
+    reserve ONLY as a designs[] row whose "replaces" names the drawn design it replaced --
+    replacements[] empty, reserves_used 0, the reserve merely listed in draw.reserve -- still
+    spends that reserve (as a reserve used) and the design it replaced (as replaced as well as
+    drawn); the other listed reserve is not spent. check()'s tripwire names that reserve when
+    draw.excluded omits it under another freeze, and not under this freeze's own hash. Without the
+    designs[] branch (or with its row read as drawn) this fails."""
+    root = str(tmp_path / "repo")            # no git repository: the working tree's labels.json alone
+    ids = [f"tt0{i}/tt_um_c{i}" for i in range(6)]
+    _candidate_list(root, ids)
+    fa = "a" * 64
+    doc = _labels_doc(fa, ids[0:2], ids[2:4], [(ids[0], True, None), (ids[1], False, None), (ids[2], True, ids[1])])
+    doc["replacements"] = []
+    assert doc["reserves_used"] == 0 and doc["designs"][2]["replaces"] == ids[1]
+    _write_labels(root, doc)
+    ev = lambda what: f"labels: {what} under freeze {fa[:12]} ({LABELS})"  # noqa: E731
+    assert F.spent_designs(root) == {ids[0]: [ev("drawn")], ids[1]: [ev("drawn"), ev("replaced")],
+                                     ids[2]: [ev("reserve used")]}
+    fr = {"blind_candidates": {"path": F.CANDIDATES_REL}, "truth": {}, "freeze_hash": "b" * 64,
+          "draw": {"n": 1, "excluded": [{"id": x, "evidence": ["t"]} for x in ids[0:2]]}}
+    assert F.draw_excluded_problems(fr, root) == [
+        f"draw.excluded omits {ids[2]}: {LABELS} records it as reserve used under freeze {fa[:12]}, an earlier "
+        "evaluation, yet the draw can offer it (draw.excluded edited?)"]
+    fr["draw"]["excluded"].append({"id": ids[2], "evidence": ["t"]})
+    assert F.draw_excluded_problems(fr, root) == []
+    fr["draw"]["excluded"].pop()
+    fr["freeze_hash"] = fa                   # labels written under this freeze's own hash: its own evaluation
+    assert F.draw_excluded_problems(fr, root) == []
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_a_shallow_clone_is_an_unreadable_history(tmp_path, monkeypatch, capsys):
+    """T3: a shallow clone cuts the history at its depth while `git log` still exits 0, so a
+    ledger attempt, a truth and a labels.json committed and then deleted before the cut read as
+    if they never existed. _history() reports a problem when `git rev-parse
+    --is-shallow-repository` prints true: ledger_entries() and spent_designs() report it, write()
+    refuses to record a draw (nothing written), the pre-freeze checklist blocks and `freeze spent`
+    exits 1. Once the clone is unshallowed the evidence is back and the problem gone. The full
+    repository, and a root that is no git repository, have no such problem."""
+    monkeypatch.delenv("RETRACE_TT_CACHE", raising=False)
+    root, g = _mini_repo(tmp_path)
+    F.ledger_append({"event": "attempt", "attempt": "a1", "design": "tt01__tt_um_c1", "freeze_hash": "e" * 64}, root)
+    truth = os.path.relpath(_drawn_truth(root, "tt02/tt_um_c2"), root)
+    _write_labels(root, _labels_doc("e" * 64, ["tt03/tt_um_c3"], []))
+    g("add", "-f", "tools", "out")
+    _commit(g, "an attempt, a truth and labels")
+    g("rm", "-q", F.LEDGER_REL, truth, LABELS)
+    _commit(g, "all three deleted")
+    seen = {"tt01/tt_um_c1", "tt02/tt_um_c2", "tt03/tt_um_c3"}
+    probs = []
+    assert set(F.spent_designs(root, problems=probs)) == seen and probs == [] and F.ledger_entries(root)[1] == []
+
+    shallow = str(tmp_path / "shallow")
+    subprocess.run(["git", "clone", "-q", "--depth", "1", "file://" + root, shallow], check=True, capture_output=True)
+    git_s = lambda *a: subprocess.run(["git", "-C", shallow, *a], capture_output=True, text=True)  # noqa: E731
+    assert git_s("rev-parse", "--is-shallow-repository").stdout.strip() == "true"
+    log = git_s(*F.HISTORY_LOG, "--format=%H", "--", F.LEDGER_REL)
+    assert log.returncode == 0 and log.stdout.strip() == ""        # exits 0: the attempt is simply gone
+    entries, problems = F.ledger_entries(shallow)
+    assert entries == [] and len(problems) == 1, problems
+    assert problems[0].startswith("ledger (git history): ") and "shallow" in problems[0], problems
+    probs = []
+    assert F.spent_designs(shallow, problems=probs) == {}
+    assert len(probs) == 2 and all("shallow" in p for p in probs), probs
+    assert any(p.startswith("truth files (git history): ") for p in probs)
+    assert any(p.startswith(f"{LABELS} (git history): ") for p in probs)
+    assert F.all_blind_attempts(shallow) == []                        # so write() needs no --supersede...
+    with pytest.raises(SystemExit, match="refusing to record a draw: the blind ledger"):   # ...and refuses
+        F.write(shallow, candidates=os.path.join(shallow, F.CANDIDATES_REL), draw_n=2)
+    assert F.load(shallow) is None
+    bad = F.checklist(shallow, leakage=False, echo=lambda *a: None)
+    assert f"blind ledger: {problems[0]}" in bad, bad
+    assert all(f"draw.excluded evidence: {p}" in bad for p in probs), bad
+    monkeypatch.setattr(F, "ROOT", shallow)
+    with pytest.raises(SystemExit) as e:
+        F.main(["spent"])
+    assert e.value.code == 1
+    out = capsys.readouterr()
+    assert json.loads(out.out) == {} and out.err.count("problem: ") == 3 and "shallow" in out.err
+
+    assert git_s("fetch", "-q", "--unshallow").returncode == 0
+    assert git_s("rev-parse", "--is-shallow-repository").stdout.strip() == "false"
+    probs = []
+    assert set(F.spent_designs(shallow, problems=probs)) == seen and probs == []
+    assert [e["attempt"] for e in F.ledger_entries(shallow)[0]] == ["a1"] and F.ledger_entries(shallow)[1] == []
+    plain = str(tmp_path / "plain")
+    _candidate_list(plain, ["tt01/tt_um_c1"])
+    F.ledger_append({"event": "attempt", "attempt": "p1", "design": "tt01__tt_um_c1", "freeze_hash": "e" * 64}, plain)
+    probs = []
+    assert list(F.spent_designs(plain, problems=probs)) == ["tt01/tt_um_c1"] and probs == []
+    assert F.ledger_entries(plain)[1] == []
+
+
+def test_docstrings_state_exactly_what_check_catches():
+    """T2: freeze.py's module docstring, draw_excluded_problems(), draw_eligible_problems(), the
+    F6 test and S3_DESIGN's Eligibility row state what check() catches as it is: draw.eligible an
+    INCONSISTENT cut; the tripwire a cut, even a coordinated one, of a design whose evidence is a
+    ledger attempt, a run record, a frozen truth or a labels.json entry under another freeze; a
+    coordinated cut of a design seen only in the cache or an anonymised layout is NOT reliably
+    detectable by check() (only incidentally), and the git history of out/s3/FREEZE.json shows it. None still claims the count
+    catches that cut. spent_designs() and the row count the sources they list (six), and say that
+    labels.json counts in the working tree and every committed version."""
+    flat = lambda s: " ".join((s or "").split())  # noqa: E731
+    mod, excl, elig, f6 = (flat(x) for x in (F.__doc__, F.draw_excluded_problems.__doc__,
+                                             F.draw_eligible_problems.__doc__, test_check_verifies_draw_eligible.__doc__))
+    stale = ("whose freeze_hash was recomputed does not hold", "is caught by the count instead",
+             "and hold; the count does not", "used to hold; the count catches it")
+    for doc in (mod, excl, elig, f6):
+        assert not [s for s in stale if s in doc]
+        assert "INCONSISTENT" in doc and "NOT reliably detectable by check()" in doc
+    for doc in (mod, excl, elig):
+        assert "coordinated" in doc and "labels.json" in doc and "FREEZE.json" in doc
+    sdoc = F.spent_designs.__doc__
+    listed = re.findall(r"^ +(ledger|run|truth|labels|anon|cache) {2,}\S", sdoc, re.M)
+    assert listed == ["ledger", "run", "truth", "labels", "anon", "cache"] and "Six sources" in sdoc
+    assert "in the working tree and in every committed version" in flat(sdoc)
+    with open(os.path.join(ROOT, "docs", "S3_DESIGN.md")) as f:
+        row = next(x for x in f.read().splitlines() if x.startswith("| Eligibility |"))
+    assert "six sources" in row and "seven sources" not in row
+    assert "in the working tree and every committed version" in row and "shallow clone" in row
+    assert "inconsistent" in row and "coordinated" in row and "cannot reliably detect" in row
+
+
+def test_docs_and_docstrings_state_the_draw_rule_as_it_now_is():
+    """F8 and F7: docs/S3_DESIGN.md section 4.4's Eligibility row states the rule as the code has
+    it -- the sources spent_designs() reads (labels.json among them), draw.excluded and
+    draw.eligible recorded at write under freeze_hash, write()'s refusals and self-check, check()'s
+    tripwire and count, run.py normalising --design -- and no test docstring still says run.py
+    records --design verbatim."""
+    with open(os.path.join(ROOT, "docs", "S3_DESIGN.md")) as f:
+        row = next(x for x in f.read().splitlines() if x.startswith("| Eligibility |"))
+    for term in ("labels.json", "ledger", "reflog", "cached download", "anonymised layout", "draw.excluded",
+                 "draw.eligible", "freeze_hash", "self-check", "check()", "score.design_id", "run.py"):
+        assert term in row, term
+    for fn in (test_spent_designs_normalise_every_design_spelling,
+               test_spent_exclusion_is_recorded_once_and_the_draw_never_moves):
+        doc = " ".join(fn.__doc__.split())
+        assert "run.py's --design exactly as given" not in doc and "as run.py records --design verbatim" not in doc
+
+
+def test_thirdparty_draw_cli_is_not_a_freezes_draw_and_warns_on_non_candidates(tmp_path, monkeypatch, capsys):
+    """H8: `thirdparty draw` without --exclude is not a freeze's draw once draw.excluded is
+    non-empty; its help and draw()'s docstring say so and point to `python -m tools.s3.freeze
+    draw`. An --exclude id that is not a candidate id removes nothing and is warned about on
+    stderr -- with the candidate it probably meant when it is a file-safe or "tt:" spelling of one."""
+    from tools.s3 import thirdparty as TP
+    _candidate_list(str(tmp_path), ["tt06/tt_um_a", "tt07/tt_um_c", "tt08/tt_um_d", "tt09/tt_um_e"])
+    monkeypatch.setattr(TP, "OUT", os.path.join(str(tmp_path), "out", "s3", "blind"))
+    assert TP.main(["draw", "--seed", "ab" * 16, "--n", "2", "--exclude", "tt07/tt_um_c", "--exclude",
+                    "tt06__tt_um_a", "--exclude", "tt99/tt_um_zz"]) == 0
+    cap = capsys.readouterr()
+    d = json.loads(cap.out)
+    assert d["excluded"] == ["tt07/tt_um_c"] and "tt06/tt_um_a" in d["blind"] + d["reserve"]
+    warns = [x for x in cap.err.splitlines() if x.startswith("warning:")]
+    assert len(warns) == 2, cap.err
+    assert any("'tt06__tt_um_a' is not a candidate id" in w and "did you mean 'tt06/tt_um_a'" in w for w in warns)
+    assert any("'tt99/tt_um_zz' is not a candidate id" in w and "did you mean" not in w for w in warns)
+    for argv in (["--help"], ["draw", "--help"]):
+        with pytest.raises(SystemExit):
+            TP.main(argv)
+        text = " ".join(capsys.readouterr().out.split())
+        assert "python -m tools.s3.freeze draw" in text and "a freeze's draw" in text, text
+    assert "python -m tools.s3.freeze draw" in " ".join(TP.draw.__doc__.split())
+    assert "python -m tools.s3.freeze draw" in " ".join(TP.__doc__.split())
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_check_names_an_uncommitted_path_whole(tmp_path):
+    """H9: git() strips stdout, which cut the first column of a first porcelain line " M path",
+    so check() reported "ools/s3/recognize.py: uncommitted change"; porcelain is read unstripped."""
+    root, g, _fr = _frozen_repo(tmp_path)
+    assert F.check(root) == []
+    with open(os.path.join(root, "tools", "s3", "recognize.py"), "a") as f:
+        f.write("\n# an edit after the freeze\n")
+    assert [b for b in F.check(root) if b.endswith("uncommitted change")] == \
+        ["tools/s3/recognize.py: uncommitted change"]
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_checklist_notes_what_draw_excluded_would_be(tmp_path):
+    """H10: the pre-freeze checklist prints, as a note and not a blocking item, the candidates
+    spent_designs() returns, so the lead sees draw.excluded before `freeze write` fixes it."""
+    root, g = _mini_repo(tmp_path)
+    d = os.path.join(root, F.CACHE_REL, "rtl")
+    os.makedirs(d)
+    open(os.path.join(d, "tt01__tt_um_c1.tar.gz"), "w").close()
+    _drawn_truth(root, "tt03/tt_um_c3")
+    lines = []
+    bad = F.checklist(root, leakage=False, echo=lines.append)
+    notes = [x for x in lines if x.startswith("note: draw.excluded")]
+    assert len(notes) == 1 and "exclude 2 candidate(s)" in notes[0]
+    assert notes[0].endswith("tt01/tt_um_c1, tt03/tt_um_c3")
+    assert not any("tt01/tt_um_c1" in b or "tt03/tt_um_c3" in b or "draw.excluded" in b for b in bad)
+
+
 @pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
 def test_blind_ledger_survives_deletion_and_blocks_refreeze(tmp_path):
     """A blind attempt goes to the hash-chained ledger; once committed, deleting both the run
@@ -2917,3 +4235,63 @@ def test_run_records_are_never_overwritten(tmp_path, monkeypatch):
     assert not os.access(p, os.W_OK) or os.geteuid() == 0
     q, _ = R._write_record(rec, blind=False, runs=str(tmp_path / "dev"))
     assert os.path.dirname(q) == str(tmp_path / "dev")
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_labels_json_recording_no_freeze_counts_as_another_freezes(tmp_path):
+    """Fail closed: a labels.json version that records NO freeze_hash is taken as another freeze's,
+    never as this freeze's own. So a design it names is spent, lands in draw.excluded, and a
+    coordinated cut of it (entry removed, draw.eligible raised by one, freeze_hash recomputed,
+    committed) trips check(). Were a version without a hash skipped like this freeze's own, the cut
+    would pass silently."""
+    root, g = _mini_repo(tmp_path, candidates=6)
+    cpath = os.path.join(root, F.CANDIDATES_REL)
+    fpath = os.path.join(root, F.FREEZE_REL)
+    c = [f"tt0{i}/tt_um_c{i}" for i in range(6)]
+    _write_labels(root, _labels_doc(None, [c[0]], [c[1]], [(c[0], True, None)]))
+    g("add", "-f", LABELS)
+    _commit(g, "labels recording no freeze")
+    assert F._labels_freeze(json.load(open(os.path.join(root, LABELS)))) is None
+    fr = F.write(root, candidates=cpath, draw_n=2, max_reserves=1)
+    g("add", "tools", F.CANDIDATES_REL)
+    g("add", "-f", F.FREEZE_REL, F.CONTAMINATION_REL)
+    _commit(g, "freeze")
+    assert [e["id"] for e in fr["draw"]["excluded"]] == [c[0]]
+    assert F.check(root) == []
+    rec = F.load(root)
+    rec["draw"]["excluded"] = []
+    rec["draw"]["eligible"] += 1
+    rec["freeze_hash"] = F.freeze_hash(rec)
+    with open(fpath, "w") as f:
+        json.dump(rec, f, indent=1, sort_keys=True)
+    g("add", "-f", F.FREEZE_REL)
+    _commit(g, "a coordinated cut")
+    bad = F.check(root)
+    assert any(c[0] in b and "labels.json" in b for b in bad), bad
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git absent")
+def test_a_shallow_clone_is_detected_on_any_git_version(tmp_path, monkeypatch):
+    """The shallow-clone check does not rest on `git rev-parse --is-shallow-repository` alone, which
+    needs git 2.15 (older git echoes the flag back): the marker file `git rev-parse --git-path
+    shallow` names exists exactly in a shallow repository, on any version."""
+    root, g = _mini_repo(tmp_path, candidates=3)
+    assert F._is_shallow(root) is False
+    rc, rel = F.git(root, "rev-parse", "--git-path", "shallow")
+    marker = rel if os.path.isabs(rel) else os.path.join(root, rel)
+    head = F.git(root, "rev-parse", "HEAD")[1]
+    with open(marker, "w") as f:
+        f.write(head + "\n")
+    real = F.git
+
+    def old_git(r, *args, **kw):          # a git older than 2.15: the flag is echoed, not answered
+        if args == ("rev-parse", "--is-shallow-repository"):
+            return 0, "--is-shallow-repository"
+        return real(r, *args, **kw)
+
+    monkeypatch.setattr(F, "git", old_git)
+    assert F._is_shallow(root) is True
+    out, problem = F._history(root, "--", F.LEDGER_REL)
+    assert problem and "shallow" in problem
+    os.remove(marker)
+    assert F._is_shallow(root) is False

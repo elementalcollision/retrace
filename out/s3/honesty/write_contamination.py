@@ -428,9 +428,15 @@ def build(by=BY, date=DATE):
                       "extractor's top-level cuts; that is extractor-side and touched no candidate.",
             "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change "
                       "may be motivated by one of their misses while any of them is still counted as blind. "
-                      "tools/s3/thirdparty.py draw() ranks sha256(seed|id) over the WHOLE candidate list and does "
-                      "not exclude earlier draws, so the next freeze that records a draw must exclude these ten "
-                      "first (listed under `open`). Freeze 2 records no draw.",
+                      "Freeze 2 recorded no draw. Since Freeze 3 (changes.jsonl F06) a freeze that records a draw "
+                      "computes freeze.spent_designs() once at write and records the result as draw.excluded "
+                      "(with draw.eligible) under freeze_hash; thirdparty.draw() ranks only the rest, freeze.draw() "
+                      "re-derives the draw from the RECORDED list so it never moves as the evaluation adds evidence, "
+                      "and check() reports any spent design the list omits whose evidence is a ledger attempt, a readable "
+                      "blind run record, a frozen truth or a labels.json entry under another freeze (a design seen "
+                      "only in the git-ignored cache or an anonymised layout is not reliably caught by check(); "
+                      "the freeze commit's history shows such a cut). Today "
+                      "spent_designs() returns exactly these ten.",
             # the truths and the labels file do not move; the ledger grows, so it is cited by path in the
             # text of docs/S3.md, never hashed here (a stale hash would block the next freeze for nothing)
             "evidence": ev("out/s3/blind/labels.json",
@@ -520,11 +526,8 @@ def build(by=BY, date=DATE):
     doc["open"] = dedupe([o for o in doc["open"] if "crc12" not in o
                           and "a rebuild of out/s3/corpus" not in o
                           and not o.startswith("review[2] issue 0's second half")
-                          and not o.startswith("the frozen evaluation of the puzzle runs >= 5 permutations")] + [
-        "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten "
-        "designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be "
-        "drawn again as unseen (K16)",
-    ])
+                          and not o.startswith("the frozen evaluation of the puzzle runs >= 5 permutations")
+                          and not o.startswith("before the next freeze that records a draw: make tools/s3/thirdparty.py draw()")])
     doc["closed"] = dedupe(list(doc.get("closed") or []) + [{
         "was": "a rebuild of out/s3/corpus (python -m tools.s3.corpus) is needed for the built files to "
                "match corpus.py's FITTED_ON and DROPPED; corpus.manifest() corrects them for readers in "
@@ -549,6 +552,15 @@ def build(by=BY, date=DATE):
         "closed_by": "out/s3/runs/blind-puzzle-20260923T073045Z-8ea21ef84643.json: K = 5 os.urandom "
                      "permutations, spread reported, 0 of 92 defined metrics varied (docs/S3.md sections 12.4 "
                      "and 13)",
+        "when": "2026-09-23",
+    }, {
+        "was": "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten "
+               "designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be "
+               "drawn again as unseen (K16)",
+        "closed_by": "Freeze 3, changes.jsonl F06: freeze.spent_designs() computed once at freeze write and recorded "
+                     "as draw.excluded / draw.eligible under freeze_hash; thirdparty.draw(exclude=); freeze.draw() "
+                     "reads the recorded list; a check() tripwire; run.py normalises --design. "
+                     "`python -m tools.s3.freeze spent` returns exactly K16's ten.",
         "when": "2026-09-23",
     }])
     return doc, fixed, [n["id"] for n in new]

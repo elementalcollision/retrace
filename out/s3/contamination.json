@@ -95,7 +95,7 @@
    "evidence": [
     {
      "path": "docs/S3_DESIGN.md",
-     "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf",
+     "sha256": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6",
      "note": "revision 3, section 4.4 table and 3.4"
     },
     {
@@ -264,7 +264,7 @@
    "evidence": [
     {
      "path": "docs/S3_DESIGN.md",
-     "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+     "sha256": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6"
     },
     {
      "path": "out/s3/prior_art.md",
@@ -301,7 +301,7 @@
    "evidence": [
     {
      "path": "tools/s3/thirdparty.py",
-     "sha256": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
+     "sha256": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302"
     },
     {
      "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
@@ -553,7 +553,7 @@
    "when": "2026-09-23",
    "who": "the blind evaluation under freeze 1ee6a47894359fef (commit 232cfe6): the frozen labeller, the run operators, four analysts, the report writer and the fact-checkers of docs/S3.md",
    "detail": "The ten designs drawn with the freeze-1 seed -- tt03p5/tt_um_Reloj_top, tt03p5/tt_um_thorkn_vgaclock, tt05/tt_um_kskyou, tt05/tt_um_toivoh_synth, tt07/tt_um_toivoh_basilisc_2816, tt07/tt_um_vzayakov_top, tt09/tt_um_pwm_top, ttsky25a/tt_um_sjsu_vga_music, ttsky25a/tt_um_td4, ttsky26c/tt_um_joonatanalanampa_cordic -- were labelled by the frozen labeller (out/s3/truth_<id>.json), run once each, and every miss and false positive on them was traced by truth name (docs/S3.md sections 8-10, out/s3/blind/analysis/misses.json). The ten RESERVES were listed but never labelled, fetched, extracted or run, and no other candidate was ever fetched: the download cache (out/s3/blind/cache) holds exactly the ten drawn designs, the fifteen excluded pilot/probe designs, and one design the pre-development scan rejected (tt05of/tt_um_diferential_ringy, not a candidate). Freeze 2 extracted the excluded pilot ttsky25a/tt_um_BNN again to test the extractor's top-level cuts; that is extractor-side and touched no candidate.",
-   "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change may be motivated by one of their misses while any of them is still counted as blind. tools/s3/thirdparty.py draw() ranks sha256(seed|id) over the WHOLE candidate list and does not exclude earlier draws, so the next freeze that records a draw must exclude these ten first (listed under `open`). Freeze 2 records no draw.",
+   "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change may be motivated by one of their misses while any of them is still counted as blind. Freeze 2 recorded no draw. Since Freeze 3 (changes.jsonl F06) a freeze that records a draw computes freeze.spent_designs() once at write and records the result as draw.excluded (with draw.eligible) under freeze_hash; thirdparty.draw() ranks only the rest, freeze.draw() re-derives the draw from the RECORDED list so it never moves as the evaluation adds evidence, and check() reports any spent design the list omits whose evidence is a ledger attempt, a readable blind run record, a frozen truth or a labels.json entry under another freeze (a design seen only in the git-ignored cache or an anonymised layout is not reliably caught by check(); the freeze commit's history shows such a cut). Today spent_designs() returns exactly these ten.",
    "evidence": [
     {
      "path": "out/s3/blind/labels.json",
@@ -612,27 +612,33 @@
  ],
  "open": [
   "optionally re-run the corpus evaluation without the K2 families to show recognizer decisions do not hinge on them (review[1] issue 4)",
-  "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)",
-  "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be drawn again as unseen (K16)"
+  "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)"
  ],
  "refreshed": {
   "date": "2026-09-23",
-  "by": "freeze 2",
+  "by": "freeze 3",
   "evidence_hashes_corrected": [
+   {
+    "where": [
+     "K3",
+     "K9"
+    ],
+    "path": "docs/S3_DESIGN.md",
+    "was": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf",
+    "now": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6"
+   },
    {
     "where": "K11",
     "path": "tools/s3/thirdparty.py",
-    "was": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
-    "now": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
+    "was": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
+    "now": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302"
    }
   ],
   "items_added": [
    "K15",
    "K16"
   ],
-  "items_added_this_pass": [
-   "K16"
-  ],
+  "items_added_this_pass": [],
   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
  },
@@ -946,6 +952,27 @@
    "items_added_this_pass": [],
    "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
    "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-23",
+   "by": "freeze 2",
+   "evidence_hashes_corrected": [
+    {
+     "where": "K11",
+     "path": "tools/s3/thirdparty.py",
+     "was": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+     "now": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
+    }
+   ],
+   "items_added": [
+    "K15",
+    "K16"
+   ],
+   "items_added_this_pass": [
+    "K16"
+   ],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
   }
  ],
  "closed": [
@@ -969,6 +996,11 @@
   {
    "was": "the frozen evaluation of the puzzle runs >= 5 permutations and reports their spread (changes.jsonl C14)",
    "closed_by": "out/s3/runs/blind-puzzle-20260923T073045Z-8ea21ef84643.json: K = 5 os.urandom permutations, spread reported, 0 of 92 defined metrics varied (docs/S3.md sections 12.4 and 13)",
+   "when": "2026-09-23"
+  },
+  {
+   "was": "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be drawn again as unseen (K16)",
+   "closed_by": "Freeze 3, changes.jsonl F06: freeze.spent_designs() computed once at freeze write and recorded as draw.excluded / draw.eligible under freeze_hash; thirdparty.draw(exclude=); freeze.draw() reads the recorded list; a check() tripwire; run.py normalises --design. `python -m tools.s3.freeze spent` returns exactly K16's ten.",
    "when": "2026-09-23"
   }
  ]

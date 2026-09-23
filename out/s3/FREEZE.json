@@ -1,6 +1,6 @@
 {
  "blind_candidates": null,
- "blind_seed": "4dc7fe757bffd7adad632bf64f2f93d1",
+ "blind_seed": "811809a08f85586aed09fc5e0ef46452",
  "class_map": {
   "aliases": {
    "data": "data_register",
@@ -92,17 +92,17 @@
   "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
   "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
   "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
-  "tools/s3/freeze.py": "0f1ca7fce08004594729017052a6e64d1f8296c863813ac1e0ae8e7c2da57e18",
+  "tools/s3/freeze.py": "756aba0fc42bb87312ed469fa696e32e7d5973494e2ac140f2e08dcb900cec92",
   "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
   "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
   "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
   "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
   "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
-  "tools/s3/run.py": "467375b40e9e978258dfd15fbf2d7158e7cfcddb437db12d9a8e1d4d6ce89f13",
+  "tools/s3/run.py": "f0a9e19d724c4aa0ce726c9be823bfc4d26c1bb7825e5053171ca6853427d22f",
   "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
   "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
   "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
-  "tools/s3/thirdparty.py": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
+  "tools/s3/thirdparty.py": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302",
   "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
   "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
   "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
@@ -130,6 +130,11 @@
    {
     "closed_by": "out/s3/runs/blind-puzzle-20260923T073045Z-8ea21ef84643.json: K = 5 os.urandom permutations, spread reported, 0 of 92 defined metrics varied (docs/S3.md sections 12.4 and 13)",
     "was": "the frozen evaluation of the puzzle runs >= 5 permutations and reports their spread (changes.jsonl C14)",
+    "when": "2026-09-23"
+   },
+   {
+    "closed_by": "Freeze 3, changes.jsonl F06: freeze.spent_designs() computed once at freeze write and recorded as draw.excluded / draw.eligible under freeze_hash; thirdparty.draw(exclude=); freeze.draw() reads the recorded list; a check() tripwire; run.py normalises --design. `python -m tools.s3.freeze spent` returns exactly K16's ten.",
+    "was": "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be drawn again as unseen (K16)",
     "when": "2026-09-23"
    }
   ],
@@ -212,7 +217,7 @@
      {
       "note": "revision 3, section 4.4 table and 3.4",
       "path": "docs/S3_DESIGN.md",
-      "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+      "sha256": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6"
      },
      {
       "note": "transcript of the S3_DESIGN.md author: hashed, not read",
@@ -380,7 +385,7 @@
     "evidence": [
      {
       "path": "docs/S3_DESIGN.md",
-      "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+      "sha256": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6"
      },
      {
       "path": "out/s3/prior_art.md",
@@ -417,7 +422,7 @@
     "evidence": [
      {
       "path": "tools/s3/thirdparty.py",
-      "sha256": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
+      "sha256": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302"
      },
      {
       "note": "workflow output: result.reviews[1].issues[8]",
@@ -667,7 +672,7 @@
    },
    {
     "detail": "The ten designs drawn with the freeze-1 seed -- tt03p5/tt_um_Reloj_top, tt03p5/tt_um_thorkn_vgaclock, tt05/tt_um_kskyou, tt05/tt_um_toivoh_synth, tt07/tt_um_toivoh_basilisc_2816, tt07/tt_um_vzayakov_top, tt09/tt_um_pwm_top, ttsky25a/tt_um_sjsu_vga_music, ttsky25a/tt_um_td4, ttsky26c/tt_um_joonatanalanampa_cordic -- were labelled by the frozen labeller (out/s3/truth_<id>.json), run once each, and every miss and false positive on them was traced by truth name (docs/S3.md sections 8-10, out/s3/blind/analysis/misses.json). The ten RESERVES were listed but never labelled, fetched, extracted or run, and no other candidate was ever fetched: the download cache (out/s3/blind/cache) holds exactly the ten drawn designs, the fifteen excluded pilot/probe designs, and one design the pre-development scan rejected (tt05of/tt_um_diferential_ringy, not a candidate). Freeze 2 extracted the excluded pilot ttsky25a/tt_um_BNN again to test the extractor's top-level cuts; that is extractor-side and touched no candidate.",
-    "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change may be motivated by one of their misses while any of them is still counted as blind. tools/s3/thirdparty.py draw() ranks sha256(seed|id) over the WHOLE candidate list and does not exclude earlier draws, so the next freeze that records a draw must exclude these ten first (listed under `open`). Freeze 2 records no draw.",
+    "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change may be motivated by one of their misses while any of them is still counted as blind. Freeze 2 recorded no draw. Since Freeze 3 (changes.jsonl F06) a freeze that records a draw computes freeze.spent_designs() once at write and records the result as draw.excluded (with draw.eligible) under freeze_hash; thirdparty.draw() ranks only the rest, freeze.draw() re-derives the draw from the RECORDED list so it never moves as the evaluation adds evidence, and check() reports any spent design the list omits whose evidence is a ledger attempt, a readable blind run record, a frozen truth or a labels.json entry under another freeze (a design seen only in the git-ignored cache or an anonymised layout is not reliably caught by check(); the freeze commit's history shows such a cut). Today spent_designs() returns exactly these ten.",
     "evidence": [
      {
       "path": "out/s3/blind/labels.json",
@@ -722,8 +727,7 @@
   ],
   "open": [
    "optionally re-run the corpus evaluation without the K2 families to show recognizer decisions do not hinge on them (review[1] issue 4)",
-   "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)",
-   "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be drawn again as unseen (K16)"
+   "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)"
   ],
   "purpose": "S3_DESIGN 4.4 'Contamination record' (V0, F15): everything by which knowledge of the puzzle (the frozen-code, known-design evaluation) reached the recognizer, its development data or its authors, and every run of harness or recognizer code on the puzzle, so the puzzle report can say what its score is worth. freeze.py copies this file into FREEZE.json and pins its hash.",
   "puzzle_report_must_state": [
@@ -735,13 +739,22 @@
    "NEITHER generalisation regression set is held out: out/s3/review_generalisation (K13) and out/s3/review_generalisation2 (K15, five entries fitted to five of its designs). A figure from either set is a regression measurement and must be labelled as one."
   ],
   "refreshed": {
-   "by": "freeze 2",
+   "by": "freeze 3",
    "date": "2026-09-23",
    "evidence_hashes_corrected": [
     {
-     "now": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
+     "now": "8033b21f850dac2788a77edfe16524101830a441aada32faedff7630a32e94e6",
+     "path": "docs/S3_DESIGN.md",
+     "was": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf",
+     "where": [
+      "K3",
+      "K9"
+     ]
+    },
+    {
+     "now": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302",
      "path": "tools/s3/thirdparty.py",
-     "was": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+     "was": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
      "where": "K11"
     }
    ],
@@ -749,9 +762,7 @@
     "K15",
     "K16"
    ],
-   "items_added_this_pass": [
-    "K16"
-   ],
+   "items_added_this_pass": [],
    "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent",
    "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced."
   },
@@ -1065,6 +1076,27 @@
     "items_added_this_pass": [],
     "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent",
     "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced."
+   },
+   {
+    "by": "freeze 2",
+    "date": "2026-09-23",
+    "evidence_hashes_corrected": [
+     {
+      "now": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
+      "path": "tools/s3/thirdparty.py",
+      "was": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+      "where": "K11"
+     }
+    ],
+    "items_added": [
+     "K15",
+     "K16"
+    ],
+    "items_added_this_pass": [
+     "K16"
+    ],
+    "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent",
+    "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced."
    }
   ],
   "schema": "retrace-s3-contamination/1",
@@ -1082,7 +1114,7 @@
   ],
   "summary": "No recognizer code ran on the puzzle or on a third-party design (review[1] issue 8, which checked run records, scripts, logs, shell history and 97 transcripts). Puzzle knowledge did reach recognizer development: the first corpus builder read the puzzle truth and four puzzle-shaped corpus families followed; puzzle register names and measurements reached recognizer authors through a test, a review and a prompt; the design's corpus table itself was written with the puzzle known. The puzzle score is therefore 'frozen code, known design, puzzle-informed development', never blind. Added 2026-09-22 (review[2] issue 5): corpus cohort 2 was written from the generalisation regression set's findings and has now been checked for puzzle shapes (K12, two partial matches recorded); the regression set is no longer held out and one corpus HOLDOUT design had a threshold fitted to it (K13); the corpus/regression duplicate crc12_d16_ar has been dropped (K14). Added 2026-09-23 (review[1] of the freeze round, major): the SECOND regression set, out/s3/review_generalisation2, is no longer held out either -- five entries (C40, C49, C52, C53, C57) were fitted to five of its designs, which K13's singular wording hid (K15). Neither regression set is now a generalisation estimate."
  },
- "created": "2026-09-23T12:09:03+00:00",
+ "created": "2026-09-23T15:25:56+00:00",
  "draw": null,
  "extractor_code": {
   "tools/retrace/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1095,8 +1127,8 @@
   "tools/retrace/tech.py": "67fce891d9d8c858927c733899fd959c500e9dc1b45f90e764e1bb5dd016e97b",
   "tools/retrace/vcdtb.py": "a3ba0903ffa9800fed9cd4551d7f6a72870831f88d1fbf6a9ba56d64a3224410"
  },
- "freeze_hash": "20e014987880f11946b5e0eaba22c257014aabab732d5307fe436b0b860c0365",
- "git_head": "2d0e8112c8e53fc0835316c9a640624b0641292e",
+ "freeze_hash": "cd07cd0bce0d31c30c92b04eadc9c27de55c7e6784a80a394daa4fded7730940",
+ "git_head": "1f134ff8238c5035d8580a58f600c9de23251afc",
  "info_code": {
   "tools/tempo/lvs.py": "81a10a1b8e3c013e80a4e8a0aca3dd0dca160ad8ea32dd2efaabcfc1ee7b151f"
  },
@@ -1120,7 +1152,7 @@
   }
  },
  "notes": [
-  "Freeze 2 (2026-09-23) supersedes freeze 1ee6a47894359fef (commit 232cfe6) after its blind evaluation. It records NO blind draw: no third-party design can be run blind under it. Freeze 1's ten drawn designs are spent (contamination K16); a future draw must exclude them first. score.OUT_OF_SAMPLE_SOURCES are unchanged, so the published out-of-sample estimate stands."
+  "Freeze 3 (2026-09-23) supersedes freeze 2 (20e014987880, commit 8d800bf). It records NO blind draw. It lands F06: the next freeze that records a draw will exclude, and record, every candidate an earlier evaluation has seen (today exactly freeze 1's ten, contamination K16). score.OUT_OF_SAMPLE_SOURCES and tools/retrace are unchanged."
  ],
  "packages": {
   "gdstk": "1.0.1",
@@ -1140,11 +1172,11 @@
   "records": "development records go to out/s3/eval/runs; out/s3/runs holds blind records only, and the attempt record each blind run writes there first, proven by the ledger (run_strays)"
  },
  "records": {
-  "out/s3/contamination.json": "28d0cdd852e9a7b0adcec4eacfac6487709dbcf00c02d851de7d7f93f71cbd8a",
-  "tools/s3/changes.jsonl": "65494122d2cbb11d6d1b61333cbd2092b897fb9564360d158139aecb67bde0d5"
+  "out/s3/contamination.json": "3cbab9a79c74fa32bfd63c64331caf1866f6360bfd09c98dca0781e1704af3f6",
+  "tools/s3/changes.jsonl": "791b0b8987f421904cf4a371c648d08ed8566600be1e4e2252522faed7dc2ade"
  },
  "records_evidence": {
-  "checked": 1029,
+  "checked": 1034,
   "missing": [
    "tools/s3/changes.jsonl:C25: out/s3/corpus/crc12_d16_ar/rtl.v: missing",
    "tools/s3/changes.jsonl:C25: out/s3/corpus/crc12_d16_ar/truth.json: missing",
@@ -1222,7 +1254,7 @@
    "tools/s3/changes.jsonl:C22: out/s3/verify/crosscheck_tempo.json: recorded 11d9214ecf1b, now 91fa4c5e0551",
    "tools/s3/changes.jsonl:C23: tools/s3/corpus.py: recorded 12cbfa77c9e7, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C23: out/s3/corpus/manifest.json: recorded 58f8763327e3, now c5b2ff283bb6",
-   "tools/s3/changes.jsonl:C24: tools/s3/thirdparty.py: recorded 51b6088f7757, now 03b7b0e459da",
+   "tools/s3/changes.jsonl:C24: tools/s3/thirdparty.py: recorded 51b6088f7757, now d6ab80d8b9ba",
    "tools/s3/changes.jsonl:C19: tools/s3/recognize.py: recorded 0aa4da30c4ec, now 15b72f5864f6",
    "tools/s3/changes.jsonl:C26: tools/s3/counter.py: recorded 76dd80319127, now 0072137626cc",
    "tools/s3/changes.jsonl:C27: tools/s3/params.py: recorded 6a10f517dc74, now f7c7ce733333",
@@ -1232,15 +1264,15 @@
    "tools/s3/changes.jsonl:C30: tools/s3/group.py: recorded 26f0e202bc5e, now cfec4232c61f",
    "tools/s3/changes.jsonl:C31: tools/s3/params.py: recorded 5f2ec454b4ae, now f7c7ce733333",
    "tools/s3/changes.jsonl:C32: tools/s3/params.py: recorded 5f2ec454b4ae, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C33: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C33: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C33: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C34: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C34: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C34: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C35: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C35: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C35: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C36: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C36: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C36: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
-   "tools/s3/changes.jsonl:C37: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C37: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C37: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C38.RESET_NEAR: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C38.RESET_NEAR: out/s3/honesty/params_coverage.json: recorded b6aadded02a8, now 5e534ca58fd1",
@@ -1301,30 +1333,30 @@
    "tools/s3/changes.jsonl:C38.POOL_SALT: tools/s3/controls.py: recorded 7a077010afc7, now bfcff2ad45cd",
    "tools/s3/changes.jsonl:C39: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C39: out/s3/honesty/params_coverage.json: recorded b6aadded02a8, now 5e534ca58fd1",
-   "tools/s3/changes.jsonl:C39: docs/S3_DESIGN.md: recorded bc3df8181b13, now d783a9c7d365",
+   "tools/s3/changes.jsonl:C39: docs/S3_DESIGN.md: recorded bc3df8181b13, now 8033b21f850d",
    "tools/s3/changes.jsonl:C40: tools/s3/controls.py: recorded 7a077010afc7, now bfcff2ad45cd",
    "tools/s3/changes.jsonl:C40: out/s3/honesty/params_coverage.json: recorded b6aadded02a8, now 5e534ca58fd1",
    "tools/s3/changes.jsonl:C40: tools/s3/params.py: recorded 4df0b0ceb863, now f7c7ce733333",
    "tools/s3/changes.jsonl:C41: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C41: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
    "tools/s3/changes.jsonl:C41: out/s3/corpus/manifest.json: recorded 58f8763327e3, now c5b2ff283bb6",
-   "tools/s3/changes.jsonl:C41: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C41: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C42: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C42: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
-   "tools/s3/changes.jsonl:C42: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C42: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C43: tools/s3/recognize.py: recorded 80c53d85735b, now 15b72f5864f6",
-   "tools/s3/changes.jsonl:C43: tools/s3/run.py: recorded ee7fb5d7834e, now 467375b40e9e",
-   "tools/s3/changes.jsonl:C43: test/test_s3.py: recorded 71d6ae7934b2, now 84dc3d654ba3",
-   "tools/s3/changes.jsonl:C44: tools/s3/freeze.py: recorded 89dc52619343, now 0f1ca7fce080",
-   "tools/s3/changes.jsonl:C44: test/test_s3.py: recorded 71d6ae7934b2, now 84dc3d654ba3",
+   "tools/s3/changes.jsonl:C43: tools/s3/run.py: recorded ee7fb5d7834e, now f0a9e19d724c",
+   "tools/s3/changes.jsonl:C43: test/test_s3.py: recorded 71d6ae7934b2, now 7c6ae3eee9c0",
+   "tools/s3/changes.jsonl:C44: tools/s3/freeze.py: recorded 89dc52619343, now 756aba0fc42b",
+   "tools/s3/changes.jsonl:C44: test/test_s3.py: recorded 71d6ae7934b2, now 7c6ae3eee9c0",
    "tools/s3/changes.jsonl:C45: tools/s3/score.py: recorded 12d586dcf7eb, now 350cf55ad364",
    "tools/s3/changes.jsonl:C45: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
    "tools/s3/changes.jsonl:C45: out/s3/honesty/holdout_rates.py: recorded 5d72b16cc50b, now db5b5b9a5fe2",
-   "tools/s3/changes.jsonl:C45: test/test_s3.py: recorded 71d6ae7934b2, now 84dc3d654ba3",
-   "tools/s3/changes.jsonl:C45: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:C45: test/test_s3.py: recorded 71d6ae7934b2, now 7c6ae3eee9c0",
+   "tools/s3/changes.jsonl:C45: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:C47: out/s3/honesty/holdout_rates.json: recorded 67e03a1bb8b6, now 191db821e0ed",
-   "tools/s3/changes.jsonl:C47: out/s3/honesty/summary.json: recorded f06d581875da, now 1bb71f588a95",
-   "tools/s3/changes.jsonl:C46: out/s3/contamination.json: recorded d7ee687dc415, now 28d0cdd852e9",
+   "tools/s3/changes.jsonl:C47: out/s3/honesty/summary.json: recorded f06d581875da, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:C46: out/s3/contamination.json: recorded d7ee687dc415, now 3cbab9a79c74",
    "tools/s3/changes.jsonl:C46: tools/s3/corpus.py: recorded 8e59651e1824, now f4b70e14fe60",
    "tools/s3/changes.jsonl:C46: out/s3/corpus/manifest.json: recorded 58f8763327e3, now c5b2ff283bb6",
    "tools/s3/changes.jsonl:C48: tools/s3/params.py: recorded bab004e4b720, now f7c7ce733333",
@@ -1355,20 +1387,20 @@
    "tools/s3/changes.jsonl:C60: tools/s3/params.py: recorded bab004e4b720, now f7c7ce733333",
    "tools/s3/changes.jsonl:H01: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:H01: out/s3/honesty/holdout_rates.py: recorded 220aee9771b2, now db5b5b9a5fe2",
-   "tools/s3/changes.jsonl:H01: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now d783a9c7d365",
+   "tools/s3/changes.jsonl:H01: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now 8033b21f850d",
    "tools/s3/changes.jsonl:H02: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:H02: out/s3/honesty/corpus_holdout_eval.json: recorded a31151701689, now 02cb7c0dfe3a",
    "tools/s3/changes.jsonl:H02: out/s3/honesty/holdout_rates.py: recorded 220aee9771b2, now db5b5b9a5fe2",
    "tools/s3/changes.jsonl:H03: out/s3/honesty/holdout_rates.py: recorded 220aee9771b2, now db5b5b9a5fe2",
    "tools/s3/changes.jsonl:H03: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
-   "tools/s3/changes.jsonl:H04: tools/s3/run.py: recorded 270579167d83, now 467375b40e9e",
-   "tools/s3/changes.jsonl:H05: tools/s3/freeze.py: recorded f8b1b0bb5f14, now 0f1ca7fce080",
-   "tools/s3/changes.jsonl:H05: out/s3/contamination.json: recorded bc3cce995e92, now 28d0cdd852e9",
-   "tools/s3/changes.jsonl:H06: out/s3/contamination.json: recorded bc3cce995e92, now 28d0cdd852e9",
-   "tools/s3/changes.jsonl:H06: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now bf399757a9d2",
-   "tools/s3/changes.jsonl:H08: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now d783a9c7d365",
+   "tools/s3/changes.jsonl:H04: tools/s3/run.py: recorded 270579167d83, now f0a9e19d724c",
+   "tools/s3/changes.jsonl:H05: tools/s3/freeze.py: recorded f8b1b0bb5f14, now 756aba0fc42b",
+   "tools/s3/changes.jsonl:H05: out/s3/contamination.json: recorded bc3cce995e92, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:H06: out/s3/contamination.json: recorded bc3cce995e92, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:H06: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now 23295b37bad8",
+   "tools/s3/changes.jsonl:H08: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now 8033b21f850d",
    "tools/s3/changes.jsonl:H08: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
-   "tools/s3/changes.jsonl:H09: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 1bb71f588a95",
+   "tools/s3/changes.jsonl:H09: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 9aa3aa8a1519",
    "tools/s3/changes.jsonl:H09: out/s3/honesty/summarise.py: recorded b21f29abb414, now 84854a2f1edf",
    "tools/s3/changes.jsonl:H09: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:MC01: tools/s3/counter.py: recorded d8e6e8ad3adf, now 0072137626cc",
@@ -1395,17 +1427,17 @@
    "tools/s3/changes.jsonl:PV10: test/test_s3_verify.py: recorded fb4f9bcf5107, now 354790e8bb22",
    "tools/s3/changes.jsonl:PV11: tools/s3/verify.py: recorded 28904993c576, now f08007dc4fd3",
    "tools/s3/changes.jsonl:I02: tools/s3/verify.py: recorded 28904993c576, now f08007dc4fd3",
-   "tools/s3/changes.jsonl:I03: tools/s3/run.py: recorded 270579167d83, now 467375b40e9e",
+   "tools/s3/changes.jsonl:I03: tools/s3/run.py: recorded 270579167d83, now f0a9e19d724c",
    "tools/s3/changes.jsonl:I05: out/s3/honesty/integration/summary.txt: recorded 279eeb99a293, now 2461dc017f9e",
    "tools/s3/changes.jsonl:I05: out/s3/honesty/integration/summary.json: recorded 3433b24795b4, now 4468b4e06561",
    "tools/s3/changes.jsonl:I05: out/s3/honesty/integration/tempo_report.txt: recorded 8b06d2243246, now 776c90f838ac",
    "tools/s3/changes.jsonl:I06: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:I06: out/s3/honesty/corpus_holdout_eval.json: recorded a31151701689, now 02cb7c0dfe3a",
    "tools/s3/changes.jsonl:T01: out/s3/honesty/summarise.py: recorded b21f29abb414, now 84854a2f1edf",
-   "tools/s3/changes.jsonl:T01: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 1bb71f588a95",
-   "tools/s3/changes.jsonl:T02: out/s3/contamination.json: recorded bc3cce995e92, now 28d0cdd852e9",
-   "tools/s3/changes.jsonl:T02: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now bf399757a9d2",
-   "tools/s3/changes.jsonl:T05: test/test_s3.py: recorded c5053f9e0e9a, now 84dc3d654ba3",
+   "tools/s3/changes.jsonl:T01: out/s3/honesty/summary.json: recorded 36ff40133e2e, now 9aa3aa8a1519",
+   "tools/s3/changes.jsonl:T02: out/s3/contamination.json: recorded bc3cce995e92, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:T02: out/s3/honesty/write_contamination.py: recorded e4dc4348a10e, now 23295b37bad8",
+   "tools/s3/changes.jsonl:T05: test/test_s3.py: recorded c5053f9e0e9a, now 7c6ae3eee9c0",
    "tools/s3/changes.jsonl:T06: out/s3/honesty/holdout_rates.json: recorded 2575ca233437, now 191db821e0ed",
    "tools/s3/changes.jsonl:T06: out/s3/honesty/corpus_holdout_eval.json: recorded a31151701689, now 02cb7c0dfe3a",
    "tools/s3/changes.jsonl:PV12: tools/s3/verify.py: recorded 28904993c576, now f08007dc4fd3",
@@ -1414,28 +1446,36 @@
    "tools/s3/changes.jsonl:PV13: test/test_s3_verify.py: recorded fb4f9bcf5107, now 354790e8bb22",
    "tools/s3/changes.jsonl:PV14: tools/s3/verify.py: recorded 28904993c576, now f08007dc4fd3",
    "tools/s3/changes.jsonl:PV15: tools/s3/verify.py: recorded 28904993c576, now f08007dc4fd3",
-   "tools/s3/changes.jsonl:T07: tools/s3/run.py: recorded 270579167d83, now 467375b40e9e",
-   "tools/s3/changes.jsonl:T07: test/test_s3.py: recorded c5053f9e0e9a, now 84dc3d654ba3",
+   "tools/s3/changes.jsonl:T07: tools/s3/run.py: recorded 270579167d83, now f0a9e19d724c",
+   "tools/s3/changes.jsonl:T07: test/test_s3.py: recorded c5053f9e0e9a, now 7c6ae3eee9c0",
    "tools/s3/changes.jsonl:T07: out/s3/honesty/honesty_table.json: recorded 0b95f58ad858, now e99f780871ac",
-   "tools/s3/changes.jsonl:T08: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now d783a9c7d365",
+   "tools/s3/changes.jsonl:T08: docs/S3_DESIGN.md: recorded 9846f2a5a12c, now 8033b21f850d",
    "tools/s3/changes.jsonl:T08: tools/s3/verify.py: recorded 51981864baf0, now f08007dc4fd3",
    "tools/s3/changes.jsonl:T09: tools/s3/schema.py: recorded 33fe722f2fea, now 0d5f16447d77",
-   "tools/s3/changes.jsonl:T09: tools/s3/freeze.py: recorded f8b1b0bb5f14, now 0f1ca7fce080",
+   "tools/s3/changes.jsonl:T09: tools/s3/freeze.py: recorded f8b1b0bb5f14, now 756aba0fc42b",
    "tools/s3/changes.jsonl:T09: tools/s3/verify.py: recorded 51981864baf0, now f08007dc4fd3",
    "tools/s3/changes.jsonl:T10: out/s3/honesty/summarise.py: recorded b21f29abb414, now 84854a2f1edf",
    "tools/s3/changes.jsonl:T11: out/s3/honesty/integration/summary.json: recorded a61652f4e179, now 4468b4e06561",
    "tools/s3/changes.jsonl:T11: out/s3/honesty/holdout_rates.json: recorded 8f2141e47c74, now 191db821e0ed",
    "tools/s3/changes.jsonl:T11: out/s3/honesty/corpus_holdout_eval.json: recorded a62589986bdc, now 02cb7c0dfe3a",
    "tools/s3/changes.jsonl:T12: out/s3/honesty/summarise.py: recorded 2891fc4aa93b, now 84854a2f1edf",
-   "tools/s3/changes.jsonl:T13: out/s3/honesty/write_contamination.py: recorded ffe53edff433, now bf399757a9d2",
-   "tools/s3/changes.jsonl:T13: out/s3/contamination.json: recorded 22d0f5ad06bd, now 28d0cdd852e9",
-   "tools/s3/changes.jsonl:T13: docs/S3_DESIGN.md: recorded b805df51ac66, now d783a9c7d365",
+   "tools/s3/changes.jsonl:T13: out/s3/honesty/write_contamination.py: recorded ffe53edff433, now 23295b37bad8",
+   "tools/s3/changes.jsonl:T13: out/s3/contamination.json: recorded 22d0f5ad06bd, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:T13: docs/S3_DESIGN.md: recorded b805df51ac66, now 8033b21f850d",
    "tools/s3/changes.jsonl:T14: out/s3/honesty/holdout_rates.json: recorded 8f2141e47c74, now 191db821e0ed",
-   "tools/s3/changes.jsonl:T16: tools/s3/freeze.py: recorded 4a3a78a4e974, now 0f1ca7fce080",
-   "tools/s3/changes.jsonl:T16: test/test_s3.py: recorded c5053f9e0e9a, now 84dc3d654ba3",
+   "tools/s3/changes.jsonl:T15: docs/S3_DESIGN.md: recorded d783a9c7d365, now 8033b21f850d",
+   "tools/s3/changes.jsonl:T16: docs/S3_DESIGN.md: recorded d783a9c7d365, now 8033b21f850d",
+   "tools/s3/changes.jsonl:T16: tools/s3/freeze.py: recorded 4a3a78a4e974, now 756aba0fc42b",
+   "tools/s3/changes.jsonl:T16: test/test_s3.py: recorded c5053f9e0e9a, now 7c6ae3eee9c0",
    "tools/s3/changes.jsonl:T16: out/s3/honesty/honesty_table.json: recorded 1d2bd856f1f6, now e99f780871ac",
    "tools/s3/changes.jsonl:T16: out/s3/honesty/honesty_table.log: recorded 1d1ed438edb8, now 3bf10f745e78",
-   "tools/s3/changes.jsonl:T16: out/s3/contamination.json: recorded 440e3fed9a3d, now 28d0cdd852e9"
+   "tools/s3/changes.jsonl:T16: out/s3/contamination.json: recorded 440e3fed9a3d, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:F01: tools/s3/freeze.py: recorded 0f1ca7fce080, now 756aba0fc42b",
+   "tools/s3/changes.jsonl:F01: tools/s3/run.py: recorded 467375b40e9e, now f0a9e19d724c",
+   "tools/s3/changes.jsonl:F01: test/test_s3.py: recorded 84dc3d654ba3, now 7c6ae3eee9c0",
+   "tools/s3/changes.jsonl:F02: tools/s3/thirdparty.py: recorded 03b7b0e459da, now d6ab80d8b9ba",
+   "tools/s3/changes.jsonl:F05: out/s3/contamination.json: recorded 28d0cdd852e9, now 3cbab9a79c74",
+   "tools/s3/changes.jsonl:F05: out/s3/honesty/write_contamination.py: recorded bf399757a9d2, now 23295b37bad8"
   ],
   "stale": []
  },
@@ -1476,8 +1516,8 @@
    "out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-90e4754651b4.json",
    "out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-9b61865b3c56.attempt.json"
   ],
-  "previous_freeze": "1ee6a47894359fefa10b0507ac610db6d19fb1426c6626b7162e5f977e5c4838",
-  "reason": "Freeze 2, a housekeeping freeze after freeze 1's blind evaluation (docs/S3.md): run_strays() admits the ledger-proven attempt records that blocked any new freeze (F01); tools/retrace/extract.py binds top-level via cuts (F02); the summary headline and the master-swap description corrected (F03, F04); freeze 1's blind set recorded as spent (K16, F05). No recognizer, verifier, scorer or corpus file changed."
+  "previous_freeze": "20e014987880f11946b5e0eaba22c257014aabab732d5307fe436b0b860c0365",
+  "reason": "Freeze 3, a housekeeping freeze: a blind draw can no longer offer a design an earlier evaluation has seen (F06; contamination K16's open item). spent_designs() is recorded as draw.excluded under freeze_hash when a draw is recorded, check() gains a count and a tripwire, run.py normalises --design. No recognizer, verifier, scorer or corpus file changed."
  },
  "truth": {
   "puzzle": {

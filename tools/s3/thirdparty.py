@@ -11,6 +11,10 @@ design's structure, and runs the label pipeline on designs that are then exclude
     python -m tools.s3.thirdparty pilot  [ID | --all]         # label pilot -> out/s3/blind/pilot/
                                                               # (--all: the pilot and every flow probe)
     python -m tools.s3.thirdparty draw   --seed S --n N       # after the freeze: the blind draw
+                                         [--exclude ID ...]   # (ids removed before ranking)
+        A freeze's draw is this with --exclude for every id of its FREEZE.json draw.excluded; without
+        them it is NOT that freeze's draw once draw.excluded is non-empty. `python -m
+        tools.s3.freeze draw` reproduces a freeze's draw from the record itself.
 
 Data (checked 2026-09-21; candidates.json["shuttles"] has what each shuttle publishes)
   * TinyTapeout/tinytapeout-index (CC0) lists every shuttle and, per project, the author's repo and
@@ -564,18 +568,37 @@ def _brief(e, f):
             **{k: f[k] for k in ("flops", "latches", "language", "repo_licence", "fork_source") if k in f}}
 
 
-def draw(seed, n, path=None):
+def draw(seed, n, path=None, exclude=()):
     """The blind draw (run after the freeze): the n candidates with the lowest sha256(seed|id), and
     the rest in the same order as reserves. Rule: a drawn design the frozen label pipeline cannot
-    label (e.g. Yosys rejects its SystemVerilog) is replaced by the next reserve, and reported."""
+    label (e.g. Yosys rejects its SystemVerilog) is replaced by the next reserve, and reported.
+
+    `exclude`: candidate ids removed BEFORE ranking, from the drawn designs and the reserves alike:
+    the designs an earlier blind evaluation has seen, which the freeze computes once and records as
+    FREEZE.json draw.excluded (freeze.spent_designs, freeze.draw). An id that is not a candidate
+    removes nothing (the CLI warns about it: a file-safe "tt09__x" is not the candidate "tt09/x").
+    With no exclusion the result is exactly the draw without the parameter; with one, it is that
+    ranking with the excluded ids taken out, order kept, plus "excluded" (the candidate ids
+    removed, sorted).
+
+    So draw(seed, n) WITHOUT `exclude` is not a freeze's draw once its draw.excluded is non-empty:
+    `python -m tools.s3.freeze draw` (freeze.draw) reproduces a freeze's draw, passing the recorded
+    list."""
+    if isinstance(exclude, (str, bytes)):
+        raise TypeError("exclude is a collection of candidate ids, not one id")
+    exclude = set(exclude)
     path = path or os.path.join(OUT, "candidates.json")
     doc = json.load(open(path))
     got = hashlib.sha256(json.dumps(doc["candidates"], sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     if got != doc["candidates_sha256"]:
         raise SystemExit(f"candidates changed since registration ({got} != {doc['candidates_sha256']})")
-    order = sorted(doc["candidates"], key=lambda c: hashlib.sha256(f"{seed}|{c['id']}".encode()).hexdigest())
-    return {"seed": seed, "candidates_sha256": got, "blind": [c["id"] for c in order[:n]],
-            "reserve": [c["id"] for c in order[n:]]}
+    pool = [c for c in doc["candidates"] if c["id"] not in exclude]
+    order = sorted(pool, key=lambda c: hashlib.sha256(f"{seed}|{c['id']}".encode()).hexdigest())
+    out = {"seed": seed, "candidates_sha256": got, "blind": [c["id"] for c in order[:n]],
+           "reserve": [c["id"] for c in order[n:]]}
+    if exclude:
+        out["excluded"] = sorted(c["id"] for c in doc["candidates"] if c["id"] in exclude)
+    return out
 
 
 # ============================================================================ layout, netlist, join
@@ -1276,9 +1299,19 @@ def main(argv=None):
     pl.add_argument("--all", action="store_true", help="every excluded design (pilot and probes), one line each")
     pl.add_argument("--patterns", type=int, default=1 << 12)
     pl.add_argument("--no-prove", action="store_true")
-    d = sub.add_parser("draw", help="after the freeze: draw the blind set")
+    d = sub.add_parser("draw", help="the ranking by --seed, minus --exclude; NOT a freeze's draw unless every id of "
+                                    "its FREEZE.json draw.excluded is passed as --exclude (`python -m "
+                                    "tools.s3.freeze draw` reproduces a freeze's draw)",
+                       description="The blind draw rule: the candidates ranked by sha256(seed|id), minus --exclude. "
+                                   "Without --exclude this is not a freeze's draw once its FREEZE.json "
+                                   "draw.excluded is non-empty; `python -m tools.s3.freeze draw` reproduces a "
+                                   "freeze's draw from its record.")
     d.add_argument("--seed", required=True)
     d.add_argument("--n", type=int, required=True)
+    d.add_argument("--exclude", action="append", default=[], metavar="ID",
+                   help="a candidate id (<shuttle>/<macro>, as candidates.json spells it) removed before ranking "
+                        "(repeatable): a design an earlier blind evaluation has seen (FREEZE.json draw.excluded). "
+                        "An id that is not a candidate removes nothing and is warned about")
     a = ap.parse_args(argv)
     if a.cmd == "scan":
         scan(per_stratum=a.per_stratum, index_commit=a.index_commit, n_probes=a.probes)
@@ -1315,7 +1348,15 @@ def main(argv=None):
     elif a.cmd == "pilot":
         pilot(find_record(a.id, "pilot"), npat=a.patterns, prove=not a.no_prove)
     elif a.cmd == "draw":
-        print(json.dumps(draw(a.seed, a.n), indent=1))
+        out = draw(a.seed, a.n, exclude=a.exclude)
+        removed = set(out.get("excluded", []))
+        cands = out["blind"] + out["reserve"] + sorted(removed)
+        safe = lambda x: (x[3:] if x.startswith("tt:") else x).replace("/", "__")  # noqa: E731 (score.design_id)
+        for x in sorted(set(a.exclude) - removed):
+            near = [c for c in cands if safe(c) == safe(x)]
+            log(f"warning: --exclude {x!r} is not a candidate id, so it removes nothing"
+                + (f" (did you mean {near[0]!r}? candidate ids are spelled <shuttle>/<macro>)" if near else ""))
+        print(json.dumps(out, indent=1))
     return 0
 
 

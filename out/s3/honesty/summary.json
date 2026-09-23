@@ -744,17 +744,17 @@
    "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
    "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
    "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
-   "tools/s3/freeze.py": "0f1ca7fce08004594729017052a6e64d1f8296c863813ac1e0ae8e7c2da57e18",
+   "tools/s3/freeze.py": "756aba0fc42bb87312ed469fa696e32e7d5973494e2ac140f2e08dcb900cec92",
    "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
    "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
    "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
    "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
    "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
-   "tools/s3/run.py": "467375b40e9e978258dfd15fbf2d7158e7cfcddb437db12d9a8e1d4d6ce89f13",
+   "tools/s3/run.py": "f0a9e19d724c4aa0ce726c9be823bfc4d26c1bb7825e5053171ca6853427d22f",
    "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
    "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
    "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
-   "tools/s3/thirdparty.py": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
+   "tools/s3/thirdparty.py": "d6ab80d8b9ba0b9fe08bc2dfc1066e7d9a1cff011d441dafccdb5d1743913302",
    "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
    "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
    "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
@@ -971,9 +971,9 @@
   }
  },
  "records_evidence": {
-  "checked": 1029,
+  "checked": 1034,
   "stale": [],
-  "moved": 283,
+  "moved": 291,
   "missing": 5,
   "rule": "a stale CONTAMINATION hash blocks a freeze (the record describes the present); a moved CHANGE-LOG hash is reported only (an entry's evidence is a snapshot)"
  },
