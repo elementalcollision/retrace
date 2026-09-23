@@ -517,6 +517,12 @@ yices and bitwuzla), Icarus Verilog, Verilator, z3, networkx; sky130 via ciel
 .venv/bin/python -m pytest -q test/test_tempo.py    # skips cleanly without the TEMPO checkout
 ```
 
+One test fails, and it is a defect in the S3 freeze rather than a regression:
+`test_permutation_counts_and_record_locations` requires every record in `out/s3/runs` to be marked
+blind, but the protocol writes an *attempt* record there that carries no such mark, so the test
+passed only while no blind run had ever been made. The test and the code it checks are both inside
+the freeze, so the fix belongs in a superseding freeze (`docs/S3.md` §14). 308 pass, 7 skip.
+
 Details: `docs/STATUS.md` (ledger), `docs/INTENT.md` (design), `docs/MUTATION.md`,
 `docs/SOLUTION.md`, `docs/SOLVE_ANALYTICAL.md`, `docs/SOLVE_FORMAL.md`, `docs/TEMPO_LVS.md`
-(the G6 port and LVS).
+(the G6 port and LVS), `docs/S3.md` and `docs/S3_DESIGN.md` (structure recognition).
