@@ -1,0 +1,28 @@
+{
+ "attempt": "76ac104b0392ef20",
+ "created": "2026-09-23T07:10:42+00:00",
+ "design": "tt03p5__tt_um_thorkn_vgaclock",
+ "freeze": {
+  "freeze_hash": "1ee6a47894359fefa10b0507ac610db6d19fb1426c6626b7162e5f977e5c4838"
+ },
+ "gds": "out/s3/blind/anon/tt03p5__tt_um_thorkn_vgaclock.gds",
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-x35wgo61",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "tt03p5__tt_um_thorkn_vgaclock",
+  "--gds",
+  "/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/anon/tt03p5__tt_um_thorkn_vgaclock.gds",
+  "--top",
+  "tt_um_thorkn_vgaclock",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
