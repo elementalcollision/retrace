@@ -1,0 +1,5184 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:ttsky26c/tt_um_joonatanalanampa_cordic",
+ "registers": [
+  {
+   "name": "beat",
+   "width": 24,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_joonatanalanampa_cordic",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_20700_10880",
+     "rtl_bit": "beat[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_20240_8160",
+     "rtl_bit": "beat[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_17480_5440",
+     "rtl_bit": "beat[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_12880_10880",
+     "rtl_bit": "beat[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_7820_13600",
+     "rtl_bit": "beat[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_8740_16320",
+     "rtl_bit": "beat[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_7820_19040",
+     "rtl_bit": "beat[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_7360_76160",
+     "rtl_bit": "beat[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_7820_78880",
+     "rtl_bit": "beat[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_11500_81600",
+     "rtl_bit": "beat[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_8280_87040",
+     "rtl_bit": "beat[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_16100_87040",
+     "rtl_bit": "beat[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_9660_92480",
+     "rtl_bit": "beat[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_5980_100640",
+     "rtl_bit": "beat[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_5980_103360",
+     "rtl_bit": "beat[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_17940_103360",
+     "rtl_bit": "beat[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_18860_97920",
+     "rtl_bit": "beat[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_20240_100640",
+     "rtl_bit": "beat[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_2_33580_100640",
+     "rtl_bit": "beat[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_2_36340_103360",
+     "rtl_bit": "beat[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 20,
+     "flop": "dfxtp_2_37720_97920",
+     "rtl_bit": "beat[20]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 21,
+     "flop": "dfxtp_2_51520_100640",
+     "rtl_bit": "beat[21]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 22,
+     "flop": "dfxtp_2_54740_97920",
+     "rtl_bit": "beat[22]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 23,
+     "flop": "dfxtp_2_58420_103360",
+     "rtl_bit": "beat[23]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "eng_busy",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_joonatanalanampa_cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_86940_70720",
+     "rtl_bit": "eng_busy",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "phase",
+   "width": 20,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_joonatanalanampa_cordic",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_126960_46240",
+     "rtl_bit": "phase[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_125120_51680",
+     "rtl_bit": "phase[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_145820_43520",
+     "rtl_bit": "phase[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_145820_46240",
+     "rtl_bit": "phase[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_147660_59840",
+     "rtl_bit": "phase[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_144900_62560",
+     "rtl_bit": "phase[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_144900_73440",
+     "rtl_bit": "phase[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_146280_70720",
+     "rtl_bit": "phase[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_145360_84320",
+     "rtl_bit": "phase[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_146280_87040",
+     "rtl_bit": "phase[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_146280_103360",
+     "rtl_bit": "phase[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_145820_100640",
+     "rtl_bit": "phase[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_115920_97920",
+     "rtl_bit": "phase[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_111780_103360",
+     "rtl_bit": "phase[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_96600_97920",
+     "rtl_bit": "phase[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_94760_103360",
+     "rtl_bit": "phase[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_93380_84320",
+     "rtl_bit": "phase[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_87860_81600",
+     "rtl_bit": "phase[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_2_95680_70720",
+     "rtl_bit": "phase[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_2_93380_73440",
+     "rtl_bit": "phase[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sd_sin",
+   "width": 17,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_joonatanalanampa_cordic",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_23920_19040",
+     "rtl_bit": "sd_sin[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_25300_24480",
+     "rtl_bit": "sd_sin[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_7360_27200",
+     "rtl_bit": "sd_sin[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_7820_35360",
+     "rtl_bit": "sd_sin[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_9660_48960",
+     "rtl_bit": "sd_sin[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_9660_54400",
+     "rtl_bit": "sd_sin[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_7820_62560",
+     "rtl_bit": "sd_sin[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_7820_68000",
+     "rtl_bit": "sd_sin[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_25760_73440",
+     "rtl_bit": "sd_sin[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_31740_76160",
+     "rtl_bit": "sd_sin[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_33120_87040",
+     "rtl_bit": "sd_sin[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_32660_89760",
+     "rtl_bit": "sd_sin[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_49220_89760",
+     "rtl_bit": "sd_sin[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_59340_89760",
+     "rtl_bit": "sd_sin[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_71300_92480",
+     "rtl_bit": "sd_sin[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_73600_100640",
+     "rtl_bit": "sd_sin[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_72220_103360",
+     "rtl_bit": "sd_sin[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sin_s",
+   "width": 16,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_joonatanalanampa_cordic",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_34500_27200",
+     "rtl_bit": "sin_s[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_24380_29920",
+     "rtl_bit": "sin_s[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_7820_29920",
+     "rtl_bit": "sin_s[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_8280_38080",
+     "rtl_bit": "sin_s[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_13340_43520",
+     "rtl_bit": "sin_s[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_26680_51680",
+     "rtl_bit": "sin_s[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_11040_59840",
+     "rtl_bit": "sin_s[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_7820_73440",
+     "rtl_bit": "sin_s[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_27140_68000",
+     "rtl_bit": "sin_s[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_43240_73440",
+     "rtl_bit": "sin_s[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_46460_81600",
+     "rtl_bit": "sin_s[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_57040_78880",
+     "rtl_bit": "sin_s[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_61640_81600",
+     "rtl_bit": "sin_s[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_69460_84320",
+     "rtl_bit": "sin_s[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_72220_81600",
+     "rtl_bit": "sin_s[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_76820_78880",
+     "rtl_bit": "sin_s[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.ccw",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_96600_48960",
+     "rtl_bit": "u_cordic.ccw",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.cx",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_72680_35360",
+     "rtl_bit": "u_cordic.cx",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.cy",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_81880_48960",
+     "rtl_bit": "u_cordic.cy",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.cz",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_110860_46240",
+     "rtl_bit": "u_cordic.cz",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.done",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_51060_73440",
+     "rtl_bit": "u_cordic.done",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.fold_q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_90620_54400",
+     "rtl_bit": "u_cordic.fold_q",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.i",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 16,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_97980_10880",
+     "rtl_bit": "u_cordic.i[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_99820_13600",
+     "rtl_bit": "u_cordic.i[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_97980_2720",
+     "rtl_bit": "u_cordic.i[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_108560_21760",
+     "rtl_bit": "u_cordic.i[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.i__retimed",
+   "width": 16,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_123740_16320",
+     "rtl_bit": "u_cordic.i__retimed[0]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_123740_19040",
+     "rtl_bit": "u_cordic.i__retimed[1]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_126960_13600",
+     "rtl_bit": "u_cordic.i__retimed[2]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_126960_24480",
+     "rtl_bit": "u_cordic.i__retimed[3]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_132020_10880",
+     "rtl_bit": "u_cordic.i__retimed[4]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:56>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_132020_2720",
+     "rtl_bit": "u_cordic.i__retimed[5]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:57>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_136620_19040",
+     "rtl_bit": "u_cordic.i__retimed[6]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_136620_5440",
+     "rtl_bit": "u_cordic.i__retimed[7]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:55>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_142600_21760",
+     "rtl_bit": "u_cordic.i__retimed[8]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_144440_5440",
+     "rtl_bit": "u_cordic.i__retimed[9]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_144900_13600",
+     "rtl_bit": "u_cordic.i__retimed[10]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_144900_19040",
+     "rtl_bit": "u_cordic.i__retimed[11]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_144900_2720",
+     "rtl_bit": "u_cordic.i__retimed[12]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:58>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_144900_8160",
+     "rtl_bit": "u_cordic.i__retimed[13]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_147660_24480",
+     "rtl_bit": "u_cordic.i__retimed[14]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_148120_16320",
+     "rtl_bit": "u_cordic.i__retimed[15]",
+     "how": "retimed",
+     "holds": "<internal signal, cordic.sv:69>, one cycle ahead",
+     "function_of": [
+      "u_cordic.i[3:0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.k",
+   "width": 5,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 21,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_147660_32640",
+     "rtl_bit": "u_cordic.k[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_139840_32640",
+     "rtl_bit": "u_cordic.k[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_144900_29920",
+     "rtl_bit": "u_cordic.k[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_137540_38080",
+     "rtl_bit": "u_cordic.k[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_124660_35360",
+     "rtl_bit": "u_cordic.k[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.mode_q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "no flop in the RTL netlist (all bits constant)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": null,
+     "rtl_bit": "u_cordic.mode_q",
+     "note": "constant in the RTL"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.sin_o",
+   "width": 16,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_44160_32640",
+     "rtl_bit": "u_cordic.sin_o[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_31740_32640",
+     "rtl_bit": "u_cordic.sin_o[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_23000_35360",
+     "rtl_bit": "u_cordic.sin_o[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_23920_40800",
+     "rtl_bit": "u_cordic.sin_o[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_24380_46240",
+     "rtl_bit": "u_cordic.sin_o[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_29900_48960",
+     "rtl_bit": "u_cordic.sin_o[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_28980_59840",
+     "rtl_bit": "u_cordic.sin_o[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_28980_65280",
+     "rtl_bit": "u_cordic.sin_o[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_28980_62560",
+     "rtl_bit": "u_cordic.sin_o[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_46460_68000",
+     "rtl_bit": "u_cordic.sin_o[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_46460_70720",
+     "rtl_bit": "u_cordic.sin_o[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_59340_73440",
+     "rtl_bit": "u_cordic.sin_o[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_63940_76160",
+     "rtl_bit": "u_cordic.sin_o[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_69460_70720",
+     "rtl_bit": "u_cordic.sin_o[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_72680_73440",
+     "rtl_bit": "u_cordic.sin_o[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_80960_76160",
+     "rtl_bit": "u_cordic.sin_o[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.st",
+   "width": 2,
+   "kind": "fsm_state",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "Yosys fsm_detect marks it an FSM state register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_99360_40800",
+     "rtl_bit": "u_cordic.st==0",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_104880_35360",
+     "rtl_bit": "u_cordic.st==2",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_109940_29920",
+     "rtl_bit": "u_cordic.st==1",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_97520_38080",
+     "rtl_bit": "u_cordic.st==3",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.x",
+   "width": 20,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'bx",
+     "u_cordic.xn",
+     "u_cordic.xs_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_53820_24480",
+     "rtl_bit": "u_cordic.x[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_44160_21760",
+     "rtl_bit": "u_cordic.x[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_43240_19040",
+     "rtl_bit": "u_cordic.x[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_44620_16320",
+     "rtl_bit": "u_cordic.x[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_42780_13600",
+     "rtl_bit": "u_cordic.x[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_46460_5440",
+     "rtl_bit": "u_cordic.x[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_46460_2720",
+     "rtl_bit": "u_cordic.x[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_85100_2720",
+     "rtl_bit": "u_cordic.x[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_92920_5440",
+     "rtl_bit": "u_cordic.x[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_85100_5440",
+     "rtl_bit": "u_cordic.x[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_80960_8160",
+     "rtl_bit": "u_cordic.x[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_73140_8160",
+     "rtl_bit": "u_cordic.x[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_68080_13600",
+     "rtl_bit": "u_cordic.x[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_57040_10880",
+     "rtl_bit": "u_cordic.x[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_63020_5440",
+     "rtl_bit": "u_cordic.x[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_55200_5440",
+     "rtl_bit": "u_cordic.x[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_46460_10880",
+     "rtl_bit": "u_cordic.x[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_33580_8160",
+     "rtl_bit": "u_cordic.x[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_2_31740_16320",
+     "rtl_bit": "u_cordic.x[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_2_65320_21760",
+     "rtl_bit": "u_cordic.x[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.xsgn",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_64860_10880",
+     "rtl_bit": "u_cordic.xsgn",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.y",
+   "width": 20,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'bx",
+     "u_cordic.yn",
+     "u_cordic.ys_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_63480_48960",
+     "rtl_bit": "u_cordic.y[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_57960_46240",
+     "rtl_bit": "u_cordic.y[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_51520_29920",
+     "rtl_bit": "u_cordic.y[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_52900_35360",
+     "rtl_bit": "u_cordic.y[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_38180_38080",
+     "rtl_bit": "u_cordic.y[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_38180_43520",
+     "rtl_bit": "u_cordic.y[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_44160_46240",
+     "rtl_bit": "u_cordic.y[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_46460_48960",
+     "rtl_bit": "u_cordic.y[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_44160_54400",
+     "rtl_bit": "u_cordic.y[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_38640_59840",
+     "rtl_bit": "u_cordic.y[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_46460_59840",
+     "rtl_bit": "u_cordic.y[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_48300_62560",
+     "rtl_bit": "u_cordic.y[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_59340_62560",
+     "rtl_bit": "u_cordic.y[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_56580_59840",
+     "rtl_bit": "u_cordic.y[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_64400_59840",
+     "rtl_bit": "u_cordic.y[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_72220_59840",
+     "rtl_bit": "u_cordic.y[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_81420_65280",
+     "rtl_bit": "u_cordic.y[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_85100_62560",
+     "rtl_bit": "u_cordic.y[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_2_81420_59840",
+     "rtl_bit": "u_cordic.y[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_2_77280_51680",
+     "rtl_bit": "u_cordic.y[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.ysgn",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_63020_27200",
+     "rtl_bit": "u_cordic.ysgn",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "u_cordic.z",
+   "width": 20,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "cordic",
+   "params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'bx",
+     "phase[19]",
+     "u_cordic.zfold[15]",
+     "u_cordic.zs_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_115460_48960",
+     "rtl_bit": "u_cordic.z[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_115460_54400",
+     "rtl_bit": "u_cordic.z[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_117300_59840",
+     "rtl_bit": "u_cordic.z[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_123280_62560",
+     "rtl_bit": "u_cordic.z[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_122360_68000",
+     "rtl_bit": "u_cordic.z[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_121440_73440",
+     "rtl_bit": "u_cordic.z[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_123740_70720",
+     "rtl_bit": "u_cordic.z[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_123740_78880",
+     "rtl_bit": "u_cordic.z[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_2_126960_84320",
+     "rtl_bit": "u_cordic.z[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_125580_89760",
+     "rtl_bit": "u_cordic.z[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_123740_87040",
+     "rtl_bit": "u_cordic.z[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_115000_87040",
+     "rtl_bit": "u_cordic.z[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_107180_87040",
+     "rtl_bit": "u_cordic.z[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_103960_84320",
+     "rtl_bit": "u_cordic.z[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_104420_78880",
+     "rtl_bit": "u_cordic.z[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_2_105340_73440",
+     "rtl_bit": "u_cordic.z[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_105340_68000",
+     "rtl_bit": "u_cordic.z[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_106260_65280",
+     "rtl_bit": "u_cordic.z[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_2_101660_57120",
+     "rtl_bit": "u_cordic.z[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_2_99820_51680",
+     "rtl_bit": "u_cordic.z[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfxtp_2_101660_57120": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_103960_84320": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_104420_78880": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_104880_35360": {
+   "registers": [
+    "u_cordic.st"
+   ],
+   "primary": "u_cordic.st"
+  },
+  "dfxtp_2_105340_68000": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_105340_73440": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_106260_65280": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_107180_87040": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_108560_21760": {
+   "registers": [
+    "u_cordic.i"
+   ],
+   "primary": "u_cordic.i"
+  },
+  "dfxtp_2_109940_29920": {
+   "registers": [
+    "u_cordic.st"
+   ],
+   "primary": "u_cordic.st"
+  },
+  "dfxtp_2_11040_59840": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_110860_46240": {
+   "registers": [
+    "u_cordic.cz"
+   ],
+   "primary": "u_cordic.cz"
+  },
+  "dfxtp_2_111780_103360": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_115000_87040": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_11500_81600": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_115460_48960": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_115460_54400": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_115920_97920": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_117300_59840": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_121440_73440": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_122360_68000": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_123280_62560": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_123740_16320": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_123740_19040": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_123740_70720": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_123740_78880": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_123740_87040": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_124660_35360": {
+   "registers": [
+    "u_cordic.k"
+   ],
+   "primary": "u_cordic.k"
+  },
+  "dfxtp_2_125120_51680": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_125580_89760": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_126960_13600": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_126960_24480": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_126960_46240": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_126960_84320": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  },
+  "dfxtp_2_12880_10880": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_132020_10880": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_132020_2720": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_13340_43520": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_136620_19040": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_136620_5440": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_137540_38080": {
+   "registers": [
+    "u_cordic.k"
+   ],
+   "primary": "u_cordic.k"
+  },
+  "dfxtp_2_139840_32640": {
+   "registers": [
+    "u_cordic.k"
+   ],
+   "primary": "u_cordic.k"
+  },
+  "dfxtp_2_142600_21760": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_144440_5440": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_144900_13600": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_144900_19040": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_144900_2720": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_144900_29920": {
+   "registers": [
+    "u_cordic.k"
+   ],
+   "primary": "u_cordic.k"
+  },
+  "dfxtp_2_144900_62560": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_144900_73440": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_144900_8160": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_145360_84320": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_145820_100640": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_145820_43520": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_145820_46240": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_146280_103360": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_146280_70720": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_146280_87040": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_147660_24480": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_147660_32640": {
+   "registers": [
+    "u_cordic.k"
+   ],
+   "primary": "u_cordic.k"
+  },
+  "dfxtp_2_147660_59840": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_148120_16320": {
+   "registers": [
+    "u_cordic.i__retimed"
+   ],
+   "primary": "u_cordic.i__retimed"
+  },
+  "dfxtp_2_16100_87040": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_17480_5440": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_17940_103360": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_18860_97920": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_20240_100640": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_20240_8160": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_20700_10880": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_23000_35360": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_23920_19040": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_23920_40800": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_24380_29920": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_24380_46240": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_25300_24480": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_25760_73440": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_26680_51680": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_27140_68000": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_28980_59840": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_28980_62560": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_28980_65280": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_29900_48960": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_31740_16320": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_31740_32640": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_31740_76160": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_32660_89760": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_33120_87040": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_33580_100640": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_33580_8160": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_34500_27200": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_36340_103360": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_37720_97920": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_38180_38080": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_38180_43520": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_38640_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_42780_13600": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_43240_19040": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_43240_73440": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_44160_21760": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_44160_32640": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_44160_46240": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_44160_54400": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_44620_16320": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_46460_10880": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_46460_2720": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_46460_48960": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_46460_5440": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_46460_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_46460_68000": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_46460_70720": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_46460_81600": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_48300_62560": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_49220_89760": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_51060_73440": {
+   "registers": [
+    "u_cordic.done"
+   ],
+   "primary": "u_cordic.done"
+  },
+  "dfxtp_2_51520_100640": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_51520_29920": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_52900_35360": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_53820_24480": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_54740_97920": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_55200_5440": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_56580_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_57040_10880": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_57040_78880": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_57960_46240": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_58420_103360": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_59340_62560": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_59340_73440": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_59340_89760": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_5980_100640": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_5980_103360": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_61640_81600": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_63020_27200": {
+   "registers": [
+    "u_cordic.ysgn"
+   ],
+   "primary": "u_cordic.ysgn"
+  },
+  "dfxtp_2_63020_5440": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_63480_48960": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_63940_76160": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_64400_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_64860_10880": {
+   "registers": [
+    "u_cordic.xsgn"
+   ],
+   "primary": "u_cordic.xsgn"
+  },
+  "dfxtp_2_65320_21760": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_68080_13600": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_69460_70720": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_69460_84320": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_71300_92480": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_72220_103360": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_72220_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_72220_81600": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_72680_35360": {
+   "registers": [
+    "u_cordic.cx"
+   ],
+   "primary": "u_cordic.cx"
+  },
+  "dfxtp_2_72680_73440": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_73140_8160": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_73600_100640": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_7360_27200": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_7360_76160": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_76820_78880": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_77280_51680": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_7820_13600": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_7820_19040": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_7820_29920": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_7820_35360": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_7820_62560": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_7820_68000": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_7820_73440": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_7820_78880": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_80960_76160": {
+   "registers": [
+    "u_cordic.sin_o"
+   ],
+   "primary": "u_cordic.sin_o"
+  },
+  "dfxtp_2_80960_8160": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_81420_59840": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_81420_65280": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_81880_48960": {
+   "registers": [
+    "u_cordic.cy"
+   ],
+   "primary": "u_cordic.cy"
+  },
+  "dfxtp_2_8280_38080": {
+   "registers": [
+    "sin_s"
+   ],
+   "primary": "sin_s"
+  },
+  "dfxtp_2_8280_87040": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_85100_2720": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_85100_5440": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_85100_62560": {
+   "registers": [
+    "u_cordic.y"
+   ],
+   "primary": "u_cordic.y"
+  },
+  "dfxtp_2_86940_70720": {
+   "registers": [
+    "eng_busy"
+   ],
+   "primary": "eng_busy"
+  },
+  "dfxtp_2_8740_16320": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_87860_81600": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_90620_54400": {
+   "registers": [
+    "u_cordic.fold_q"
+   ],
+   "primary": "u_cordic.fold_q"
+  },
+  "dfxtp_2_92920_5440": {
+   "registers": [
+    "u_cordic.x"
+   ],
+   "primary": "u_cordic.x"
+  },
+  "dfxtp_2_93380_73440": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_93380_84320": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_94760_103360": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_95680_70720": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_96600_48960": {
+   "registers": [
+    "u_cordic.ccw"
+   ],
+   "primary": "u_cordic.ccw"
+  },
+  "dfxtp_2_96600_97920": {
+   "registers": [
+    "phase"
+   ],
+   "primary": "phase"
+  },
+  "dfxtp_2_9660_48960": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_9660_54400": {
+   "registers": [
+    "sd_sin"
+   ],
+   "primary": "sd_sin"
+  },
+  "dfxtp_2_9660_92480": {
+   "registers": [
+    "beat"
+   ],
+   "primary": "beat"
+  },
+  "dfxtp_2_97520_38080": {
+   "registers": [
+    "u_cordic.st"
+   ],
+   "primary": "u_cordic.st"
+  },
+  "dfxtp_2_97980_10880": {
+   "registers": [
+    "u_cordic.i"
+   ],
+   "primary": "u_cordic.i"
+  },
+  "dfxtp_2_97980_2720": {
+   "registers": [
+    "u_cordic.i"
+   ],
+   "primary": "u_cordic.i"
+  },
+  "dfxtp_2_99360_40800": {
+   "registers": [
+    "u_cordic.st"
+   ],
+   "primary": "u_cordic.st"
+  },
+  "dfxtp_2_99820_13600": {
+   "registers": [
+    "u_cordic.i"
+   ],
+   "primary": "u_cordic.i"
+  },
+  "dfxtp_2_99820_51680": {
+   "registers": [
+    "u_cordic.z"
+   ],
+   "primary": "u_cordic.z"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$add$project.sv:76$11",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:76",
+   "widths": {
+    "A": 20,
+    "B": 17,
+    "Y": 20
+   },
+   "signed": false,
+   "feeds": [
+    "phase"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.sv:92$15",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:92",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "Y": 17
+   },
+   "signed": false,
+   "feeds": [
+    "sd_sin"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.sv:98$17",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:98",
+   "widths": {
+    "A": 24,
+    "B": 1,
+    "Y": 24
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "beat"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$project.sv:49$3",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:49",
+   "widths": {
+    "A": 7,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 127
+   },
+   "feeds": [
+    "phase"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$374",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:77",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.done",
+   "feeds": [
+    "eng_busy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$377",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:74",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "eng_busy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.sv:48$5",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:48",
+   "widths": {
+    "A": 17,
+    "B": 17,
+    "S": 1,
+    "Y": 17
+   },
+   "signed": false,
+   "select": "<logic_not project.sv:48>",
+   "feeds": [
+    "phase"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.sv:49$4",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.sv:49",
+   "widths": {
+    "A": 17,
+    "B": 17,
+    "S": 1,
+    "Y": 17
+   },
+   "signed": false,
+   "select": "(code == 7'b1111111)",
+   "feeds": [
+    "phase"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$464",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "u_cordic.i",
+    "u_cordic.k",
+    "u_cordic.st",
+    "u_cordic.x",
+    "u_cordic.y",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$468",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "u_cordic.i",
+    "u_cordic.st",
+    "u_cordic.x",
+    "u_cordic.y",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$470",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "u_cordic.st",
+    "u_cordic.x",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$504",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$510",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$549",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$551",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.i",
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$add$cordic.sv:166$79",
+   "type": "$add",
+   "module": "u_cordic",
+   "src": "cordic.sv:166",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$add$cordic.sv:168$80",
+   "type": "$add",
+   "module": "u_cordic",
+   "src": "cordic.sv:168",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.k"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$eq$cordic.sv:157$74",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:157",
+   "widths": {
+    "A": 5,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.xsgn",
+    "u_cordic.ysgn"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$eq$cordic.sv:161$77",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:161",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 20
+   },
+   "feeds": [
+    "u_cordic.i",
+    "u_cordic.k",
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$eq$cordic.sv:163$78",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:163",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "u_cordic.i",
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$100_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:67",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$101_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:66",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$102_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:65",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$103_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:64",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$104_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:63",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$105_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:62",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$106_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:61",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$107_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:60",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$108_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:59",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$109_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:58",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$110_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:57",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$111_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:56",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$115_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.cy",
+    "u_cordic.done",
+    "u_cordic.k",
+    "u_cordic.sin_o",
+    "u_cordic.st",
+    "u_cordic.x",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$116_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:143",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.ccw",
+    "u_cordic.cx",
+    "u_cordic.cy",
+    "u_cordic.cz",
+    "u_cordic.done",
+    "u_cordic.i",
+    "u_cordic.k",
+    "u_cordic.sin_o",
+    "u_cordic.st",
+    "u_cordic.x",
+    "u_cordic.xsgn",
+    "u_cordic.y",
+    "u_cordic.ysgn",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$98_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:69",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$99_CMP0",
+   "type": "$eq",
+   "module": "u_cordic",
+   "src": "cordic.sv:68",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$le$cordic.sv:93$25",
+   "type": "$le",
+   "module": "u_cordic",
+   "src": "cordic.sv:93",
+   "widths": {
+    "A": 5,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.cy",
+    "u_cordic.x",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$lt$cordic.sv:73$93",
+   "type": "$lt",
+   "module": "u_cordic",
+   "src": "cordic.sv:73",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 18
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$114",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "(<logic_not cordic.sv:127> | (u_cordic.st == 1'b1) | (u_cordic.st == 2'b10))",
+   "feeds": [
+    "u_cordic.done"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$148",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.cz"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$156",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:181",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.fold_q",
+   "feeds": [
+    "u_cordic.cy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$159",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.cy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$164",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.cy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$171",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:181",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.fold_q",
+   "feeds": [
+    "u_cordic.cx"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$174",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.cx"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$179",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.cx"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$186",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:181",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "u_cordic.fold_q",
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$189",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$194",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$200",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$208",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:186",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "S": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "(u_cordic.k == 5'b10100)",
+   "feeds": [
+    "u_cordic.k"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$211",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "S": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.k"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$222",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "S": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.k"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$260",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:186",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(u_cordic.k == 5'b10100)",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$263",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$269",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:163",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(u_cordic.i == 4'b1111)",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$271",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:161",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(u_cordic.k == 5'b10100)",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$274",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$277",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$310",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$317",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$324",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:181",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "u_cordic.fold_q",
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$327",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:177",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$332",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$338",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$348",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:163",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(u_cordic.i == 4'b1111)",
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$350",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:161",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(u_cordic.k == 5'b10100)",
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$353",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:146",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "<logic_not cordic.sv:146>",
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$357",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:129",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "eng_busy",
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:101$35",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:101",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.ccw",
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:113$69",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:113",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "u_cordic.do_fold",
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:73$95",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:73",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<lt cordic.sv:73>",
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:94$27",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:94",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.tap_live",
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:95$29",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:95",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.tap_live",
+   "feeds": [
+    "u_cordic.cy",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:98$31",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:98",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.ccw",
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$ternary$cordic.sv:99$33",
+   "type": "$mux",
+   "module": "u_cordic",
+   "src": "cordic.sv:99",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "u_cordic.ccw",
+   "feeds": [
+    "u_cordic.cy",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$458",
+   "type": "$ne",
+   "module": "u_cordic",
+   "src": null,
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.cy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$472",
+   "type": "$ne",
+   "module": "u_cordic",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.x",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$161",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "S": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "u_cordic.cy"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$176",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "S": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "u_cordic.cx"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$191",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 20,
+    "B": 60,
+    "S": 3,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$213",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 5,
+    "B": 10,
+    "S": 2,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "u_cordic.k"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$265",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 2,
+    "B": 6,
+    "S": 3,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "u_cordic.st"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$312",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:143",
+   "widths": {
+    "A": 20,
+    "B": 40,
+    "S": 2,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$329",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:169",
+   "widths": {
+    "A": 20,
+    "B": 60,
+    "S": 3,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$355",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:143",
+   "widths": {
+    "A": 4,
+    "B": 8,
+    "S": 2,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "u_cordic.i"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$procmux$97",
+   "type": "$pmux",
+   "module": "u_cordic",
+   "src": "cordic.sv:69",
+   "widths": {
+    "A": 16,
+    "B": 240,
+    "S": 15,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "15 selects",
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$shiftx$cordic.sv:158$75",
+   "type": "$shiftx",
+   "module": "u_cordic",
+   "src": "cordic.sv:158",
+   "widths": {
+    "A": 20,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.x",
+    "u_cordic.ysgn"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$shiftx$cordic.sv:159$76",
+   "type": "$shiftx",
+   "module": "u_cordic",
+   "src": "cordic.sv:159",
+   "widths": {
+    "A": 20,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.cy",
+    "u_cordic.xsgn",
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$shiftx$cordic.sv:73$94",
+   "type": "$shiftx",
+   "module": "u_cordic",
+   "src": "cordic.sv:73",
+   "widths": {
+    "A": 18,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$sub$cordic.sv:100$91",
+   "type": "$sub",
+   "module": "u_cordic",
+   "src": "cordic.sv:100",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "u_cordic.cz",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$sub$cordic.sv:93$24",
+   "type": "$sub",
+   "module": "u_cordic",
+   "src": "cordic.sv:93",
+   "widths": {
+    "A": 5,
+    "B": 4,
+    "Y": 6
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 20
+   },
+   "feeds": [
+    "u_cordic.cx",
+    "u_cordic.cy",
+    "u_cordic.x",
+    "u_cordic.xsgn",
+    "u_cordic.y",
+    "u_cordic.ysgn"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:103$36",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:103",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:103$37",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:103",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:104$43",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:104",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 1
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:104$44",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:104",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 1
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:105$50",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:105",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 2
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:105$51",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:105",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 2
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:108$58",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:108",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.x"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 3
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:109$62",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:109",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.y"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 4
+  },
+  {
+   "cell": "$flatten\\u_cordic.$xor$cordic.sv:112$67",
+   "type": "$xor",
+   "module": "u_cordic",
+   "src": "cordic.sv:112",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "u_cordic.fold_q",
+    "u_cordic.z"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 5
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "macro": "tt_um_joonatanalanampa_cordic",
+   "title": "CORDIC-1",
+   "author": "Joonatan Alanampa",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-sky-26c",
+   "shuttle_commit": "f897359b7172c6cb00f714e0d289d4070f86a282"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26c/f897359b7172c6cb00f714e0d289d4070f86a282/projects/tt_um_joonatanalanampa_cordic/tt_um_joonatanalanampa_cordic.oas",
+    "git_blob": "b999341975597254e1957fc627f189d271a7b292"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26c/f897359b7172c6cb00f714e0d289d4070f86a282/projects/tt_um_joonatanalanampa_cordic/tt_um_joonatanalanampa_cordic.v",
+    "git_blob": "716d989b4601023f40c0050e6270240629bc6874"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26c/f897359b7172c6cb00f714e0d289d4070f86a282/projects/tt_um_joonatanalanampa_cordic/tt_um_joonatanalanampa_cordic.lef",
+    "git_blob": "e0e1368d8eab025226958da658cba4b7bc854351"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-26c/f897359b7172c6cb00f714e0d289d4070f86a282/projects/tt_um_joonatanalanampa_cordic/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/joaln27/CORDIC",
+   "commit": "b646d05792b6b04a2e613ce2898d1bfb4c026db9",
+   "top_module": "tt_um_joonatanalanampa_cordic",
+   "source_files": [
+    "project.sv",
+    "cordic.sv"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": [
+    {
+     "rule": "copy_lanes",
+     "registers": [
+      "u_cordic.x"
+     ],
+     "left_out": "bit 18 is not a single-path copy of bit 19"
+    },
+    {
+     "rule": "copy_lanes",
+     "registers": [
+      "u_cordic.y"
+     ],
+     "left_out": "bit 18 is not a single-path copy of bit 19"
+    }
+   ]
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src/project.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src/cordic.sv\nhierarchy -check -top tt_um_joonatanalanampa_cordic\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src/project.sv /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/repo/src/cordic.sv\nhierarchy -check -top tt_um_joonatanalanampa_cordic -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky26c__tt_um_joonatanalanampa_cordic/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 173
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 1149,
+   "netlist_logic_instances": 1149,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 1157,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 33,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 22,
+   "registers_by_kind": {
+    "accumulator": 2,
+    "counter": 3,
+    "data_register": 2,
+    "flag": 10,
+    "fsm_state": 1,
+    "other": 1,
+    "shift_register": 3
+   },
+   "units": 0,
+   "rtl_flop_bits": 173,
+   "netlist_flops": 191,
+   "netlist_flops_labelled": 191,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "constant in the RTL": 1,
+    "mapped": 171
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {
+    "u_cordic.st": {
+     "0": 0,
+     "1": 2,
+     "2": 1,
+     "3": 3
+    }
+   }
+  },
+  "removed_rtl_registers": [
+   "u_cordic.cos_o",
+   "u_cordic.zo"
+  ],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 2,
+   "rounds": 2,
+   "agree_per_round": [
+    173,
+    191
+   ],
+   "flops_checked": 191,
+   "match": 191,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 181,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 175,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 175
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 175
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 191,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 8
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {
+    "proven": 1
+   },
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

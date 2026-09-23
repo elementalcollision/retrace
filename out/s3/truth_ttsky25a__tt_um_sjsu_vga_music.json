@@ -1,0 +1,2671 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:ttsky25a/tt_um_sjsu_vga_music",
+ "registers": [
+  {
+   "name": "frame_counter",
+   "width": 12,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_55660_70720",
+     "rtl_bit": "frame_counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_63480_65280",
+     "rtl_bit": "frame_counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_70380_68000",
+     "rtl_bit": "frame_counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_83720_68000",
+     "rtl_bit": "frame_counter[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_80500_59840",
+     "rtl_bit": "frame_counter[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_75440_57120",
+     "rtl_bit": "frame_counter[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_80500_43520",
+     "rtl_bit": "frame_counter[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_75440_46240",
+     "rtl_bit": "frame_counter[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_76360_40800",
+     "rtl_bit": "frame_counter[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_98440_62560",
+     "rtl_bit": "frame_counter[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_98440_65280",
+     "rtl_bit": "frame_counter[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_110860_68000",
+     "rtl_bit": "frame_counter[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "hvsync_gen.hpos",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_41860_84320",
+     "rtl_bit": "hvsync_gen.hpos[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_37260_70720",
+     "rtl_bit": "hvsync_gen.hpos[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_41860_73440",
+     "rtl_bit": "hvsync_gen.hpos[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_47380_78880",
+     "rtl_bit": "hvsync_gen.hpos[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_63940_87040",
+     "rtl_bit": "hvsync_gen.hpos[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_54740_87040",
+     "rtl_bit": "hvsync_gen.hpos[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_55200_89760",
+     "rtl_bit": "hvsync_gen.hpos[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_95220_76160",
+     "rtl_bit": "hvsync_gen.hpos[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_101660_73440",
+     "rtl_bit": "hvsync_gen.hpos[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_106260_76160",
+     "rtl_bit": "hvsync_gen.hpos[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "hvsync_gen.hsync",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_67620_103360",
+     "rtl_bit": "hvsync_gen.hsync",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "hvsync_gen.vpos",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_113620_87040",
+     "rtl_bit": "hvsync_gen.vpos[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_110860_84320",
+     "rtl_bit": "hvsync_gen.vpos[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_106260_87040",
+     "rtl_bit": "hvsync_gen.vpos[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_97060_87040",
+     "rtl_bit": "hvsync_gen.vpos[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_106260_97920",
+     "rtl_bit": "hvsync_gen.vpos[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_103040_100640",
+     "rtl_bit": "hvsync_gen.vpos[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_90620_103360",
+     "rtl_bit": "hvsync_gen.vpos[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_85560_100640",
+     "rtl_bit": "hvsync_gen.vpos[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_70840_92480",
+     "rtl_bit": "hvsync_gen.vpos[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_70840_95200",
+     "rtl_bit": "hvsync_gen.vpos[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "hvsync_gen.vsync",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "hvsync_generator",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_80500_103360",
+     "rtl_bit": "hvsync_gen.vsync",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "lfsr",
+   "width": 13,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {
+    "lanes": 1,
+    "depth": 13,
+    "direction": "toward MSB",
+    "serial_in": [
+     "feedback"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k-1] on 12 of 12 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_7360_54400",
+     "rtl_bit": "lfsr[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_8280_59840",
+     "rtl_bit": "lfsr[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_7820_62560",
+     "rtl_bit": "lfsr[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_8280_65280",
+     "rtl_bit": "lfsr[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_11040_70720",
+     "rtl_bit": "lfsr[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_18400_70720",
+     "rtl_bit": "lfsr[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_26680_68000",
+     "rtl_bit": "lfsr[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_28980_65280",
+     "rtl_bit": "lfsr[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_28980_54400",
+     "rtl_bit": "lfsr[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_7820_48960",
+     "rtl_bit": "lfsr[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_11040_43520",
+     "rtl_bit": "lfsr[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_16100_46240",
+     "rtl_bit": "lfsr[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_22080_51680",
+     "rtl_bit": "lfsr[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "noise",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_59800_57120",
+     "rtl_bit": "noise",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "noise_counter",
+   "width": 3,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 3,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46000_57120",
+     "rtl_bit": "noise_counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_45540_59840",
+     "rtl_bit": "noise_counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_45080_62560",
+     "rtl_bit": "noise_counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "note",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [
+    "counter"
+   ],
+   "alt_reason": "a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {},
+   "rule": "one bit with D = ~Q (a toggle); a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_119140_73440",
+     "rtl_bit": "note",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "note2",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [
+    "counter"
+   ],
+   "alt_reason": "a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {},
+   "rule": "one bit with D = ~Q (a toggle); a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_63940_54400",
+     "rtl_bit": "note2",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "note2_counter",
+   "width": 9,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_55660_48960",
+     "rtl_bit": "note2_counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_58420_43520",
+     "rtl_bit": "note2_counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_57040_40800",
+     "rtl_bit": "note2_counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_46920_38080",
+     "rtl_bit": "note2_counter[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_43700_35360",
+     "rtl_bit": "note2_counter[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_32200_40800",
+     "rtl_bit": "note2_counter[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_32660_43520",
+     "rtl_bit": "note2_counter[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_41860_46240",
+     "rtl_bit": "note2_counter[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_40940_48960",
+     "rtl_bit": "note2_counter[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "note_counter",
+   "width": 8,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_sjsu_vga_music",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_135700_46240",
+     "rtl_bit": "note_counter[0]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_138460_43520",
+     "rtl_bit": "note_counter[1]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_146280_51680",
+     "rtl_bit": "note_counter[2]",
+     "check": "match",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_146740_54400",
+     "rtl_bit": "note_counter[3]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_145360_59840",
+     "rtl_bit": "note_counter[4]",
+     "check": "match",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_135700_68000",
+     "rtl_bit": "note_counter[5]",
+     "check": "mismatch",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_145820_65280",
+     "rtl_bit": "note_counter[6]",
+     "check": "match",
+     "proof": "refuted",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_146280_68000",
+     "rtl_bit": "note_counter[7]",
+     "check": "match",
+     "proof": "refuted",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfxtp_1_101660_73440": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_103040_100640": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_106260_76160": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_106260_87040": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_106260_97920": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_11040_43520": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_11040_70720": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_110860_84320": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_113620_87040": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_119140_73440": {
+   "registers": [
+    "note"
+   ],
+   "primary": "note"
+  },
+  "dfxtp_1_135700_46240": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_135700_68000": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_138460_43520": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_145360_59840": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_145820_65280": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_146280_51680": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_146280_68000": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_146740_54400": {
+   "registers": [
+    "note_counter"
+   ],
+   "primary": "note_counter"
+  },
+  "dfxtp_1_16100_46240": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_18400_70720": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_22080_51680": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_26680_68000": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_28980_54400": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_28980_65280": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_32200_40800": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_32660_43520": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_37260_70720": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_40940_48960": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_41860_46240": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_41860_73440": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_41860_84320": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_43700_35360": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_45080_62560": {
+   "registers": [
+    "noise_counter"
+   ],
+   "primary": "noise_counter"
+  },
+  "dfxtp_1_45540_59840": {
+   "registers": [
+    "noise_counter"
+   ],
+   "primary": "noise_counter"
+  },
+  "dfxtp_1_46000_57120": {
+   "registers": [
+    "noise_counter"
+   ],
+   "primary": "noise_counter"
+  },
+  "dfxtp_1_46920_38080": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_47380_78880": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_54740_87040": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_55200_89760": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_55660_48960": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_55660_70720": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_57040_40800": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_58420_43520": {
+   "registers": [
+    "note2_counter"
+   ],
+   "primary": "note2_counter"
+  },
+  "dfxtp_1_59800_57120": {
+   "registers": [
+    "noise"
+   ],
+   "primary": "noise"
+  },
+  "dfxtp_1_63940_54400": {
+   "registers": [
+    "note2"
+   ],
+   "primary": "note2"
+  },
+  "dfxtp_1_63940_87040": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  },
+  "dfxtp_1_67620_103360": {
+   "registers": [
+    "hvsync_gen.hsync"
+   ],
+   "primary": "hvsync_gen.hsync"
+  },
+  "dfxtp_1_70840_92480": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_70840_95200": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_7360_54400": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_75440_46240": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_75440_57120": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_76360_40800": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_7820_48960": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_7820_62560": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_80500_103360": {
+   "registers": [
+    "hvsync_gen.vsync"
+   ],
+   "primary": "hvsync_gen.vsync"
+  },
+  "dfxtp_1_80500_43520": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_80500_59840": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_8280_59840": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_8280_65280": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_83720_68000": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_85560_100640": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_90620_103360": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_97060_87040": {
+   "registers": [
+    "hvsync_gen.vpos"
+   ],
+   "primary": "hvsync_gen.vpos"
+  },
+  "dfxtp_1_98440_62560": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_1_98440_65280": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_2_110860_68000": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_2_63480_65280": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_2_70380_68000": {
+   "registers": [
+    "frame_counter"
+   ],
+   "primary": "frame_counter"
+  },
+  "dfxtp_2_95220_76160": {
+   "registers": [
+    "hvsync_gen.hpos"
+   ],
+   "primary": "hvsync_gen.hpos"
+  }
+ },
+ "unmapped_flops": [
+  {
+   "flop": "dfxtp_1_119600_43520",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_683_"
+  },
+  {
+   "flop": "dfxtp_1_119140_40800",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_684_"
+  },
+  {
+   "flop": "dfxtp_1_119600_46240",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_685_"
+  },
+  {
+   "flop": "dfxtp_1_120980_51680",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_686_"
+  },
+  {
+   "flop": "dfxtp_1_120060_54400",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_687_"
+  },
+  {
+   "flop": "dfxtp_1_119140_65280",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_688_"
+  },
+  {
+   "flop": "dfxtp_1_119140_62560",
+   "reason": "no RTL name on the Q net",
+   "netlist_instance": "_689_"
+  }
+ ],
+ "operators": [
+  {
+   "cell": "$flatten\\hvsync_gen.$add$hvsync_generator.v:50$9",
+   "type": "$add",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:50.15-50.23",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "hvsync_gen.hpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$add$hvsync_generator.v:61$14",
+   "type": "$add",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:61.17-61.25",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "hvsync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$eq$hvsync_generator.v:40$1",
+   "type": "$eq",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:40.19-40.32",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 799
+   },
+   "feeds": [
+    "hvsync_gen.hpos",
+    "hvsync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$eq$hvsync_generator.v:41$3",
+   "type": "$eq",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:41.19-41.32",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 524
+   },
+   "feeds": [
+    "hvsync_gen.vpos"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$ge$hvsync_generator.v:46$6",
+   "type": "$ge",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:46.15-46.33",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 656
+   },
+   "feeds": [
+    "hvsync_gen.hsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$ge$hvsync_generator.v:56$11",
+   "type": "$ge",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:56.15-56.33",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 490
+   },
+   "feeds": [
+    "hvsync_gen.vsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ge$project.v:225$60",
+   "type": "$ge",
+   "module": "hvsync_gen",
+   "src": "project.v:225",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 128
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:226$66",
+   "type": "$ge",
+   "module": "hvsync_gen",
+   "src": "project.v:226",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 256
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ge$project.v:227$72",
+   "type": "$ge",
+   "module": "hvsync_gen",
+   "src": "project.v:227",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 512
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$le$hvsync_generator.v:46$7",
+   "type": "$le",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:46.37-46.53",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 751
+   },
+   "feeds": [
+    "hvsync_gen.hsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$le$hvsync_generator.v:56$12",
+   "type": "$le",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:56.37-56.53",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 491
+   },
+   "feeds": [
+    "hvsync_gen.vsync"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$lt$hvsync_generator.v:65$15",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:65.24-65.38",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 640
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\hvsync_gen.$lt$hvsync_generator.v:65$16",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "hvsync_generator.v:65.44-65.58",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 480
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:224$56",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "project.v:224",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 262
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:224$58",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "project.v:224",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:225$64",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "project.v:225",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:226$70",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "project.v:226",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$lt$project.v:227$75",
+   "type": "$lt",
+   "module": "hvsync_gen",
+   "src": "project.v:227",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$add$project.v:122$26",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:122",
+   "widths": {
+    "A": 12,
+    "B": 1,
+    "Y": 12
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "frame_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:145$36",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:145",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "noise_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:197$45",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:197",
+   "widths": {
+    "A": 8,
+    "B": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:214$51",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:214",
+   "widths": {
+    "A": 9,
+    "B": 1,
+    "Y": 9
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "note2_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$project.v:225$63",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:225",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 9
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 128
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$add$project.v:226$69",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:226",
+   "widths": {
+    "A": 9,
+    "B": 8,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 256
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$eq$project.v:146$37",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:146",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "noise",
+    "noise_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$project.v:221$55",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:221",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$119_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:175",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 80
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$119_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:175",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 88
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$119_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:175",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 108
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$120_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:174",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 66
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$120_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:174",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 70
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$121_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:173",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 48
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$121_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:173",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 86
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$121_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:173",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 104
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$122_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:172",
+   "widths": {
+    "A": 8,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 16
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$122_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:172",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 96
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$122_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:172",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 98
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$122_CMP3",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:172",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 102
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$123_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:171",
+   "widths": {
+    "A": 8,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$123_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:171",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 40
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$123_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:171",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 76
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$124_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:170",
+   "widths": {
+    "A": 8,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$124_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:170",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 34
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$124_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:170",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 72
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP2",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP3",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 32
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP4",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 38
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP5",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 44
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP6",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 64
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125_CMP7",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:169",
+   "widths": {
+    "A": 8,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 112
+   },
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ge$project.v:193$43",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:193",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ge$project.v:210$49",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:210",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 286
+   },
+   "feeds": [
+    "note2",
+    "note2_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$gt$project.v:230$82",
+   "type": "$gt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:230",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$110",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:193",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "<ge project.v:193>",
+   "feeds": [
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$126",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:146",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "(noise_counter == 2'b10)",
+   "feeds": [
+    "noise_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$94",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:210",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "S": 1,
+    "Y": 9
+   },
+   "signed": false,
+   "select": "<ge project.v:210>",
+   "feeds": [
+    "note2_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$project.v:227$74",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:227",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "beats_1_3",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:96$18",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:96",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "video_active",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$procmux$118",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:175",
+   "widths": {
+    "A": 8,
+    "B": 56,
+    "S": 7,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "7 selects",
+   "feeds": [
+    "note",
+    "note_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$reduce_xor$project.v:136$32",
+   "type": "$reduce_xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:136",
+   "widths": {
+    "A": 13,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "noise"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  },
+  {
+   "cell": "$sub$project.v:219$52",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:219",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 5
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 31
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$sub$project.v:220$54",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:220",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 5
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 31
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$xor$project.v:127$27",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:127",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "lfsr"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 1
+  },
+  {
+   "cell": "$xor$project.v:127$28",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:127",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "lfsr"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 1
+  },
+  {
+   "cell": "$xor$project.v:127$29",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:127",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "lfsr"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 1
+  },
+  {
+   "cell": "$xor$project.v:148$38",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:148",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "noise"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "ttsky25a/tt_um_sjsu_vga_music",
+   "macro": "tt_um_sjsu_vga_music",
+   "title": "SJSU Fight Song",
+   "author": "Andrea Cortez",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-sky-25a",
+   "shuttle_commit": "3e56040801e62543fe761ff335723efdfea19198"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_sjsu_vga_music/tt_um_sjsu_vga_music.gds",
+    "git_blob": "311fb36b68b61c8680cee8d6100278d10f946f0e"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_sjsu_vga_music/tt_um_sjsu_vga_music.v",
+    "git_blob": "97165e6274e949d3dd16cbd5152acabe6e25f4de"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_sjsu_vga_music/tt_um_sjsu_vga_music.lef",
+    "git_blob": "c10be988e0e238fd41951456cb1d6ce879fc658a"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_sjsu_vga_music/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/andreaklcortez/tt_um_sjsu_vga_music",
+   "commit": "a7f979cf6d934e00a3fc52069237140967d2c673",
+   "top_module": "tt_um_sjsu_vga_music",
+   "source_files": [
+    "project.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/repo/src/project.v\nhierarchy -check -top tt_um_sjsu_vga_music\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/repo/src/project.v\nhierarchy -check -top tt_um_sjsu_vga_music -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_sjsu_vga_music/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 70
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 482,
+   "netlist_logic_instances": 482,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 477,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 26,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 12,
+   "registers_by_kind": {
+    "counter": 6,
+    "flag": 5,
+    "shift_register": 1
+   },
+   "units": 0,
+   "rtl_flop_bits": 70,
+   "netlist_flops": 77,
+   "netlist_flops_labelled": 70,
+   "shadow_flops": 0,
+   "unmapped_flops": 7,
+   "rtl_bits": {
+    "mapped": 70
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 7,
+   "rounds": 2,
+   "agree_per_round": [
+    65,
+    65
+   ],
+   "flops_checked": 70,
+   "match": 65,
+   "mismatch": [
+    "_636_",
+    "_637_",
+    "_639_",
+    "_641_",
+    "_644_"
+   ],
+   "unchecked": [
+    "_683_",
+    "_684_",
+    "_685_",
+    "_686_",
+    "_687_",
+    "_688_",
+    "_689_"
+   ],
+   "exercised": 47,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 70,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 70
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 70
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 61,
+   "refuted": [
+    "_636_",
+    "_637_",
+    "_638_",
+    "_639_",
+    "_640_",
+    "_641_",
+    "_642_",
+    "_643_",
+    "_644_"
+   ],
+   "unknown": [],
+   "unchecked": [
+    "_683_",
+    "_684_",
+    "_685_",
+    "_686_",
+    "_687_",
+    "_688_",
+    "_689_"
+   ],
+   "outputs": {
+    "not in the netlist": 1,
+    "proven": 8
+   },
+   "outputs_not_proven": [
+    "uio_out"
+   ],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {},
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": [
+   "9 flops refuted: ['_636_', '_637_', '_638_', '_639_', '_640_']",
+   "7 flops unchecked: ['_683_', '_684_', '_685_', '_686_', '_687_']",
+   "outputs not proven: ['uio_out']"
+  ]
+ }
+}

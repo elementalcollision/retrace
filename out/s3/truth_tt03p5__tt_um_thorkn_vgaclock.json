@@ -1,0 +1,2755 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:tt03p5/tt_um_thorkn_vgaclock",
+ "registers": [
+  {
+   "name": "vga_content.clock_counters.c_counter_value",
+   "width": 25,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 25000000,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_149960_57120",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_148580_48960",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_150420_54400",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_149960_40800",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_148580_43520",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_141220_46240",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_135700_40800",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_124200_40800",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_1_113160_40800",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_1_108100_48960",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfrtp_2_87860_46240",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfrtp_1_80040_38080",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfrtp_1_85100_43520",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfrtp_1_90620_40800",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfrtp_1_128800_43520",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfrtp_1_115920_62560",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfrtp_1_136160_57120",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfrtp_1_141680_62560",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfrtp_1_130640_59840",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfrtp_1_97060_43520",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 20,
+     "flop": "dfrtp_1_97060_48960",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[20]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 21,
+     "flop": "dfrtp_1_100740_54400",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[21]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 22,
+     "flop": "dfrtp_1_109940_51680",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[22]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 23,
+     "flop": "dfrtp_1_120520_46240",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[23]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 24,
+     "flop": "dfrtp_1_115460_57120",
+     "rtl_bit": "vga_content.clock_counters.c_counter_value[24]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.h_counter_value",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 12,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_71300_70720",
+     "rtl_bit": "vga_content.clock_counters.h_counter_value[0]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_4_85560_62560",
+     "rtl_bit": "vga_content.clock_counters.h_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_2_85100_59840",
+     "rtl_bit": "vga_content.clock_counters.h_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_2_89240_57120",
+     "rtl_bit": "vga_content.clock_counters.h_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.h_counter_value__retimed",
+   "width": 1,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_71300_70720",
+     "rtl_bit": "vga_content._zz_when_VgaContent_l51[1]",
+     "how": "retimed",
+     "holds": "vga_content._zz_when_VgaContent_l51[1], one cycle ahead",
+     "function_of": [
+      "vga_content.clock_counters.h_counter_value[0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.m_counter_value",
+   "width": 6,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 60,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_148580_78880",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[0]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_149960_68000",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_2_150420_87040",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_4_135700_97920",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_4_148580_97920",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_122820_97920",
+     "rtl_bit": "vga_content.clock_counters.m_counter_value[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.m_counter_value__retimed",
+   "width": 1,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_148580_78880",
+     "rtl_bit": "vga_content._zz_when_VgaContent_l45[1]",
+     "how": "retimed",
+     "holds": "vga_content._zz_when_VgaContent_l45[1], one cycle ahead",
+     "function_of": [
+      "vga_content.clock_counters.m_counter_value[0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.s_counter_value",
+   "width": 6,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 60,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_71300_43520",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[0]",
+     "how": "merged",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_4_58420_43520",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_4_71300_48960",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_4_66700_46240",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_4_66700_40800",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_2_59340_48960",
+     "rtl_bit": "vga_content.clock_counters.s_counter_value[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "vga_content.clock_counters.s_counter_value__retimed",
+   "width": 1,
+   "kind": "other",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "ClockCounters",
+   "params": {},
+   "rule": "retimed: each flop holds a function of the owning register(s) one cycle ahead",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_4_71300_43520",
+     "rtl_bit": "vga_content._zz_when_VgaContent_l39[1]",
+     "how": "retimed",
+     "holds": "vga_content._zz_when_VgaContent_l39[1], one cycle ahead",
+     "function_of": [
+      "vga_content.clock_counters.s_counter_value[0]"
+     ],
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.h_counter_value",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "VgaSyncGen",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 800,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_83720_97920",
+     "rtl_bit": "vga_sync_gen.h_counter_value[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_104420_97920",
+     "rtl_bit": "vga_sync_gen.h_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_109940_95200",
+     "rtl_bit": "vga_sync_gen.h_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_2_117300_68000",
+     "rtl_bit": "vga_sync_gen.h_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_2_125120_70720",
+     "rtl_bit": "vga_sync_gen.h_counter_value[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_2_122820_78880",
+     "rtl_bit": "vga_sync_gen.h_counter_value[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_111780_78880",
+     "rtl_bit": "vga_sync_gen.h_counter_value[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_2_97520_65280",
+     "rtl_bit": "vga_sync_gen.h_counter_value[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_4_102580_59840",
+     "rtl_bit": "vga_sync_gen.h_counter_value[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_4_109020_65280",
+     "rtl_bit": "vga_sync_gen.h_counter_value[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "vga_sync_gen.v_counter_value",
+   "width": 10,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "VgaSyncGen",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 524,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_65320_95200",
+     "rtl_bit": "vga_sync_gen.v_counter_value[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_4_71300_97920",
+     "rtl_bit": "vga_sync_gen.v_counter_value[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_71760_68000",
+     "rtl_bit": "vga_sync_gen.v_counter_value[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_4_73600_65280",
+     "rtl_bit": "vga_sync_gen.v_counter_value[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_4_71300_54400",
+     "rtl_bit": "vga_sync_gen.v_counter_value[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_2_83720_54400",
+     "rtl_bit": "vga_sync_gen.v_counter_value[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_2_71300_59840",
+     "rtl_bit": "vga_sync_gen.v_counter_value[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_2_66700_57120",
+     "rtl_bit": "vga_sync_gen.v_counter_value[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_2_66700_51680",
+     "rtl_bit": "vga_sync_gen.v_counter_value[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_4_87400_51680",
+     "rtl_bit": "vga_sync_gen.v_counter_value[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfrtp_1_100740_54400": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_108100_48960": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_109940_51680": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_109940_95200": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_1_111780_78880": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_1_113160_40800": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_115460_57120": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_115920_62560": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_120520_46240": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_122820_97920": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_1_124200_40800": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_128800_43520": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_130640_59840": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_135700_40800": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_136160_57120": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_141220_46240": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_141680_62560": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_148580_43520": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_148580_48960": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_149960_40800": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_149960_57120": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_149960_68000": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_1_150420_54400": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_71760_68000": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_1_80040_38080": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_85100_43520": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_90620_40800": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_97060_43520": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_1_97060_48960": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_2_104420_97920": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_2_117300_68000": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_2_122820_78880": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_2_125120_70720": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_2_150420_87040": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_2_59340_48960": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_2_65320_95200": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_2_66700_51680": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_2_66700_57120": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_2_71300_59840": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_2_83720_54400": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_2_83720_97920": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_2_85100_59840": {
+   "registers": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.h_counter_value"
+  },
+  "dfrtp_2_87860_46240": {
+   "registers": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.c_counter_value"
+  },
+  "dfrtp_2_89240_57120": {
+   "registers": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.h_counter_value"
+  },
+  "dfrtp_2_97520_65280": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_4_102580_59840": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_4_109020_65280": {
+   "registers": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "primary": "vga_sync_gen.h_counter_value"
+  },
+  "dfrtp_4_135700_97920": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_4_148580_78880": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value",
+    "vga_content.clock_counters.m_counter_value__retimed"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_4_148580_97920": {
+   "registers": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.m_counter_value"
+  },
+  "dfrtp_4_58420_43520": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_4_66700_40800": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_4_66700_46240": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_4_71300_43520": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value",
+    "vga_content.clock_counters.s_counter_value__retimed"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_4_71300_48960": {
+   "registers": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.s_counter_value"
+  },
+  "dfrtp_4_71300_54400": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_4_71300_70720": {
+   "registers": [
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.h_counter_value__retimed"
+   ],
+   "primary": "vga_content.clock_counters.h_counter_value"
+  },
+  "dfrtp_4_71300_97920": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_4_73600_65280": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  },
+  "dfrtp_4_85560_62560": {
+   "registers": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "primary": "vga_content.clock_counters.h_counter_value"
+  },
+  "dfrtp_4_87400_51680": {
+   "registers": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "primary": "vga_sync_gen.v_counter_value"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$44",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 330
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$46",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 331
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$48",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 360
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$50",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 390
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$52",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:193$54",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 421
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$11",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 90
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$13",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 120
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$15",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 150
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$17",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 151
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$19",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 180
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$21",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 210
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$23",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 240
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$25",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 241
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$27",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 270
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$8",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 60
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:96$9",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:96",
+   "widths": {
+    "A": 10,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 61
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$eq$vga_clock.v:97$29",
+   "type": "$eq",
+   "module": "vga_content",
+   "src": "vga_clock.v:97",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 300
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:193$40",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 6,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 60
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:194$57",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:194",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:194$60",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:194",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:194$62",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:194",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:195$64",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:195",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 270
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:195$69",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:195",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:196$71",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:196",
+   "widths": {
+    "A": 7,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 120
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$le$vga_clock.v:196$76",
+   "type": "$le",
+   "module": "vga_content",
+   "src": "vga_clock.v:196",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:108$30",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:108",
+   "widths": {
+    "A": 10,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:108$31",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:108",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 635
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:108$33",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:108",
+   "widths": {
+    "A": 10,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:108$35",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:108",
+   "widths": {
+    "A": 9,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 475
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:193$41",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:193",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 580
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:194$58",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:194",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 520
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:195$65",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:195",
+   "widths": {
+    "A": 10,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 370
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$lt$vga_clock.v:196$72",
+   "type": "$lt",
+   "module": "vga_content",
+   "src": "vga_clock.v:196",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 220
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$mul$vga_clock.v:89$3",
+   "type": "$mul",
+   "module": "vga_content",
+   "src": "vga_clock.v:89",
+   "widths": {
+    "A": 6,
+    "B": 2,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$mul$vga_clock.v:92$5",
+   "type": "$mul",
+   "module": "vga_content",
+   "src": "vga_clock.v:92",
+   "widths": {
+    "A": 6,
+    "B": 2,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$mul$vga_clock.v:95$7",
+   "type": "$mul",
+   "module": "vga_content",
+   "src": "vga_clock.v:95",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$246",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:167",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l22",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$251",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:166",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen_io_activevideo",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$255",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:151",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l51",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$273",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:148",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l45",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$288",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:145",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l39",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$300",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:142",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l33",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$309",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:139",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l22",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$314",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:138",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen_io_activevideo",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$362",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:114",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l33",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$371",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:111",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.when_VgaContent_l22",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$procmux$376",
+   "type": "$mux",
+   "module": "vga_content",
+   "src": "vga_clock.v:110",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen_io_activevideo",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$sub$vga_clock.v:87$2",
+   "type": "$sub",
+   "module": "vga_content",
+   "src": "vga_clock.v:87",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "Y": 9
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$sub$vga_clock.v:90$4",
+   "type": "$sub",
+   "module": "vga_content",
+   "src": "vga_clock.v:90",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "Y": 9
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.$sub$vga_clock.v:93$6",
+   "type": "$sub",
+   "module": "vga_content",
+   "src": "vga_clock.v:93",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "Y": 9
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 420
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$add$vga_clock.v:399$111",
+   "type": "$add",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:399",
+   "widths": {
+    "A": 25,
+    "B": 1,
+    "Y": 25
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$add$vga_clock.v:420$116",
+   "type": "$add",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:420",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "feeds": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$add$vga_clock.v:441$121",
+   "type": "$add",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:441",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "feeds": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$add$vga_clock.v:462$126",
+   "type": "$add",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:462",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$eq$vga_clock.v:393$108",
+   "type": "$eq",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:393",
+   "widths": {
+    "A": 25,
+    "B": 25,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 24999999
+   },
+   "feeds": [
+    "vga_content.clock_counters.c_counter_value",
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.m_counter_value",
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$eq$vga_clock.v:414$113",
+   "type": "$eq",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:414",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 59
+   },
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.m_counter_value",
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$eq$vga_clock.v:435$118",
+   "type": "$eq",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:435",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 59
+   },
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$eq$vga_clock.v:456$123",
+   "type": "$eq",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:456",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$132",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:459",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.h_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$135",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:450",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.m_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$141",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:438",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.m_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$144",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:429",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.s_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.m_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$150",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:417",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.s_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$153",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:408",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.c_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.h_counter_value",
+    "vga_content.clock_counters.m_counter_value",
+    "vga_content.clock_counters.s_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_content.\\clock_counters.$procmux$159",
+   "type": "$mux",
+   "module": "vga_content.clock_counters",
+   "src": "vga_clock.v:396",
+   "widths": {
+    "A": 25,
+    "B": 25,
+    "S": 1,
+    "Y": 25
+   },
+   "signed": false,
+   "select": "vga_content.clock_counters.c_counter_willOverflow",
+   "feeds": [
+    "vga_content.clock_counters.c_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$add$vga_clock.v:250$83",
+   "type": "$add",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:250",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$add$vga_clock.v:271$88",
+   "type": "$add",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:271",
+   "widths": {
+    "A": 10,
+    "B": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "feeds": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$eq$vga_clock.v:244$80",
+   "type": "$eq",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:244",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 799
+   },
+   "feeds": [
+    "vga_sync_gen.h_counter_value",
+    "vga_sync_gen.v_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$eq$vga_clock.v:265$85",
+   "type": "$eq",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:265",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 523
+   },
+   "feeds": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:278$89",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:278",
+   "widths": {
+    "A": 5,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 16
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:278$90",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:278",
+   "widths": {
+    "A": 10,
+    "B": 7,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 112
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:287$93",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:287",
+   "widths": {
+    "A": 4,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 11
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:287$94",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:287",
+   "widths": {
+    "A": 10,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:296$97",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:296",
+   "widths": {
+    "A": 8,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 160
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$le$vga_clock.v:296$98",
+   "type": "$le",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:296",
+   "widths": {
+    "A": 6,
+    "B": 10,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 44
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$162",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:314",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "vga_sync_gen.when_VgaSyncGen_l44",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$165",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:306",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "vga_sync_gen.when_VgaSyncGen_l44",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$168",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:298",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen.when_VgaSyncGen_l44",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$171",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:289",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen.when_VgaSyncGen_l36",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$174",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:280",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen.when_VgaSyncGen_l29",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$180",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:268",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "vga_sync_gen.v_counter_willOverflow",
+   "feeds": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$183",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:259",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "vga_sync_gen.h_counter_willOverflow",
+   "feeds": [
+    "vga_sync_gen.v_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$procmux$189",
+   "type": "$mux",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:247",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "vga_sync_gen.h_counter_willOverflow",
+   "feeds": [
+    "vga_sync_gen.h_counter_value"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$sub$vga_clock.v:307$102",
+   "type": "$sub",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:307",
+   "widths": {
+    "A": 10,
+    "B": 8,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 160
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\vga_sync_gen.$sub$vga_clock.v:315$104",
+   "type": "$sub",
+   "module": "vga_sync_gen",
+   "src": "vga_clock.v:315",
+   "widths": {
+    "A": 10,
+    "B": 6,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 44
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "tt03p5/tt_um_thorkn_vgaclock",
+   "macro": "tt_um_thorkn_vgaclock",
+   "title": "VGA Clock - Bars",
+   "author": "Thorsten Knoll",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-03p5",
+   "shuttle_commit": "b511e6d6232bb79a74cdd528eeb2ae67c95d19cc"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-03p5/b511e6d6232bb79a74cdd528eeb2ae67c95d19cc/gds/tt_um_thorkn_vgaclock.gds.gz",
+    "git_blob": "2634fa6c959d63cf759168acdc26364cfa2aee7d"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-03p5/b511e6d6232bb79a74cdd528eeb2ae67c95d19cc/verilog/gl/tt_um_thorkn_vgaclock.v",
+    "git_blob": "40323e8e54ed0dd07388b5a9d460397a8246da4d"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-03p5/b511e6d6232bb79a74cdd528eeb2ae67c95d19cc/lef/tt_um_thorkn_vgaclock.lef",
+    "git_blob": "aa3041697658a46eeb801f7b9fe245d6180b0067"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/ThorKn/tt03p5-vgaclock-02",
+   "commit": "1b3c4fcc1d2ef294d4a43705d25fba19a1c065a8",
+   "top_module": "tt_um_thorkn_vgaclock",
+   "source_files": [
+    "vga_clock.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/repo/src/vga_clock.v\nhierarchy -check -top tt_um_thorkn_vgaclock\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/repo/src/vga_clock.v\nhierarchy -check -top tt_um_thorkn_vgaclock -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt03p5__tt_um_thorkn_vgaclock/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/reset0": 61
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [
+   "uio_oe[0]",
+   "uio_oe[1]",
+   "uio_oe[2]",
+   "uio_oe[3]",
+   "uio_oe[4]",
+   "uio_oe[5]",
+   "uio_oe[6]",
+   "uio_oe[7]",
+   "uio_out[0]",
+   "uio_out[1]",
+   "uio_out[2]",
+   "uio_out[3]",
+   "uio_out[4]",
+   "uio_out[5]",
+   "uio_out[6]",
+   "uio_out[7]",
+   "uo_out[5]",
+   "uo_out[6]",
+   "uo_out[7]"
+  ],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [
+   "vga_content.clock_counters.h_counter_value__retimed",
+   "vga_content.clock_counters.m_counter_value__retimed",
+   "vga_content.clock_counters.s_counter_value__retimed"
+  ],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 521,
+   "netlist_logic_instances": 521,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 523,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 26,
+   "ports_disagree": [],
+   "non_port_net_labels": 516,
+   "non_port_net_labels_rtl_like": 127,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 9,
+   "registers_by_kind": {
+    "counter": 6,
+    "other": 3
+   },
+   "units": 0,
+   "rtl_flop_bits": 61,
+   "netlist_flops": 61,
+   "netlist_flops_labelled": 61,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 61
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 2,
+   "rounds": 2,
+   "agree_per_round": [
+    61,
+    61
+   ],
+   "flops_checked": 61,
+   "match": 61,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 30,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 5,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [
+    "uio_oe[0]",
+    "uio_oe[1]",
+    "uio_oe[2]",
+    "uio_oe[3]",
+    "uio_oe[4]",
+    "uio_oe[5]",
+    "uio_oe[6]",
+    "uio_oe[7]",
+    "uio_out[0]",
+    "uio_out[1]",
+    "uio_out[2]",
+    "uio_out[3]",
+    "uio_out[4]",
+    "uio_out[5]",
+    "uio_out[6]",
+    "uio_out[7]",
+    "uo_out[5]",
+    "uo_out[6]",
+    "uo_out[7]"
+   ],
+   "flop_types": {
+    "compared": 58,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/reset0": 58
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/reset0": 58
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 61,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 5
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [
+    "uio_oe[0]",
+    "uio_oe[1]",
+    "uio_oe[2]",
+    "uio_oe[3]",
+    "uio_oe[4]",
+    "uio_oe[5]",
+    "uio_oe[6]",
+    "uio_oe[7]",
+    "uio_out[0]",
+    "uio_out[1]",
+    "uio_out[2]",
+    "uio_out[3]",
+    "uio_out[4]",
+    "uio_out[5]",
+    "uio_out[6]",
+    "uio_out[7]",
+    "uo_out[5]",
+    "uo_out[6]",
+    "uo_out[7]"
+   ],
+   "invariants": {
+    "proven": 3
+   },
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

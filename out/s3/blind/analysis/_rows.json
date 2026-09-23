@@ -1,0 +1,3760 @@
+{
+ "designs": [
+  {
+   "id": "tt09/tt_um_pwm_top",
+   "design_id": "tt09__tt_um_pwm_top",
+   "shuttle": "tt09",
+   "author": "Marco V\u00e1zquez, Pa\u00fal Gonz\u00e1lez, Abimael Jimenez, UACJ",
+   "title": "Generador PWM multiproposito con frecuencia y ciclo de trabajo modulable",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/MarcoV09/ModularPWM_UACJ",
+    "commit": "57adfea3938c8da19ecdb54873ab729d943c68e0"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 47,
+    "netlist_flops_labelled": 47,
+    "opaque_sequential_cells": 0,
+    "registers": 9,
+    "rtl_flop_bits": 47,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 47
+   },
+   "registers_by_kind": {
+    "counter": 4,
+    "flag": 5
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 9,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 4,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "universe_flops": 47
+   },
+   "proof": {
+    "complete": true,
+    "counts": {
+     "proven": 47,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [],
+    "invariants": {},
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 8
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "complete"
+   },
+   "functional_check": {
+    "exercised": 39,
+    "flops_checked": 47,
+    "match": 47,
+    "mismatch": 0,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 252,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 252,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 261,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 34,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 1828
+   },
+   "units": [],
+   "scored_structure_registers": 4,
+   "label_tiers": {
+    "C_clean": 4
+   },
+   "weak_structure_registers": {},
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 4,
+     "structures": 2,
+     "structures_matched": 1,
+     "found": 1,
+     "exact": 1,
+     "verified_found": 1,
+     "small_support": false,
+     "distinct_design_keys": 4,
+     "distinct_design_keys_found_all": 1,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 4
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "PWM_Generador.DIV_FREQ.counter",
+       "PWM_Generador.DUTY_CYCLE",
+       "PWM_Generador.counter_PWM",
+       "PWM_Generador.counter_debounce"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 1
+     },
+     "verified_found_by_tier": {
+      "C_clean": 1
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 13,
+    "verified": 1,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "design_id": "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "shuttle": "ttsky26c",
+   "author": "Joonatan Alanampa",
+   "title": "CORDIC-1",
+   "replaces": null,
+   "layout_format": "oasis",
+   "rtl": {
+    "repo": "https://github.com/joaln27/CORDIC",
+    "commit": "b646d05792b6b04a2e613ce2898d1bfb4c026db9"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 191,
+    "netlist_flops_labelled": 191,
+    "opaque_sequential_cells": 0,
+    "registers": 22,
+    "rtl_flop_bits": 173,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "constant in the RTL": 1,
+    "mapped": 171
+   },
+   "registers_by_kind": {
+    "accumulator": 2,
+    "counter": 3,
+    "data_register": 2,
+    "flag": 10,
+    "fsm_state": 1,
+    "other": 1,
+    "shift_register": 3
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 21,
+    "registers_without_flops": 1,
+    "registers_without_flops_names": [
+     "u_cordic.mode_q"
+    ],
+    "scored_by_kind": {
+     "counter": 3,
+     "lfsr_crc": 0,
+     "shift_register": 3,
+     "synchronizer": 0
+    },
+    "universe_flops": 191
+   },
+   "proof": {
+    "complete": true,
+    "counts": {
+     "proven": 191,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [],
+    "invariants": {
+     "proven": 1
+    },
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 8
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "complete"
+   },
+   "functional_check": {
+    "exercised": 181,
+    "flops_checked": 191,
+    "match": 191,
+    "mismatch": 0,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 1149,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 1149,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 1157,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 33,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 2389
+   },
+   "units": [],
+   "scored_structure_registers": 6,
+   "label_tiers": {
+    "C_clean": 6
+   },
+   "weak_structure_registers": {},
+   "per_kind": {
+    "shift_register": {
+     "registers": 3,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": false,
+     "distinct_design_keys": 3,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 3
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "u_cordic.x",
+       "u_cordic.y",
+       "u_cordic.z"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 3,
+     "structures": 4,
+     "structures_matched": 3,
+     "found": 3,
+     "exact": 3,
+     "verified_found": 3,
+     "small_support": false,
+     "distinct_design_keys": 3,
+     "distinct_design_keys_found_all": 3,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 3
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "beat",
+       "u_cordic.i",
+       "u_cordic.k"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 3
+     },
+     "verified_found_by_tier": {
+      "C_clean": 3
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 40,
+    "verified": 4,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt05/tt_um_toivoh_synth",
+   "design_id": "tt05__tt_um_toivoh_synth",
+   "shuttle": "tt05",
+   "author": "Toivo Henningsson",
+   "title": "Analog emulation monosynth",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/toivoh/tt05-synth",
+    "commit": "166eb2e9d0b3a1e6c0ec31fc7e841200e3819ac9"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 264,
+    "netlist_flops_labelled": 264,
+    "opaque_sequential_cells": 0,
+    "registers": 31,
+    "rtl_flop_bits": 266,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 264,
+    "not a flop in the word-level RTL": 15,
+    "unused (removed)": 2
+   },
+   "registers_by_kind": {
+    "accumulator": 20,
+    "counter": 5,
+    "flag": 4,
+    "shift_register": 1,
+    "synchronizer": 1
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 31,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 5,
+     "lfsr_crc": 0,
+     "shift_register": 1,
+     "synchronizer": 1
+    },
+    "universe_flops": 264
+   },
+   "proof": {
+    "complete": false,
+    "counts": {
+     "proven": 264,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [
+     "outputs not proven: ['uio_out']"
+    ],
+    "invariants": {},
+    "invariants_not_proven": [],
+    "outputs": {
+     "not in the netlist": 1,
+     "proven": 8
+    },
+    "outputs_not_proven": [
+     "uio_out"
+    ],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "outputs not proven: ['uio_out']"
+   },
+   "functional_check": {
+    "exercised": 232,
+    "flops_checked": 264,
+    "match": 264,
+    "mismatch": 0,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 2087,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 2087,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 2102,
+    "non_port_net_labels": 2078,
+    "non_port_net_labels_rtl_like": 265,
+    "ports_agree": 39,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 77,
+    "labels_removed": 2078,
+    "properties_removed": 4715
+   },
+   "units": [],
+   "scored_structure_registers": 7,
+   "label_tiers": {
+    "C_clean": 6,
+    "B_narrowed": 1
+   },
+   "weak_structure_registers": {
+    "oct_counter": {
+     "bits": 17,
+     "bits_with_flop": 16,
+     "bits_without_flop": 1,
+     "check": {
+      "match": 16
+     },
+     "combo": {
+      "check=match,proof=proven": 16
+     },
+     "kind": "counter",
+     "mismatching_bits": 0,
+     "notes": {
+      "unused (removed)": 1
+     },
+     "proof": {
+      "proven": 16
+     },
+     "unproven_bits": 0
+    }
+   },
+   "per_kind": {
+    "shift_register": {
+     "registers": 1,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 1
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "lfsr"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 5,
+     "structures": 20,
+     "structures_matched": 2,
+     "found": 2,
+     "exact": 1,
+     "verified_found": 1,
+     "small_support": false,
+     "distinct_design_keys": 4,
+     "distinct_design_keys_found_all": 2,
+     "via_units": [],
+     "label_tiers": {
+      "B_narrowed": 1,
+      "C_clean": 4
+     },
+     "registers_by_tier": {
+      "B_narrowed": [
+       "oct_counter"
+      ],
+      "C_clean": [
+       "pwm_counter",
+       "saw[0]",
+       "saw[1]",
+       "state"
+      ]
+     },
+     "found_by_tier": {
+      "B_narrowed": 1,
+      "C_clean": 1
+     },
+     "verified_found_by_tier": {
+      "B_narrowed": 1
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 1,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 1,
+     "structures": 1,
+     "structures_matched": 1,
+     "found": 1,
+     "exact": 1,
+     "verified_found": 1,
+     "small_support": true,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 1,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 1
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "strobe_sync"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 1
+     },
+     "verified_found_by_tier": {
+      "C_clean": 1
+     }
+    }
+   },
+   "headline": {
+    "structures": 59,
+    "verified": 8,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "ttsky25a/tt_um_td4",
+   "design_id": "ttsky25a__tt_um_td4",
+   "shuttle": "ttsky25a",
+   "author": "KATO, Jinnosuke",
+   "title": "tt-td04",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/jinnosukeKato/tt-td4",
+    "commit": "2708b75d1f05e774310f6928187716878ab3aaab"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 145,
+    "netlist_flops_labelled": 145,
+    "opaque_sequential_cells": 0,
+    "registers": 21,
+    "rtl_flop_bits": 145,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 145
+   },
+   "registers_by_kind": {
+    "accumulator": 2,
+    "counter": 1,
+    "data_register": 1,
+    "flag": 1,
+    "register_file_word": 16
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 21,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 1,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "universe_flops": 145
+   },
+   "proof": {
+    "complete": true,
+    "counts": {
+     "proven": 145,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [],
+    "invariants": {},
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 24
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "complete"
+   },
+   "functional_check": {
+    "exercised": 145,
+    "flops_checked": 145,
+    "match": 145,
+    "mismatch": 0,
+    "outputs_match": 24,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 763,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 763,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 764,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 40,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 1936
+   },
+   "units": [],
+   "scored_structure_registers": 1,
+   "label_tiers": {
+    "C_clean": 1
+   },
+   "weak_structure_registers": {},
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 1,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 1
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "cpu.pc"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 21,
+    "verified": 0,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt03p5/tt_um_Reloj_top",
+   "design_id": "tt03p5__tt_um_Reloj_top",
+   "shuttle": "tt03p5",
+   "author": "Daniel Arevalos",
+   "title": "Wall Clock and Alarm",
+   "replaces": null,
+   "layout_format": "gds.gz",
+   "rtl": {
+    "repo": "https://github.com/lild4d4/tt03p5-Wall-Clock-and-Alarm",
+    "commit": "61b7ea779f553e7751b9aabf6f0bd19417ea2c5a"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 385,
+    "netlist_flops_labelled": 385,
+    "opaque_sequential_cells": 0,
+    "registers": 35,
+    "rtl_flop_bits": 403,
+    "shadow_flops": 0,
+    "units": 4,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 377,
+    "next state constant (removed by synthesis)": 9,
+    "no flop found": 8
+   },
+   "registers_by_kind": {
+    "counter": 14,
+    "data_register": 1,
+    "flag": 7,
+    "fsm_state": 3,
+    "other": 4,
+    "synchronizer": 6
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [
+     "debcenter.PB_sync + debcenter.PB_sync_aux + debdown.PB_sync + debdown.PB_sync_aux + debup.PB_sync + debup.PB_sync_aux (copy_lanes)",
+     "debcenter.PB_sync_aux + debcenter.PB_sync (sync_chain)",
+     "debdown.PB_sync_aux + debdown.PB_sync (sync_chain)",
+     "debup.PB_sync_aux + debup.PB_sync (sync_chain)"
+    ],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 35,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 14,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 6
+    },
+    "universe_flops": 385
+   },
+   "proof": {
+    "complete": false,
+    "counts": {
+     "proven": 325,
+     "refuted": 60,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [
+     "60 flops refuted: ['_4415_', '_4416_', '_4571_', '_4572_', '_4573_']"
+    ],
+    "invariants": {
+     "proven": 12
+    },
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 15
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "60 flops refuted: ['_4415_', '_4416_', '_4571_', '_4572_', '_4573_']"
+   },
+   "functional_check": {
+    "exercised": 292,
+    "flops_checked": 385,
+    "match": 371,
+    "mismatch": 14,
+    "outputs_match": 15,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 2622,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 2622,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 2627,
+    "non_port_net_labels": 2607,
+    "non_port_net_labels_rtl_like": 388,
+    "ports_agree": 29,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 63,
+    "labels_removed": 2614,
+    "properties_removed": 9758
+   },
+   "units": [
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "debcenter.PB_sync_aux + debcenter.PB_sync (sync_chain)",
+     "registers": [
+      "debcenter.PB_sync_aux",
+      "debcenter.PB_sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "debdown.PB_sync_aux + debdown.PB_sync (sync_chain)",
+     "registers": [
+      "debdown.PB_sync_aux",
+      "debdown.PB_sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "debup.PB_sync_aux + debup.PB_sync (sync_chain)",
+     "registers": [
+      "debup.PB_sync_aux",
+      "debup.PB_sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 6,
+     "kind": "synchronizer",
+     "name": "debcenter.PB_sync + debcenter.PB_sync_aux + debdown.PB_sync + debdown.PB_sync_aux + debup.PB_sync + debup.PB_sync_aux (copy_lanes)",
+     "registers": [
+      "debcenter.PB_sync",
+      "debcenter.PB_sync_aux",
+      "debdown.PB_sync",
+      "debdown.PB_sync_aux",
+      "debup.PB_sync",
+      "debup.PB_sync_aux"
+     ],
+     "rules": [
+      "copy_lanes"
+     ]
+    }
+   ],
+   "scored_structure_registers": 20,
+   "label_tiers": {
+    "C_clean": 16,
+    "A_contradicted": 4
+   },
+   "weak_structure_registers": {
+    "doubledabble.shift": {
+     "bits": 32,
+     "bits_with_flop": 32,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 31,
+      "mismatch": 1
+     },
+     "combo": {
+      "check=match,proof=proven": 31,
+      "check=mismatch,proof=refuted": 1
+     },
+     "kind": "counter",
+     "mismatching_bits": 1,
+     "notes": {},
+     "proof": {
+      "proven": 31,
+      "refuted": 1
+     },
+     "unproven_bits": 1
+    },
+    "hourmod.hour": {
+     "bits": 32,
+     "bits_with_flop": 28,
+     "bits_without_flop": 4,
+     "check": {
+      "match": 28
+     },
+     "combo": {
+      "check=match,proof=proven": 15,
+      "check=match,proof=refuted": 13
+     },
+     "kind": "counter",
+     "mismatching_bits": 0,
+     "notes": {
+      "no flop found": 4
+     },
+     "proof": {
+      "proven": 15,
+      "refuted": 13
+     },
+     "unproven_bits": 13
+    },
+    "minites.min": {
+     "bits": 32,
+     "bits_with_flop": 30,
+     "bits_without_flop": 2,
+     "check": {
+      "match": 30
+     },
+     "combo": {
+      "check=match,proof=proven": 20,
+      "check=match,proof=refuted": 10
+     },
+     "kind": "counter",
+     "mismatching_bits": 0,
+     "notes": {
+      "no flop found": 2
+     },
+     "proof": {
+      "proven": 20,
+      "refuted": 10
+     },
+     "unproven_bits": 10
+    },
+    "segmod.seg": {
+     "bits": 32,
+     "bits_with_flop": 30,
+     "bits_without_flop": 2,
+     "check": {
+      "match": 17,
+      "mismatch": 13
+     },
+     "combo": {
+      "check=match,proof=refuted": 17,
+      "check=mismatch,proof=refuted": 13
+     },
+     "kind": "counter",
+     "mismatching_bits": 13,
+     "notes": {
+      "no flop found": 2
+     },
+     "proof": {
+      "refuted": 30
+     },
+     "unproven_bits": 30
+    }
+   },
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 14,
+     "structures": 11,
+     "structures_matched": 7,
+     "found": 7,
+     "exact": 0,
+     "verified_found": 4,
+     "small_support": false,
+     "distinct_design_keys": 12,
+     "distinct_design_keys_found_all": 5,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 10,
+      "A_contradicted": 4
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "doubledabble.shift",
+       "hourmod.hour",
+       "minites.min",
+       "segmod.seg"
+      ],
+      "C_clean": [
+       "clkdiv.counter_value",
+       "debcenter.delay_timer",
+       "debdown.delay_timer",
+       "debup.delay_timer",
+       "doubledabble.counter",
+       "milimod.miliseg",
+       "milimod.t",
+       "timedfsm.count",
+       "timedfsm.t",
+       "to7seg.count.count"
+      ]
+     },
+     "found_by_tier": {
+      "A_contradicted": 1,
+      "C_clean": 6
+     },
+     "verified_found_by_tier": {
+      "C_clean": 3,
+      "A_contradicted": 1
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 6,
+     "structures": 1,
+     "structures_matched": 1,
+     "found": 6,
+     "exact": 6,
+     "verified_found": 6,
+     "small_support": false,
+     "distinct_design_keys": 2,
+     "distinct_design_keys_found_all": 2,
+     "via_units": [
+      "debcenter.PB_sync + debcenter.PB_sync_aux + debdown.PB_sync + debdown.PB_sync_aux + debup.PB_sync + debup.PB_sync_aux (copy_lanes)"
+     ],
+     "label_tiers": {
+      "C_clean": 6
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "debcenter.PB_sync",
+       "debcenter.PB_sync_aux",
+       "debdown.PB_sync",
+       "debdown.PB_sync_aux",
+       "debup.PB_sync",
+       "debup.PB_sync_aux"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 6
+     },
+     "verified_found_by_tier": {
+      "C_clean": 6
+     }
+    }
+   },
+   "headline": {
+    "structures": 85,
+    "verified": 8,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt03p5/tt_um_thorkn_vgaclock",
+   "design_id": "tt03p5__tt_um_thorkn_vgaclock",
+   "shuttle": "tt03p5",
+   "author": "Thorsten Knoll",
+   "title": "VGA Clock - Bars",
+   "replaces": null,
+   "layout_format": "gds.gz",
+   "rtl": {
+    "repo": "https://github.com/ThorKn/tt03p5-vgaclock-02",
+    "commit": "1b3c4fcc1d2ef294d4a43705d25fba19a1c065a8"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 61,
+    "netlist_flops_labelled": 61,
+    "opaque_sequential_cells": 0,
+    "registers": 9,
+    "rtl_flop_bits": 61,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 61
+   },
+   "registers_by_kind": {
+    "counter": 6,
+    "other": 3
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 9,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 6,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "universe_flops": 61
+   },
+   "proof": {
+    "complete": true,
+    "counts": {
+     "proven": 61,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [],
+    "invariants": {
+     "proven": 3
+    },
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 5
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [
+     "uio_oe[0]",
+     "uio_oe[1]",
+     "uio_oe[2]",
+     "uio_oe[3]",
+     "uio_oe[4]",
+     "uio_oe[5]",
+     "uio_oe[6]",
+     "uio_oe[7]",
+     "uio_out[0]",
+     "uio_out[1]",
+     "uio_out[2]",
+     "uio_out[3]",
+     "uio_out[4]",
+     "uio_out[5]",
+     "uio_out[6]",
+     "uio_out[7]",
+     "uo_out[5]",
+     "uo_out[6]",
+     "uo_out[7]"
+    ],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "complete"
+   },
+   "functional_check": {
+    "exercised": 30,
+    "flops_checked": 61,
+    "match": 61,
+    "mismatch": 0,
+    "outputs_match": 5,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 521,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 521,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 523,
+    "non_port_net_labels": 516,
+    "non_port_net_labels_rtl_like": 127,
+    "ports_agree": 26,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 50,
+    "labels_removed": 526,
+    "properties_removed": 2158
+   },
+   "units": [],
+   "scored_structure_registers": 6,
+   "label_tiers": {
+    "C_clean": 6
+   },
+   "weak_structure_registers": {},
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 6,
+     "structures": 6,
+     "structures_matched": 6,
+     "found": 6,
+     "exact": 6,
+     "verified_found": 6,
+     "small_support": false,
+     "distinct_design_keys": 6,
+     "distinct_design_keys_found_all": 6,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 6
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "vga_content.clock_counters.c_counter_value",
+       "vga_content.clock_counters.h_counter_value",
+       "vga_content.clock_counters.m_counter_value",
+       "vga_content.clock_counters.s_counter_value",
+       "vga_sync_gen.h_counter_value",
+       "vga_sync_gen.v_counter_value"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 6
+     },
+     "verified_found_by_tier": {
+      "C_clean": 6
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 6,
+    "verified": 6,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt07/tt_um_toivoh_basilisc_2816",
+   "design_id": "tt07__tt_um_toivoh_basilisc_2816",
+   "shuttle": "tt07",
+   "author": "Toivo Henningsson",
+   "title": "Basilisc-2816 v0.1a CPU",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/toivoh/tt07-basilisc-2816-cpu",
+    "commit": "8bdb8bbf2d9eec6114acc6c152cef0ea2883b8aa"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 198,
+    "netlist_flops_labelled": 198,
+    "opaque_sequential_cells": 0,
+    "registers": 43,
+    "rtl_flop_bits": 202,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "constant in the RTL": 2,
+    "mapped": 196,
+    "next state constant (removed by synthesis)": 4,
+    "no flop found": 2,
+    "not a flop in the word-level RTL": 6
+   },
+   "registers_by_kind": {
+    "accumulator": 7,
+    "counter": 5,
+    "data_register": 6,
+    "flag": 11,
+    "lfsr_crc": 9,
+    "other": 1,
+    "shift_register": 3,
+    "synchronizer": 1
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 42,
+    "registers_without_flops": 1,
+    "registers_without_flops_names": [
+     "cpu.fifo.entries[0]"
+    ],
+    "scored_by_kind": {
+     "counter": 5,
+     "lfsr_crc": 9,
+     "shift_register": 3,
+     "synchronizer": 1
+    },
+    "universe_flops": 198
+   },
+   "proof": {
+    "complete": false,
+    "counts": {
+     "proven": 41,
+     "refuted": 157,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [
+     "157 flops refuted: ['_2324_', '_2325_', '_2326_', '_2327_', '_2328_']"
+    ],
+    "invariants": {
+     "proven": 4
+    },
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 8
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "157 flops refuted: ['_2324_', '_2325_', '_2326_', '_2327_', '_2328_']"
+   },
+   "functional_check": {
+    "exercised": 112,
+    "flops_checked": 198,
+    "match": 112,
+    "mismatch": 86,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 1532,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 1532,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 1536,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 28,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 2411
+   },
+   "units": [],
+   "scored_structure_registers": 18,
+   "label_tiers": {
+    "A_contradicted": 16,
+    "C_clean": 1,
+    "B_narrowed": 1
+   },
+   "weak_structure_registers": {
+    "cpu.dec.sched.alu.registers.general_registers.regs[0]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 8
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 8
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 8,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[1]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 8
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 8
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 8,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[2]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 1,
+      "mismatch": 7
+     },
+     "combo": {
+      "check=match,proof=refuted": 1,
+      "check=mismatch,proof=refuted": 7
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 7,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[3]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 4,
+      "mismatch": 4
+     },
+     "combo": {
+      "check=match,proof=refuted": 4,
+      "check=mismatch,proof=refuted": 4
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 4,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[4]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 3,
+      "mismatch": 5
+     },
+     "combo": {
+      "check=match,proof=refuted": 3,
+      "check=mismatch,proof=refuted": 5
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 5,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[5]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 4,
+      "mismatch": 4
+     },
+     "combo": {
+      "check=match,proof=refuted": 4,
+      "check=mismatch,proof=refuted": 4
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 4,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[6]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 8
+     },
+     "combo": {
+      "check=match,proof=refuted": 8
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 0,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.general_registers.regs[7]": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 6,
+      "mismatch": 2
+     },
+     "combo": {
+      "check=match,proof=refuted": 6,
+      "check=mismatch,proof=refuted": 2
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 2,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.registers.sp_register.regs": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 8
+     },
+     "combo": {
+      "check=match,proof=refuted": 8
+     },
+     "kind": "lfsr_crc",
+     "mismatching_bits": 0,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    },
+    "cpu.dec.sched.alu.state": {
+     "bits": 3,
+     "bits_with_flop": 3,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 3
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 3
+     },
+     "kind": "counter",
+     "mismatching_bits": 3,
+     "notes": {},
+     "proof": {
+      "refuted": 3
+     },
+     "unproven_bits": 3
+    },
+    "cpu.dec.sched.stage": {
+     "bits": 2,
+     "bits_with_flop": 2,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 2
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 2
+     },
+     "kind": "counter",
+     "mismatching_bits": 2,
+     "notes": {},
+     "proof": {
+      "refuted": 2
+     },
+     "unproven_bits": 2
+    },
+    "cpu.mem_if.tx_monitor.counter": {
+     "bits": 4,
+     "bits_with_flop": 4,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 4
+     },
+     "combo": {
+      "check=match,proof=proven": 3,
+      "check=match,proof=refuted": 1
+     },
+     "kind": "counter",
+     "mismatching_bits": 0,
+     "notes": {},
+     "proof": {
+      "proven": 3,
+      "refuted": 1
+     },
+     "unproven_bits": 1
+    },
+    "cpu.pref.imm_reg": {
+     "bits": 16,
+     "bits_with_flop": 16,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 16
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 16
+     },
+     "kind": "shift_register",
+     "mismatching_bits": 16,
+     "notes": {},
+     "proof": {
+      "refuted": 16
+     },
+     "unproven_bits": 16
+    },
+    "cpu.pref.num_flushed": {
+     "bits": 2,
+     "bits_with_flop": 2,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 2
+     },
+     "combo": {
+      "check=match,proof=refuted": 2
+     },
+     "kind": "counter",
+     "mismatching_bits": 0,
+     "notes": {},
+     "proof": {
+      "refuted": 2
+     },
+     "unproven_bits": 2
+    },
+    "cpu.pref.pc": {
+     "bits": 16,
+     "bits_with_flop": 16,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 16
+     },
+     "combo": {
+      "check=match,proof=refuted": 16
+     },
+     "kind": "shift_register",
+     "mismatching_bits": 0,
+     "notes": {},
+     "proof": {
+      "refuted": 16
+     },
+     "unproven_bits": 16
+    },
+    "cpu.pref.sreg": {
+     "bits": 16,
+     "bits_with_flop": 16,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 16
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 16
+     },
+     "kind": "shift_register",
+     "mismatching_bits": 16,
+     "notes": {},
+     "proof": {
+      "refuted": 16
+     },
+     "unproven_bits": 16
+    },
+    "ui_in_reg": {
+     "bits": 8,
+     "bits_with_flop": 2,
+     "bits_without_flop": 6,
+     "check": {
+      "match": 2
+     },
+     "combo": {
+      "check=match,proof=proven": 2
+     },
+     "kind": "synchronizer",
+     "mismatching_bits": 0,
+     "notes": {
+      "not a flop in the word-level RTL": 6
+     },
+     "proof": {
+      "proven": 2
+     },
+     "unproven_bits": 0
+    }
+   },
+   "per_kind": {
+    "shift_register": {
+     "registers": 3,
+     "structures": 1,
+     "structures_matched": 1,
+     "found": 1,
+     "exact": 1,
+     "verified_found": 1,
+     "small_support": false,
+     "distinct_design_keys": 3,
+     "distinct_design_keys_found_all": 1,
+     "via_units": [],
+     "label_tiers": {
+      "A_contradicted": 3
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "cpu.pref.imm_reg",
+       "cpu.pref.pc",
+       "cpu.pref.sreg"
+      ]
+     },
+     "found_by_tier": {
+      "A_contradicted": 1
+     },
+     "verified_found_by_tier": {
+      "A_contradicted": 1
+     }
+    },
+    "counter": {
+     "registers": 5,
+     "structures": 3,
+     "structures_matched": 2,
+     "found": 2,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": false,
+     "distinct_design_keys": 4,
+     "distinct_design_keys_found_all": 1,
+     "via_units": [],
+     "label_tiers": {
+      "A_contradicted": 4,
+      "C_clean": 1
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "cpu.dec.sched.alu.state",
+       "cpu.dec.sched.stage",
+       "cpu.mem_if.tx_monitor.counter",
+       "cpu.pref.num_flushed"
+      ],
+      "C_clean": [
+       "cpu.mem_if.sbio_rx.counter"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 1,
+      "A_contradicted": 1
+     },
+     "verified_found_by_tier": {}
+    },
+    "lfsr_crc": {
+     "registers": 9,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": false,
+     "distinct_design_keys": 2,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "A_contradicted": 9
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "cpu.dec.sched.alu.registers.general_registers.regs[0]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[1]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[2]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[3]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[4]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[5]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[6]",
+       "cpu.dec.sched.alu.registers.general_registers.regs[7]",
+       "cpu.dec.sched.alu.registers.sp_register.regs"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 1,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "B_narrowed": 1
+     },
+     "registers_by_tier": {
+      "B_narrowed": [
+       "ui_in_reg"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 67,
+    "verified": 1,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "ttsky25a/tt_um_sjsu_vga_music",
+   "design_id": "ttsky25a__tt_um_sjsu_vga_music",
+   "shuttle": "ttsky25a",
+   "author": "Andrea Cortez",
+   "title": "SJSU Fight Song",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/andreaklcortez/tt_um_sjsu_vga_music",
+    "commit": "a7f979cf6d934e00a3fc52069237140967d2c673"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 77,
+    "netlist_flops_labelled": 70,
+    "opaque_sequential_cells": 0,
+    "registers": 12,
+    "rtl_flop_bits": 70,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 7
+   },
+   "rtl_bits": {
+    "mapped": 70
+   },
+   "registers_by_kind": {
+    "counter": 6,
+    "flag": 5,
+    "shift_register": 1
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 12,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 6,
+     "lfsr_crc": 0,
+     "shift_register": 1,
+     "synchronizer": 0
+    },
+    "universe_flops": 70
+   },
+   "proof": {
+    "complete": false,
+    "counts": {
+     "proven": 61,
+     "refuted": 9,
+     "spurious_sat": 0,
+     "unchecked": 7
+    },
+    "incomplete": [
+     "9 flops refuted: ['_636_', '_637_', '_638_', '_639_', '_640_']",
+     "7 flops unchecked: ['_683_', '_684_', '_685_', '_686_', '_687_']",
+     "outputs not proven: ['uio_out']"
+    ],
+    "invariants": {},
+    "invariants_not_proven": [],
+    "outputs": {
+     "not in the netlist": 1,
+     "proven": 8
+    },
+    "outputs_not_proven": [
+     "uio_out"
+    ],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "9 flops refuted: ['_636_', '_637_', '_638_', '_639_', '_640_']; 7 flops unchecked: ['_683_', '_684_', '_685_', '_686_', '_687_']; outputs not proven: ['uio_out']"
+   },
+   "functional_check": {
+    "exercised": 47,
+    "flops_checked": 70,
+    "match": 65,
+    "mismatch": 5,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 7
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 482,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 482,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 477,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 26,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 1958
+   },
+   "units": [],
+   "scored_structure_registers": 7,
+   "label_tiers": {
+    "C_clean": 6,
+    "A_contradicted": 1
+   },
+   "weak_structure_registers": {
+    "note_counter": {
+     "bits": 8,
+     "bits_with_flop": 8,
+     "bits_without_flop": 0,
+     "check": {
+      "match": 4,
+      "mismatch": 4
+     },
+     "combo": {
+      "check=match,proof=refuted": 4,
+      "check=mismatch,proof=refuted": 4
+     },
+     "kind": "counter",
+     "mismatching_bits": 4,
+     "notes": {},
+     "proof": {
+      "refuted": 8
+     },
+     "unproven_bits": 8
+    }
+   },
+   "per_kind": {
+    "shift_register": {
+     "registers": 1,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 1
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "lfsr"
+      ]
+     },
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 6,
+     "structures": 6,
+     "structures_matched": 5,
+     "found": 5,
+     "exact": 3,
+     "verified_found": 5,
+     "small_support": false,
+     "distinct_design_keys": 6,
+     "distinct_design_keys_found_all": 5,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 5,
+      "A_contradicted": 1
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "note_counter"
+      ],
+      "C_clean": [
+       "frame_counter",
+       "hvsync_gen.hpos",
+       "hvsync_gen.vpos",
+       "noise_counter",
+       "note2_counter"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 5
+     },
+     "verified_found_by_tier": {
+      "C_clean": 5
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 1,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 21,
+    "verified": 6,
+    "dropped_flops": 7
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt07/tt_um_vzayakov_top",
+   "design_id": "tt07__tt_um_vzayakov_top",
+   "shuttle": "tt07",
+   "author": "Victor Zayakov",
+   "title": "Pong-VGA",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/vzayakov/tt07-pong-vga",
+    "commit": "991830edb2b3f3a98edc5bfef38a7bb6240bed73"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 192,
+    "netlist_flops_labelled": 192,
+    "opaque_sequential_cells": 0,
+    "registers": 43,
+    "rtl_flop_bits": 138,
+    "shadow_flops": 0,
+    "units": 6,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 137,
+    "next state constant (removed by synthesis)": 1
+   },
+   "registers_by_kind": {
+    "accumulator": 4,
+    "counter": 12,
+    "flag": 9,
+    "other": 8,
+    "synchronizer": 10
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [
+     "DUT.sync1.async_1 + DUT.sync1.sync (sync_chain)",
+     "DUT.sync1.async_1 + DUT.sync1.sync + DUT.sync2.async_1 + DUT.sync2.sync + DUT.sync3.async_1 + DUT.sync3.sync + 4 more (copy_lanes)",
+     "DUT.sync2.async_1 + DUT.sync2.sync (sync_chain)",
+     "DUT.sync3.async_1 + DUT.sync3.sync (sync_chain)",
+     "DUT.sync4.async_1 + DUT.sync4.sync (sync_chain)",
+     "DUT.sync5.async_1 + DUT.sync5.sync (sync_chain)"
+    ],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 42,
+    "registers_without_flops": 1,
+    "registers_without_flops_names": [
+     "DUT.doneff.Q"
+    ],
+    "scored_by_kind": {
+     "counter": 12,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 10
+    },
+    "universe_flops": 192
+   },
+   "proof": {
+    "complete": false,
+    "counts": {
+     "proven": 168,
+     "refuted": 24,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [
+     "24 flops refuted: ['_2501_', '_2502_', '_2503_', '_2504_', '_2630_']",
+     "outputs not proven: ['uo_out[5]', 'uo_out[6]', 'uo_out[7]']",
+     "invariants not proven: ['merged DUT.b.BallCol.Q[0]']"
+    ],
+    "invariants": {
+     "proven": 1,
+     "refuted": 1
+    },
+    "invariants_not_proven": [
+     "merged DUT.b.BallCol.Q[0]"
+    ],
+    "outputs": {
+     "proven": 4,
+     "refuted": 3
+    },
+    "outputs_not_proven": [
+     "uo_out[5]",
+     "uo_out[6]",
+     "uo_out[7]"
+    ],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "24 flops refuted: ['_2501_', '_2502_', '_2503_', '_2504_', '_2630_']; outputs not proven: ['uo_out[5]', 'uo_out[6]', 'uo_out[7]']; invariants not proven: ['merged DUT.b.BallCol.Q[0]']"
+   },
+   "functional_check": {
+    "exercised": 173,
+    "flops_checked": 192,
+    "match": 173,
+    "mismatch": 19,
+    "outputs_match": 7,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 1548,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 1548,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 1555,
+    "non_port_net_labels": 0,
+    "non_port_net_labels_rtl_like": 0,
+    "ports_agree": 31,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 51,
+    "labels_removed": 0,
+    "properties_removed": 2534
+   },
+   "units": [
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "DUT.sync1.async_1 + DUT.sync1.sync (sync_chain)",
+     "registers": [
+      "DUT.sync1.async_1",
+      "DUT.sync1.sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "DUT.sync2.async_1 + DUT.sync2.sync (sync_chain)",
+     "registers": [
+      "DUT.sync2.async_1",
+      "DUT.sync2.sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "DUT.sync3.async_1 + DUT.sync3.sync (sync_chain)",
+     "registers": [
+      "DUT.sync3.async_1",
+      "DUT.sync3.sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "DUT.sync4.async_1 + DUT.sync4.sync (sync_chain)",
+     "registers": [
+      "DUT.sync4.async_1",
+      "DUT.sync4.sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 2,
+     "kind": "synchronizer",
+     "name": "DUT.sync5.async_1 + DUT.sync5.sync (sync_chain)",
+     "registers": [
+      "DUT.sync5.async_1",
+      "DUT.sync5.sync"
+     ],
+     "rules": [
+      "sync_chain"
+     ]
+    },
+    {
+     "chain": true,
+     "flops": 10,
+     "kind": "synchronizer",
+     "name": "DUT.sync1.async_1 + DUT.sync1.sync + DUT.sync2.async_1 + DUT.sync2.sync + DUT.sync3.async_1 + DUT.sync3.sync + 4 more (copy_lanes)",
+     "registers": [
+      "DUT.sync1.async_1",
+      "DUT.sync1.sync",
+      "DUT.sync2.async_1",
+      "DUT.sync2.sync",
+      "DUT.sync3.async_1",
+      "DUT.sync3.sync",
+      "DUT.sync4.async_1",
+      "DUT.sync4.sync",
+      "DUT.sync5.async_1",
+      "DUT.sync5.sync"
+     ],
+     "rules": [
+      "copy_lanes"
+     ]
+    }
+   ],
+   "scored_structure_registers": 22,
+   "label_tiers": {
+    "C_clean": 20,
+    "A_contradicted": 2
+   },
+   "weak_structure_registers": {
+    "DUT.vg.ColCounter.Q": {
+     "bits": 10,
+     "bits_with_flop": 10,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 10
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 10
+     },
+     "kind": "counter",
+     "mismatching_bits": 10,
+     "notes": {},
+     "proof": {
+      "refuted": 10
+     },
+     "unproven_bits": 10
+    },
+    "DUT.vg.RowCounter.Q": {
+     "bits": 9,
+     "bits_with_flop": 9,
+     "bits_without_flop": 0,
+     "check": {
+      "mismatch": 9
+     },
+     "combo": {
+      "check=mismatch,proof=refuted": 9
+     },
+     "kind": "counter",
+     "mismatching_bits": 9,
+     "notes": {},
+     "proof": {
+      "refuted": 9
+     },
+     "unproven_bits": 9
+    }
+   },
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 12,
+     "structures": 17,
+     "structures_matched": 12,
+     "found": 12,
+     "exact": 11,
+     "verified_found": 2,
+     "small_support": false,
+     "distinct_design_keys": 1,
+     "distinct_design_keys_found_all": 1,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 10,
+      "A_contradicted": 2
+     },
+     "registers_by_tier": {
+      "A_contradicted": [
+       "DUT.vg.ColCounter.Q",
+       "DUT.vg.RowCounter.Q"
+      ],
+      "C_clean": [
+       "DUT.s.LScore1.Q",
+       "DUT.s.LScore2.Q",
+       "DUT.s.LScore3.Q",
+       "DUT.s.LScore4.Q",
+       "DUT.s.RScore1.Q",
+       "DUT.s.RScore2.Q",
+       "DUT.s.RScore3.Q",
+       "DUT.s.RScore4.Q",
+       "DUT.vg.HSCounter.Q",
+       "DUT.vg.VSCounter.Q"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 10,
+      "A_contradicted": 2
+     },
+     "verified_found_by_tier": {
+      "C_clean": 1,
+      "A_contradicted": 1
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 10,
+     "structures": 1,
+     "structures_matched": 1,
+     "found": 10,
+     "exact": 10,
+     "verified_found": 10,
+     "small_support": false,
+     "distinct_design_keys": 2,
+     "distinct_design_keys_found_all": 2,
+     "via_units": [
+      "DUT.sync1.async_1 + DUT.sync1.sync + DUT.sync2.async_1 + DUT.sync2.sync + DUT.sync3.async_1 + DUT.sync3.sync + 4 more (copy_lanes)"
+     ],
+     "label_tiers": {
+      "C_clean": 10
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "DUT.sync1.async_1",
+       "DUT.sync1.sync",
+       "DUT.sync2.async_1",
+       "DUT.sync2.sync",
+       "DUT.sync3.async_1",
+       "DUT.sync3.sync",
+       "DUT.sync4.async_1",
+       "DUT.sync4.sync",
+       "DUT.sync5.async_1",
+       "DUT.sync5.sync"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 10
+     },
+     "verified_found_by_tier": {
+      "C_clean": 10
+     }
+    }
+   },
+   "headline": {
+    "structures": 72,
+    "verified": 5,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  },
+  {
+   "id": "tt05/tt_um_kskyou",
+   "design_id": "tt05__tt_um_kskyou",
+   "shuttle": "tt05",
+   "author": "Kevin You",
+   "title": "Continued Fraction Calculator",
+   "replaces": null,
+   "layout_format": "gds",
+   "rtl": {
+    "repo": "https://github.com/kskyou/tt05",
+    "commit": "0d166242eee3f5d185f8d77668378cc9fe697636"
+   },
+   "counts": {
+    "latches": 0,
+    "netlist_flops": 148,
+    "netlist_flops_labelled": 148,
+    "opaque_sequential_cells": 0,
+    "registers": 15,
+    "rtl_flop_bits": 142,
+    "shadow_flops": 0,
+    "units": 0,
+    "unmapped_flops": 0
+   },
+   "rtl_bits": {
+    "mapped": 138
+   },
+   "registers_by_kind": {
+    "accumulator": 4,
+    "counter": 3,
+    "data_register": 5,
+    "flag": 2,
+    "fsm_state": 1
+   },
+   "scorer_view": {
+    "bad_units": [],
+    "chain_units": [],
+    "check_truth_problems": 0,
+    "excused_by_kind": {
+     "counter": 0,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "excused_registers": {},
+    "registers_with_flops": 15,
+    "registers_without_flops": 0,
+    "registers_without_flops_names": [],
+    "scored_by_kind": {
+     "counter": 3,
+     "lfsr_crc": 0,
+     "shift_register": 0,
+     "synchronizer": 0
+    },
+    "universe_flops": 148
+   },
+   "proof": {
+    "complete": true,
+    "counts": {
+     "proven": 148,
+     "refuted": 0,
+     "spurious_sat": 0,
+     "unchecked": 0
+    },
+    "incomplete": [],
+    "invariants": {
+     "proven": 1
+    },
+    "invariants_not_proven": [],
+    "outputs": {
+     "proven": 8
+    },
+    "outputs_not_proven": [],
+    "outputs_unspecified_in_rtl": [],
+    "rlimit_per_check": 200000000,
+    "spurious_sat": 0,
+    "summary": "complete"
+   },
+   "functional_check": {
+    "exercised": 127,
+    "flops_checked": 148,
+    "match": 148,
+    "mismatch": 0,
+    "outputs_match": 8,
+    "outputs_mismatch": 0,
+    "patterns": 4096,
+    "unchecked": 0
+   },
+   "join": {
+    "clean": true,
+    "examples": {
+     "master_mismatch": [],
+     "missing": [],
+     "unknown": []
+    },
+    "extracted_logic_instances": 1061,
+    "extracted_nets_spanning_several_netlist_nets": 0,
+    "extracted_without_netlist_instance": 0,
+    "layout_std_cell_refs_without_name": 0,
+    "master_mismatch": 0,
+    "method": "GDS property 61 on each std-cell reference = netlist instance name",
+    "netlist_logic_instances": 1061,
+    "netlist_nets_split_over_several_extracted_nets": 0,
+    "netlist_nets_without_extracted_net": 0,
+    "netlist_without_extracted_instance": 0,
+    "nets_one_to_one": 1079,
+    "non_port_net_labels": 1053,
+    "non_port_net_labels_rtl_like": 148,
+    "ports_agree": 42,
+    "ports_disagree": []
+   },
+   "anonymisation": {
+    "labels_kept": 79,
+    "labels_removed": 1053,
+    "properties_removed": 2349
+   },
+   "units": [],
+   "scored_structure_registers": 3,
+   "label_tiers": {
+    "C_clean": 3
+   },
+   "weak_structure_registers": {},
+   "per_kind": {
+    "shift_register": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "counter": {
+     "registers": 3,
+     "structures": 3,
+     "structures_matched": 3,
+     "found": 3,
+     "exact": 3,
+     "verified_found": 1,
+     "small_support": false,
+     "distinct_design_keys": 3,
+     "distinct_design_keys_found_all": 3,
+     "via_units": [],
+     "label_tiers": {
+      "C_clean": 3
+     },
+     "registers_by_tier": {
+      "C_clean": [
+       "R",
+       "temp1",
+       "watch"
+      ]
+     },
+     "found_by_tier": {
+      "C_clean": 3
+     },
+     "verified_found_by_tier": {
+      "C_clean": 1
+     }
+    },
+    "lfsr_crc": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    },
+    "synchronizer": {
+     "registers": 0,
+     "structures": 0,
+     "structures_matched": 0,
+     "found": 0,
+     "exact": 0,
+     "verified_found": 0,
+     "small_support": true,
+     "distinct_design_keys": 0,
+     "distinct_design_keys_found_all": 0,
+     "via_units": [],
+     "label_tiers": {},
+     "registers_by_tier": {},
+     "found_by_tier": {},
+     "verified_found_by_tier": {}
+    }
+   },
+   "headline": {
+    "structures": 25,
+    "verified": 1,
+    "dropped_flops": 0
+   },
+   "permutations_agree": true
+  }
+ ],
+ "rows": [
+  {
+   "design": "tt09/tt_um_pwm_top",
+   "kind": "counter",
+   "register": "PWM_Generador.DIV_FREQ.counter",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt09/tt_um_pwm_top",
+   "kind": "counter",
+   "register": "PWM_Generador.DUTY_CYCLE",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt09/tt_um_pwm_top",
+   "kind": "counter",
+   "register": "PWM_Generador.counter_PWM",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt09/tt_um_pwm_top",
+   "kind": "counter",
+   "register": "PWM_Generador.counter_debounce",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "shift_register",
+   "register": "u_cordic.x",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "shift_register",
+   "register": "u_cordic.y",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "shift_register",
+   "register": "u_cordic.z",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "counter",
+   "register": "beat",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "counter",
+   "register": "u_cordic.i",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "kind": "counter",
+   "register": "u_cordic.k",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "shift_register",
+   "register": "lfsr",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "counter",
+   "register": "oct_counter",
+   "tier": "B_narrowed",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "counter",
+   "register": "pwm_counter",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "counter",
+   "register": "saw[0]",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "counter",
+   "register": "saw[1]",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "counter",
+   "register": "state",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_toivoh_synth",
+   "kind": "synchronizer",
+   "register": "strobe_sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_td4",
+   "kind": "counter",
+   "register": "cpu.pc",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "clkdiv.counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "debcenter.delay_timer",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "debdown.delay_timer",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "debup.delay_timer",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "doubledabble.counter",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "doubledabble.shift",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "hourmod.hour",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "milimod.miliseg",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "milimod.t",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "minites.min",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "segmod.seg",
+   "tier": "A_contradicted",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "timedfsm.count",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "timedfsm.t",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "counter",
+   "register": "to7seg.count.count",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debcenter.PB_sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debcenter.PB_sync_aux",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debdown.PB_sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debdown.PB_sync_aux",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debup.PB_sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_Reloj_top",
+   "kind": "synchronizer",
+   "register": "debup.PB_sync_aux",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_content.clock_counters.c_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_content.clock_counters.h_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_content.clock_counters.m_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_content.clock_counters.s_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_sync_gen.h_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt03p5/tt_um_thorkn_vgaclock",
+   "kind": "counter",
+   "register": "vga_sync_gen.v_counter_value",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "shift_register",
+   "register": "cpu.pref.imm_reg",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "shift_register",
+   "register": "cpu.pref.pc",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "shift_register",
+   "register": "cpu.pref.sreg",
+   "tier": "A_contradicted",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "counter",
+   "register": "cpu.dec.sched.alu.state",
+   "tier": "A_contradicted",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "counter",
+   "register": "cpu.dec.sched.stage",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "counter",
+   "register": "cpu.mem_if.sbio_rx.counter",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "counter",
+   "register": "cpu.mem_if.tx_monitor.counter",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "counter",
+   "register": "cpu.pref.num_flushed",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[0]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[1]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[2]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[3]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[4]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[5]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[6]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.general_registers.regs[7]",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "lfsr_crc",
+   "register": "cpu.dec.sched.alu.registers.sp_register.regs",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_toivoh_basilisc_2816",
+   "kind": "synchronizer",
+   "register": "ui_in_reg",
+   "tier": "B_narrowed",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "shift_register",
+   "register": "lfsr",
+   "tier": "C_clean",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "frame_counter",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "hvsync_gen.hpos",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "hvsync_gen.vpos",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "noise_counter",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "note2_counter",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "ttsky25a/tt_um_sjsu_vga_music",
+   "kind": "counter",
+   "register": "note_counter",
+   "tier": "A_contradicted",
+   "found": false,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.LScore1.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.LScore2.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.LScore3.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.LScore4.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.RScore1.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.RScore2.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.RScore3.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.s.RScore4.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.vg.ColCounter.Q",
+   "tier": "A_contradicted",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.vg.HSCounter.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.vg.RowCounter.Q",
+   "tier": "A_contradicted",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "counter",
+   "register": "DUT.vg.VSCounter.Q",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync1.async_1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync1.sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync2.async_1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync2.sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync3.async_1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync3.sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync4.async_1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync4.sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync5.async_1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt07/tt_um_vzayakov_top",
+   "kind": "synchronizer",
+   "register": "DUT.sync5.sync",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  },
+  {
+   "design": "tt05/tt_um_kskyou",
+   "kind": "counter",
+   "register": "R",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_kskyou",
+   "kind": "counter",
+   "register": "temp1",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": false
+  },
+  {
+   "design": "tt05/tt_um_kskyou",
+   "kind": "counter",
+   "register": "watch",
+   "tier": "C_clean",
+   "found": true,
+   "exact": null,
+   "verified_found": true
+  }
+ ]
+}

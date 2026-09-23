@@ -1,0 +1,6448 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:tt05/tt_um_toivoh_synth",
+ "registers": [
+  {
+   "name": "cfg[0]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_149960_87040",
+     "rtl_bit": "cfg[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_152260_84320",
+     "rtl_bit": "cfg[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_144900_95200",
+     "rtl_bit": "cfg[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_139380_81600",
+     "rtl_bit": "cfg[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_132020_81600",
+     "rtl_bit": "cfg[0][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_121900_81600",
+     "rtl_bit": "cfg[0][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_120520_92480",
+     "rtl_bit": "cfg[0][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_132940_92480",
+     "rtl_bit": "cfg[0][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_95220_184960",
+     "rtl_bit": "cfg[0][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_85560_187680",
+     "rtl_bit": "cfg[0][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_84180_184960",
+     "rtl_bit": "cfg[0][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_93380_155040",
+     "rtl_bit": "cfg[0][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_97520_152320",
+     "rtl_bit": "cfg[0][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[0][13]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 14,
+     "flop": null,
+     "rtl_bit": "cfg[0][14]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 15,
+     "flop": null,
+     "rtl_bit": "cfg[0][15]",
+     "note": "not a flop in the word-level RTL"
+    }
+   ]
+  },
+  {
+   "name": "cfg[1]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_154560_89760",
+     "rtl_bit": "cfg[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_150880_78880",
+     "rtl_bit": "cfg[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_143980_92480",
+     "rtl_bit": "cfg[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_146740_81600",
+     "rtl_bit": "cfg[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_130180_84320",
+     "rtl_bit": "cfg[1][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_122360_76160",
+     "rtl_bit": "cfg[1][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_122360_95200",
+     "rtl_bit": "cfg[1][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_132020_95200",
+     "rtl_bit": "cfg[1][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_96140_198560",
+     "rtl_bit": "cfg[1][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_85560_198560",
+     "rtl_bit": "cfg[1][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_85560_195840",
+     "rtl_bit": "cfg[1][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_93840_195840",
+     "rtl_bit": "cfg[1][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_97980_149600",
+     "rtl_bit": "cfg[1][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[1][13]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 14,
+     "flop": null,
+     "rtl_bit": "cfg[1][14]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 15,
+     "flop": null,
+     "rtl_bit": "cfg[1][15]",
+     "note": "not a flop in the word-level RTL"
+    }
+   ]
+  },
+  {
+   "name": "cfg[2]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_156860_100640",
+     "rtl_bit": "cfg[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_149500_100640",
+     "rtl_bit": "cfg[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_148120_103360",
+     "rtl_bit": "cfg[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_144900_106080",
+     "rtl_bit": "cfg[2][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_134320_103360",
+     "rtl_bit": "cfg[2][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_126500_106080",
+     "rtl_bit": "cfg[2][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_119140_106080",
+     "rtl_bit": "cfg[2][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_133860_106080",
+     "rtl_bit": "cfg[2][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_98440_190400",
+     "rtl_bit": "cfg[2][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_106260_201280",
+     "rtl_bit": "cfg[2][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_109020_190400",
+     "rtl_bit": "cfg[2][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_106260_195840",
+     "rtl_bit": "cfg[2][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_109020_187680",
+     "rtl_bit": "cfg[2][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[2][13]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 14,
+     "flop": null,
+     "rtl_bit": "cfg[2][14]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 15,
+     "flop": null,
+     "rtl_bit": "cfg[2][15]",
+     "note": "not a flop in the word-level RTL"
+    }
+   ]
+  },
+  {
+   "name": "cfg[3]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_146280_125120",
+     "rtl_bit": "cfg[3][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_146280_116960",
+     "rtl_bit": "cfg[3][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_141220_119680",
+     "rtl_bit": "cfg[3][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_138460_114240",
+     "rtl_bit": "cfg[3][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_131560_116960",
+     "rtl_bit": "cfg[3][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_116840_119680",
+     "rtl_bit": "cfg[3][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_120980_133280",
+     "rtl_bit": "cfg[3][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_123740_114240",
+     "rtl_bit": "cfg[3][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_94300_206720",
+     "rtl_bit": "cfg[3][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_85560_209440",
+     "rtl_bit": "cfg[3][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_87860_217600",
+     "rtl_bit": "cfg[3][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_93380_214880",
+     "rtl_bit": "cfg[3][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_108100_204000",
+     "rtl_bit": "cfg[3][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[3][13]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 14,
+     "flop": null,
+     "rtl_bit": "cfg[3][14]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 15,
+     "flop": null,
+     "rtl_bit": "cfg[3][15]",
+     "note": "not a flop in the word-level RTL"
+    }
+   ]
+  },
+  {
+   "name": "cfg[4]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_156860_133280",
+     "rtl_bit": "cfg[4][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_156860_116960",
+     "rtl_bit": "cfg[4][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_153180_122400",
+     "rtl_bit": "cfg[4][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_152260_111520",
+     "rtl_bit": "cfg[4][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_155940_106080",
+     "rtl_bit": "cfg[4][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_116840_125120",
+     "rtl_bit": "cfg[4][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_115460_130560",
+     "rtl_bit": "cfg[4][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_119140_116960",
+     "rtl_bit": "cfg[4][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_98900_209440",
+     "rtl_bit": "cfg[4][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_108100_214880",
+     "rtl_bit": "cfg[4][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_108100_212160",
+     "rtl_bit": "cfg[4][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_100740_214880",
+     "rtl_bit": "cfg[4][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_115460_212160",
+     "rtl_bit": "cfg[4][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[4][13]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 14,
+     "flop": null,
+     "rtl_bit": "cfg[4][14]",
+     "note": "not a flop in the word-level RTL"
+    },
+    {
+     "index": 15,
+     "flop": null,
+     "rtl_bit": "cfg[4][15]",
+     "note": "not a flop in the word-level RTL"
+    }
+   ]
+  },
+  {
+   "name": "cfg[5]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_155020_155040",
+     "rtl_bit": "cfg[5][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_156860_171360",
+     "rtl_bit": "cfg[5][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_152260_160480",
+     "rtl_bit": "cfg[5][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_149960_146880",
+     "rtl_bit": "cfg[5][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_156860_144160",
+     "rtl_bit": "cfg[5][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_155020_138720",
+     "rtl_bit": "cfg[5][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_147660_138720",
+     "rtl_bit": "cfg[5][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_152260_149600",
+     "rtl_bit": "cfg[5][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_103960_144160",
+     "rtl_bit": "cfg[5][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_106260_174080",
+     "rtl_bit": "cfg[5][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_119140_171360",
+     "rtl_bit": "cfg[5][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_120980_157760",
+     "rtl_bit": "cfg[5][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_120520_152320",
+     "rtl_bit": "cfg[5][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_126500_171360",
+     "rtl_bit": "cfg[5][13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_120060_146880",
+     "rtl_bit": "cfg[5][14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_123740_182240",
+     "rtl_bit": "cfg[5][15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "cfg[6]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_144440_168640",
+     "rtl_bit": "cfg[6][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_156860_182240",
+     "rtl_bit": "cfg[6][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_149960_174080",
+     "rtl_bit": "cfg[6][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_149960_176800",
+     "rtl_bit": "cfg[6][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_156860_193120",
+     "rtl_bit": "cfg[6][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_155020_187680",
+     "rtl_bit": "cfg[6][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_144900_182240",
+     "rtl_bit": "cfg[6][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_145360_179520",
+     "rtl_bit": "cfg[6][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_106260_152320",
+     "rtl_bit": "cfg[6][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_106260_179520",
+     "rtl_bit": "cfg[6][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_113620_179520",
+     "rtl_bit": "cfg[6][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_112240_163200",
+     "rtl_bit": "cfg[6][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_119600_163200",
+     "rtl_bit": "cfg[6][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_124200_174080",
+     "rtl_bit": "cfg[6][13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_123280_160480",
+     "rtl_bit": "cfg[6][14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_132020_179520",
+     "rtl_bit": "cfg[6][15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "cfg[7]",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_144900_160480",
+     "rtl_bit": "cfg[7][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_144900_157760",
+     "rtl_bit": "cfg[7][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_144900_171360",
+     "rtl_bit": "cfg[7][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_138460_163200",
+     "rtl_bit": "cfg[7][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_133400_157760",
+     "rtl_bit": "cfg[7][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_132020_168640",
+     "rtl_bit": "cfg[7][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_130640_160480",
+     "rtl_bit": "cfg[7][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_134780_174080",
+     "rtl_bit": "cfg[7][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_84640_174080",
+     "rtl_bit": "cfg[7][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_84180_171360",
+     "rtl_bit": "cfg[7][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_82340_176800",
+     "rtl_bit": "cfg[7][10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_93380_165920",
+     "rtl_bit": "cfg[7][11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_104420_165920",
+     "rtl_bit": "cfg[7][12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": null,
+     "rtl_bit": "cfg[7][13]",
+     "note": "unused (removed)"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_98440_163200",
+     "rtl_bit": "cfg[7][14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_98440_168640",
+     "rtl_bit": "cfg[7][15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "cfg_in_prev_strobe",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_117300_217600",
+     "rtl_bit": "cfg_in_prev_strobe",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "do_mod[0]",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_121440_68000",
+     "rtl_bit": "do_mod[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "do_mod[1]",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_121440_62560",
+     "rtl_bit": "do_mod[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "do_mod[2]",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_116840_108800",
+     "rtl_bit": "do_mod[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "lfsr",
+   "width": 15,
+   "kind": "shift_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "lanes": 1,
+    "depth": 15,
+    "direction": "toward MSB",
+    "serial_in": [
+     "(lfsr[0] ^ lfsr[14])"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "D[k] = Q[k-1] on 14 of 14 shiftable bits",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_69000_78880",
+     "rtl_bit": "lfsr[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_68540_84320",
+     "rtl_bit": "lfsr[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_62560_87040",
+     "rtl_bit": "lfsr[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_59800_89760",
+     "rtl_bit": "lfsr[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_52900_95200",
+     "rtl_bit": "lfsr[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_45540_95200",
+     "rtl_bit": "lfsr[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_50140_84320",
+     "rtl_bit": "lfsr[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_54740_78880",
+     "rtl_bit": "lfsr[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_55200_73440",
+     "rtl_bit": "lfsr[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_69000_76160",
+     "rtl_bit": "lfsr[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_61640_76160",
+     "rtl_bit": "lfsr[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_58420_65280",
+     "rtl_bit": "lfsr[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_58880_62560",
+     "rtl_bit": "lfsr[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_67620_62560",
+     "rtl_bit": "lfsr[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_68540_59840",
+     "rtl_bit": "lfsr[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "mod_counter_state[0]",
+   "width": 7,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_153180_51680",
+     "rtl_bit": "mod_counter_state[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_154100_68000",
+     "rtl_bit": "mod_counter_state[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_153180_40800",
+     "rtl_bit": "mod_counter_state[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_149040_35360",
+     "rtl_bit": "mod_counter_state[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_131100_35360",
+     "rtl_bit": "mod_counter_state[0][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_132480_51680",
+     "rtl_bit": "mod_counter_state[0][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_132020_70720",
+     "rtl_bit": "mod_counter_state[0][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "mod_counter_state[1]",
+   "width": 7,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_140300_54400",
+     "rtl_bit": "mod_counter_state[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_140300_65280",
+     "rtl_bit": "mod_counter_state[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_139840_38080",
+     "rtl_bit": "mod_counter_state[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_136160_40800",
+     "rtl_bit": "mod_counter_state[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_122360_40800",
+     "rtl_bit": "mod_counter_state[1][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_122360_51680",
+     "rtl_bit": "mod_counter_state[1][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_129720_68000",
+     "rtl_bit": "mod_counter_state[1][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "mod_counter_state[2]",
+   "width": 7,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_144900_51680",
+     "rtl_bit": "mod_counter_state[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_144900_68000",
+     "rtl_bit": "mod_counter_state[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_142600_32640",
+     "rtl_bit": "mod_counter_state[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_137080_29920",
+     "rtl_bit": "mod_counter_state[2][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_123740_35360",
+     "rtl_bit": "mod_counter_state[2][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_123280_48960",
+     "rtl_bit": "mod_counter_state[2][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_132480_65280",
+     "rtl_bit": "mod_counter_state[2][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "oct_counter",
+   "width": 17,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_69460_92480",
+     "rtl_bit": "oct_counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_84640_155040",
+     "rtl_bit": "oct_counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_77280_155040",
+     "rtl_bit": "oct_counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_72680_144160",
+     "rtl_bit": "oct_counter[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_80500_141440",
+     "rtl_bit": "oct_counter[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_69920_114240",
+     "rtl_bit": "oct_counter[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_65320_103360",
+     "rtl_bit": "oct_counter[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_72680_103360",
+     "rtl_bit": "oct_counter[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_60260_97920",
+     "rtl_bit": "oct_counter[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_72220_100640",
+     "rtl_bit": "oct_counter[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_84640_106080",
+     "rtl_bit": "oct_counter[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_81420_108800",
+     "rtl_bit": "oct_counter[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_84180_92480",
+     "rtl_bit": "oct_counter[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_76820_89760",
+     "rtl_bit": "oct_counter[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_2_87400_97920",
+     "rtl_bit": "oct_counter[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_85560_89760",
+     "rtl_bit": "oct_counter[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": null,
+     "rtl_bit": "oct_counter[16]",
+     "note": "unused (removed)"
+    }
+   ]
+  },
+  {
+   "name": "pwm_counter",
+   "width": 5,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "direction": "down",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_68540_214880",
+     "rtl_bit": "pwm_counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_75900_214880",
+     "rtl_bit": "pwm_counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_80500_204000",
+     "rtl_bit": "pwm_counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_78660_193120",
+     "rtl_bit": "pwm_counter[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_81420_212160",
+     "rtl_bit": "pwm_counter[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "saw[0]",
+   "width": 2,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_80040_73440",
+     "rtl_bit": "saw[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_73140_68000",
+     "rtl_bit": "saw[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "saw[1]",
+   "width": 2,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_83720_70720",
+     "rtl_bit": "saw[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_80500_68000",
+     "rtl_bit": "saw[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "saw_counter_state[0]",
+   "width": 10,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_119140_29920",
+     "rtl_bit": "saw_counter_state[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_109940_38080",
+     "rtl_bit": "saw_counter_state[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_106260_27200",
+     "rtl_bit": "saw_counter_state[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_88320_21760",
+     "rtl_bit": "saw_counter_state[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_97980_38080",
+     "rtl_bit": "saw_counter_state[0][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_96140_24480",
+     "rtl_bit": "saw_counter_state[0][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_80500_21760",
+     "rtl_bit": "saw_counter_state[0][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_85100_57120",
+     "rtl_bit": "saw_counter_state[0][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_75440_57120",
+     "rtl_bit": "saw_counter_state[0][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_71300_29920",
+     "rtl_bit": "saw_counter_state[0][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "saw_counter_state[1]",
+   "width": 10,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_117300_27200",
+     "rtl_bit": "saw_counter_state[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_109940_43520",
+     "rtl_bit": "saw_counter_state[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_105340_24480",
+     "rtl_bit": "saw_counter_state[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_95680_21760",
+     "rtl_bit": "saw_counter_state[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_100740_35360",
+     "rtl_bit": "saw_counter_state[1][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_97520_27200",
+     "rtl_bit": "saw_counter_state[1][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_79580_24480",
+     "rtl_bit": "saw_counter_state[1][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_85560_54400",
+     "rtl_bit": "saw_counter_state[1][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_75900_51680",
+     "rtl_bit": "saw_counter_state[1][8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_72680_32640",
+     "rtl_bit": "saw_counter_state[1][9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "state",
+   "width": 5,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_4_108100_111520",
+     "rtl_bit": "state[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_2_109020_108800",
+     "rtl_bit": "state[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_97520_111520",
+     "rtl_bit": "state[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_97060_108800",
+     "rtl_bit": "state[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_89240_108800",
+     "rtl_bit": "state[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "strobe_sync",
+   "width": 2,
+   "kind": "synchronizer",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {
+    "stages": 2,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_109480_217600",
+     "rtl_bit": "strobe_sync[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_98440_217600",
+     "rtl_bit": "strobe_sync[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sweep_counter_state[0]",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_113620_70720",
+     "rtl_bit": "sweep_counter_state[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_111320_57120",
+     "rtl_bit": "sweep_counter_state[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_119140_57120",
+     "rtl_bit": "sweep_counter_state[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_120980_70720",
+     "rtl_bit": "sweep_counter_state[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sweep_counter_state[1]",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_106260_70720",
+     "rtl_bit": "sweep_counter_state[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_106260_54400",
+     "rtl_bit": "sweep_counter_state[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_103960_57120",
+     "rtl_bit": "sweep_counter_state[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_101660_68000",
+     "rtl_bit": "sweep_counter_state[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sweep_counter_state[2]",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_103040_95200",
+     "rtl_bit": "sweep_counter_state[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_95680_57120",
+     "rtl_bit": "sweep_counter_state[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_96600_54400",
+     "rtl_bit": "sweep_counter_state[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_94300_68000",
+     "rtl_bit": "sweep_counter_state[2][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sweep_counter_state[3]",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_95220_95200",
+     "rtl_bit": "sweep_counter_state[3][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_87860_81600",
+     "rtl_bit": "sweep_counter_state[3][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_108560_84320",
+     "rtl_bit": "sweep_counter_state[3][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_93380_78880",
+     "rtl_bit": "sweep_counter_state[3][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "sweep_counter_state[4]",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_95220_97920",
+     "rtl_bit": "sweep_counter_state[4][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_93840_84320",
+     "rtl_bit": "sweep_counter_state[4][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_101200_84320",
+     "rtl_bit": "sweep_counter_state[4][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_93380_73440",
+     "rtl_bit": "sweep_counter_state[4][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "v",
+   "width": 20,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_39100_179520",
+     "rtl_bit": "v[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_41860_171360",
+     "rtl_bit": "v[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_56580_165920",
+     "rtl_bit": "v[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_63020_157760",
+     "rtl_bit": "v[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_43700_160480",
+     "rtl_bit": "v[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_46460_157760",
+     "rtl_bit": "v[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_54740_152320",
+     "rtl_bit": "v[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_46920_155040",
+     "rtl_bit": "v[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_47840_187680",
+     "rtl_bit": "v[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_54740_179520",
+     "rtl_bit": "v[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_67620_165920",
+     "rtl_bit": "v[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_51060_160480",
+     "rtl_bit": "v[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_54280_193120",
+     "rtl_bit": "v[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_46460_201280",
+     "rtl_bit": "v[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_46920_206720",
+     "rtl_bit": "v[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_57500_195840",
+     "rtl_bit": "v[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_2_63020_212160",
+     "rtl_bit": "v[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_69920_204000",
+     "rtl_bit": "v[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_1_76820_182240",
+     "rtl_bit": "v[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_1_75440_171360",
+     "rtl_bit": "v[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "y",
+   "width": 20,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_toivoh_synth",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_46000_182240",
+     "rtl_bit": "y[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_45080_174080",
+     "rtl_bit": "y[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_57040_163200",
+     "rtl_bit": "y[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_62100_152320",
+     "rtl_bit": "y[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_45080_146880",
+     "rtl_bit": "y[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_44620_144160",
+     "rtl_bit": "y[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_54280_149600",
+     "rtl_bit": "y[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_44620_141440",
+     "rtl_bit": "y[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_46920_190400",
+     "rtl_bit": "y[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_54280_182240",
+     "rtl_bit": "y[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_64860_163200",
+     "rtl_bit": "y[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_49680_171360",
+     "rtl_bit": "y[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_54740_217600",
+     "rtl_bit": "y[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_46000_212160",
+     "rtl_bit": "y[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_47380_214880",
+     "rtl_bit": "y[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_64860_195840",
+     "rtl_bit": "y[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfxtp_1_64400_217600",
+     "rtl_bit": "y[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfxtp_2_73140_198560",
+     "rtl_bit": "y[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfxtp_1_72680_184960",
+     "rtl_bit": "y[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfxtp_1_73140_176800",
+     "rtl_bit": "y[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfxtp_1_100740_214880": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_100740_35360": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_101200_84320": {
+   "registers": [
+    "sweep_counter_state[4]"
+   ],
+   "primary": "sweep_counter_state[4]"
+  },
+  "dfxtp_1_101660_68000": {
+   "registers": [
+    "sweep_counter_state[1]"
+   ],
+   "primary": "sweep_counter_state[1]"
+  },
+  "dfxtp_1_103040_95200": {
+   "registers": [
+    "sweep_counter_state[2]"
+   ],
+   "primary": "sweep_counter_state[2]"
+  },
+  "dfxtp_1_103960_144160": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_103960_57120": {
+   "registers": [
+    "sweep_counter_state[1]"
+   ],
+   "primary": "sweep_counter_state[1]"
+  },
+  "dfxtp_1_104420_165920": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_105340_24480": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_106260_152320": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_106260_174080": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_106260_179520": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_106260_195840": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_106260_201280": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_106260_27200": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_106260_54400": {
+   "registers": [
+    "sweep_counter_state[1]"
+   ],
+   "primary": "sweep_counter_state[1]"
+  },
+  "dfxtp_1_106260_70720": {
+   "registers": [
+    "sweep_counter_state[1]"
+   ],
+   "primary": "sweep_counter_state[1]"
+  },
+  "dfxtp_1_108100_204000": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_108100_212160": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_108100_214880": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_108560_84320": {
+   "registers": [
+    "sweep_counter_state[3]"
+   ],
+   "primary": "sweep_counter_state[3]"
+  },
+  "dfxtp_1_109020_187680": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_109020_190400": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_109480_217600": {
+   "registers": [
+    "strobe_sync"
+   ],
+   "primary": "strobe_sync"
+  },
+  "dfxtp_1_109940_38080": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_109940_43520": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_111320_57120": {
+   "registers": [
+    "sweep_counter_state[0]"
+   ],
+   "primary": "sweep_counter_state[0]"
+  },
+  "dfxtp_1_112240_163200": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_113620_179520": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_113620_70720": {
+   "registers": [
+    "sweep_counter_state[0]"
+   ],
+   "primary": "sweep_counter_state[0]"
+  },
+  "dfxtp_1_115460_130560": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_115460_212160": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_116840_108800": {
+   "registers": [
+    "do_mod[2]"
+   ],
+   "primary": "do_mod[2]"
+  },
+  "dfxtp_1_116840_119680": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_116840_125120": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_117300_217600": {
+   "registers": [
+    "cfg_in_prev_strobe"
+   ],
+   "primary": "cfg_in_prev_strobe"
+  },
+  "dfxtp_1_117300_27200": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_119140_106080": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_119140_116960": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_119140_171360": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_119140_29920": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_119140_57120": {
+   "registers": [
+    "sweep_counter_state[0]"
+   ],
+   "primary": "sweep_counter_state[0]"
+  },
+  "dfxtp_1_119600_163200": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_120060_146880": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_120520_152320": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_120520_92480": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_120980_133280": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_120980_157760": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_120980_70720": {
+   "registers": [
+    "sweep_counter_state[0]"
+   ],
+   "primary": "sweep_counter_state[0]"
+  },
+  "dfxtp_1_121440_62560": {
+   "registers": [
+    "do_mod[1]"
+   ],
+   "primary": "do_mod[1]"
+  },
+  "dfxtp_1_121440_68000": {
+   "registers": [
+    "do_mod[0]"
+   ],
+   "primary": "do_mod[0]"
+  },
+  "dfxtp_1_121900_81600": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_122360_40800": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_122360_51680": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_122360_76160": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_122360_95200": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_123280_160480": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_123280_48960": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_123740_114240": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_123740_182240": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_123740_35360": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_124200_174080": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_126500_106080": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_126500_171360": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_129720_68000": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_130180_84320": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_130640_160480": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_131100_35360": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_131560_116960": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_132020_168640": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_132020_179520": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_132020_70720": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_132020_81600": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_132020_95200": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_132480_51680": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_132480_65280": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_132940_92480": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_133400_157760": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_133860_106080": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_134320_103360": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_134780_174080": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_136160_40800": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_137080_29920": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_138460_114240": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_138460_163200": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_139380_81600": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_139840_38080": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_140300_54400": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_140300_65280": {
+   "registers": [
+    "mod_counter_state[1]"
+   ],
+   "primary": "mod_counter_state[1]"
+  },
+  "dfxtp_1_141220_119680": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_142600_32640": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_143980_92480": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_144440_168640": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_144900_106080": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_144900_157760": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_144900_160480": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_144900_171360": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_144900_182240": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_144900_51680": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_144900_68000": {
+   "registers": [
+    "mod_counter_state[2]"
+   ],
+   "primary": "mod_counter_state[2]"
+  },
+  "dfxtp_1_144900_95200": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_145360_179520": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_146280_116960": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_146280_125120": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_146740_81600": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_147660_138720": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_148120_103360": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_149040_35360": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_149500_100640": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_149960_146880": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_149960_174080": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_149960_176800": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_149960_87040": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_150880_78880": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_152260_111520": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_152260_149600": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_152260_160480": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_152260_84320": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_153180_122400": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_153180_40800": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_153180_51680": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_154100_68000": {
+   "registers": [
+    "mod_counter_state[0]"
+   ],
+   "primary": "mod_counter_state[0]"
+  },
+  "dfxtp_1_154560_89760": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_155020_138720": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_155020_155040": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_155020_187680": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_155940_106080": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_156860_100640": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_156860_116960": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_156860_133280": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_1_156860_144160": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_156860_171360": {
+   "registers": [
+    "cfg[5]"
+   ],
+   "primary": "cfg[5]"
+  },
+  "dfxtp_1_156860_182240": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_156860_193120": {
+   "registers": [
+    "cfg[6]"
+   ],
+   "primary": "cfg[6]"
+  },
+  "dfxtp_1_39100_179520": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_41860_171360": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_43700_160480": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_44620_141440": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_44620_144160": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_45080_146880": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_45080_174080": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_45540_95200": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_46000_182240": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_46000_212160": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_46460_157760": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_46460_201280": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_46920_155040": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_46920_190400": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_46920_206720": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_47380_214880": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_47840_187680": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_49680_171360": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_50140_84320": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_51060_160480": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_52900_95200": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_54280_149600": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_54280_182240": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_54280_193120": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_54740_152320": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_54740_179520": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_54740_217600": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_54740_78880": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_55200_73440": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_56580_165920": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_57040_163200": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_57500_195840": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_58420_65280": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_58880_62560": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_59800_89760": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_60260_97920": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_61640_76160": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_62100_152320": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_62560_87040": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_63020_157760": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_64400_217600": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_64860_163200": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_64860_195840": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_65320_103360": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_67620_165920": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_67620_62560": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_68540_214880": {
+   "registers": [
+    "pwm_counter"
+   ],
+   "primary": "pwm_counter"
+  },
+  "dfxtp_1_68540_59840": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_68540_84320": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_69000_76160": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_69000_78880": {
+   "registers": [
+    "lfsr"
+   ],
+   "primary": "lfsr"
+  },
+  "dfxtp_1_71300_29920": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_72220_100640": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_72680_103360": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_72680_144160": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_72680_184960": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_72680_32640": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_73140_176800": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_1_73140_68000": {
+   "registers": [
+    "saw[0]"
+   ],
+   "primary": "saw[0]"
+  },
+  "dfxtp_1_75440_171360": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_75440_57120": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_75900_214880": {
+   "registers": [
+    "pwm_counter"
+   ],
+   "primary": "pwm_counter"
+  },
+  "dfxtp_1_75900_51680": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_76820_182240": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_1_77280_155040": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_78660_193120": {
+   "registers": [
+    "pwm_counter"
+   ],
+   "primary": "pwm_counter"
+  },
+  "dfxtp_1_79580_24480": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_80040_73440": {
+   "registers": [
+    "saw[0]"
+   ],
+   "primary": "saw[0]"
+  },
+  "dfxtp_1_80500_204000": {
+   "registers": [
+    "pwm_counter"
+   ],
+   "primary": "pwm_counter"
+  },
+  "dfxtp_1_80500_21760": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_80500_68000": {
+   "registers": [
+    "saw[1]"
+   ],
+   "primary": "saw[1]"
+  },
+  "dfxtp_1_81420_212160": {
+   "registers": [
+    "pwm_counter"
+   ],
+   "primary": "pwm_counter"
+  },
+  "dfxtp_1_82340_176800": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_83720_70720": {
+   "registers": [
+    "saw[1]"
+   ],
+   "primary": "saw[1]"
+  },
+  "dfxtp_1_84180_171360": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_84180_184960": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_84640_174080": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_85100_57120": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_85560_187680": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_85560_195840": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_85560_198560": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_85560_209440": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_85560_54400": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_85560_89760": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_1_87860_217600": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_87860_81600": {
+   "registers": [
+    "sweep_counter_state[3]"
+   ],
+   "primary": "sweep_counter_state[3]"
+  },
+  "dfxtp_1_88320_21760": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_93380_155040": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_93380_165920": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_93380_214880": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_93380_73440": {
+   "registers": [
+    "sweep_counter_state[4]"
+   ],
+   "primary": "sweep_counter_state[4]"
+  },
+  "dfxtp_1_93380_78880": {
+   "registers": [
+    "sweep_counter_state[3]"
+   ],
+   "primary": "sweep_counter_state[3]"
+  },
+  "dfxtp_1_93840_195840": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_93840_84320": {
+   "registers": [
+    "sweep_counter_state[4]"
+   ],
+   "primary": "sweep_counter_state[4]"
+  },
+  "dfxtp_1_94300_206720": {
+   "registers": [
+    "cfg[3]"
+   ],
+   "primary": "cfg[3]"
+  },
+  "dfxtp_1_94300_68000": {
+   "registers": [
+    "sweep_counter_state[2]"
+   ],
+   "primary": "sweep_counter_state[2]"
+  },
+  "dfxtp_1_95220_184960": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_95220_95200": {
+   "registers": [
+    "sweep_counter_state[3]"
+   ],
+   "primary": "sweep_counter_state[3]"
+  },
+  "dfxtp_1_95220_97920": {
+   "registers": [
+    "sweep_counter_state[4]"
+   ],
+   "primary": "sweep_counter_state[4]"
+  },
+  "dfxtp_1_95680_21760": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_95680_57120": {
+   "registers": [
+    "sweep_counter_state[2]"
+   ],
+   "primary": "sweep_counter_state[2]"
+  },
+  "dfxtp_1_96140_198560": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_96140_24480": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_96600_54400": {
+   "registers": [
+    "sweep_counter_state[2]"
+   ],
+   "primary": "sweep_counter_state[2]"
+  },
+  "dfxtp_1_97520_152320": {
+   "registers": [
+    "cfg[0]"
+   ],
+   "primary": "cfg[0]"
+  },
+  "dfxtp_1_97520_27200": {
+   "registers": [
+    "saw_counter_state[1]"
+   ],
+   "primary": "saw_counter_state[1]"
+  },
+  "dfxtp_1_97980_149600": {
+   "registers": [
+    "cfg[1]"
+   ],
+   "primary": "cfg[1]"
+  },
+  "dfxtp_1_97980_38080": {
+   "registers": [
+    "saw_counter_state[0]"
+   ],
+   "primary": "saw_counter_state[0]"
+  },
+  "dfxtp_1_98440_163200": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_98440_168640": {
+   "registers": [
+    "cfg[7]"
+   ],
+   "primary": "cfg[7]"
+  },
+  "dfxtp_1_98440_190400": {
+   "registers": [
+    "cfg[2]"
+   ],
+   "primary": "cfg[2]"
+  },
+  "dfxtp_1_98440_217600": {
+   "registers": [
+    "strobe_sync"
+   ],
+   "primary": "strobe_sync"
+  },
+  "dfxtp_1_98900_209440": {
+   "registers": [
+    "cfg[4]"
+   ],
+   "primary": "cfg[4]"
+  },
+  "dfxtp_2_109020_108800": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_63020_212160": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_2_69460_92480": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_69920_114240": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_69920_204000": {
+   "registers": [
+    "v"
+   ],
+   "primary": "v"
+  },
+  "dfxtp_2_73140_198560": {
+   "registers": [
+    "y"
+   ],
+   "primary": "y"
+  },
+  "dfxtp_2_76820_89760": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_80500_141440": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_81420_108800": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_84180_92480": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_84640_106080": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_84640_155040": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_87400_97920": {
+   "registers": [
+    "oct_counter"
+   ],
+   "primary": "oct_counter"
+  },
+  "dfxtp_2_89240_108800": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_97060_108800": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_97520_111520": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_4_108100_111520": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\mod_counter.$add$tt_um_toivoh_synth.v:19$239",
+   "type": "$add",
+   "module": "mod_counter",
+   "src": "tt_um_toivoh_synth.v:19",
+   "widths": {
+    "A": 7,
+    "B": 7,
+    "Y": 7
+   },
+   "signed": false,
+   "feeds": [
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$lt$tt_um_toivoh_synth.v:236$292",
+   "type": "$lt",
+   "module": "mod_counter",
+   "src": "tt_um_toivoh_synth.v:236",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "do_mod[0]",
+    "do_mod[1]",
+    "do_mod[2]",
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\mod_counter.$ternary$tt_um_toivoh_synth.v:17$237",
+   "type": "$mux",
+   "module": "mod_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 7,
+    "B": 7,
+    "S": 1,
+    "Y": 7
+   },
+   "signed": false,
+   "select": "mod_trigger",
+   "feeds": [
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$483",
+   "type": "$pmux",
+   "module": "mod_counter",
+   "src": "tt_um_toivoh_synth.v:262",
+   "widths": {
+    "A": 7,
+    "B": 21,
+    "S": 3,
+    "Y": 7
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "do_mod[0]",
+    "do_mod[1]",
+    "do_mod[2]",
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\mod_counter.$sub$tt_um_toivoh_synth.v:17$238",
+   "type": "$sub",
+   "module": "mod_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 7,
+    "B": 7,
+    "Y": 7
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 64
+   },
+   "feeds": [
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\saw_counter.$add$tt_um_toivoh_synth.v:19$245",
+   "type": "$add",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:19",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "Y": 10
+   },
+   "signed": false,
+   "feeds": [
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\saw_counter.$ternary$tt_um_toivoh_synth.v:17$243",
+   "type": "$mux",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 10,
+    "B": 10,
+    "S": 1,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "saw_trigger",
+   "feeds": [
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$487",
+   "type": "$pmux",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:213",
+   "widths": {
+    "A": 10,
+    "B": 20,
+    "S": 2,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "saw[0]",
+    "saw[1]",
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$490",
+   "type": "$pmux",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:210",
+   "widths": {
+    "A": 10,
+    "B": 20,
+    "S": 2,
+    "Y": 10
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$shiftx$tt_um_toivoh_synth.v:197$287",
+   "type": "$shiftx",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:197",
+   "widths": {
+    "A": 16,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "saw[0]",
+    "saw[1]",
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\saw_counter.$sub$tt_um_toivoh_synth.v:17$244",
+   "type": "$sub",
+   "module": "saw_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 10,
+    "B": 3,
+    "Y": 10
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\sweep_counter.$add$tt_um_toivoh_synth.v:19$233",
+   "type": "$add",
+   "module": "sweep_counter",
+   "src": "tt_um_toivoh_synth.v:19",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 4
+   },
+   "signed": false,
+   "feeds": [
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\sweep_counter.$ternary$tt_um_toivoh_synth.v:17$231",
+   "type": "$mux",
+   "module": "sweep_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "sweep_trigger",
+   "feeds": [
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$476",
+   "type": "$pmux",
+   "module": "sweep_counter",
+   "src": "tt_um_toivoh_synth.v:316",
+   "widths": {
+    "A": 4,
+    "B": 20,
+    "S": 5,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "5 selects",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\sweep_counter.$sub$tt_um_toivoh_synth.v:17$232",
+   "type": "$sub",
+   "module": "sweep_counter",
+   "src": "tt_um_toivoh_synth.v:17",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:158$279",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:158",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "lfsr",
+    "oct_counter",
+    "pwm_counter",
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:164$280",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:164",
+   "widths": {
+    "A": 17,
+    "B": 1,
+    "Y": 17
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "oct_counter",
+    "saw[0]",
+    "saw[1]",
+    "saw_counter_state[0]",
+    "saw_counter_state[1]",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:204$290",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:204",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "saw[0]",
+    "saw[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:338$297",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:338",
+   "widths": {
+    "A": 13,
+    "B": 13,
+    "Y": 13
+   },
+   "signed": false,
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:432$326",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$add$tt_um_toivoh_synth.v:442$330",
+   "type": "$add",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:442",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "Y": 20
+   },
+   "signed": true,
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$352",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 1,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 1
+   },
+   "feeds": [
+    "cfg[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$354",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 2,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 2
+   },
+   "feeds": [
+    "cfg[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$356",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 2,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 3
+   },
+   "feeds": [
+    "cfg[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$358",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 4
+   },
+   "feeds": [
+    "cfg[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$360",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 5
+   },
+   "feeds": [
+    "cfg[5]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$362",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 6
+   },
+   "feeds": [
+    "cfg[6]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:101$364",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:101",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 7
+   },
+   "feeds": [
+    "cfg[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:204$288",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:204",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "saw[0]",
+    "saw[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:272$375",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:272",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 1
+   },
+   "feeds": [
+    "do_mod[1]",
+    "mod_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:272$377",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:272",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 2
+   },
+   "feeds": [
+    "do_mod[2]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:325$382",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:325",
+   "widths": {
+    "A": 1,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 1
+   },
+   "feeds": [
+    "sweep_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:325$384",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:325",
+   "widths": {
+    "A": 2,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 2
+   },
+   "feeds": [
+    "sweep_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:325$386",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:325",
+   "widths": {
+    "A": 2,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 3
+   },
+   "feeds": [
+    "sweep_counter_state[3]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:325$388",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:325",
+   "widths": {
+    "A": 3,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "A": 4
+   },
+   "feeds": [
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:340$299",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:340",
+   "widths": {
+    "A": 9,
+    "B": 9,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 511
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:341$300",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:341",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:369$309",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:369",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:432$324",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$eq$tt_um_toivoh_synth.v:458$343",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:458",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "v"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$500_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$501_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$504_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:337",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$505_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:337",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$506_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:337",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$528_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:294",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$529_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:294",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$530_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:294",
+   "widths": {
+    "A": 3,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$531_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:294",
+   "widths": {
+    "A": 3,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$535_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:257",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "do_mod[0]",
+    "do_mod[1]",
+    "do_mod[2]",
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$536_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:257",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "do_mod[0]",
+    "do_mod[1]",
+    "do_mod[2]",
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$820_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:414",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 31
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$821_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:408",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$822_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:402",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$823_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:396",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$824_CMP1",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:383",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$lt$tt_um_toivoh_synth.v:284$293",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:284",
+   "widths": {
+    "A": 5,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$lt$tt_um_toivoh_synth.v:335$295",
+   "type": "$lt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:335",
+   "widths": {
+    "A": 5,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "saw[0]",
+    "saw[1]",
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$762",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:478",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "S": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "last_cycle_of_sample",
+   "feeds": [
+    "pwm_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$783",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:385",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<shiftx tt_um_toivoh_synth.v:385>",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$793",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:385",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "<shiftx tt_um_toivoh_synth.v:385>",
+   "feeds": [
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:151$277",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:151",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "cfg_override_we",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:152$278",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:152",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "cfg_override_we",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:204$291",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:204",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(wf == 2'b10)",
+   "feeds": [
+    "saw[0]",
+    "saw[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:338$296",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:338",
+   "widths": {
+    "A": 13,
+    "B": 13,
+    "S": 1,
+    "Y": 13
+   },
+   "signed": false,
+   "select": "curr_sweep_down",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:343$306",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:343",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "curr_sweep_down",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:368$308",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:368",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "state[0]",
+   "feeds": [
+    "pwm_counter",
+    "saw[0]",
+    "saw[1]",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:369$316",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:369",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "(wf == 1'b1)",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:370$315",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:370",
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "S": 1,
+    "Y": 3
+   },
+   "signed": false,
+   "select": "<logic_not tt_um_toivoh_synth.v:370>",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:430$323",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:430",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "a_sel",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:432$327",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 5,
+    "B": 5,
+    "S": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "select": "(nf_index == 2'b11)",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:433$328",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:433",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "nf0[4]",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:448$340",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:448",
+   "widths": {
+    "A": 20,
+    "B": 20,
+    "S": 1,
+    "Y": 20
+   },
+   "signed": false,
+   "select": "filter_sat",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ternary$tt_um_toivoh_synth.v:467$389",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:467",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "oct_counter[14]",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$494",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 1,
+    "B": 3,
+    "S": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$499",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:432",
+   "widths": {
+    "A": 4,
+    "B": 12,
+    "S": 3,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$503",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:337",
+   "widths": {
+    "A": 13,
+    "B": 104,
+    "S": 8,
+    "Y": 13
+   },
+   "signed": false,
+   "select": "8 selects",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$513",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:336",
+   "widths": {
+    "A": 1,
+    "B": 5,
+    "S": 5,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "5 selects",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$520",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:311",
+   "widths": {
+    "A": 4,
+    "B": 20,
+    "S": 5,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "5 selects",
+   "feeds": [
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$527",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:294",
+   "widths": {
+    "A": 4,
+    "B": 20,
+    "S": 5,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "5 selects",
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$534",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:257",
+   "widths": {
+    "A": 7,
+    "B": 21,
+    "S": 3,
+    "Y": 7
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "mod_counter_state[0]",
+    "mod_counter_state[1]",
+    "mod_counter_state[2]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$538",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:203",
+   "widths": {
+    "A": 2,
+    "B": 4,
+    "S": 2,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "pwm_counter",
+    "saw[0]",
+    "saw[1]",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$541",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:195",
+   "widths": {
+    "A": 4,
+    "B": 8,
+    "S": 2,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "saw[0]",
+    "saw[1]",
+    "saw_counter_state[0]",
+    "saw_counter_state[1]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$798",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:414",
+   "widths": {
+    "A": 2,
+    "B": 8,
+    "S": 4,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$805",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:414",
+   "widths": {
+    "A": 17,
+    "B": 85,
+    "S": 5,
+    "Y": 17
+   },
+   "signed": false,
+   "select": "5 selects",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$813",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:408",
+   "widths": {
+    "A": 2,
+    "B": 6,
+    "S": 3,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$819",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:414",
+   "widths": {
+    "A": 1,
+    "B": 3,
+    "S": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "3 selects",
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$shiftx$tt_um_toivoh_synth.v:296$294",
+   "type": "$shiftx",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:296",
+   "widths": {
+    "A": 16,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "cfg[0]",
+    "cfg[1]",
+    "cfg[2]",
+    "cfg[3]",
+    "cfg[4]",
+    "cfg[5]",
+    "cfg[6]",
+    "cfg[7]",
+    "cfg_in_prev_strobe",
+    "sweep_counter_state[0]",
+    "sweep_counter_state[1]",
+    "sweep_counter_state[2]",
+    "sweep_counter_state[3]",
+    "sweep_counter_state[4]"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$shiftx$tt_um_toivoh_synth.v:385$318",
+   "type": "$shiftx",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:385",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$sshr$tt_um_toivoh_synth.v:436$329",
+   "type": "$sshr",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:436",
+   "widths": {
+    "A": 17,
+    "B": 4,
+    "Y": 20
+   },
+   "signed": true,
+   "feeds": [
+    "pwm_counter",
+    "v",
+    "y"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$sub$tt_um_toivoh_synth.v:479$347",
+   "type": "$sub",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:479",
+   "widths": {
+    "A": 5,
+    "B": 1,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "pwm_counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$xor$tt_um_toivoh_synth.v:186$285",
+   "type": "$xor",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_toivoh_synth.v:186",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "lfsr"
+   ],
+   "feeds_outputs": false,
+   "xor_group": 0
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "tt05/tt_um_toivoh_synth",
+   "macro": "tt_um_toivoh_synth",
+   "title": "Analog emulation monosynth",
+   "author": "Toivo Henningsson",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-05",
+   "shuttle_commit": "0e918cdd3d396d6108b85a37b8ccafed9b06ac2a"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_toivoh_synth/tt_um_toivoh_synth.gds",
+    "git_blob": "ad94e17e4950a25355968bd954702844c9ffec3d"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_toivoh_synth/tt_um_toivoh_synth.v",
+    "git_blob": "eb4455e82cb31243e7d87274b824b67b3ed16d27"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_toivoh_synth/tt_um_toivoh_synth.lef",
+    "git_blob": "2721ba715ebc2b1754af585b419586d13784b801"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_toivoh_synth/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/toivoh/tt05-synth",
+   "commit": "166eb2e9d0b3a1e6c0ec31fc7e841200e3819ac9",
+   "top_module": "tt_um_toivoh_synth",
+   "source_files": [
+    "tt_um_toivoh_synth.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": [
+    {
+     "rule": "concat_adder",
+     "registers": [
+      "saw[0]",
+      "saw[1]"
+     ],
+     "left_out": "the registers take the same output bits of one adder (an incrementer shared between registers, not a concatenation)"
+    }
+   ]
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/repo/src/tt_um_toivoh_synth.v\nhierarchy -check -top tt_um_toivoh_synth\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/repo/src/tt_um_toivoh_synth.v\nhierarchy -check -top tt_um_toivoh_synth -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_toivoh_synth/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 264
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 2087,
+   "netlist_logic_instances": 2087,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 2102,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 39,
+   "ports_disagree": [],
+   "non_port_net_labels": 2078,
+   "non_port_net_labels_rtl_like": 265,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 31,
+   "registers_by_kind": {
+    "accumulator": 20,
+    "counter": 5,
+    "flag": 4,
+    "shift_register": 1,
+    "synchronizer": 1
+   },
+   "units": 0,
+   "rtl_flop_bits": 266,
+   "netlist_flops": 264,
+   "netlist_flops_labelled": 264,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 264,
+    "not a flop in the word-level RTL": 15,
+    "unused (removed)": 2
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 3,
+   "rounds": 2,
+   "agree_per_round": [
+    264,
+    264
+   ],
+   "flops_checked": 264,
+   "match": 264,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 232,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 264,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 264
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 264
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 264,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "not in the netlist": 1,
+    "proven": 8
+   },
+   "outputs_not_proven": [
+    "uio_out"
+   ],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {},
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": [
+   "outputs not proven: ['uio_out']"
+  ]
+ }
+}

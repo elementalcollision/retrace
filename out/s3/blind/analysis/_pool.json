@@ -1,0 +1,382 @@
+{
+ "H1_all_10_designs": {
+  "designs": [
+   "tt09/tt_um_pwm_top",
+   "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "tt05/tt_um_toivoh_synth",
+   "ttsky25a/tt_um_td4",
+   "tt03p5/tt_um_Reloj_top",
+   "tt03p5/tt_um_thorkn_vgaclock",
+   "tt07/tt_um_toivoh_basilisc_2816",
+   "ttsky25a/tt_um_sjsu_vga_music",
+   "tt07/tt_um_vzayakov_top",
+   "tt05/tt_um_kskyou"
+  ],
+  "pool": {
+   "shift_register": {
+    "registers": 8,
+    "structures": 1,
+    "structures_matched": 1,
+    "found": 1,
+    "exact": 1,
+    "verified_found": 1,
+    "distinct_design_keys": 8,
+    "distinct_design_keys_found_all": 1,
+    "found_recall": 0.125,
+    "exact_recall": 0.125,
+    "verified_found_recall": 0.125,
+    "precision_found": 1.0
+   },
+   "counter": {
+    "registers": 59,
+    "structures": 72,
+    "structures_matched": 41,
+    "found": 41,
+    "exact": 28,
+    "verified_found": 23,
+    "distinct_design_keys": 44,
+    "distinct_design_keys_found_all": 27,
+    "found_recall": 0.6949,
+    "exact_recall": 0.4746,
+    "verified_found_recall": 0.3898,
+    "precision_found": 0.5694
+   },
+   "lfsr_crc": {
+    "registers": 9,
+    "structures": 2,
+    "structures_matched": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "distinct_design_keys": 2,
+    "distinct_design_keys_found_all": 0,
+    "found_recall": 0.0,
+    "exact_recall": 0.0,
+    "verified_found_recall": 0.0,
+    "precision_found": 0.0
+   },
+   "synchronizer": {
+    "registers": 18,
+    "structures": 3,
+    "structures_matched": 3,
+    "found": 17,
+    "exact": 17,
+    "verified_found": 17,
+    "distinct_design_keys": 6,
+    "distinct_design_keys_found_all": 5,
+    "found_recall": 0.9444,
+    "exact_recall": 0.9444,
+    "verified_found_recall": 0.9444,
+    "precision_found": 1.0
+   }
+  },
+  "pooled": {
+   "registers": 94,
+   "found": 59,
+   "exact": 46,
+   "verified_found": 41,
+   "structures": 78,
+   "structures_matched": 45,
+   "found_recall": 0.6277,
+   "exact_recall": 0.4894,
+   "verified_found_recall": 0.4362,
+   "precision_found": 0.5769
+  }
+ },
+ "H2_excluding_weakest_labelled_designs": {
+  "designs": [
+   "tt09/tt_um_pwm_top",
+   "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "tt05/tt_um_toivoh_synth",
+   "ttsky25a/tt_um_td4",
+   "tt03p5/tt_um_Reloj_top",
+   "tt03p5/tt_um_thorkn_vgaclock",
+   "ttsky25a/tt_um_sjsu_vga_music",
+   "tt07/tt_um_vzayakov_top",
+   "tt05/tt_um_kskyou"
+  ],
+  "excluded": [
+   "tt07/tt_um_toivoh_basilisc_2816"
+  ],
+  "rule": "a design > 50% of whose scored structure-kind registers are Tier A (mapping contradicted)",
+  "pool": {
+   "shift_register": {
+    "registers": 5,
+    "structures": 0,
+    "structures_matched": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "distinct_design_keys": 5,
+    "distinct_design_keys_found_all": 0,
+    "found_recall": 0.0,
+    "exact_recall": 0.0,
+    "verified_found_recall": 0.0,
+    "precision_found": null
+   },
+   "counter": {
+    "registers": 54,
+    "structures": 69,
+    "structures_matched": 39,
+    "found": 39,
+    "exact": 28,
+    "verified_found": 23,
+    "distinct_design_keys": 40,
+    "distinct_design_keys_found_all": 26,
+    "found_recall": 0.7222,
+    "exact_recall": 0.5185,
+    "verified_found_recall": 0.4259,
+    "precision_found": 0.5652
+   },
+   "lfsr_crc": {
+    "registers": 0,
+    "structures": 2,
+    "structures_matched": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "distinct_design_keys": 0,
+    "distinct_design_keys_found_all": 0,
+    "found_recall": null,
+    "exact_recall": null,
+    "verified_found_recall": null,
+    "precision_found": 0.0
+   },
+   "synchronizer": {
+    "registers": 17,
+    "structures": 3,
+    "structures_matched": 3,
+    "found": 17,
+    "exact": 17,
+    "verified_found": 17,
+    "distinct_design_keys": 5,
+    "distinct_design_keys_found_all": 5,
+    "found_recall": 1.0,
+    "exact_recall": 1.0,
+    "verified_found_recall": 1.0,
+    "precision_found": 1.0
+   }
+  },
+  "pooled": {
+   "registers": 76,
+   "found": 56,
+   "exact": 45,
+   "verified_found": 40,
+   "structures": 74,
+   "structures_matched": 42,
+   "found_recall": 0.7368,
+   "exact_recall": 0.5921,
+   "verified_found_recall": 0.5263,
+   "precision_found": 0.5676
+  }
+ },
+ "H3_excluding_every_design_with_any_Tier_A_register": {
+  "designs": [
+   "tt09/tt_um_pwm_top",
+   "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "tt05/tt_um_toivoh_synth",
+   "ttsky25a/tt_um_td4",
+   "tt03p5/tt_um_thorkn_vgaclock",
+   "tt05/tt_um_kskyou"
+  ],
+  "excluded": [
+   "tt03p5/tt_um_Reloj_top",
+   "tt07/tt_um_toivoh_basilisc_2816",
+   "ttsky25a/tt_um_sjsu_vga_music",
+   "tt07/tt_um_vzayakov_top"
+  ],
+  "pool": {
+   "shift_register": {
+    "registers": 4,
+    "structures": 0,
+    "structures_matched": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "distinct_design_keys": 4,
+    "distinct_design_keys_found_all": 0,
+    "found_recall": 0.0,
+    "exact_recall": 0.0,
+    "verified_found_recall": 0.0,
+    "precision_found": null
+   },
+   "counter": {
+    "registers": 22,
+    "structures": 35,
+    "structures_matched": 15,
+    "found": 15,
+    "exact": 14,
+    "verified_found": 12,
+    "distinct_design_keys": 21,
+    "distinct_design_keys_found_all": 15,
+    "found_recall": 0.6818,
+    "exact_recall": 0.6364,
+    "verified_found_recall": 0.5455,
+    "precision_found": 0.4286
+   },
+   "lfsr_crc": {
+    "registers": 0,
+    "structures": 1,
+    "structures_matched": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "distinct_design_keys": 0,
+    "distinct_design_keys_found_all": 0,
+    "found_recall": null,
+    "exact_recall": null,
+    "verified_found_recall": null,
+    "precision_found": 0.0
+   },
+   "synchronizer": {
+    "registers": 1,
+    "structures": 1,
+    "structures_matched": 1,
+    "found": 1,
+    "exact": 1,
+    "verified_found": 1,
+    "distinct_design_keys": 1,
+    "distinct_design_keys_found_all": 1,
+    "found_recall": 1.0,
+    "exact_recall": 1.0,
+    "verified_found_recall": 1.0,
+    "precision_found": 1.0
+   }
+  },
+  "pooled": {
+   "registers": 27,
+   "found": 16,
+   "exact": 15,
+   "verified_found": 13,
+   "structures": 37,
+   "structures_matched": 16,
+   "found_recall": 0.5926,
+   "exact_recall": 0.5556,
+   "verified_found_recall": 0.4815,
+   "precision_found": 0.4324
+  }
+ },
+ "H4_all_10_designs_Tier_A_registers_dropped_from_the_denominator": {
+  "designs": [
+   "tt09/tt_um_pwm_top",
+   "ttsky26c/tt_um_joonatanalanampa_cordic",
+   "tt05/tt_um_toivoh_synth",
+   "ttsky25a/tt_um_td4",
+   "tt03p5/tt_um_Reloj_top",
+   "tt03p5/tt_um_thorkn_vgaclock",
+   "tt07/tt_um_toivoh_basilisc_2816",
+   "ttsky25a/tt_um_sjsu_vga_music",
+   "tt07/tt_um_vzayakov_top",
+   "tt05/tt_um_kskyou"
+  ],
+  "rule": "every design kept; the 23 Tier A registers removed from their kind's denominator. exact is NOT available per register from the frozen report, so only found and verified-found are given.",
+  "pool": {
+   "shift_register": {
+    "registers": 5,
+    "found": 0,
+    "verified_found": 0,
+    "found_recall": 0.0,
+    "exact_recall": null,
+    "verified_found_recall": 0.0,
+    "precision_found": null
+   },
+   "counter": {
+    "registers": 48,
+    "found": 37,
+    "verified_found": 21,
+    "found_recall": 0.7708,
+    "exact_recall": null,
+    "verified_found_recall": 0.4375,
+    "precision_found": null
+   },
+   "lfsr_crc": {
+    "registers": 0,
+    "found": 0,
+    "verified_found": 0,
+    "found_recall": null,
+    "exact_recall": null,
+    "verified_found_recall": null,
+    "precision_found": null
+   },
+   "synchronizer": {
+    "registers": 18,
+    "found": 17,
+    "verified_found": 17,
+    "found_recall": 0.9444,
+    "exact_recall": null,
+    "verified_found_recall": 0.9444,
+    "precision_found": null
+   }
+  },
+  "pooled": {
+   "registers": 71,
+   "found": 54,
+   "exact": null,
+   "verified_found": 38,
+   "structures": null,
+   "structures_matched": null,
+   "found_recall": 0.7606,
+   "exact_recall": null,
+   "verified_found_recall": 0.5352,
+   "precision_found": null
+  }
+ },
+ "H5_Tier_A_registers_only": {
+  "designs": [
+   "tt03p5/tt_um_Reloj_top",
+   "tt07/tt_um_toivoh_basilisc_2816",
+   "ttsky25a/tt_um_sjsu_vga_music",
+   "tt07/tt_um_vzayakov_top"
+  ],
+  "pool": {
+   "shift_register": {
+    "registers": 3,
+    "found": 1,
+    "verified_found": 1,
+    "found_recall": 0.3333,
+    "exact_recall": null,
+    "verified_found_recall": 0.3333,
+    "precision_found": null
+   },
+   "counter": {
+    "registers": 11,
+    "found": 4,
+    "verified_found": 2,
+    "found_recall": 0.3636,
+    "exact_recall": null,
+    "verified_found_recall": 0.1818,
+    "precision_found": null
+   },
+   "lfsr_crc": {
+    "registers": 9,
+    "found": 0,
+    "verified_found": 0,
+    "found_recall": 0.0,
+    "exact_recall": null,
+    "verified_found_recall": 0.0,
+    "precision_found": null
+   },
+   "synchronizer": {
+    "registers": 0,
+    "found": 0,
+    "verified_found": 0,
+    "found_recall": null,
+    "exact_recall": null,
+    "verified_found_recall": null,
+    "precision_found": null
+   }
+  },
+  "pooled": {
+   "registers": 23,
+   "found": 5,
+   "exact": null,
+   "verified_found": 3,
+   "structures": null,
+   "structures_matched": null,
+   "found_recall": 0.2174,
+   "exact_recall": null,
+   "verified_found_recall": 0.1304,
+   "precision_found": null
+  }
+ }
+}

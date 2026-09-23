@@ -1,0 +1,4483 @@
+{
+ "schema": "retrace-s3-blind-misses/1",
+ "lens": "misses: every miss and every false positive of the S3 blind evaluation, with its cause",
+ "created": "2026-09-23T07:55:22+00:00",
+ "freeze": {
+  "git_head": "232cfe67545ab91f05cb4adfc4bbe9192294526d",
+  "freeze_check": "freeze holds (tools/s3/freeze.py check, before and after this analysis)",
+  "note": "nothing under tools/ was read-modified; this document is derived only from the frozen run records, the frozen truths and the frozen source read as data"
+ },
+ "method": {
+  "scorer": "tools/s3/score.py, re-run as a library on each run record's permutation p1: Truth, _structures, _items, match. The per-kind register counts reproduced score.py's own classes.all/verified.registers.strict.per_kind exactly on all 11 records.",
+  "permutation": "every design's K = 5 permutations gave ONE distinct answer up to ids (spread.distinct_answers = 1, common = union scored-kind structures, no unstable structure), so every count here is permutation-invariant; p1 is quoted.",
+  "matching": "score.py: IoU > 0.5 (IOU_MIN) and, for an item of >= 2 flops, >= 2 shared flops; one to one and kind-agnostic. 'Found' = matched AND the structure's kind accepted. 'Verified' = the matching structure carries a tools/s3/verify.py verdict of verified.",
+  "strict_vs_lenient": "strict and lenient give IDENTICAL results on the blind set: no blind truth register of a scored kind carries alt_kinds, there are no excused registers, and the only declared units are synchronizer chain units, which are items in both modes. The reason is structural: tools/s3/thirdparty.py takes alt_kinds only from the design-agnostic rules (in practice the 1-bit toggle rule), never from truth_tempo.ALT_KINDS, whose 5 entries are TEMPO register-name regexes. TEMPO's label ambiguities (shift vs data_register, a third synchronizer stage, the PC) were resolved with hand-written per-register alternatives that no blind design can get."
+ },
+ "provenance_rules": {
+  "blind": "the 10 drawn third-party designs: the FIRST true out-of-sample test of this recognizer",
+  "puzzle": "frozen code on a design the team already knows; NOT blind and never quoted as out-of-sample",
+  "tempo": "the development design: every TEMPO figure is IN-SAMPLE and fitted",
+  "corpus_holdout": "the pre-published out-of-sample estimate (out/s3/honesty/holdout_rates.json), a SYNTHETIC corpus written by this project; its aggregation (per_register_and_unit, one extra item per declared unit, and 'found' meaning harness-VERIFIED) is NOT the aggregation of the blind counts below (score.py strict register counts), so the two are quoted, never subtracted"
+ },
+ "totals": {
+  "blind": {
+   "designs": 10,
+   "truth_registers_of_scored_kinds": 94,
+   "found": 59,
+   "misses": 35,
+   "found_unverified": 18,
+   "scored_kind_structures": 78,
+   "structures_without_credit": 33,
+   "structures_verified": 40
+  },
+  "puzzle": {
+   "designs": 1,
+   "truth_registers_of_scored_kinds": 29,
+   "found": 29,
+   "misses": 0,
+   "found_unverified": 2,
+   "scored_kind_structures": 29,
+   "structures_without_credit": 0
+  }
+ },
+ "per_kind": {
+  "blind": {
+   "shift_register": {
+    "registers": 8,
+    "found": 1,
+    "exact": 1,
+    "verified_found": 1,
+    "missed": 7,
+    "found_unverified": 0,
+    "structures": 1,
+    "structures_credited": 1,
+    "structures_verified": 1,
+    "structures_without_credit": 0,
+    "designs_with_registers": 4,
+    "designs_with_a_found_register": 1,
+    "designs_emitting_structures": 1,
+    "small_support": false
+   },
+   "counter": {
+    "registers": 59,
+    "found": 41,
+    "exact": 28,
+    "verified_found": 23,
+    "missed": 18,
+    "found_unverified": 18,
+    "structures": 72,
+    "structures_credited": 41,
+    "structures_verified": 34,
+    "structures_without_credit": 31,
+    "designs_with_registers": 10,
+    "designs_with_a_found_register": 9,
+    "designs_emitting_structures": 9,
+    "small_support": false
+   },
+   "lfsr_crc": {
+    "registers": 9,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "missed": 9,
+    "found_unverified": 0,
+    "structures": 2,
+    "structures_credited": 0,
+    "structures_verified": 2,
+    "structures_without_credit": 2,
+    "designs_with_registers": 1,
+    "designs_with_a_found_register": 0,
+    "designs_emitting_structures": 2,
+    "small_support": false
+   },
+   "synchronizer": {
+    "registers": 18,
+    "found": 17,
+    "exact": 17,
+    "verified_found": 17,
+    "missed": 1,
+    "found_unverified": 0,
+    "structures": 3,
+    "structures_credited": 3,
+    "structures_verified": 3,
+    "structures_without_credit": 0,
+    "designs_with_registers": 4,
+    "designs_with_a_found_register": 3,
+    "designs_emitting_structures": 3,
+    "small_support": false
+   }
+  },
+  "puzzle_frozen_code_known_design": {
+   "shift_register": {
+    "registers": 1,
+    "found": 1,
+    "exact": 1,
+    "verified_found": 1,
+    "missed": 0,
+    "found_unverified": 0,
+    "structures": 1,
+    "structures_credited": 1,
+    "structures_verified": 1,
+    "structures_without_credit": 0,
+    "designs_with_registers": 1,
+    "designs_with_a_found_register": 1,
+    "designs_emitting_structures": 1,
+    "small_support": true
+   },
+   "counter": {
+    "registers": 27,
+    "found": 27,
+    "exact": 27,
+    "verified_found": 25,
+    "missed": 0,
+    "found_unverified": 2,
+    "structures": 27,
+    "structures_credited": 27,
+    "structures_verified": 25,
+    "structures_without_credit": 0,
+    "designs_with_registers": 1,
+    "designs_with_a_found_register": 1,
+    "designs_emitting_structures": 1,
+    "small_support": false
+   },
+   "lfsr_crc": {
+    "registers": 1,
+    "found": 1,
+    "exact": 1,
+    "verified_found": 1,
+    "missed": 0,
+    "found_unverified": 0,
+    "structures": 1,
+    "structures_credited": 1,
+    "structures_verified": 1,
+    "structures_without_credit": 0,
+    "designs_with_registers": 1,
+    "designs_with_a_found_register": 1,
+    "designs_emitting_structures": 1,
+    "small_support": true
+   },
+   "synchronizer": {
+    "registers": 0,
+    "found": 0,
+    "exact": 0,
+    "verified_found": 0,
+    "missed": 0,
+    "found_unverified": 0,
+    "structures": 0,
+    "structures_credited": 0,
+    "structures_verified": 0,
+    "structures_without_credit": 0,
+    "designs_with_registers": 0,
+    "designs_with_a_found_register": 0,
+    "designs_emitting_structures": 0,
+    "small_support": true
+   }
+  },
+  "tempo_in_sample_fitted": {
+   "shift_register": {
+    "registers": 2,
+    "found": 2,
+    "verified_found": 1,
+    "structures": 2,
+    "structures_without_credit": 0
+   },
+   "counter": {
+    "registers": 22,
+    "found": 22,
+    "verified_found": 9,
+    "structures": 22,
+    "structures_without_credit": 0
+   },
+   "lfsr_crc": {
+    "registers": 2,
+    "found": 2,
+    "verified_found": 2,
+    "structures": 2,
+    "structures_without_credit": 0
+   },
+   "synchronizer": {
+    "registers": 11,
+    "found": 11,
+    "verified_found": 11,
+    "structures": 3,
+    "structures_without_credit": 0
+   }
+  },
+  "corpus_holdout_out_of_sample": {
+   "aggregation": "per_register_and_unit",
+   "designs": 40,
+   "runs": 80,
+   "per_kind": {
+    "shift_register": {
+     "items": 30,
+     "found": 20,
+     "exact": 18,
+     "found_unverified": 0,
+     "found_rate": 0.6667,
+     "exact_rate": 0.6
+    },
+    "counter": {
+     "items": 44,
+     "found": 28,
+     "exact": 28,
+     "found_unverified": 10,
+     "found_rate": 0.6364,
+     "exact_rate": 0.6364
+    },
+    "lfsr_crc": {
+     "items": 14,
+     "found": 14,
+     "exact": 14,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 1.0
+    },
+    "synchronizer": {
+     "items": 6,
+     "found": 6,
+     "exact": 4,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 0.6667
+    }
+   },
+   "false_positive_structures": {
+    "counter": 2,
+    "synchronizer": 4
+   },
+   "found_means": "matched a harness-VERIFIED structure of an accepted kind at IoU > 0.5"
+  }
+ },
+ "cause_groups": {
+  "blind": {
+   "misses": {
+    "M1": {
+     "n": 5,
+     "name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+     "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time"
+    },
+    "M2a": {
+     "n": 2,
+     "name": "kind error, extent exact: the whole register is one structure of an unscored kind",
+     "mechanism": "the counter recognizer rejected the word; the flops were emitted as one data_register, so the register's extent was recovered but its kind was not"
+    },
+    "M2b": {
+     "n": 10,
+     "name": "kind error with a grouping split: the register is spread over several unscored structures",
+     "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers"
+    },
+    "M3": {
+     "n": 1,
+     "name": "merged with a neighbouring word; one-to-one matching gave the pair to the other register",
+     "mechanism": "one proved counter spans two truth registers; score.match() is one-to-one, so the structure is credited to the register it matches best and the other register is a miss"
+    },
+    "M4a": {
+     "n": 2,
+     "name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which proved an lfsr_crc",
+     "mechanism": "tools/s3/shift.py only turns a feedback head into a shift lane when the head is NOT GF(2)-affine in the lane's own bits; an affine head stays a 'feedback' relation for tools/s3/lfsr.py, and recognize.py's overlap rule keeps the more specific lfsr_crc structure. The truth calls the same flops a shift_register, so the answer costs a shift_register miss and an lfsr_crc false positive"
+    },
+    "M4b": {
+     "n": 5,
+     "name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+     "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register"
+    },
+    "M5": {
+     "n": 9,
+     "name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+     "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said"
+    },
+    "M6": {
+     "n": 1,
+     "name": "synchronizer of one stage: refused by the frozen contract",
+     "mechanism": "the truth labels a 1-stage input register a synchronizer (params.stages = 1); tools/s3/verify.py requires SYNC_MIN_STAGES = 2 and tools/s3/shift.py only emits stages 1-2 of an unconditional input copy path, so a one-flop-deep synchronizer can never be reported or verified"
+    }
+   },
+   "found_unverified": {
+    "V1": {
+     "n": 2,
+     "name": "hold obligation not claimed",
+     "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'"
+    },
+    "V2": {
+     "n": 16,
+     "name": "hold region emptied only by the opaque load cases",
+     "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused"
+    }
+   },
+   "false_positives": {
+    "F1": {
+     "n": 15,
+     "name": "counter proved over a truth accumulator (matched, wrong kind)",
+     "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match"
+    },
+    "F2": {
+     "n": 10,
+     "name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+     "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5"
+    },
+    "F3": {
+     "n": 6,
+     "name": "counter proved over a sub-word of a truth counter (matched nothing)",
+     "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it"
+    },
+    "F4": {
+     "n": 2,
+     "name": "lfsr_crc proved over a truth shift_register",
+     "mechanism": "the M4a handoff seen from the structure side"
+    }
+   }
+  },
+  "puzzle": {
+   "misses": {},
+   "found_unverified": {
+    "V1": {
+     "n": 2,
+     "name": "hold obligation not claimed",
+     "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'"
+    }
+   },
+   "false_positives": {}
+  }
+ },
+ "headline_causes": [
+  "All 18 blind counter misses and 31 of the 33 blind false positives turn on two questions: how wide is the counting word, and is a word that steps by a variable still a counter? 25 of the 33 false positives lie on truth registers of kind accumulator.",
+  "7 of the 7 blind shift_register misses come from ONE rule: tools/s3/shift.py keeps a feedback lane as a shift lane only when its head is NOT GF(2)-affine in the lane's own bits, so every affine-feedback chain is handed to tools/s3/lfsr.py. lfsr.py proved 2 of them (as lfsr_crc, which the truth calls shift_register) and admitted none of the other 5.",
+  "9 of the 9 blind lfsr_crc misses are one design's CPU register file, labelled lfsr_crc by the truth's XOR-feedback rule; the recognizer holds at most 2 of each word's 8 flops, so the label is not what decides it.",
+  "20 of 20 found-but-unverified registers, blind and puzzle alike, fail the SAME obligation: the counter hold case. There is not one refutation, one solver 'unknown', one budget exhaustion, one clock-domain failure and one coverage failure in the whole blind set.",
+  "13 of the 40 harness-VERIFIED scored structures in the blind set earned no credit: the harness proving a counter does not make it a register the truth has."
+ ],
+ "disagreements": [
+  {
+   "id": "D1",
+   "designs": [
+    "tt05__tt_um_toivoh_synth",
+    "ttsky25a__tt_um_sjsu_vga_music"
+   ],
+   "truth_registers": [
+    "lfsr (15 flops)",
+    "lfsr (13 flops)"
+   ],
+   "truth_kind": "shift_register",
+   "recognizer_kind": "lfsr_crc",
+   "harness": "both lfsr_crc structures were VERIFIED by tools/s3/verify.py (form fibonacci; sjsu poly 13329, k_steps 1, 0 input nets)",
+   "iou": 1.0,
+   "why": "tools/s3/truth_tempo.py Classifier.classify tries its lfsr_crc rule (rule 4) BEFORE its shift_register rule (rule 6), but rule 4 needs own-Q XOR feedback into at least max(2, n/4) bits. A Fibonacci LFSR XORs into ONE head bit, so rule 4 does not fire and rule 6 labels the register a shift_register with serial_in '(lfsr[0] ^ lfsr[14])' (synth) / 'feedback' (sjsu) -- the truth's own params record the XOR feedback it declined to name.",
+   "cost": "2 of the 8 blind shift_register registers and 2 of the 33 blind false-positive structures; counted as errors in both directions for the same 2 registers",
+   "applied": false
+  },
+  {
+   "id": "D2",
+   "designs": [
+    "tt07__tt_um_toivoh_basilisc_2816"
+   ],
+   "truth_registers": [
+    "cpu.dec.sched.alu.registers.general_registers.regs[0] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[1] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[2] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[3] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[4] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[5] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[6] (8 flops)",
+    "cpu.dec.sched.alu.registers.general_registers.regs[7] (8 flops)",
+    "cpu.dec.sched.alu.registers.sp_register.regs (8 flops)"
+   ],
+   "truth_kind": "lfsr_crc",
+   "recognizer_kind": "data_register / register_file_word (2-bit pieces)",
+   "harness": "not applicable: no lfsr_crc structure was emitted on this design",
+   "why": "the same rule 4 fires on a CPU register file because the ALU writes each word through shift and XOR paths, so own Q bits of other indices reach D through XOR on >= max(2, 8/4) = 2 bits. The truth's own params for all 9 registers are null (form, poly, k_steps, n_inputs, bit_order), module_def 'regfile' and 'regfile_single'. The labeller's register_file_word rule (rule 1) did not claim them.",
+   "cost": "all 9 blind lfsr_crc registers, i.e. the whole lfsr_crc denominator of the blind set",
+   "note": "RELABELLING WOULD NOT CHANGE THE SCORE: the recognizer's largest structure over any of these words holds 2 of the 8 flops (IoU <= 0.25), so each register is missed under any kind.",
+   "applied": false
+  },
+  {
+   "id": "D3",
+   "designs": [
+    "tt03p5__tt_um_Reloj_top"
+   ],
+   "truth_registers": [
+    "doubledabble.shift (32 flops)"
+   ],
+   "truth_kind": "counter",
+   "truth_params": {
+    "direction": "up",
+    "step": 3
+   },
+   "recognizer_kind": "two interleaved data_registers (23 and 7 flops) plus 2 flags",
+   "harness": "not applicable: no counter structure covers these flops",
+   "why": "the truth's arithmetic rule (rule 5, 'D = Q +/- constant') reads the double-dabble add-3 correction as a counter of step 3. The recognizer's split is periodic mod 4 -- one structure holds truth bits {3,7,11,15,19,23,27} and the other the rest -- which is the BCD nibble structure of a shift-and-add-3 datapath, not a counting word.",
+   "cost": "1 of the 18 blind counter misses",
+   "applied": false
+  },
+  {
+   "id": "D4",
+   "designs": [
+    "tt07__tt_um_toivoh_basilisc_2816"
+   ],
+   "truth_registers": [
+    "ui_in_reg (2 flops of 8 bits)"
+   ],
+   "truth_kind": "synchronizer",
+   "truth_params": {
+    "stages": 1
+   },
+   "recognizer_kind": "data_register (2 flops, IoU 1.00)",
+   "harness": "a 1-stage synchronizer can never be verified: tools/s3/verify.py SYNC_MIN_STAGES = 2",
+   "why": "the truth's rule 3 accepts a register whose D is an input pin as a synchronizer of ONE stage; the frozen contract defines a synchronizer as >= 2 stages ('a one-flop synchronizer is the input register whose metastability the second stage exists to absorb'). The two conventions disagree, and the recognizer cannot satisfy both.",
+   "cost": "the single blind synchronizer miss (1 of 18)",
+   "applied": false
+  }
+ ],
+ "disagreement_policy": "docs/S3_DESIGN.md section 4.4: 'Labels are fixed before scoring; later disagreements are listed, never applied.' No truth file was read-modified and no number in this document applies a disagreement.",
+ "designs": {
+  "tt09__tt_um_pwm_top": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt09__tt_um_pwm_top-20260923T065352Z-c8f61bba8b4e.json",
+   "truth": "out/s3/truth_tt09__tt_um_pwm_top.json",
+   "truth_hash": "b0185d3df39632eea34fb41627c77e84e8b0a1e4d52339048efbd6712988161d",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 2,
+    "scored_kind_structures_union": 2,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 47,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 47,
+    "truth_flops_in_netlist": 47,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "flag": 5,
+    "counter": 4
+   },
+   "result_structures_by_kind": {
+    "counter": 2,
+    "flag": 5,
+    "data_register": 6
+   },
+   "harness_buckets": {
+    "unscored kind": 11,
+    "verified": 1,
+    "vacuous": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 0,
+     "edges": 86,
+     "edges_combining_dropped": 594,
+     "proven": 0,
+     "sat_calls": 0,
+     "seeds": 21,
+     "stage_ineligible_self_inverting": 16,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 5,
+     "lfsr_candidates": 5,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a tiny word that sets or clears itself but never holds (flags)": 3,
+     "a wrap that does not close a count cycle": 18,
+     "count condition pins the low bit of an adder under the word (an accumulator's upper part)": 4,
+     "every count step lands where the word holds (a flag enables the count)": 12,
+     "no lane counts through half the range": 2,
+     "other transitions in the domain": 36,
+     "toggle driven by a toggling flop": 1,
+     "toggle read back": 7,
+     "toggle read by a toggling flop": 1,
+     "two-bit word with lane-dependent wraps or stops": 5
+    }
+   }
+  },
+  "ttsky26c__tt_um_joonatanalanampa_cordic": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-ttsky26c__tt_um_joonatanalanampa_cordic-20260923T065543Z-90e4754651b4.json",
+   "truth": "out/s3/truth_ttsky26c__tt_um_joonatanalanampa_cordic.json",
+   "truth_hash": "61631a5ad7f3ae20e9c21fd6a462db6e31a120cbd346c63308b5c7a71242f0c8",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 4,
+    "scored_kind_structures_union": 4,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 191,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 191,
+    "truth_flops_in_netlist": 191,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "counter": 3,
+    "flag": 9,
+    "accumulator": 2,
+    "data_register": 2,
+    "other": 1,
+    "fsm_state": 1,
+    "shift_register": 3
+   },
+   "result_structures_by_kind": {
+    "counter": 4,
+    "data_register": 12,
+    "flag": 22,
+    "register_file_word": 2
+   },
+   "harness_buckets": {
+    "unscored kind": 36,
+    "verified": 4
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 0,
+     "edges": 474,
+     "edges_combining_dropped": 2707,
+     "feedback_affine": 6,
+     "proven": 0,
+     "sat_calls": 0,
+     "seeds": 88,
+     "stage_ineligible_self_inverting": 70,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 4,
+     "lfsr_candidates": 4,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 3,
+     "a wrap that does not close a count cycle": 2,
+     "accumulator (many constant steps)": 50,
+     "count condition pins the low bit of an adder under the word (an accumulator's upper part)": 5,
+     "even step (a bit that never changes)": 2,
+     "every count step lands where the word holds (a flag enables the count)": 22,
+     "hold not proven (schema v2 requires it for a counter)": 1,
+     "no lane counts through half the range": 1,
+     "other transitions in the domain": 162,
+     "steps s and 2s (a two-bit addend: an adder)": 31,
+     "the defining case is not reachable for every value of the word": 3,
+     "toggle driven by a toggling flop": 2,
+     "toggle read by a toggling flop": 26,
+     "two-bit word with lane-dependent wraps or stops": 3
+    }
+   }
+  },
+  "tt05__tt_um_toivoh_synth": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt05__tt_um_toivoh_synth-20260923T065720Z-7726a13a515d.json",
+   "truth": "out/s3/truth_tt05__tt_um_toivoh_synth.json",
+   "truth_hash": "8fa01b169b528bf2a3d8548b3e7625dc976a14c0a0f49718a24ef59b6fc7e36d",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 22,
+    "scored_kind_structures_union": 22,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 264,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 264,
+    "truth_flops_in_netlist": 264,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "accumulator": 20,
+    "flag": 4,
+    "shift_register": 1,
+    "counter": 5,
+    "synchronizer": 1
+   },
+   "result_structures_by_kind": {
+    "synchronizer": 1,
+    "counter": 20,
+    "lfsr_crc": 1,
+    "data_register": 16,
+    "flag": 21
+   },
+   "harness_buckets": {
+    "unscored kind": 37,
+    "hold": 13,
+    "verified": 8,
+    "vacuous": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 1,
+     "claims_synchronizer": 2,
+     "cube_literals_max": 0,
+     "edges": 1059,
+     "edges_combining_dropped": 7412,
+     "feedback_affine": 2,
+     "hold_vacuous": 1,
+     "proven": 1,
+     "sat_calls": 4,
+     "seeds": 189,
+     "stage_ineligible_self_inverting": 241,
+     "structures": 1
+    },
+    "lfsr": {
+     "lfsr_blocks": 15,
+     "lfsr_candidates": 14,
+     "lfsr_parity_open": 42,
+     "lfsr_parity_proven": 48,
+     "lfsr_sat_calls": 14,
+     "lfsr_structures": 1,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 43,
+     "a wrap that does not close a count cycle": 2,
+     "accumulator (many constant steps)": 16,
+     "count claims not proven": 23,
+     "count condition pins a bit of an overlapping counter (a fragment)": 32,
+     "down count not proven": 20,
+     "even step (a bit that never changes)": 4,
+     "every count step lands where the word holds (a flag enables the count)": 1127,
+     "hold not proven (schema v2 requires it for a counter)": 51,
+     "no changing lane": 200,
+     "no clean lane": 29,
+     "no lane counts through half the range": 3,
+     "other transitions in the domain": 2721,
+     "read by adder logic outside every counter (a truncated arithmetic word)": 2,
+     "steps s and 2s (a two-bit addend: an adder)": 61,
+     "the count case does not prove against the emitted control cases": 3,
+     "the defining case is not reachable for every value of the word": 2,
+     "the lane's stop or wrap point does not match the width (a register sets it)": 1,
+     "toggle read back": 124,
+     "toggle read by a toggling flop": 1,
+     "two-bit word with data loads (an affine fragment)": 83,
+     "two-bit word with lane-dependent wraps or stops": 107,
+     "up count not proven": 16
+    }
+   }
+  },
+  "ttsky25a__tt_um_td4": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-ttsky25a__tt_um_td4-20260923T070128Z-4b16b78fd8be.json",
+   "truth": "out/s3/truth_ttsky25a__tt_um_td4.json",
+   "truth_hash": "78cf7fa511897ffc86dd495c259eae2362a809abc3579f9d00767dda93541108",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 0,
+    "scored_kind_structures_union": 0,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 145,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 145,
+    "truth_flops_in_netlist": 145,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "counter": 1,
+    "accumulator": 2,
+    "data_register": 1,
+    "flag": 1,
+    "register_file_word": 16
+   },
+   "result_structures_by_kind": {
+    "register_file_word": 16,
+    "data_register": 4,
+    "flag": 1
+   },
+   "harness_buckets": {
+    "unscored kind": 21
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 0,
+     "edges": 521,
+     "edges_combining_dropped": 3160,
+     "proven": 0,
+     "sat_calls": 0,
+     "seeds": 100,
+     "stage_ineligible_self_inverting": 12,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 4,
+     "lfsr_candidates": 0,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "accumulator (many constant steps)": 2,
+     "every count step lands where the word holds (a flag enables the count)": 17,
+     "other transitions in the domain": 20,
+     "steps s and 2s (a two-bit addend: an adder)": 5,
+     "toggle read back": 12,
+     "two-bit word with data loads (an affine fragment)": 7,
+     "two-bit word with lane-dependent wraps or stops": 2
+    }
+   }
+  },
+  "tt03p5__tt_um_Reloj_top": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt03p5__tt_um_Reloj_top-20260923T070322Z-a821516b2a2a.json",
+   "truth": "out/s3/truth_tt03p5__tt_um_Reloj_top.json",
+   "truth_hash": "e1c6afa254241c352aa6edd0be87316aa404c4cfa5a788f4f4dffe1b9b1e9649",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 12,
+    "scored_kind_structures_union": 12,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 385,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 385,
+    "truth_flops_in_netlist": 385,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "counter": 14,
+    "flag": 7,
+    "synchronizer": 6,
+    "data_register": 1,
+    "other": 4,
+    "fsm_state": 3
+   },
+   "result_structures_by_kind": {
+    "synchronizer": 1,
+    "counter": 11,
+    "data_register": 23,
+    "flag": 50
+   },
+   "harness_buckets": {
+    "unscored kind": 73,
+    "verified": 8,
+    "vacuous": 3,
+    "hold": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 1,
+     "claims_synchronizer": 12,
+     "cube_literals_max": 1,
+     "edges": 5217,
+     "edges_combining_dropped": 7397,
+     "hold_vacuous": 1,
+     "proven": 1,
+     "sat_calls": 39,
+     "seeds": 703,
+     "stage_ineligible_self_inverting": 336,
+     "structures": 1
+    },
+    "lfsr": {
+     "lfsr_blocks": 33,
+     "lfsr_candidates": 30,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 2519,
+     "a reset case does not prove against the emitted control cases": 1,
+     "a tiny word that sets or clears itself but never holds (flags)": 13,
+     "a wrap that does not close a count cycle": 187,
+     "accumulator (many constant steps)": 59,
+     "conditions read too many of the word's own bits for the coverage check": 55,
+     "count claims not proven": 580,
+     "down count not proven": 215,
+     "even step (a bit that never changes)": 11,
+     "every count step lands where the word holds (a flag enables the count)": 316,
+     "hold not proven (schema v2 requires it for a counter)": 19,
+     "its lowest bit only prescales a counter as wide that pins it (a phase flag)": 27,
+     "no lane counts through half the range": 12,
+     "no load net for irregular transitions": 3,
+     "other transitions in the domain": 24379,
+     "steps s and 2s (a two-bit addend: an adder)": 9,
+     "the defining case is not reachable for every value of the word": 5,
+     "the lane's stop or wrap point does not match the width (a register sets it)": 9,
+     "the proven template does not match the width (schema v2)": 3,
+     "toggle driven by a toggling flop": 2,
+     "toggle read back": 141,
+     "toggle read by a toggling flop": 5,
+     "two-bit word with data loads (an affine fragment)": 2,
+     "two-bit word with lane-dependent wraps or stops": 12,
+     "up count not proven": 583
+    }
+   }
+  },
+  "tt03p5__tt_um_thorkn_vgaclock": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt03p5__tt_um_thorkn_vgaclock-20260923T071042Z-606b627a02fa.json",
+   "truth": "out/s3/truth_tt03p5__tt_um_thorkn_vgaclock.json",
+   "truth_hash": "bcdc7ede6ae23859a6f2b2d187c5eafe631b472b3083ae95291562fd7c80b8c6",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 6,
+    "scored_kind_structures_union": 6,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 61,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 61,
+    "truth_flops_in_netlist": 61,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "counter": 6,
+    "other": 3
+   },
+   "result_structures_by_kind": {
+    "counter": 6
+   },
+   "harness_buckets": {
+    "verified": 6
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 0,
+     "edges": 700,
+     "edges_combining_dropped": 1260,
+     "proven": 0,
+     "sat_calls": 0,
+     "seeds": 93,
+     "stage_ineligible_self_inverting": 61,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 10,
+     "lfsr_candidates": 9,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 88,
+     "conditions read too many of the word's own bits for the coverage check": 1,
+     "count condition pins a bit of an overlapping counter (a fragment)": 1,
+     "even step (a bit that never changes)": 4,
+     "its lowest bit only prescales a counter as wide that pins it (a phase flag)": 1,
+     "no lane counts through half the range": 1,
+     "other transitions in the domain": 567,
+     "the defining case is not reachable for every value of the word": 25,
+     "two-bit word with lane-dependent wraps or stops": 20
+    }
+   }
+  },
+  "tt07__tt_um_toivoh_basilisc_2816": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt07__tt_um_toivoh_basilisc_2816-20260923T071314Z-ec77d9db88ef.json",
+   "truth": "out/s3/truth_tt07__tt_um_toivoh_basilisc_2816.json",
+   "truth_hash": "c199777dfb291ae10d80eda9f8ddb5183be0cb6b4d771de8d2041a350bff1e1b",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 4,
+    "scored_kind_structures_union": 4,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 198,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 198,
+    "truth_flops_in_netlist": 198,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "flag": 10,
+    "accumulator": 7,
+    "lfsr_crc": 9,
+    "counter": 5,
+    "data_register": 6,
+    "shift_register": 3,
+    "other": 1,
+    "synchronizer": 1
+   },
+   "result_structures_by_kind": {
+    "shift_register": 1,
+    "counter": 3,
+    "data_register": 35,
+    "flag": 22,
+    "register_file_word": 6
+   },
+   "harness_buckets": {
+    "unscored kind": 63,
+    "hold": 2,
+    "verified": 1,
+    "vacuous": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 1,
+     "claims_shift_register": 32,
+     "cube_literals_max": 1,
+     "cycles_mixed_control": 17,
+     "edges": 518,
+     "edges_combining_dropped": 5457,
+     "feedback_affine": 23,
+     "hold_vacuous": 0,
+     "lanes_cut_by_control": 3,
+     "proven": 1,
+     "repair_edges": 0,
+     "sat_calls": 74,
+     "seeds": 95,
+     "stage_ineligible_self_inverting": 65,
+     "structures": 1
+    },
+    "lfsr": {
+     "lfsr_blocks": 2,
+     "lfsr_candidates": 2,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 19,
+     "a wrap that does not close a count cycle": 55,
+     "accumulator (many constant steps)": 28,
+     "count claims not proven": 2,
+     "even step (a bit that never changes)": 2,
+     "every count step lands where the word holds (a flag enables the count)": 447,
+     "hold not proven (schema v2 requires it for a counter)": 4,
+     "no changing lane": 142,
+     "no clean lane": 5,
+     "other transitions in the domain": 321,
+     "read by adder logic outside every counter (a truncated arithmetic word)": 2,
+     "steps s and 2s (a two-bit addend: an adder)": 2,
+     "the defining case is not reachable for every value of the word": 12,
+     "toggle read back": 58,
+     "two-bit word with data loads (an affine fragment)": 2,
+     "two-bit word with lane-dependent wraps or stops": 9,
+     "up count not proven": 2
+    }
+   }
+  },
+  "ttsky25a__tt_um_sjsu_vga_music": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-ttsky25a__tt_um_sjsu_vga_music-20260923T071525Z-c3d1391efe1f.json",
+   "truth": "out/s3/truth_ttsky25a__tt_um_sjsu_vga_music.json",
+   "truth_hash": "635aeb537dabb3a03807bc2b6073db3662340ba703b78884b575734748e331cc",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 7,
+    "scored_kind_structures_union": 7,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 77,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 70,
+    "truth_flops_in_netlist": 70,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 7
+   },
+   "truth_register_kinds": {
+    "counter": 6,
+    "flag": 5,
+    "shift_register": 1
+   },
+   "result_structures_by_kind": {
+    "counter": 6,
+    "lfsr_crc": 1,
+    "flag": 9,
+    "data_register": 1
+   },
+   "harness_buckets": {
+    "unscored kind": 10,
+    "verified": 6,
+    "hold": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 0,
+     "edges": 505,
+     "edges_combining_dropped": 1328,
+     "feedback_affine": 1,
+     "proven": 0,
+     "sat_calls": 0,
+     "seeds": 112,
+     "stage_ineligible_self_inverting": 56,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 9,
+     "lfsr_candidates": 9,
+     "lfsr_parity_open": 13,
+     "lfsr_parity_proven": 26,
+     "lfsr_sat_calls": 14,
+     "lfsr_structures": 1,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 17,
+     "a wrap that does not close a count cycle": 54,
+     "count claims not proven": 3,
+     "count condition pins the low bit of an adder under the word (an accumulator's upper part)": 4,
+     "even step (a bit that never changes)": 6,
+     "every count step lands where the word holds (a flag enables the count)": 5,
+     "hold not proven (schema v2 requires it for a counter)": 6,
+     "no lane counts through half the range": 1,
+     "other transitions in the domain": 869,
+     "read by adder logic outside every counter (a truncated arithmetic word)": 5,
+     "steps s and 2s (a two-bit addend: an adder)": 1,
+     "the defining case is not reachable for every value of the word": 33,
+     "toggle driven by a toggling flop": 3,
+     "toggle read back": 6,
+     "toggle read by a toggling flop": 1,
+     "two-bit word with lane-dependent wraps or stops": 14,
+     "up count not proven": 3
+    }
+   }
+  },
+  "tt07__tt_um_vzayakov_top": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt07__tt_um_vzayakov_top-20260923T071718Z-2c662362bf31.json",
+   "truth": "out/s3/truth_tt07__tt_um_vzayakov_top.json",
+   "truth_hash": "715a98f82ba81ada15516a0e426ac46f253ab6da379ccd4c677e656b9d32c0f2",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 18,
+    "scored_kind_structures_union": 18,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 192,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 192,
+    "truth_flops_in_netlist": 192,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "accumulator": 4,
+    "flag": 8,
+    "counter": 12,
+    "other": 8,
+    "synchronizer": 10
+   },
+   "result_structures_by_kind": {
+    "synchronizer": 1,
+    "counter": 17,
+    "data_register": 13,
+    "flag": 41
+   },
+   "harness_buckets": {
+    "unscored kind": 54,
+    "vacuous": 11,
+    "verified": 5,
+    "hold": 2
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 1,
+     "claims_synchronizer": 10,
+     "cube_literals_max": 0,
+     "edges": 1252,
+     "edges_combining_dropped": 2185,
+     "hold_vacuous": 1,
+     "proven": 1,
+     "sat_calls": 12,
+     "seeds": 227,
+     "stage_ineligible_self_inverting": 124,
+     "structures": 1
+    },
+    "lfsr": {
+     "lfsr_blocks": 17,
+     "lfsr_candidates": 17,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 96,
+     "a tiny word that sets or clears itself but never holds (flags)": 3,
+     "a wrap that does not close a count cycle": 18,
+     "accumulator (many constant steps)": 5,
+     "count condition pins a bit of an overlapping counter (a fragment)": 8,
+     "even step (a bit that never changes)": 32,
+     "every count step lands where the word holds (a flag enables the count)": 91,
+     "hold not proven (schema v2 requires it for a counter)": 15,
+     "its lowest bit only prescales a counter as wide that pins it (a phase flag)": 86,
+     "no lane counts through half the range": 4,
+     "other transitions in the domain": 956,
+     "steps s and 2s (a two-bit addend: an adder)": 6,
+     "the defining case is not reachable for every value of the word": 42,
+     "toggle read back": 17,
+     "two-bit word with lane-dependent wraps or stops": 29
+    }
+   }
+  },
+  "tt05__tt_um_kskyou": {
+   "design_class": "blind",
+   "record": "out/s3/runs/blind-tt05__tt_um_kskyou-20260923T072856Z-13ba663ae60c.json",
+   "truth": "out/s3/truth_tt05__tt_um_kskyou.json",
+   "truth_hash": "5a5a9b5cd9aba85c9d079edbcd2a8ba99e96634d5db40eb22ba2ceccfd90f726",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 3,
+    "scored_kind_structures_union": 3,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 148,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 148,
+    "truth_flops_in_netlist": 148,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "data_register": 5,
+    "accumulator": 4,
+    "counter": 3,
+    "flag": 2,
+    "fsm_state": 1
+   },
+   "result_structures_by_kind": {
+    "counter": 3,
+    "data_register": 10,
+    "flag": 12
+   },
+   "harness_buckets": {
+    "unscored kind": 22,
+    "vacuous": 1,
+    "hold": 1,
+    "verified": 1
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "candidates": 1,
+     "cube_none": 1,
+     "cube_witness_rejected": 64,
+     "edges": 500,
+     "edges_combining_dropped": 4927,
+     "lanes_cut_by_control": 2,
+     "proven": 0,
+     "rejected_no_joint_cube": 1,
+     "sat_calls": 64,
+     "seeds": 67,
+     "stage_ineligible_self_inverting": 82,
+     "structures": 0
+    },
+    "lfsr": {
+     "lfsr_blocks": 2,
+     "lfsr_candidates": 2,
+     "lfsr_parity_open": 0,
+     "lfsr_parity_proven": 0,
+     "lfsr_sat_calls": 0,
+     "lfsr_structures": 0,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 13,
+     "a wrap that does not close a count cycle": 11,
+     "accumulator (many constant steps)": 94,
+     "every count step lands where the word holds (a flag enables the count)": 178,
+     "hold not proven (schema v2 requires it for a counter)": 3,
+     "no changing lane": 93,
+     "no clean lane": 7,
+     "no lane counts through half the range": 1,
+     "other transitions in the domain": 226,
+     "steps s and 2s (a two-bit addend: an adder)": 20,
+     "toggle read back": 64,
+     "two-bit word with data loads (an affine fragment)": 3,
+     "two-bit word with lane-dependent wraps or stops": 8
+    }
+   }
+  },
+  "puzzle": {
+   "design_class": "frozen-code, known design",
+   "record": "out/s3/runs/blind-puzzle-20260923T073045Z-8ea21ef84643.json",
+   "truth": "out/s3/truth_puzzle.json",
+   "truth_hash": "3421ea8534bc2c527821d15a7cb70dcec2bfc4c60b36fc89ce68bc53a55099f5",
+   "permutations": {
+    "k": 5,
+    "valid": 5,
+    "distinct_answers": 1,
+    "scored_kind_structures_common": 29,
+    "scored_kind_structures_union": 29,
+    "unstable": []
+   },
+   "join": {
+    "netlist_flops": 92,
+    "netlist_flops_unknown_to_truth": 0,
+    "truth_flops": 92,
+    "truth_flops_in_netlist": 92,
+    "truth_shadow_flops": 0,
+    "truth_unmapped": 0
+   },
+   "truth_register_kinds": {
+    "counter": 27,
+    "flag": 6,
+    "shift_register": 1,
+    "lfsr_crc": 1
+   },
+   "result_structures_by_kind": {
+    "shift_register": 1,
+    "counter": 27,
+    "lfsr_crc": 1,
+    "flag": 4,
+    "data_register": 1
+   },
+   "harness_buckets": {
+    "verified": 27,
+    "unscored kind": 5,
+    "hold": 2
+   },
+   "recognizer_stage_stats": {
+    "shift": {
+     "alternative_decompositions": 2,
+     "candidates": 4,
+     "candidates_overlapping": 2,
+     "claims_shift_register": 30,
+     "cube_literals_max": 1,
+     "edges": 362,
+     "edges_combining_dropped": 809,
+     "hold_vacuous": 0,
+     "proven": 2,
+     "repair_edges": 0,
+     "sat_calls": 82,
+     "seeds": 22,
+     "stage_ineligible_self_inverting": 48,
+     "structures": 2,
+     "tie_groups_decided": 2
+    },
+    "lfsr": {
+     "lfsr_blocks": 28,
+     "lfsr_candidates": 5,
+     "lfsr_parity_open": 9,
+     "lfsr_parity_proven": 24,
+     "lfsr_sat_calls": 2,
+     "lfsr_structures": 1,
+     "lfsr_wide_admitted": 0,
+     "lfsr_wide_candidates": 0
+    },
+    "counter_rejected_candidates": {
+     "a bit that never changes while counting": 69,
+     "a wrap that does not close a count cycle": 4,
+     "accumulator (many constant steps)": 6,
+     "every count step lands where the word holds (a flag enables the count)": 136,
+     "hold not proven (schema v2 requires it for a counter)": 2,
+     "no clean lane": 5,
+     "no lane counts through half the range": 2,
+     "other transitions in the domain": 259,
+     "steps s and 2s (a two-bit addend: an adder)": 10,
+     "toggle read back": 6,
+     "two-bit word with lane-dependent wraps or stops": 10
+    }
+   }
+  }
+ },
+ "cases": [
+  {
+   "case": "miss",
+   "design": "tt09__tt_um_pwm_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "PWM_Generador.DIV_FREQ.counter",
+   "truth_width": 6,
+   "n_flops": 6,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "counter1",
+    "counter",
+    3
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": {
+    "structure": "counter1",
+    "kind": "counter",
+    "flops": 3,
+    "iou": 0.5
+   },
+   "coverage": [
+    "counter1(counter,n=3) holds truth bits [0-2]",
+    "w5(data_register,n=2) holds truth bits [4-5]",
+    "w4(flag,n=1) holds truth bits [3]"
+   ],
+   "cause": "M1",
+   "cause_name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+   "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt09__tt_um_pwm_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "PWM_Generador.DUTY_CYCLE",
+   "truth_width": 4,
+   "n_flops": 4,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "updown",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "w10",
+    "data_register",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w10(data_register,n=2) holds truth bits [1-2]",
+    "w9(flag,n=1) holds truth bits [0]",
+    "w3(flag,n=1) holds truth bits [3]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt09__tt_um_pwm_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "PWM_Generador.counter_debounce",
+   "truth_width": 28,
+   "n_flops": 28,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5714285714285714,
+    "w8",
+    "data_register",
+    16
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w8",
+    "structure_kind": "data_register",
+    "iou": 0.5714
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w8(data_register,n=16) holds truth bits [1-16]",
+    "w2(data_register,n=11) holds truth bits [17-27]",
+    "w0(flag,n=1) holds truth bits [0]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt09__tt_um_pwm_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter1",
+   "n_flops": 3,
+   "params": {
+    "bit_order": [
+     "dfrtp_2_127420_84320",
+     "dfrtp_2_127880_89760",
+     "dfrtp_1_126960_100640"
+    ],
+    "direction": "up",
+    "load": false,
+    "modulus": 8,
+    "saturating": false,
+    "step": 1
+   },
+   "template": "counter up by 1, mod 2^3, width 3",
+   "harness_bucket": "vacuous",
+   "harness_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 3 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "PWM_Generador.DIV_FREQ.counter",
+     "truth_kind": "counter",
+     "truth_flops": 6,
+     "iou": 0.5
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "u_cordic.x",
+   "truth_width": 20,
+   "n_flops": 20,
+   "truth_rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "truth_params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'bx",
+     "u_cordic.xn",
+     "u_cordic.xs_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.42105263157894735,
+    "w1",
+    "data_register",
+    34
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w1(data_register,n=34) holds truth bits [0-15]",
+    "w15(data_register,n=4) holds truth bits [16-18]",
+    "w23(data_register,n=2) holds truth bits [19]"
+   ],
+   "cause": "M4b",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+   "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "u_cordic.y",
+   "truth_width": 20,
+   "n_flops": 20,
+   "truth_rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "truth_params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'bx",
+     "u_cordic.yn",
+     "u_cordic.ys_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "w1",
+    "data_register",
+    34
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w1(data_register,n=34) holds truth bits [0-17]",
+    "w15(data_register,n=4) holds truth bits [18]",
+    "w23(data_register,n=2) holds truth bits [19]"
+   ],
+   "cause": "M4b",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+   "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "u_cordic.z",
+   "truth_width": 20,
+   "n_flops": 20,
+   "truth_rule": "D[k] = Q[k+1] on 19 of 19 shiftable bits",
+   "truth_params": {
+    "lanes": 1,
+    "depth": 20,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'bx",
+     "phase[19]",
+     "u_cordic.zfold[15]",
+     "u_cordic.zs_"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.9,
+    "w10",
+    "data_register",
+    18
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w10",
+    "structure_kind": "data_register",
+    "iou": 0.9
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w10(data_register,n=18) holds truth bits [1-18]",
+    "w21(flag,n=1) holds truth bits [0]",
+    "w28(flag,n=1) holds truth bits [19]"
+   ],
+   "cause": "M4b",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+   "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "ttsky26c__tt_um_joonatanalanampa_cordic",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter1",
+   "n_flops": 9,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_125120_51680",
+     "dfxtp_2_145820_43520",
+     "dfxtp_2_145820_46240",
+     "dfxtp_2_147660_59840",
+     "dfxtp_2_144900_62560",
+     "dfxtp_2_144900_73440",
+     "dfxtp_2_146280_70720",
+     "dfxtp_2_145360_84320",
+     "dfxtp_2_146280_87040"
+    ],
+    "direction": "up",
+    "load": true,
+    "modulus": 512,
+    "saturating": false,
+    "step": 15
+   },
+   "template": "counter up by 15, mod 2^9, width 9",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "phase",
+     "truth_kind": "accumulator",
+     "truth_flops": 20,
+     "iou": 0.45
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "lfsr",
+   "truth_width": 15,
+   "n_flops": 15,
+   "truth_rule": "D[k] = Q[k-1] on 14 of 14 shiftable bits",
+   "truth_params": {
+    "lanes": 1,
+    "depth": 15,
+    "direction": "toward MSB",
+    "serial_in": [
+     "(lfsr[0] ^ lfsr[14])"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    1.0,
+    "lfsr0",
+    "lfsr_crc",
+    15
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "lfsr0",
+    "structure_kind": "lfsr_crc",
+    "iou": 1.0
+   },
+   "best_scored_kind_structure": {
+    "structure": "lfsr0",
+    "kind": "lfsr_crc",
+    "flops": 15,
+    "iou": 1.0
+   },
+   "coverage": [
+    "lfsr0(lfsr_crc,n=15) holds truth bits [0-14]"
+   ],
+   "cause": "M4a",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which proved an lfsr_crc",
+   "mechanism": "tools/s3/shift.py only turns a feedback head into a shift lane when the head is NOT GF(2)-affine in the lane's own bits; an affine head stays a 'feedback' relation for tools/s3/lfsr.py, and recognize.py's overlap rule keeps the more specific lfsr_crc structure. The truth calls the same flops a shift_register, so the answer costs a shift_register miss and an lfsr_crc false positive",
+   "truth_disagreement": "D1"
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "pwm_counter",
+   "n_flops": 5,
+   "structure": "counter6",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "saw[0]",
+   "truth_width": 2,
+   "n_flops": 2,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "w34",
+    "flag",
+    1
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w24(flag,n=1) holds truth bits [0]",
+    "w34(flag,n=1) holds truth bits [1]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "saw[1]",
+   "truth_width": 2,
+   "n_flops": 2,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "w26",
+    "flag",
+    1
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w26(flag,n=1) holds truth bits [0]",
+    "w12(flag,n=1) holds truth bits [1]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "state",
+   "truth_width": 5,
+   "n_flops": 5,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.23809523809523808,
+    "counter0",
+    "counter",
+    21
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": {
+    "structure": "counter0",
+    "kind": "counter",
+    "flops": 21,
+    "iou": 0.2381
+   },
+   "coverage": [
+    "counter0(counter,n=21) holds truth bits [0-4]"
+   ],
+   "cause": "M3",
+   "cause_name": "merged with a neighbouring word; one-to-one matching gave the pair to the other register",
+   "mechanism": "one proved counter spans two truth registers; score.match() is one-to-one, so the structure is credited to the register it matches best and the other register is a miss",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter1",
+   "n_flops": 8,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_149960_87040",
+     "dfxtp_1_152260_84320",
+     "dfxtp_1_144900_95200",
+     "dfxtp_1_139380_81600",
+     "dfxtp_1_132020_81600",
+     "dfxtp_1_121900_81600",
+     "dfxtp_1_120520_92480",
+     "dfxtp_1_132940_92480"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": 256,
+    "saturating": null,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "cfg[0]",
+    "item_kind": "accumulator",
+    "iou": 0.6154,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "cfg[0]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.6154
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter2",
+   "n_flops": 8,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_156860_100640",
+     "dfxtp_1_149500_100640",
+     "dfxtp_1_148120_103360",
+     "dfxtp_1_144900_106080",
+     "dfxtp_1_134320_103360",
+     "dfxtp_1_126500_106080",
+     "dfxtp_1_119140_106080",
+     "dfxtp_1_133860_106080"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": 256,
+    "saturating": null,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "cfg[2]",
+    "item_kind": "accumulator",
+    "iou": 0.6154,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "cfg[2]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.6154
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter3",
+   "n_flops": 8,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_156860_133280",
+     "dfxtp_1_156860_116960",
+     "dfxtp_1_153180_122400",
+     "dfxtp_1_152260_111520",
+     "dfxtp_1_155940_106080",
+     "dfxtp_1_116840_125120",
+     "dfxtp_1_115460_130560",
+     "dfxtp_1_119140_116960"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": 256,
+    "saturating": null,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "cfg[4]",
+    "item_kind": "accumulator",
+    "iou": 0.6154,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "cfg[4]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.6154
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter4",
+   "n_flops": 7,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_106260_27200",
+     "dfxtp_1_88320_21760",
+     "dfxtp_1_97980_38080",
+     "dfxtp_1_96140_24480",
+     "dfxtp_1_80500_21760",
+     "dfxtp_1_85100_57120",
+     "dfxtp_1_75440_57120"
+    ],
+    "direction": "down",
+    "load": false,
+    "modulus": null,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "saw_counter_state[0]",
+    "item_kind": "accumulator",
+    "iou": 0.7,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "saw_counter_state[0]",
+     "truth_kind": "accumulator",
+     "truth_flops": 10,
+     "iou": 0.7
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter5",
+   "n_flops": 6,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_105340_24480",
+     "dfxtp_1_95680_21760",
+     "dfxtp_1_100740_35360",
+     "dfxtp_1_97520_27200",
+     "dfxtp_1_79580_24480",
+     "dfxtp_1_85560_54400"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": null,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "saw_counter_state[1]",
+    "item_kind": "accumulator",
+    "iou": 0.6,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "saw_counter_state[1]",
+     "truth_kind": "accumulator",
+     "truth_flops": 10,
+     "iou": 0.6
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter7",
+   "n_flops": 5,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_95220_184960",
+     "dfxtp_1_85560_187680",
+     "dfxtp_1_84180_184960",
+     "dfxtp_1_93380_155040",
+     "dfxtp_1_97520_152320"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": "counter updown by 1, saturating at 31 (up) / 0 (down), width 5",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[0]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3846
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter8",
+   "n_flops": 5,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_150880_78880",
+     "dfxtp_1_143980_92480",
+     "dfxtp_1_146740_81600",
+     "dfxtp_1_130180_84320",
+     "dfxtp_1_122360_76160"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": 32,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[1]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3846
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter9",
+   "n_flops": 5,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_96140_198560",
+     "dfxtp_1_85560_198560",
+     "dfxtp_1_85560_195840",
+     "dfxtp_1_93840_195840",
+     "dfxtp_1_97980_149600"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": "counter updown by 1, saturating at 31 (up) / 0 (down), width 5",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[1]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3846
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter10",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_113620_70720",
+     "dfxtp_1_111320_57120",
+     "dfxtp_1_119140_57120",
+     "dfxtp_1_120980_70720"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": 12,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "sweep_counter_state[0]",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "sweep_counter_state[0]",
+     "truth_kind": "accumulator",
+     "truth_flops": 4,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter11",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_95220_97920",
+     "dfxtp_1_93840_84320",
+     "dfxtp_1_101200_84320",
+     "dfxtp_1_93380_73440"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": 10,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "sweep_counter_state[4]",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "sweep_counter_state[4]",
+     "truth_kind": "accumulator",
+     "truth_flops": 4,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter12",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_103040_95200",
+     "dfxtp_1_95680_57120",
+     "dfxtp_1_96600_54400",
+     "dfxtp_1_94300_68000"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": 14,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "sweep_counter_state[2]",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "sweep_counter_state[2]",
+     "truth_kind": "accumulator",
+     "truth_flops": 4,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter13",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_95220_95200",
+     "dfxtp_1_87860_81600",
+     "dfxtp_1_108560_84320",
+     "dfxtp_1_93380_78880"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": 15,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "sweep_counter_state[3]",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "sweep_counter_state[3]",
+     "truth_kind": "accumulator",
+     "truth_flops": 4,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter14",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_106260_201280",
+     "dfxtp_1_109020_190400",
+     "dfxtp_1_106260_195840",
+     "dfxtp_1_109020_187680"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": "counter down by 1, saturating at 15 (up) / 0 (down), width 4",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[2]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3077
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter15",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_106260_70720",
+     "dfxtp_1_106260_54400",
+     "dfxtp_1_103960_57120",
+     "dfxtp_1_101660_68000"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": 14,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "sweep_counter_state[1]",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "sweep_counter_state[1]",
+     "truth_kind": "accumulator",
+     "truth_flops": 4,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter16",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_64400_217600",
+     "dfxtp_2_73140_198560",
+     "dfxtp_1_72680_184960",
+     "dfxtp_1_73140_176800"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "y",
+     "truth_kind": "accumulator",
+     "truth_flops": 20,
+     "iou": 0.2
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter17",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_108100_214880",
+     "dfxtp_1_108100_212160",
+     "dfxtp_1_100740_214880",
+     "dfxtp_1_115460_212160"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": "counter down by 1, saturating at 15 (up) / 0 (down), width 4",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[4]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3077
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter18",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_85560_209440",
+     "dfxtp_1_87860_217600",
+     "dfxtp_1_93380_214880",
+     "dfxtp_1_108100_204000"
+    ],
+    "direction": "down",
+    "load": true,
+    "modulus": null,
+    "saturating": true,
+    "step": 1
+   },
+   "template": "counter down by 1, saturating at 15 (up) / 0 (down), width 4",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "cfg[3]",
+     "truth_kind": "accumulator",
+     "truth_flops": 13,
+     "iou": 0.3077
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter19",
+   "n_flops": 3,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_63020_212160",
+     "dfxtp_2_69920_204000",
+     "dfxtp_1_76820_182240"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 8,
+    "saturating": null,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "v",
+     "truth_kind": "accumulator",
+     "truth_flops": 20,
+     "iou": 0.15
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt05__tt_um_toivoh_synth",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "structure": "lfsr0",
+   "n_flops": 15,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_69000_78880",
+     "dfxtp_1_68540_84320",
+     "dfxtp_1_62560_87040",
+     "dfxtp_1_59800_89760",
+     "dfxtp_1_52900_95200",
+     "dfxtp_1_45540_95200",
+     "dfxtp_1_50140_84320",
+     "dfxtp_1_54740_78880",
+     "dfxtp_1_55200_73440",
+     "dfxtp_1_69000_76160",
+     "dfxtp_1_61640_76160",
+     "dfxtp_1_58420_65280",
+     "dfxtp_1_58880_62560",
+     "dfxtp_1_67620_62560",
+     "dfxtp_1_68540_59840"
+    ],
+    "form": "both",
+    "k_steps": 1,
+    "n_inputs": 0,
+    "poly": 49153
+   },
+   "template": "lfsr_crc, 15 bits, 0 input net(s)",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": {
+    "item": "lfsr",
+    "item_kind": "shift_register",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "lfsr",
+     "truth_kind": "shift_register",
+     "truth_flops": 15,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F4",
+   "cause_name": "lfsr_crc proved over a truth shift_register",
+   "mechanism": "the M4a handoff seen from the structure side",
+   "truth_disagreement": "D1"
+  },
+  {
+   "case": "miss",
+   "design": "ttsky25a__tt_um_td4",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.pc",
+   "truth_width": 4,
+   "n_flops": 4,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    1.0,
+    "w10",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w10",
+    "structure_kind": "data_register",
+    "iou": 1.0
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w10(data_register,n=4) holds truth bits [0-3]"
+   ],
+   "cause": "M2a",
+   "cause_name": "kind error, extent exact: the whole register is one structure of an unscored kind",
+   "mechanism": "the counter recognizer rejected the word; the flops were emitted as one data_register, so the register's extent was recovered but its kind was not",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "clkdiv.counter_value",
+   "n_flops": 32,
+   "structure": "counter0",
+   "iou": 0.8125,
+   "exact": false,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "debdown.delay_timer",
+   "n_flops": 20,
+   "structure": "counter10",
+   "iou": 0.6,
+   "exact": false,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "doubledabble.counter",
+   "truth_width": 6,
+   "n_flops": 6,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.8333333333333334,
+    "w10",
+    "data_register",
+    5
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w10",
+    "structure_kind": "data_register",
+    "iou": 0.8333
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w10(data_register,n=5) holds truth bits [1-5]",
+    "w8(flag,n=1) holds truth bits [0]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "doubledabble.shift",
+   "truth_width": 32,
+   "n_flops": 32,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 3,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.71875,
+    "w0",
+    "data_register",
+    23
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w0",
+    "structure_kind": "data_register",
+    "iou": 0.7188
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w0(data_register,n=23) holds truth bits [1-2,4-6,8-10,12-14,16-18,20-22,24-26,28-30]",
+    "w15(data_register,n=7) holds truth bits [3,7,11,15,19,23,27]",
+    "w67(flag,n=1) holds truth bits [0]",
+    "w70(flag,n=1) holds truth bits [31]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": "D3"
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "hourmod.hour",
+   "truth_width": 32,
+   "n_flops": 28,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "updown",
+    "step": 10000,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.42857142857142855,
+    "counter9",
+    "counter",
+    12
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": {
+    "structure": "counter9",
+    "kind": "counter",
+    "flops": 12,
+    "iou": 0.4286
+   },
+   "coverage": [
+    "counter9(counter,n=12) holds truth bits [4-15]",
+    "counter6(counter,n=12) holds truth bits [17-28]",
+    "w61(data_register,n=2) holds truth bits [30-31]",
+    "w62(flag,n=1) holds truth bits [16]",
+    "w44(flag,n=1) holds truth bits [29]"
+   ],
+   "cause": "M1",
+   "cause_name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+   "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "milimod.t",
+   "n_flops": 32,
+   "structure": "counter1",
+   "iou": 0.8125,
+   "exact": false,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 3 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "minites.min",
+   "truth_width": 32,
+   "n_flops": 30,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "updown",
+    "step": 100,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.4,
+    "counter4",
+    "counter",
+    12
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": {
+    "structure": "counter4",
+    "kind": "counter",
+    "flops": 12,
+    "iou": 0.4
+   },
+   "coverage": [
+    "counter4(counter,n=12) holds truth bits [20-31]",
+    "w35(data_register,n=3) holds truth bits [3-5]",
+    "w38(data_register,n=2) holds truth bits [12-13]",
+    "w13(data_register,n=2) holds truth bits [15-16]",
+    "w57(data_register,n=2) holds truth bits [17,19]",
+    "w18(flag,n=1) holds truth bits [2]",
+    "w71(flag,n=1) holds truth bits [6]",
+    "w68(flag,n=1) holds truth bits [7]",
+    "w14(flag,n=1) holds truth bits [8]",
+    "w4(flag,n=1) holds truth bits [9]",
+    "w49(flag,n=1) holds truth bits [10]",
+    "w52(flag,n=1) holds truth bits [11]",
+    "w69(flag,n=1) holds truth bits [14]",
+    "w47(flag,n=1) holds truth bits [18]"
+   ],
+   "cause": "M1",
+   "cause_name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+   "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "timedfsm.count",
+   "truth_width": 3,
+   "n_flops": 3,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": 5,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.3333333333333333,
+    "w66",
+    "flag",
+    1
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w66(flag,n=1) holds truth bits [0]",
+    "w45(flag,n=1) holds truth bits [1]",
+    "w58(flag,n=1) holds truth bits [2]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "timedfsm.t",
+   "truth_width": 32,
+   "n_flops": 32,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5625,
+    "w5",
+    "data_register",
+    18
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w5",
+    "structure_kind": "data_register",
+    "iou": 0.5625
+   },
+   "best_scored_kind_structure": {
+    "structure": "counter8",
+    "kind": "counter",
+    "flops": 12,
+    "iou": 0.375
+   },
+   "coverage": [
+    "w5(data_register,n=18) holds truth bits [2-19]",
+    "counter8(counter,n=12) holds truth bits [20-31]",
+    "w46(data_register,n=2) holds truth bits [0-1]"
+   ],
+   "cause": "M1",
+   "cause_name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+   "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "to7seg.count.count",
+   "truth_width": 3,
+   "n_flops": 3,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.6666666666666666,
+    "w39",
+    "data_register",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w39",
+    "structure_kind": "data_register",
+    "iou": 0.6667
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w39(data_register,n=2) holds truth bits [1-2]",
+    "w60(flag,n=1) holds truth bits [0]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter4",
+   "n_flops": 12,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_19780_65280",
+     "dfxtp_1_17020_62560",
+     "dfxtp_2_62100_57120",
+     "dfxtp_2_71300_54400",
+     "dfxtp_1_48760_59840",
+     "dfxtp_1_48760_62560",
+     "dfxtp_1_71300_70720",
+     "dfxtp_1_69000_68000",
+     "dfxtp_1_109940_62560",
+     "dfxtp_1_108560_65280",
+     "dfxtp_1_120980_68000",
+     "dfxtp_1_127880_65280"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 4096,
+    "saturating": false,
+    "step": 1
+   },
+   "template": "counter updown by 1, mod 2^12, width 12",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "minites.min",
+     "truth_kind": "counter",
+     "truth_flops": 30,
+     "iou": 0.4
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter6",
+   "n_flops": 12,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_59340_136000",
+     "dfxtp_2_58420_144160",
+     "dfxtp_1_30820_141440",
+     "dfxtp_2_19780_136000",
+     "dfxtp_1_15640_138720",
+     "dfxtp_1_32660_125120",
+     "dfxtp_1_13800_122400",
+     "dfxtp_1_73600_122400",
+     "dfxtp_1_71300_119680",
+     "dfxtp_1_91080_116960",
+     "dfxtp_1_92000_122400",
+     "dfxtp_1_115920_127840"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 4096,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "hourmod.hour",
+     "truth_kind": "counter",
+     "truth_flops": 28,
+     "iou": 0.4286
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter8",
+   "n_flops": 12,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_239200_182240",
+     "dfxtp_1_241040_179520",
+     "dfxtp_1_241960_168640",
+     "dfxtp_1_264960_165920",
+     "dfxtp_1_259900_168640",
+     "dfxtp_1_264960_171360",
+     "dfxtp_1_255300_179520",
+     "dfxtp_1_253920_182240",
+     "dfxtp_1_264500_182240",
+     "dfxtp_1_277380_179520",
+     "dfxtp_1_278760_182240",
+     "dfxtp_1_277380_176800"
+    ],
+    "direction": "up",
+    "load": false,
+    "modulus": 4096,
+    "saturating": false,
+    "step": 1
+   },
+   "template": "counter up by 1, mod 2^12, width 12",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "timedfsm.t",
+     "truth_kind": "counter",
+     "truth_flops": 32,
+     "iou": 0.375
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt03p5__tt_um_Reloj_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter9",
+   "n_flops": 12,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_172040_144160",
+     "dfxtp_1_176640_141440",
+     "dfxtp_2_159160_130560",
+     "dfxtp_2_149960_125120",
+     "dfxtp_2_162380_146880",
+     "dfxtp_1_147200_149600",
+     "dfxtp_2_128800_136000",
+     "dfxtp_2_136620_133280",
+     "dfxtp_2_91080_144160",
+     "dfxtp_1_100280_138720",
+     "dfxtp_2_72680_141440",
+     "dfxtp_2_97060_130560"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 4096,
+    "saturating": false,
+    "step": 625
+   },
+   "template": "counter updown by 625, mod 2^12, width 12",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "hourmod.hour",
+     "truth_kind": "counter",
+     "truth_flops": 28,
+     "iou": 0.4286
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "cpu.pref.imm_reg",
+   "truth_width": 16,
+   "n_flops": 16,
+   "truth_rule": "D[k] = Q[k+2] on 14 of 14 shiftable bits",
+   "truth_params": {
+    "lanes": 2,
+    "depth": 8,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'bx",
+     "cpu.next_imm_top_data[6]",
+     "cpu.next_imm_top_data[7]",
+     "cpu.pref.fifo.sr_entries[0][14]",
+     "cpu.pref.fifo.sr_entries[0][15]"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.375,
+    "w14",
+    "data_register",
+    6
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w14(data_register,n=6) holds truth bits [10-15]",
+    "w48(data_register,n=2) holds truth bits [0-1]",
+    "w33(data_register,n=2) holds truth bits [2-3]",
+    "w40(data_register,n=2) holds truth bits [4-5]",
+    "w27(data_register,n=2) holds truth bits [6-7]",
+    "w19(data_register,n=2) holds truth bits [8-9]"
+   ],
+   "cause": "M4b",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+   "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "cpu.pref.pc",
+   "truth_width": 16,
+   "n_flops": 16,
+   "truth_rule": "D[k] = Q[k+2] on 14 of 14 shiftable bits",
+   "truth_params": {
+    "lanes": 2,
+    "depth": 8,
+    "direction": "toward LSB",
+    "serial_in": [
+     "1'b0",
+     "1'b1",
+     "1'bx",
+     "<and alu.v:161>",
+     "<or alu.v:162>",
+     "<xor alu.v:163>",
+     "cpu.dec.sched.alu.arg2_si[0]",
+     "cpu.dec.sched.alu.arg2_si[1]"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.75,
+    "w5",
+    "data_register",
+    12
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w5",
+    "structure_kind": "data_register",
+    "iou": 0.75
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w5(data_register,n=12) holds truth bits [2-13]",
+    "w8(data_register,n=2) holds truth bits [0-1]",
+    "w46(data_register,n=2) holds truth bits [14-15]"
+   ],
+   "cause": "M4b",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which admitted nothing",
+   "mechanism": "same handoff as M4a, but tools/s3/lfsr.py did not admit the block (its own verdicts: 'no strongly connected affine mode could be modelled' / 'not affine in its own bits' / 'retried without its nonlinear rows'; lfsr_structures = 0), so no structure of any scored kind covers the register",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.dec.sched.alu.state",
+   "n_flops": 3,
+   "structure": "counter2",
+   "iou": 0.6667,
+   "exact": false,
+   "bucket": "hold",
+   "verify_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "cause": "V1",
+   "cause_name": "hold obligation not claimed",
+   "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.dec.sched.stage",
+   "truth_width": 2,
+   "n_flops": 2,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "w54",
+    "flag",
+    1
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w3(flag,n=1) holds truth bits [0]",
+    "w54(flag,n=1) holds truth bits [1]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.mem_if.sbio_rx.counter",
+   "n_flops": 4,
+   "structure": "counter0",
+   "iou": 0.75,
+   "exact": false,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 2 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.mem_if.tx_monitor.counter",
+   "truth_width": 4,
+   "n_flops": 4,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.25,
+    "w57",
+    "flag",
+    1
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w55(flag,n=1) holds truth bits [0]",
+    "w34(flag,n=1) holds truth bits [1]",
+    "w23(flag,n=1) holds truth bits [2]",
+    "w57(flag,n=1) holds truth bits [3]"
+   ],
+   "cause": "M2b",
+   "cause_name": "kind error with a grouping split: the register is spread over several unscored structures",
+   "mechanism": "the counter recognizer produced no word over these flops and the grouping stage split them into 1-bit flag structures and small data_registers",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "cpu.pref.num_flushed",
+   "truth_width": 2,
+   "n_flops": 2,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "down",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    1.0,
+    "w50",
+    "data_register",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w50",
+    "structure_kind": "data_register",
+    "iou": 1.0
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w50(data_register,n=2) holds truth bits [0-1]"
+   ],
+   "cause": "M2a",
+   "cause_name": "kind error, extent exact: the whole register is one structure of an unscored kind",
+   "mechanism": "the counter recognizer rejected the word; the flops were emitted as one data_register, so the register's extent was recovered but its kind was not",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[0]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w32",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w32(data_register,n=4) holds truth bits [0-1]",
+    "w22(data_register,n=4) holds truth bits [2-3]",
+    "w20(data_register,n=4) holds truth bits [4-5]",
+    "w29(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[1]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w42",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w13(data_register,n=4) holds truth bits [0-1]",
+    "w18(data_register,n=4) holds truth bits [2-3]",
+    "w42(data_register,n=4) holds truth bits [4-5]",
+    "w24(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[2]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.25,
+    "w9",
+    "data_register",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w39(data_register,n=2) holds truth bits [0-1]",
+    "w30(data_register,n=2) holds truth bits [2-3]",
+    "w9(data_register,n=2) holds truth bits [4-5]",
+    "w21(register_file_word,n=2) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[3]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w7",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w7(data_register,n=4) holds truth bits [0-1]",
+    "w25(data_register,n=4) holds truth bits [2-3]",
+    "w17(data_register,n=4) holds truth bits [4-5]",
+    "w38(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[4]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w32",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w32(data_register,n=4) holds truth bits [0-1]",
+    "w22(data_register,n=4) holds truth bits [2-3]",
+    "w20(data_register,n=4) holds truth bits [4-5]",
+    "w29(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[5]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w42",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w13(data_register,n=4) holds truth bits [0-1]",
+    "w18(data_register,n=4) holds truth bits [2-3]",
+    "w42(data_register,n=4) holds truth bits [4-5]",
+    "w24(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[6]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.25,
+    "w47",
+    "register_file_word",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w11(data_register,n=2) holds truth bits [0-1]",
+    "w45(data_register,n=2) holds truth bits [2-3]",
+    "w16(data_register,n=2) holds truth bits [4-5]",
+    "w47(register_file_word,n=2) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.general_registers.regs[7]",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.2,
+    "w7",
+    "data_register",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w7(data_register,n=4) holds truth bits [0-1]",
+    "w25(data_register,n=4) holds truth bits [2-3]",
+    "w17(data_register,n=4) holds truth bits [4-5]",
+    "w38(register_file_word,n=4) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "truth_register": "cpu.dec.sched.alu.registers.sp_register.regs",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "own Q bits of other indices reach D through XOR (GF(2) feedback)",
+   "truth_params": {
+    "form": null,
+    "poly": null,
+    "k_steps": null,
+    "n_inputs": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.25,
+    "w53",
+    "register_file_word",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w28(data_register,n=2) holds truth bits [0-1]",
+    "w43(data_register,n=2) holds truth bits [2-3]",
+    "w36(data_register,n=2) holds truth bits [4-5]",
+    "w53(register_file_word,n=2) holds truth bits [6-7]"
+   ],
+   "cause": "M5",
+   "cause_name": "truth kind lfsr_crc on a CPU register file; the recognizer holds at most 2 of 8 flops",
+   "mechanism": "the frozen labeller's rule 4 (tools/s3/truth_tempo.py Classifier.classify) labels a register lfsr_crc when own Q bits of other indices reach D through XOR on >= max(2, n/4) bits; an ALU that shifts and XORs its register file makes that true of every word. The recognizer split each 8-bit word into four 2-bit pieces (three data_register, one register_file_word), so it would miss the register at IoU <= 0.25 whatever the label said",
+   "truth_disagreement": "D2"
+  },
+  {
+   "case": "miss",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "synchronizer",
+   "truth_register": "ui_in_reg",
+   "truth_width": 8,
+   "n_flops": 2,
+   "truth_rule": "no enable; D is an input pin (stage 1) or a stage-1 flop (stage 2)",
+   "truth_params": {
+    "stages": 1,
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    1.0,
+    "w2",
+    "data_register",
+    2
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "w2",
+    "structure_kind": "data_register",
+    "iou": 1.0
+   },
+   "best_scored_kind_structure": null,
+   "coverage": [
+    "w2(data_register,n=2) holds truth bits [0-1]"
+   ],
+   "cause": "M6",
+   "cause_name": "synchronizer of one stage: refused by the frozen contract",
+   "mechanism": "the truth labels a 1-stage input register a synchronizer (params.stages = 1); tools/s3/verify.py requires SYNC_MIN_STAGES = 2 and tools/s3/shift.py only emits stages 1-2 of an unconditional input copy path, so a one-flop-deep synchronizer can never be reported or verified",
+   "truth_disagreement": "D4"
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_toivoh_basilisc_2816",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter1",
+   "n_flops": 2,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_29900_89760",
+     "dfxtp_1_41860_84320"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 4,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "cpu.pref.num_prefetched",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "cpu.pref.num_prefetched",
+     "truth_kind": "accumulator",
+     "truth_flops": 2,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "miss",
+   "design": "ttsky25a__tt_um_sjsu_vga_music",
+   "design_class": "blind",
+   "kind": "shift_register",
+   "truth_register": "lfsr",
+   "truth_width": 13,
+   "n_flops": 13,
+   "truth_rule": "D[k] = Q[k-1] on 12 of 12 shiftable bits",
+   "truth_params": {
+    "lanes": 1,
+    "depth": 13,
+    "direction": "toward MSB",
+    "serial_in": [
+     "feedback"
+    ],
+    "order": null,
+    "lanes_unordered": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    1.0,
+    "lfsr0",
+    "lfsr_crc",
+    13
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": {
+    "structure": "lfsr0",
+    "structure_kind": "lfsr_crc",
+    "iou": 1.0
+   },
+   "best_scored_kind_structure": {
+    "structure": "lfsr0",
+    "kind": "lfsr_crc",
+    "flops": 13,
+    "iou": 1.0
+   },
+   "coverage": [
+    "lfsr0(lfsr_crc,n=13) holds truth bits [0-12]"
+   ],
+   "cause": "M4a",
+   "cause_name": "affine-feedback handoff: shift.py routed the lane to lfsr.py, which proved an lfsr_crc",
+   "mechanism": "tools/s3/shift.py only turns a feedback head into a shift lane when the head is NOT GF(2)-affine in the lane's own bits; an affine head stays a 'feedback' relation for tools/s3/lfsr.py, and recognize.py's overlap rule keeps the more specific lfsr_crc structure. The truth calls the same flops a shift_register, so the answer costs a shift_register miss and an lfsr_crc false positive",
+   "truth_disagreement": "D1"
+  },
+  {
+   "case": "miss",
+   "design": "ttsky25a__tt_um_sjsu_vga_music",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "note_counter",
+   "truth_width": 8,
+   "n_flops": 8,
+   "truth_rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "truth_params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "alt_kinds": [],
+   "best_overlap": [
+    0.5,
+    "counter4",
+    "counter",
+    4
+   ],
+   "matched_by_a_structure_of_an_unaccepted_kind": null,
+   "best_scored_kind_structure": {
+    "structure": "counter4",
+    "kind": "counter",
+    "flops": 4,
+    "iou": 0.5
+   },
+   "coverage": [
+    "counter4(counter,n=4) holds truth bits [1-4]",
+    "w4(data_register,n=2) holds truth bits [6-7]",
+    "w2(flag,n=1) holds truth bits [0]",
+    "w11(flag,n=1) holds truth bits [5]"
+   ],
+   "cause": "M1",
+   "cause_name": "partial extent: the proved word covers only part of the truth register, IoU <= 0.5",
+   "mechanism": "the recognizer proved a narrower counting word than the truth register's flop set; the match threshold is IoU > 0.5 (tools/s3/score.py IOU_MIN), so the register is credited to nobody and the structure is a false positive at the same time",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "ttsky25a__tt_um_sjsu_vga_music",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter4",
+   "n_flops": 4,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_138460_43520",
+     "dfxtp_1_146280_51680",
+     "dfxtp_1_146740_54400",
+     "dfxtp_1_145360_59840"
+    ],
+    "direction": "up",
+    "load": false,
+    "modulus": 16,
+    "saturating": false,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "note_counter",
+     "truth_kind": "counter",
+     "truth_flops": 8,
+     "iou": 0.5
+    }
+   ],
+   "cause": "F3",
+   "cause_name": "counter proved over a sub-word of a truth counter (matched nothing)",
+   "mechanism": "the mirror image of M1: the proved word is a genuine counting sub-word of a wider truth counter but holds <= half of it",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "ttsky25a__tt_um_sjsu_vga_music",
+   "design_class": "blind",
+   "kind": "lfsr_crc",
+   "structure": "lfsr0",
+   "n_flops": 13,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_7360_54400",
+     "dfxtp_1_8280_59840",
+     "dfxtp_1_7820_62560",
+     "dfxtp_1_8280_65280",
+     "dfxtp_1_11040_70720",
+     "dfxtp_1_18400_70720",
+     "dfxtp_1_26680_68000",
+     "dfxtp_1_28980_65280",
+     "dfxtp_1_28980_54400",
+     "dfxtp_1_7820_48960",
+     "dfxtp_1_11040_43520",
+     "dfxtp_1_16100_46240",
+     "dfxtp_1_22080_51680"
+    ],
+    "form": "fibonacci",
+    "k_steps": 1,
+    "n_inputs": 0,
+    "poly": 13329
+   },
+   "template": "lfsr_crc, 13 bits, 0 input net(s)",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": {
+    "item": "lfsr",
+    "item_kind": "shift_register",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "lfsr",
+     "truth_kind": "shift_register",
+     "truth_flops": 13,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F4",
+   "cause_name": "lfsr_crc proved over a truth shift_register",
+   "mechanism": "the M4a handoff seen from the structure side",
+   "truth_disagreement": "D1"
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.LScore1.Q",
+   "n_flops": 4,
+   "structure": "counter15",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.LScore2.Q",
+   "n_flops": 4,
+   "structure": "counter14",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.LScore3.Q",
+   "n_flops": 4,
+   "structure": "counter10",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.LScore4.Q",
+   "n_flops": 4,
+   "structure": "counter12",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.RScore1.Q",
+   "n_flops": 4,
+   "structure": "counter9",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.RScore2.Q",
+   "n_flops": 4,
+   "structure": "counter11",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.RScore3.Q",
+   "n_flops": 4,
+   "structure": "counter8",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.s.RScore4.Q",
+   "n_flops": 4,
+   "structure": "counter13",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.vg.HSCounter.Q",
+   "n_flops": 11,
+   "structure": "counter1",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "DUT.vg.RowCounter.Q",
+   "n_flops": 9,
+   "structure": "counter5",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter3",
+   "n_flops": 9,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_144900_73440",
+     "dfxtp_1_119140_73440",
+     "dfxtp_2_116840_65280",
+     "dfxtp_4_106260_54400",
+     "dfxtp_2_94760_57120",
+     "dfxtp_4_122820_59840",
+     "dfxtp_2_149040_68000",
+     "dfxtp_2_141680_65280",
+     "dfxtp_2_149040_54400"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 512,
+    "saturating": false,
+    "step": 1
+   },
+   "template": "counter updown by 1, mod 2^9, width 9",
+   "harness_bucket": "vacuous",
+   "harness_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "verified": false,
+   "matched": {
+    "item": "DUT.b.BallRow.Q",
+    "item_kind": "accumulator",
+    "iou": 1.0,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "DUT.b.BallRow.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 9,
+     "iou": 1.0
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter4",
+   "n_flops": 9,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_146280_24480",
+     "dfxtp_1_114080_21760",
+     "dfxtp_1_131100_24480",
+     "dfxtp_2_137540_27200",
+     "dfxtp_1_149500_27200",
+     "dfxtp_1_126500_35360",
+     "dfxtp_2_145820_46240",
+     "dfxtp_2_132020_38080",
+     "dfxtp_1_149500_48960"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 512,
+    "saturating": false,
+    "step": 1
+   },
+   "template": "counter updown by 1, mod 2^9, width 9",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": {
+    "item": "DUT.b.BallCol.Q",
+    "item_kind": "accumulator",
+    "iou": 0.9,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "DUT.b.BallCol.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 10,
+     "iou": 0.9
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter6",
+   "n_flops": 6,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_72680_106080",
+     "dfxtp_1_84180_106080",
+     "dfxtp_1_84640_92480",
+     "dfxtp_1_99360_89760",
+     "dfxtp_2_106260_97920",
+     "dfxtp_1_93380_100640"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": null,
+    "saturating": 53,
+    "step": 1
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "DUT.leftPaddle.PaddleRow.Q",
+    "item_kind": "accumulator",
+    "iou": 0.6667,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "DUT.leftPaddle.PaddleRow.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 9,
+     "iou": 0.6667
+    },
+    {
+     "register": "DUT.b.BallCol.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 10,
+     "iou": 0.0667
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter7",
+   "n_flops": 6,
+   "params": {
+    "bit_order": [
+     "dfxtp_1_109020_92480",
+     "dfxtp_2_109940_103360",
+     "dfxtp_2_123740_103360",
+     "dfxtp_1_149500_100640",
+     "dfxtp_1_136160_92480",
+     "dfxtp_1_147200_89760"
+    ],
+    "direction": "updown",
+    "load": true,
+    "modulus": 64,
+    "saturating": false,
+    "step": 5
+   },
+   "template": null,
+   "harness_bucket": "hold",
+   "harness_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "verified": false,
+   "matched": {
+    "item": "DUT.rightPaddle.PaddleRow.Q",
+    "item_kind": "accumulator",
+    "iou": 0.6667,
+    "kind_accepted": false
+   },
+   "truth_overlaps": [
+    {
+     "register": "DUT.rightPaddle.PaddleRow.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 9,
+     "iou": 0.6667
+    }
+   ],
+   "cause": "F1",
+   "cause_name": "counter proved over a truth accumulator (matched, wrong kind)",
+   "mechanism": "the truth's rule 5 labels the register accumulator ('D = Q + a multi-bit variable (the adder on own Q)'); the recognizer proved a constant-step counter on the lanes it exercised. No blind truth register of kind accumulator carries alt_kinds, so strict and lenient both refuse the match",
+   "truth_disagreement": null
+  },
+  {
+   "case": "false_positive",
+   "design": "tt07__tt_um_vzayakov_top",
+   "design_class": "blind",
+   "kind": "counter",
+   "structure": "counter16",
+   "n_flops": 3,
+   "params": {
+    "bit_order": [
+     "dfxtp_2_54740_87040",
+     "dfxtp_1_52900_89760",
+     "dfxtp_1_50600_100640"
+    ],
+    "direction": "updown",
+    "load": false,
+    "modulus": 8,
+    "saturating": false,
+    "step": 3
+   },
+   "template": "counter updown by 3, mod 2^3, width 3",
+   "harness_bucket": "verified",
+   "harness_reason": "verified",
+   "verified": true,
+   "matched": null,
+   "truth_overlaps": [
+    {
+     "register": "DUT.leftPaddle.PaddleRow.Q",
+     "truth_kind": "accumulator",
+     "truth_flops": 9,
+     "iou": 0.3333
+    }
+   ],
+   "cause": "F2",
+   "cause_name": "counter proved over a fragment of a truth accumulator (matched nothing)",
+   "mechanism": "same accumulator-vs-counter reading as F1, but the proved word holds too few of the accumulator's flops to reach IoU > 0.5",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt05__tt_um_kskyou",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "R",
+   "n_flops": 8,
+   "structure": "counter0",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "vacuous",
+   "verify_reason": "vacuous: the hold region is empty only once control.load is conjoined in -- without the 1 opaque load case(s) it is satisfiable, so the load is what erases the hold obligation and nothing at all would be checked outside the defining case",
+   "cause": "V2",
+   "cause_name": "hold region emptied only by the opaque load cases",
+   "mechanism": "verify.py HOLD_EMPTY_NEEDS_VERIFIED_COVER test (a): without the opaque load case(s) the hold region is satisfiable, so the load is what erases the hold obligation; the structure is refused",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "tt05__tt_um_kskyou",
+   "design_class": "blind",
+   "kind": "counter",
+   "truth_register": "temp1",
+   "n_flops": 8,
+   "structure": "counter1",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "hold",
+   "verify_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "cause": "V1",
+   "cause_name": "hold obligation not claimed",
+   "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "puzzle",
+   "design_class": "known",
+   "kind": "counter",
+   "truth_register": "bin00",
+   "n_flops": 2,
+   "structure": "counter4",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "hold",
+   "verify_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "cause": "V1",
+   "cause_name": "hold obligation not claimed",
+   "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'",
+   "truth_disagreement": null
+  },
+  {
+   "case": "found_unverified",
+   "design": "puzzle",
+   "design_class": "known",
+   "kind": "counter",
+   "truth_register": "bin09",
+   "n_flops": 2,
+   "structure": "counter11",
+   "iou": 1.0,
+   "exact": true,
+   "bucket": "hold",
+   "verify_reason": "control.hold is required for a counter (schema v2) and is not claimed",
+   "cause": "V1",
+   "cause_name": "hold obligation not claimed",
+   "mechanism": "verify.py: 'control.hold is required for a counter (schema v2) and is not claimed'",
+   "truth_disagreement": null
+  }
+ ],
+ "caveats": [
+  "Sample sizes. The blind denominators are 59 counter registers over 10 designs, 18 synchronizer registers over 4 designs, 8 shift_register registers over 4 designs and 9 lfsr_crc registers over ONE design. Anything said about lfsr_crc out of sample rests on one design and one labelling rule; it is not a rate. score.py's SMALL_SUPPORT is 3 registers per kind per design, and most per-design kind counts are below it.",
+  "The 18 synchronizer registers are not 18 independent events: 16 of the 17 found were credited through 2 declared chain units (6 registers in tt03p5/tt_um_Reloj_top, 10 in tt07/tt_um_vzayakov_top), each matched by ONE recognizer structure. Read the synchronizer line as 3 chains found of 4.",
+  "Every count is the strict register level on permutation p1; strict equals lenient on this set (see method).",
+  "One design has unmapped flops: ttsky25a/tt_um_sjsu_vga_music, 7 of 77 netlist flops with 'no RTL name on the Q net'. All 7 fell in structures of unscored kinds (4 structures lost every flop and were dropped), so no miss and no false positive in this document is caused by a dropped or unmapped flop. No other design has any unmapped, shadow or unknown flop, and no scored structure anywhere lost a flop.",
+  "The corpus-holdout figures are quoted with their own aggregation and their own meaning of 'found' (harness-verified); they are not comparable term by term with the blind counts.",
+  "This document explains outcomes; it does not re-run the recognizer. Where a cause names a recognizer rule, the evidence is the run record's own stage statistics and relation records (which carry shapes, not flop names), the harness verdict text, and the truth's own rule string. Those identifications are marked in the per-case 'mechanism' text and are by shape, not by flop id."
+ ]
+}

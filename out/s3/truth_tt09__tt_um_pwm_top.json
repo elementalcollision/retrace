@@ -1,0 +1,1321 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:tt09/tt_um_pwm_top",
+ "registers": [
+  {
+   "name": "PWM_Generador.DIV_FREQ.clk_out",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [
+    "counter"
+   ],
+   "alt_reason": "a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "module_def": "div_freq",
+   "params": {},
+   "rule": "one bit with D = ~Q (a toggle); a 1-bit toggle (Q <= ~Q, possibly under an enable) is a flag that a structural recognizer may also report as a 1-flop counter (mod 2); never a required counter",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_145820_92480",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.clk_out",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.DIV_FREQ.counter",
+   "width": 6,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "div_freq",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_127420_84320",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_127880_89760",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_126960_100640",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_144900_95200",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_144900_97920",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_144900_103360",
+     "rtl_bit": "PWM_Generador.DIV_FREQ.counter[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.DUTY_CYCLE",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "pwm_gen",
+   "params": {
+    "direction": "updown",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfstp_1_88320_81600",
+     "rtl_bit": "PWM_Generador.DUTY_CYCLE[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_101660_84320",
+     "rtl_bit": "PWM_Generador.DUTY_CYCLE[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfstp_1_83260_89760",
+     "rtl_bit": "PWM_Generador.DUTY_CYCLE[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_2_84180_103360",
+     "rtl_bit": "PWM_Generador.DUTY_CYCLE[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.PWM_DFF1.Q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "DFF_PWM",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_107640_100640",
+     "rtl_bit": "PWM_Generador.PWM_DFF1.Q",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.PWM_DFF2.Q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "DFF_PWM",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_108560_95200",
+     "rtl_bit": "PWM_Generador.PWM_DFF2.Q",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.PWM_DFF3.Q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "DFF_PWM",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_106260_103360",
+     "rtl_bit": "PWM_Generador.PWM_DFF3.Q",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.PWM_DFF4.Q",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "DFF_PWM",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_98440_103360",
+     "rtl_bit": "PWM_Generador.PWM_DFF4.Q",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.counter_PWM",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "pwm_gen",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_69000_81600",
+     "rtl_bit": "PWM_Generador.counter_PWM[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_69460_84320",
+     "rtl_bit": "PWM_Generador.counter_PWM[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_65780_92480",
+     "rtl_bit": "PWM_Generador.counter_PWM[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_67620_95200",
+     "rtl_bit": "PWM_Generador.counter_PWM[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "PWM_Generador.counter_debounce",
+   "width": 28,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "pwm_gen",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_125120_78880",
+     "rtl_bit": "PWM_Generador.counter_debounce[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_71760_73440",
+     "rtl_bit": "PWM_Generador.counter_debounce[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_70840_70720",
+     "rtl_bit": "PWM_Generador.counter_debounce[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_73600_78880",
+     "rtl_bit": "PWM_Generador.counter_debounce[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_73600_68000",
+     "rtl_bit": "PWM_Generador.counter_debounce[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_93380_73440",
+     "rtl_bit": "PWM_Generador.counter_debounce[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_89700_76160",
+     "rtl_bit": "PWM_Generador.counter_debounce[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_93380_78880",
+     "rtl_bit": "PWM_Generador.counter_debounce[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfrtp_1_90620_70720",
+     "rtl_bit": "PWM_Generador.counter_debounce[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfrtp_1_106260_65280",
+     "rtl_bit": "PWM_Generador.counter_debounce[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfrtp_1_104880_68000",
+     "rtl_bit": "PWM_Generador.counter_debounce[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfrtp_1_105340_62560",
+     "rtl_bit": "PWM_Generador.counter_debounce[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfrtp_1_106260_70720",
+     "rtl_bit": "PWM_Generador.counter_debounce[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfrtp_1_106720_78880",
+     "rtl_bit": "PWM_Generador.counter_debounce[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfrtp_1_108100_76160",
+     "rtl_bit": "PWM_Generador.counter_debounce[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfrtp_1_111320_87040",
+     "rtl_bit": "PWM_Generador.counter_debounce[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 16,
+     "flop": "dfrtp_1_112240_81600",
+     "rtl_bit": "PWM_Generador.counter_debounce[16]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 17,
+     "flop": "dfrtp_1_124200_68000",
+     "rtl_bit": "PWM_Generador.counter_debounce[17]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 18,
+     "flop": "dfrtp_1_133400_68000",
+     "rtl_bit": "PWM_Generador.counter_debounce[18]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 19,
+     "flop": "dfrtp_1_125120_73440",
+     "rtl_bit": "PWM_Generador.counter_debounce[19]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 20,
+     "flop": "dfrtp_1_125580_62560",
+     "rtl_bit": "PWM_Generador.counter_debounce[20]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 21,
+     "flop": "dfrtp_1_144900_78880",
+     "rtl_bit": "PWM_Generador.counter_debounce[21]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 22,
+     "flop": "dfrtp_1_144900_84320",
+     "rtl_bit": "PWM_Generador.counter_debounce[22]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 23,
+     "flop": "dfrtp_1_142600_76160",
+     "rtl_bit": "PWM_Generador.counter_debounce[23]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 24,
+     "flop": "dfrtp_1_142140_81600",
+     "rtl_bit": "PWM_Generador.counter_debounce[24]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 25,
+     "flop": "dfrtp_1_143060_70720",
+     "rtl_bit": "PWM_Generador.counter_debounce[25]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 26,
+     "flop": "dfrtp_1_143520_65280",
+     "rtl_bit": "PWM_Generador.counter_debounce[26]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 27,
+     "flop": "dfrtp_1_144900_68000",
+     "rtl_bit": "PWM_Generador.counter_debounce[27]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfrtp_1_104880_68000": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_105340_62560": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_106260_65280": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_106260_70720": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_106720_78880": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_108100_76160": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_111320_87040": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_112240_81600": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_124200_68000": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_125120_73440": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_125120_78880": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_125580_62560": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_126960_100640": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_1_133400_68000": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_142140_81600": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_142600_76160": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_143060_70720": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_143520_65280": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_144900_103360": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_1_144900_68000": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_144900_78880": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_144900_84320": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_144900_95200": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_1_144900_97920": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_1_145820_92480": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.clk_out"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.clk_out"
+  },
+  "dfrtp_1_65780_92480": {
+   "registers": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "primary": "PWM_Generador.counter_PWM"
+  },
+  "dfrtp_1_67620_95200": {
+   "registers": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "primary": "PWM_Generador.counter_PWM"
+  },
+  "dfrtp_1_69000_81600": {
+   "registers": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "primary": "PWM_Generador.counter_PWM"
+  },
+  "dfrtp_1_69460_84320": {
+   "registers": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "primary": "PWM_Generador.counter_PWM"
+  },
+  "dfrtp_1_70840_70720": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_71760_73440": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_73600_68000": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_73600_78880": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_89700_76160": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_90620_70720": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_93380_73440": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_1_93380_78880": {
+   "registers": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "primary": "PWM_Generador.counter_debounce"
+  },
+  "dfrtp_2_101660_84320": {
+   "registers": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "primary": "PWM_Generador.DUTY_CYCLE"
+  },
+  "dfrtp_2_127420_84320": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_2_127880_89760": {
+   "registers": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "primary": "PWM_Generador.DIV_FREQ.counter"
+  },
+  "dfrtp_2_84180_103360": {
+   "registers": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "primary": "PWM_Generador.DUTY_CYCLE"
+  },
+  "dfstp_1_83260_89760": {
+   "registers": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "primary": "PWM_Generador.DUTY_CYCLE"
+  },
+  "dfstp_1_88320_81600": {
+   "registers": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "primary": "PWM_Generador.DUTY_CYCLE"
+  },
+  "dfxtp_1_106260_103360": {
+   "registers": [
+    "PWM_Generador.PWM_DFF3.Q"
+   ],
+   "primary": "PWM_Generador.PWM_DFF3.Q"
+  },
+  "dfxtp_1_107640_100640": {
+   "registers": [
+    "PWM_Generador.PWM_DFF1.Q"
+   ],
+   "primary": "PWM_Generador.PWM_DFF1.Q"
+  },
+  "dfxtp_1_108560_95200": {
+   "registers": [
+    "PWM_Generador.PWM_DFF2.Q"
+   ],
+   "primary": "PWM_Generador.PWM_DFF2.Q"
+  },
+  "dfxtp_1_98440_103360": {
+   "registers": [
+    "PWM_Generador.PWM_DFF4.Q"
+   ],
+   "primary": "PWM_Generador.PWM_DFF4.Q"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\PWM_Generador.$add$pwm_gen.v:36$5",
+   "type": "$add",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:36",
+   "widths": {
+    "A": 28,
+    "B": 1,
+    "Y": 28
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$add$pwm_gen.v:56$16",
+   "type": "$add",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:56",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$add$pwm_gen.v:69$22",
+   "type": "$add",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:69",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$eq$pwm_gen.v:38$6",
+   "type": "$eq",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:38",
+   "widths": {
+    "A": 28,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE",
+    "PWM_Generador.PWM_DFF1.Q",
+    "PWM_Generador.PWM_DFF2.Q",
+    "PWM_Generador.PWM_DFF3.Q",
+    "PWM_Generador.PWM_DFF4.Q"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$ge$pwm_gen.v:33$4",
+   "type": "$ge",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:33",
+   "widths": {
+    "A": 28,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$ge$pwm_gen.v:66$21",
+   "type": "$ge",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:66",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$gt$pwm_gen.v:57$17",
+   "type": "$gt",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:57",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 0
+   },
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$lt$pwm_gen.v:55$14",
+   "type": "$lt",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:55",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$lt$pwm_gen.v:72$23",
+   "type": "$lt",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:72",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$procmux$43",
+   "type": "$mux",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:66",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "<ge pwm_gen.v:66>",
+   "feeds": [
+    "PWM_Generador.counter_PWM"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$procmux$45",
+   "type": "$mux",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:57",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(PWM_Generador.duty_dec && <gt pwm_gen.v:57>)",
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$procmux$48",
+   "type": "$mux",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:55",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(PWM_Generador.duty_inc && <lt pwm_gen.v:55>)",
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$procmux$51",
+   "type": "$mux",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:33",
+   "widths": {
+    "A": 28,
+    "B": 28,
+    "S": 1,
+    "Y": 28
+   },
+   "signed": false,
+   "select": "<ge pwm_gen.v:33>",
+   "feeds": [
+    "PWM_Generador.counter_debounce"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.$sub$pwm_gen.v:58$19",
+   "type": "$sub",
+   "module": "PWM_Generador",
+   "src": "pwm_gen.v:58",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.DUTY_CYCLE"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.\\DIV_FREQ.$add$div_freq.v:20$32",
+   "type": "$add",
+   "module": "PWM_Generador.DIV_FREQ",
+   "src": "div_freq.v:20",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.\\DIV_FREQ.$ge$div_freq.v:14$30",
+   "type": "$ge",
+   "module": "PWM_Generador.DIV_FREQ",
+   "src": "div_freq.v:14",
+   "widths": {
+    "A": 6,
+    "B": 31,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "PWM_Generador.DIV_FREQ.clk_out",
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.\\DIV_FREQ.$procmux$37",
+   "type": "$mux",
+   "module": "PWM_Generador.DIV_FREQ",
+   "src": "div_freq.v:14",
+   "widths": {
+    "A": 6,
+    "B": 6,
+    "S": 1,
+    "Y": 6
+   },
+   "signed": false,
+   "select": "<ge div_freq.v:14>",
+   "feeds": [
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\PWM_Generador.\\DIV_FREQ.$sub$div_freq.v:14$28",
+   "type": "$sub",
+   "module": "PWM_Generador.DIV_FREQ",
+   "src": "div_freq.v:14",
+   "widths": {
+    "A": 6,
+    "B": 1,
+    "Y": 7
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "PWM_Generador.DIV_FREQ.clk_out",
+    "PWM_Generador.DIV_FREQ.counter"
+   ],
+   "feeds_outputs": false
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "tt09/tt_um_pwm_top",
+   "macro": "tt_um_pwm_top",
+   "title": "Generador PWM multiproposito con frecuencia y ciclo de trabajo modulable",
+   "author": "Marco V\u00e1zquez, Pa\u00fal Gonz\u00e1lez, Abimael Jimenez, UACJ",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-09",
+   "shuttle_commit": "5981dfd58065c10dd41025203c926df9cf267426"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-09/5981dfd58065c10dd41025203c926df9cf267426/projects/tt_um_pwm_top/tt_um_pwm_top.gds",
+    "git_blob": "108a70a644dfed2559fe1ff8da47b97c39b60682"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-09/5981dfd58065c10dd41025203c926df9cf267426/projects/tt_um_pwm_top/tt_um_pwm_top.v",
+    "git_blob": "4d9e1aa06c5a783b54109258f10bc7050e4ff4f1"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-09/5981dfd58065c10dd41025203c926df9cf267426/projects/tt_um_pwm_top/tt_um_pwm_top.lef",
+    "git_blob": "cff69872616cb459eae216ae44e604a7dffe00f5"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-09/5981dfd58065c10dd41025203c926df9cf267426/projects/tt_um_pwm_top/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/MarcoV09/ModularPWM_UACJ",
+   "commit": "57adfea3938c8da19ecdb54873ab729d943c68e0",
+   "top_module": "tt_um_pwm_top",
+   "source_files": [
+    "pwm_top.v",
+    "pwm_gen.v",
+    "div_freq.v",
+    "DFF_PWM.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/pwm_top.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/pwm_gen.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/div_freq.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/DFF_PWM.v\nhierarchy -check -top tt_um_pwm_top\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/pwm_top.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/pwm_gen.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/div_freq.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/repo/src/DFF_PWM.v\nhierarchy -check -top tt_um_pwm_top -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt09__tt_um_pwm_top/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 4,
+   "posedge/reset0": 41,
+   "posedge/reset1": 2
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 252,
+   "netlist_logic_instances": 252,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 261,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 34,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 9,
+   "registers_by_kind": {
+    "counter": 4,
+    "flag": 5
+   },
+   "units": 0,
+   "rtl_flop_bits": 47,
+   "netlist_flops": 47,
+   "netlist_flops_labelled": 47,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 47
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 2,
+   "rounds": 2,
+   "agree_per_round": [
+    47,
+    47
+   ],
+   "flops_checked": 47,
+   "match": 47,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 39,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 47,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 4,
+     "posedge cell/reset0": 41,
+     "posedge cell/reset1": 2
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 4,
+     "posedge/reset0": 41,
+     "posedge/reset1": 2
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 47,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 8
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {},
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

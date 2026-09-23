@@ -1,0 +1,3426 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:ttsky25a/tt_um_td4",
+ "registers": [
+  {
+   "name": "cpu.pc",
+   "width": 4,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "CPU",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_110400_103360",
+     "rtl_bit": "cpu.pc[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_124200_100640",
+     "rtl_bit": "cpu.pc[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_122360_103360",
+     "rtl_bit": "cpu.pc[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_96600_103360",
+     "rtl_bit": "cpu.pc[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "cpu.register_A",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "CPU",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_80960_84320",
+     "rtl_bit": "cpu.register_A[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_67620_84320",
+     "rtl_bit": "cpu.register_A[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_82800_97920",
+     "rtl_bit": "cpu.register_A[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_2_73140_100640",
+     "rtl_bit": "cpu.register_A[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "cpu.register_B",
+   "width": 4,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "CPU",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_2_31740_81600",
+     "rtl_bit": "cpu.register_B[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_2_5980_84320",
+     "rtl_bit": "cpu.register_B[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_4_5060_100640",
+     "rtl_bit": "cpu.register_B[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_4_9660_97920",
+     "rtl_bit": "cpu.register_B[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "cpu.register_OUT",
+   "width": 4,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "CPU",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_19320_103360",
+     "rtl_bit": "cpu.register_OUT[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_54740_103360",
+     "rtl_bit": "cpu.register_OUT[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_50140_100640",
+     "rtl_bit": "cpu.register_OUT[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_29440_103360",
+     "rtl_bit": "cpu.register_OUT[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "cpu.register_carry",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "CPU",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_28980_97920",
+     "rtl_bit": "cpu.register_carry",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[0]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_76360_73440",
+     "rtl_bit": "memory.data[0][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_62560_70720",
+     "rtl_bit": "memory.data[0][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_54740_78880",
+     "rtl_bit": "memory.data[0][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_57960_73440",
+     "rtl_bit": "memory.data[0][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_80500_76160",
+     "rtl_bit": "memory.data[0][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_121900_81600",
+     "rtl_bit": "memory.data[0][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_121440_87040",
+     "rtl_bit": "memory.data[0][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_93380_78880",
+     "rtl_bit": "memory.data[0][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[10]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_144900_29920",
+     "rtl_bit": "memory.data[10][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_143520_54400",
+     "rtl_bit": "memory.data[10][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_119140_35360",
+     "rtl_bit": "memory.data[10][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_142140_43520",
+     "rtl_bit": "memory.data[10][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_93380_35360",
+     "rtl_bit": "memory.data[10][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_95220_43520",
+     "rtl_bit": "memory.data[10][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_144900_46240",
+     "rtl_bit": "memory.data[10][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_89240_54400",
+     "rtl_bit": "memory.data[10][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[11]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_142600_97920",
+     "rtl_bit": "memory.data[11][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_144900_57120",
+     "rtl_bit": "memory.data[11][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_49220_62560",
+     "rtl_bit": "memory.data[11][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_132020_59840",
+     "rtl_bit": "memory.data[11][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_144900_84320",
+     "rtl_bit": "memory.data[11][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_107640_84320",
+     "rtl_bit": "memory.data[11][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_112240_54400",
+     "rtl_bit": "memory.data[11][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_128340_95200",
+     "rtl_bit": "memory.data[11][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[12]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_140760_32640",
+     "rtl_bit": "memory.data[12][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_83720_40800",
+     "rtl_bit": "memory.data[12][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_99360_24480",
+     "rtl_bit": "memory.data[12][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_141680_27200",
+     "rtl_bit": "memory.data[12][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_83720_46240",
+     "rtl_bit": "memory.data[12][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_128340_19040",
+     "rtl_bit": "memory.data[12][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_102580_46240",
+     "rtl_bit": "memory.data[12][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_84180_48960",
+     "rtl_bit": "memory.data[12][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[13]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_65320_54400",
+     "rtl_bit": "memory.data[13][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_48300_57120",
+     "rtl_bit": "memory.data[13][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_28980_57120",
+     "rtl_bit": "memory.data[13][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_29440_59840",
+     "rtl_bit": "memory.data[13][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_66700_59840",
+     "rtl_bit": "memory.data[13][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_47380_51680",
+     "rtl_bit": "memory.data[13][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_30820_48960",
+     "rtl_bit": "memory.data[13][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_67620_51680",
+     "rtl_bit": "memory.data[13][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[14]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_52900_24480",
+     "rtl_bit": "memory.data[14][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_43240_32640",
+     "rtl_bit": "memory.data[14][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_106260_21760",
+     "rtl_bit": "memory.data[14][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_42780_38080",
+     "rtl_bit": "memory.data[14][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_69000_24480",
+     "rtl_bit": "memory.data[14][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_115460_21760",
+     "rtl_bit": "memory.data[14][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_109480_43520",
+     "rtl_bit": "memory.data[14][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_43700_24480",
+     "rtl_bit": "memory.data[14][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[15]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_119600_70720",
+     "rtl_bit": "memory.data[15][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_54740_65280",
+     "rtl_bit": "memory.data[15][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_6440_73440",
+     "rtl_bit": "memory.data[15][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_29900_62560",
+     "rtl_bit": "memory.data[15][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_140300_87040",
+     "rtl_bit": "memory.data[15][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_121900_84320",
+     "rtl_bit": "memory.data[15][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_138000_70720",
+     "rtl_bit": "memory.data[15][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_6440_78880",
+     "rtl_bit": "memory.data[15][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[1]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_69460_48960",
+     "rtl_bit": "memory.data[1][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_122360_48960",
+     "rtl_bit": "memory.data[1][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_122360_24480",
+     "rtl_bit": "memory.data[1][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_132020_27200",
+     "rtl_bit": "memory.data[1][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_70840_21760",
+     "rtl_bit": "memory.data[1][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_119140_19040",
+     "rtl_bit": "memory.data[1][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_130640_46240",
+     "rtl_bit": "memory.data[1][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_85560_21760",
+     "rtl_bit": "memory.data[1][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[2]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_54740_27200",
+     "rtl_bit": "memory.data[2][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_28980_32640",
+     "rtl_bit": "memory.data[2][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_4140_59840",
+     "rtl_bit": "memory.data[2][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_13340_59840",
+     "rtl_bit": "memory.data[2][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_65320_27200",
+     "rtl_bit": "memory.data[2][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_60720_43520",
+     "rtl_bit": "memory.data[2][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_30360_46240",
+     "rtl_bit": "memory.data[2][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_6440_51680",
+     "rtl_bit": "memory.data[2][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[3]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_42320_70720",
+     "rtl_bit": "memory.data[3][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_27600_29920",
+     "rtl_bit": "memory.data[3][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_16560_73440",
+     "rtl_bit": "memory.data[3][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_18860_35360",
+     "rtl_bit": "memory.data[3][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_67620_62560",
+     "rtl_bit": "memory.data[3][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_28980_68000",
+     "rtl_bit": "memory.data[3][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_23920_40800",
+     "rtl_bit": "memory.data[3][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_36800_27200",
+     "rtl_bit": "memory.data[3][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[4]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_142140_103360",
+     "rtl_bit": "memory.data[4][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_144900_62560",
+     "rtl_bit": "memory.data[4][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_6440_62560",
+     "rtl_bit": "memory.data[4][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_11500_65280",
+     "rtl_bit": "memory.data[4][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_80040_62560",
+     "rtl_bit": "memory.data[4][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_28980_73440",
+     "rtl_bit": "memory.data[4][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_144900_100640",
+     "rtl_bit": "memory.data[4][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_9200_76160",
+     "rtl_bit": "memory.data[4][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[5]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_117300_65280",
+     "rtl_bit": "memory.data[5][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_83720_65280",
+     "rtl_bit": "memory.data[5][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_106260_35360",
+     "rtl_bit": "memory.data[5][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_122360_59840",
+     "rtl_bit": "memory.data[5][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_81420_27200",
+     "rtl_bit": "memory.data[5][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_121440_29920",
+     "rtl_bit": "memory.data[5][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_121440_46240",
+     "rtl_bit": "memory.data[5][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_83720_57120",
+     "rtl_bit": "memory.data[5][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[6]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_60720_38080",
+     "rtl_bit": "memory.data[6][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_69920_43520",
+     "rtl_bit": "memory.data[6][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_12880_48960",
+     "rtl_bit": "memory.data[6][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_16100_32640",
+     "rtl_bit": "memory.data[6][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_67620_35360",
+     "rtl_bit": "memory.data[6][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_45080_48960",
+     "rtl_bit": "memory.data[6][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_19320_43520",
+     "rtl_bit": "memory.data[6][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_6440_46240",
+     "rtl_bit": "memory.data[6][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[7]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_132020_38080",
+     "rtl_bit": "memory.data[7][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_144900_51680",
+     "rtl_bit": "memory.data[7][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_117760_38080",
+     "rtl_bit": "memory.data[7][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_144900_40800",
+     "rtl_bit": "memory.data[7][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_142140_81600",
+     "rtl_bit": "memory.data[7][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_106260_76160",
+     "rtl_bit": "memory.data[7][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_144900_95200",
+     "rtl_bit": "memory.data[7][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_126960_89760",
+     "rtl_bit": "memory.data[7][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[8]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_43240_73440",
+     "rtl_bit": "memory.data[8][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_42320_35360",
+     "rtl_bit": "memory.data[8][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_41860_59840",
+     "rtl_bit": "memory.data[8][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_44620_40800",
+     "rtl_bit": "memory.data[8][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_76820_35360",
+     "rtl_bit": "memory.data[8][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_106260_70720",
+     "rtl_bit": "memory.data[8][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_106260_48960",
+     "rtl_bit": "memory.data[8][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_93380_70720",
+     "rtl_bit": "memory.data[8][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "memory.data[9]",
+   "width": 8,
+   "kind": "register_file_word",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "Memory",
+   "params": {},
+   "rule": "word of an RTL array written at a non-constant index",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfrtp_1_144900_24480",
+     "rtl_bit": "memory.data[9][0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfrtp_1_142140_65280",
+     "rtl_bit": "memory.data[9][1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfrtp_1_98900_19040",
+     "rtl_bit": "memory.data[9][2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfrtp_1_123280_68000",
+     "rtl_bit": "memory.data[9][3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfrtp_1_144900_78880",
+     "rtl_bit": "memory.data[9][4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfrtp_1_122360_76160",
+     "rtl_bit": "memory.data[9][5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfrtp_1_147200_70720",
+     "rtl_bit": "memory.data[9][6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfrtp_1_94760_21760",
+     "rtl_bit": "memory.data[9][7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfrtp_1_102580_46240": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_106260_21760": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_106260_35360": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_106260_48960": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_106260_70720": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_106260_76160": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_107640_84320": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_109480_43520": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_112240_54400": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_11500_65280": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_115460_21760": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_117300_65280": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_117760_38080": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_119140_19040": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_119140_35360": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_119600_70720": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_121440_29920": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_121440_46240": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_121440_87040": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_121900_81600": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_121900_84320": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_122360_103360": {
+   "registers": [
+    "cpu.pc"
+   ],
+   "primary": "cpu.pc"
+  },
+  "dfrtp_1_122360_24480": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_122360_48960": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_122360_59840": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_122360_76160": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_123280_68000": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_124200_100640": {
+   "registers": [
+    "cpu.pc"
+   ],
+   "primary": "cpu.pc"
+  },
+  "dfrtp_1_126960_89760": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_128340_19040": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_128340_95200": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_12880_48960": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_130640_46240": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_132020_27200": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_132020_38080": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_132020_59840": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_13340_59840": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_138000_70720": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_140300_87040": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_140760_32640": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_141680_27200": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_142140_103360": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_142140_43520": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_142140_65280": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_142140_81600": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_142600_97920": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_143520_54400": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_144900_100640": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_144900_24480": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_144900_29920": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_144900_40800": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_144900_46240": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_144900_51680": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_144900_57120": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_144900_62560": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_144900_78880": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_144900_84320": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_144900_95200": {
+   "registers": [
+    "memory.data[7]"
+   ],
+   "primary": "memory.data[7]"
+  },
+  "dfrtp_1_147200_70720": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_16100_32640": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_16560_73440": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_18860_35360": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_19320_103360": {
+   "registers": [
+    "cpu.register_OUT"
+   ],
+   "primary": "cpu.register_OUT"
+  },
+  "dfrtp_1_19320_43520": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_23920_40800": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_27600_29920": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_28980_32640": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_28980_57120": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_28980_68000": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_28980_73440": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_28980_97920": {
+   "registers": [
+    "cpu.register_carry"
+   ],
+   "primary": "cpu.register_carry"
+  },
+  "dfrtp_1_29440_103360": {
+   "registers": [
+    "cpu.register_OUT"
+   ],
+   "primary": "cpu.register_OUT"
+  },
+  "dfrtp_1_29440_59840": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_29900_62560": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_30360_46240": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_30820_48960": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_36800_27200": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_4140_59840": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_41860_59840": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_42320_35360": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_42320_70720": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_42780_38080": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_43240_32640": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_43240_73440": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_43700_24480": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_44620_40800": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_45080_48960": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_47380_51680": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_48300_57120": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_49220_62560": {
+   "registers": [
+    "memory.data[11]"
+   ],
+   "primary": "memory.data[11]"
+  },
+  "dfrtp_1_50140_100640": {
+   "registers": [
+    "cpu.register_OUT"
+   ],
+   "primary": "cpu.register_OUT"
+  },
+  "dfrtp_1_52900_24480": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_54740_103360": {
+   "registers": [
+    "cpu.register_OUT"
+   ],
+   "primary": "cpu.register_OUT"
+  },
+  "dfrtp_1_54740_27200": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_54740_65280": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_54740_78880": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_57960_73440": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_60720_38080": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_60720_43520": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_62560_70720": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_6440_46240": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_6440_51680": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_6440_62560": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_6440_73440": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_6440_78880": {
+   "registers": [
+    "memory.data[15]"
+   ],
+   "primary": "memory.data[15]"
+  },
+  "dfrtp_1_65320_27200": {
+   "registers": [
+    "memory.data[2]"
+   ],
+   "primary": "memory.data[2]"
+  },
+  "dfrtp_1_65320_54400": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_66700_59840": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_67620_35360": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_67620_51680": {
+   "registers": [
+    "memory.data[13]"
+   ],
+   "primary": "memory.data[13]"
+  },
+  "dfrtp_1_67620_62560": {
+   "registers": [
+    "memory.data[3]"
+   ],
+   "primary": "memory.data[3]"
+  },
+  "dfrtp_1_69000_24480": {
+   "registers": [
+    "memory.data[14]"
+   ],
+   "primary": "memory.data[14]"
+  },
+  "dfrtp_1_69460_48960": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_69920_43520": {
+   "registers": [
+    "memory.data[6]"
+   ],
+   "primary": "memory.data[6]"
+  },
+  "dfrtp_1_70840_21760": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_76360_73440": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_76820_35360": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_80040_62560": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_80500_76160": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_80960_84320": {
+   "registers": [
+    "cpu.register_A"
+   ],
+   "primary": "cpu.register_A"
+  },
+  "dfrtp_1_81420_27200": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_82800_97920": {
+   "registers": [
+    "cpu.register_A"
+   ],
+   "primary": "cpu.register_A"
+  },
+  "dfrtp_1_83720_40800": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_83720_46240": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_83720_57120": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_83720_65280": {
+   "registers": [
+    "memory.data[5]"
+   ],
+   "primary": "memory.data[5]"
+  },
+  "dfrtp_1_84180_48960": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_1_85560_21760": {
+   "registers": [
+    "memory.data[1]"
+   ],
+   "primary": "memory.data[1]"
+  },
+  "dfrtp_1_89240_54400": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_9200_76160": {
+   "registers": [
+    "memory.data[4]"
+   ],
+   "primary": "memory.data[4]"
+  },
+  "dfrtp_1_93380_35360": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_93380_70720": {
+   "registers": [
+    "memory.data[8]"
+   ],
+   "primary": "memory.data[8]"
+  },
+  "dfrtp_1_93380_78880": {
+   "registers": [
+    "memory.data[0]"
+   ],
+   "primary": "memory.data[0]"
+  },
+  "dfrtp_1_94760_21760": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_95220_43520": {
+   "registers": [
+    "memory.data[10]"
+   ],
+   "primary": "memory.data[10]"
+  },
+  "dfrtp_1_96600_103360": {
+   "registers": [
+    "cpu.pc"
+   ],
+   "primary": "cpu.pc"
+  },
+  "dfrtp_1_98900_19040": {
+   "registers": [
+    "memory.data[9]"
+   ],
+   "primary": "memory.data[9]"
+  },
+  "dfrtp_1_99360_24480": {
+   "registers": [
+    "memory.data[12]"
+   ],
+   "primary": "memory.data[12]"
+  },
+  "dfrtp_2_110400_103360": {
+   "registers": [
+    "cpu.pc"
+   ],
+   "primary": "cpu.pc"
+  },
+  "dfrtp_2_31740_81600": {
+   "registers": [
+    "cpu.register_B"
+   ],
+   "primary": "cpu.register_B"
+  },
+  "dfrtp_2_5980_84320": {
+   "registers": [
+    "cpu.register_B"
+   ],
+   "primary": "cpu.register_B"
+  },
+  "dfrtp_2_67620_84320": {
+   "registers": [
+    "cpu.register_A"
+   ],
+   "primary": "cpu.register_A"
+  },
+  "dfrtp_2_73140_100640": {
+   "registers": [
+    "cpu.register_A"
+   ],
+   "primary": "cpu.register_A"
+  },
+  "dfrtp_4_5060_100640": {
+   "registers": [
+    "cpu.register_B"
+   ],
+   "primary": "cpu.register_B"
+  },
+  "dfrtp_4_9660_97920": {
+   "registers": [
+    "cpu.register_B"
+   ],
+   "primary": "cpu.register_B"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$flatten\\cpu.$add$cpu.v:47$26",
+   "type": "$add",
+   "module": "cpu",
+   "src": "cpu.v:47",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "cpu.register_A",
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$add$cpu.v:49$27",
+   "type": "$add",
+   "module": "cpu",
+   "src": "cpu.v:49",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 5
+   },
+   "signed": false,
+   "feeds": [
+    "cpu.register_B",
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$add$cpu.v:79$32",
+   "type": "$add",
+   "module": "cpu",
+   "src": "cpu.v:79",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$47_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:47",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "cpu.register_B",
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$54_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:70",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [
+    "cpu.register_OUT"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$55_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:68",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "cpu.register_OUT"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$65_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:59",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$66_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:57",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$74_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:66",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "cpu.register_B"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$75_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:55",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "cpu.register_B"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$76_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:51",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [
+    "cpu.register_B"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$84_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:64",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "cpu.register_A"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$85_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:53",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "cpu.register_A"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$86_CMP0",
+   "type": "$eq",
+   "module": "cpu",
+   "src": "cpu.v:49",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "cpu.register_A"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$49",
+   "type": "$mux",
+   "module": "cpu",
+   "src": "cpu.v:82",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "((opcode_out[0] | opcode_out[1] | opcode_out[2] | opcode_out[3]) && (cpu.opcode != 4'b1010))",
+   "feeds": [
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$62",
+   "type": "$mux",
+   "module": "cpu",
+   "src": "cpu.v:61",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "cpu.register_carry",
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$67",
+   "type": "$mux",
+   "module": "cpu",
+   "src": "cpu.v:78",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "((cpu.opcode != 4'b1111) && (cpu.opcode != 3'b111))",
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$ne$cpu.v:78$29",
+   "type": "$ne",
+   "module": "cpu",
+   "src": "cpu.v:78",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$ne$cpu.v:78$30",
+   "type": "$ne",
+   "module": "cpu",
+   "src": "cpu.v:78",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$ne$cpu.v:82$34",
+   "type": "$ne",
+   "module": "cpu",
+   "src": "cpu.v:82",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$46",
+   "type": "$pmux",
+   "module": "cpu",
+   "src": "cpu.v:47",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "S": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$53",
+   "type": "$pmux",
+   "module": "cpu",
+   "src": "cpu.v:70",
+   "widths": {
+    "A": 4,
+    "B": 8,
+    "S": 2,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "cpu.register_OUT"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$64",
+   "type": "$pmux",
+   "module": "cpu",
+   "src": "cpu.v:59",
+   "widths": {
+    "A": 4,
+    "B": 8,
+    "S": 2,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$73",
+   "type": "$pmux",
+   "module": "cpu",
+   "src": "cpu.v:66",
+   "widths": {
+    "A": 4,
+    "B": 16,
+    "S": 4,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [
+    "cpu.register_B"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\cpu.$procmux$83",
+   "type": "$pmux",
+   "module": "cpu",
+   "src": "cpu.v:64",
+   "widths": {
+    "A": 4,
+    "B": 16,
+    "S": 4,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [
+    "cpu.register_A"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$115_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 15
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[15]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$121_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 14
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[14]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$128_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 13
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[13]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$145_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 11
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[11]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$155_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 10
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[10]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$166_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[9]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$178_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[8]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$191_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[7]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$205_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[6]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$220_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[5]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$236_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[4]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$253_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[3]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$271_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[2]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$290_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:42",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[1]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$94_CMP0",
+   "type": "$eq",
+   "module": "memory",
+   "src": "memory.v:46",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 12
+   },
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[12]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\memory.$procmux$90",
+   "type": "$pmux",
+   "module": "memory",
+   "src": "memory.v:46",
+   "widths": {
+    "A": 8,
+    "B": 128,
+    "S": 16,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "16 selects",
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:52$5",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:52",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "is_exec_mode",
+   "feeds": [
+    "cpu.pc",
+    "cpu.register_A",
+    "cpu.register_B",
+    "cpu.register_OUT",
+    "cpu.register_carry",
+    "memory.data[0]",
+    "memory.data[10]",
+    "memory.data[11]",
+    "memory.data[12]",
+    "memory.data[13]",
+    "memory.data[14]",
+    "memory.data[15]",
+    "memory.data[1]",
+    "memory.data[2]",
+    "memory.data[3]",
+    "memory.data[4]",
+    "memory.data[5]",
+    "memory.data[6]",
+    "memory.data[7]",
+    "memory.data[8]",
+    "memory.data[9]"
+   ],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:82$8",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:82",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "(!is_exec_mode & is_read_mode)",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:85$9",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:85",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "is_exec_mode",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$ternary$project.v:88$10",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "project.v:88",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "is_exec_mode",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$434",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 3,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "cpu.pc"
+   ],
+   "feeds_outputs": false
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "ttsky25a/tt_um_td4",
+   "macro": "tt_um_td4",
+   "title": "tt-td04",
+   "author": "KATO, Jinnosuke",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-sky-25a",
+   "shuttle_commit": "3e56040801e62543fe761ff335723efdfea19198"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_td4/tt_um_td4.gds",
+    "git_blob": "e8566c6c7834443e15d053c3f7f4a4369a7bb161"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_td4/tt_um_td4.v",
+    "git_blob": "19bbbcaf2cd9fe582226428760a04f4582677080"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_td4/tt_um_td4.lef",
+    "git_blob": "6112dc01d1e5ebc4b6ad17ee88d49478adce8693"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-sky-25a/3e56040801e62543fe761ff335723efdfea19198/projects/tt_um_td4/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/jinnosukeKato/tt-td4",
+   "commit": "2708b75d1f05e774310f6928187716878ab3aaab",
+   "top_module": "tt_um_td4",
+   "source_files": [
+    "project.v",
+    "memory.v",
+    "cpu.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": []
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/memory.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/cpu.v\nhierarchy -check -top tt_um_td4\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/project.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/memory.v /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/repo/src/cpu.v\nhierarchy -check -top tt_um_td4 -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/ttsky25a__tt_um_td4/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/reset0": 145
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 763,
+   "netlist_logic_instances": 763,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 764,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 40,
+   "ports_disagree": [],
+   "non_port_net_labels": 0,
+   "non_port_net_labels_rtl_like": 0,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 21,
+   "registers_by_kind": {
+    "accumulator": 2,
+    "counter": 1,
+    "data_register": 1,
+    "flag": 1,
+    "register_file_word": 16
+   },
+   "units": 0,
+   "rtl_flop_bits": 145,
+   "netlist_flops": 145,
+   "netlist_flops_labelled": 145,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 145
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {}
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 0,
+   "rounds": 2,
+   "agree_per_round": [
+    145,
+    145
+   ],
+   "flops_checked": 145,
+   "match": 145,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 145,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 24,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 145,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/reset0": 145
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/reset0": 145
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 145,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 24
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {},
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}

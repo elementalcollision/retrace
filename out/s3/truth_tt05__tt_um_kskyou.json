@@ -1,0 +1,4376 @@
+{
+ "schema": "retrace-s3-truth/2",
+ "design": "tt:tt05/tt_um_kskyou",
+ "registers": [
+  {
+   "name": "D",
+   "width": 14,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_150420_95200",
+     "rtl_bit": "D[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_149960_97920",
+     "rtl_bit": "D[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_152720_89760",
+     "rtl_bit": "D[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_149960_103360",
+     "rtl_bit": "D[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_152260_100640",
+     "rtl_bit": "D[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_144900_100640",
+     "rtl_bit": "D[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_132480_100640",
+     "rtl_bit": "D[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_123740_100640",
+     "rtl_bit": "D[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_119140_95200",
+     "rtl_bit": "D[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_112700_103360",
+     "rtl_bit": "D[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_112240_97920",
+     "rtl_bit": "D[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_110860_100640",
+     "rtl_bit": "D[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_97520_100640",
+     "rtl_bit": "D[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_96600_103360",
+     "rtl_bit": "D[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "P",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_17940_32640",
+     "rtl_bit": "P[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_51520_29920",
+     "rtl_bit": "P[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_5980_32640",
+     "rtl_bit": "P[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_6900_24480",
+     "rtl_bit": "P[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_35420_32640",
+     "rtl_bit": "P[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_5980_19040",
+     "rtl_bit": "P[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_46920_21760",
+     "rtl_bit": "P[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_39560_21760",
+     "rtl_bit": "P[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_85560_73440",
+     "rtl_bit": "P[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_86480_76160",
+     "rtl_bit": "P[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_67620_84320",
+     "rtl_bit": "P[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_8280_78880",
+     "rtl_bit": "P[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_8280_84320",
+     "rtl_bit": "P[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_5980_97920",
+     "rtl_bit": "P[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_16560_103360",
+     "rtl_bit": "P[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_46920_103360",
+     "rtl_bit": "P[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "Ps",
+   "width": 16,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_45540_32640",
+     "rtl_bit": "Ps[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_52440_35360",
+     "rtl_bit": "Ps[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_21160_38080",
+     "rtl_bit": "Ps[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_16100_35360",
+     "rtl_bit": "Ps[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_34040_40800",
+     "rtl_bit": "Ps[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_18860_40800",
+     "rtl_bit": "Ps[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_46920_59840",
+     "rtl_bit": "Ps[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_36800_48960",
+     "rtl_bit": "Ps[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_46920_70720",
+     "rtl_bit": "Ps[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_46000_76160",
+     "rtl_bit": "Ps[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_46920_81600",
+     "rtl_bit": "Ps[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_9660_76160",
+     "rtl_bit": "Ps[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_5520_87040",
+     "rtl_bit": "Ps[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_9200_103360",
+     "rtl_bit": "Ps[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_16100_106080",
+     "rtl_bit": "Ps[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_36340_103360",
+     "rtl_bit": "Ps[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "Q",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_8280_68000",
+     "rtl_bit": "Q[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_33120_43520",
+     "rtl_bit": "Q[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_7360_40800",
+     "rtl_bit": "Q[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_9660_43520",
+     "rtl_bit": "Q[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_11040_65280",
+     "rtl_bit": "Q[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_18400_57120",
+     "rtl_bit": "Q[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_67620_68000",
+     "rtl_bit": "Q[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_46460_65280",
+     "rtl_bit": "Q[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_69000_73440",
+     "rtl_bit": "Q[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_69000_78880",
+     "rtl_bit": "Q[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_57040_78880",
+     "rtl_bit": "Q[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_16100_78880",
+     "rtl_bit": "Q[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_12880_87040",
+     "rtl_bit": "Q[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_16100_95200",
+     "rtl_bit": "Q[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_16100_100640",
+     "rtl_bit": "Q[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_41860_100640",
+     "rtl_bit": "Q[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  },
+  {
+   "name": "Qs",
+   "width": 16,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_9200_59840",
+     "rtl_bit": "Qs[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_28980_48960",
+     "rtl_bit": "Qs[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_17480_48960",
+     "rtl_bit": "Qs[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_10120_48960",
+     "rtl_bit": "Qs[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_8280_62560",
+     "rtl_bit": "Qs[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_14260_54400",
+     "rtl_bit": "Qs[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_54740_59840",
+     "rtl_bit": "Qs[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_34040_57120",
+     "rtl_bit": "Qs[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_78200_73440",
+     "rtl_bit": "Qs[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_72680_76160",
+     "rtl_bit": "Qs[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_1_58420_87040",
+     "rtl_bit": "Qs[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_1_28520_78880",
+     "rtl_bit": "Qs[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_1_29440_81600",
+     "rtl_bit": "Qs[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_1_28980_89760",
+     "rtl_bit": "Qs[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_56120_95200",
+     "rtl_bit": "Qs[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_47840_95200",
+     "rtl_bit": "Qs[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "R",
+   "width": 8,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {
+    "direction": "updown",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_109020_19040",
+     "rtl_bit": "R[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_98440_21760",
+     "rtl_bit": "R[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_100740_19040",
+     "rtl_bit": "R[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_99820_13600",
+     "rtl_bit": "R[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_98900_8160",
+     "rtl_bit": "R[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_109020_10880",
+     "rtl_bit": "R[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_119140_10880",
+     "rtl_bit": "R[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_120060_8160",
+     "rtl_bit": "R[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "X",
+   "width": 8,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_16100_27200",
+     "rtl_bit": "X[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_60260_21760",
+     "rtl_bit": "X[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_9200_16320",
+     "rtl_bit": "X[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_11040_10880",
+     "rtl_bit": "X[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_70840_5440",
+     "rtl_bit": "X[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_21160_5440",
+     "rtl_bit": "X[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_53820_8160",
+     "rtl_bit": "X[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_43240_8160",
+     "rtl_bit": "X[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "Y",
+   "width": 8,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_95220_38080",
+     "rtl_bit": "Y[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_65320_32640",
+     "rtl_bit": "Y[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_103500_40800",
+     "rtl_bit": "Y[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_99820_46240",
+     "rtl_bit": "Y[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_93840_59840",
+     "rtl_bit": "Y[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_95220_57120",
+     "rtl_bit": "Y[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_108100_62560",
+     "rtl_bit": "Y[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_107640_59840",
+     "rtl_bit": "Y[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "Z",
+   "width": 8,
+   "kind": "data_register",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "loads external or computed values (no own feedback beyond hold)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_85560_29920",
+     "rtl_bit": "Z[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_132020_16320",
+     "rtl_bit": "Z[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_132020_13600",
+     "rtl_bit": "Z[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_149960_2720",
+     "rtl_bit": "Z[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_137080_8160",
+     "rtl_bit": "Z[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_149960_10880",
+     "rtl_bit": "Z[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_149040_5440",
+     "rtl_bit": "Z[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_151340_8160",
+     "rtl_bit": "Z[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "button0",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_132020_97920",
+     "rtl_bit": "button0",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "button1",
+   "width": 1,
+   "kind": "flag",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "single-bit register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_80500_65280",
+     "rtl_bit": "button1",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "state",
+   "width": 4,
+   "kind": "fsm_state",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "Yosys fsm_detect marks it an FSM state register",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_2_93380_62560",
+     "rtl_bit": "state==0",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_46920_46240",
+     "rtl_bit": "state==8",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_63020_48960",
+     "rtl_bit": "state==4",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_80960_27200",
+     "rtl_bit": "state==2",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_67620_35360",
+     "rtl_bit": "state==6",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_1_69460_59840",
+     "rtl_bit": "state==1",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_48300_62560",
+     "rtl_bit": "state==9",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_67620_40800",
+     "rtl_bit": "state==5",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_46000_38080",
+     "rtl_bit": "state==3",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_2_85560_48960",
+     "rtl_bit": "state==7",
+     "how": "fsm_onehot",
+     "check": "match",
+     "proof": "proven"
+    }
+   ]
+  },
+  {
+   "name": "temp1",
+   "width": 8,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {
+    "direction": "updown",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_31280_24480",
+     "rtl_bit": "temp1[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_67620_19040",
+     "rtl_bit": "temp1[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_2_29440_19040",
+     "rtl_bit": "temp1[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_2_24840_8160",
+     "rtl_bit": "temp1[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_1_74520_8160",
+     "rtl_bit": "temp1[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_31280_5440",
+     "rtl_bit": "temp1[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_1_63480_5440",
+     "rtl_bit": "temp1[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_2_46460_5440",
+     "rtl_bit": "temp1[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "temp2",
+   "width": 16,
+   "kind": "accumulator",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {},
+   "rule": "D = Q + a multi-bit variable (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_147660_40800",
+     "rtl_bit": "temp2[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_155020_40800",
+     "rtl_bit": "temp2[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 2,
+     "flop": "dfxtp_1_149960_32640",
+     "rtl_bit": "temp2[2]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 3,
+     "flop": "dfxtp_1_152260_35360",
+     "rtl_bit": "temp2[3]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 4,
+     "flop": "dfxtp_2_149500_54400",
+     "rtl_bit": "temp2[4]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 5,
+     "flop": "dfxtp_2_150420_51680",
+     "rtl_bit": "temp2[5]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 6,
+     "flop": "dfxtp_2_109020_68000",
+     "rtl_bit": "temp2[6]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 7,
+     "flop": "dfxtp_1_115460_70720",
+     "rtl_bit": "temp2[7]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 8,
+     "flop": "dfxtp_1_104880_73440",
+     "rtl_bit": "temp2[8]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 9,
+     "flop": "dfxtp_1_107180_76160",
+     "rtl_bit": "temp2[9]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 10,
+     "flop": "dfxtp_2_95220_81600",
+     "rtl_bit": "temp2[10]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 11,
+     "flop": "dfxtp_2_93840_78880",
+     "rtl_bit": "temp2[11]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 12,
+     "flop": "dfxtp_2_80500_87040",
+     "rtl_bit": "temp2[12]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 13,
+     "flop": "dfxtp_2_78660_89760",
+     "rtl_bit": "temp2[13]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 14,
+     "flop": "dfxtp_1_75440_95200",
+     "rtl_bit": "temp2[14]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    },
+    {
+     "index": 15,
+     "flop": "dfxtp_1_72680_92480",
+     "rtl_bit": "temp2[15]",
+     "check": "match",
+     "proof": "proven",
+     "how": "name"
+    }
+   ]
+  },
+  {
+   "name": "watch",
+   "width": 2,
+   "kind": "counter",
+   "alt_kinds": [],
+   "alt_reason": null,
+   "module_def": "tt_um_kskyou",
+   "params": {
+    "direction": "up",
+    "step": 1,
+    "modulus": null,
+    "saturating": null,
+    "load": null,
+    "bit_order": null
+   },
+   "rule": "D = Q +/- constant or +/- a 1-bit condition (the adder on own Q)",
+   "bits": [
+    {
+     "index": 0,
+     "flop": "dfxtp_1_30360_70720",
+     "rtl_bit": "watch[0]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    },
+    {
+     "index": 1,
+     "flop": "dfxtp_1_28520_68000",
+     "rtl_bit": "watch[1]",
+     "check": "match",
+     "proof": "proven",
+     "how": "alias"
+    }
+   ]
+  }
+ ],
+ "units": [],
+ "flops": {
+  "dfxtp_1_100740_19040": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_10120_48960": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_103500_40800": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_104880_73440": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_107180_76160": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_107640_59840": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_108100_62560": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_109020_10880": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_109020_19040": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_11040_10880": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_11040_65280": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_110860_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_112240_97920": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_112700_103360": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_115460_70720": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_119140_10880": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_119140_95200": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_123740_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_12880_87040": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_132020_13600": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_132020_16320": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_132020_97920": {
+   "registers": [
+    "button0"
+   ],
+   "primary": "button0"
+  },
+  "dfxtp_1_132480_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_137080_8160": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_14260_54400": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_144900_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_147660_40800": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_149960_103360": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_149960_10880": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_149960_2720": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_149960_32640": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_149960_97920": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_150420_95200": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_152260_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_152260_35360": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_152720_89760": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_155020_40800": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_16100_100640": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_16100_106080": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_16100_27200": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_16100_35360": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_16100_78880": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_16100_95200": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_16560_103360": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_17480_48960": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_17940_32640": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_18400_57120": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_18860_40800": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_21160_38080": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_21160_5440": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_28520_68000": {
+   "registers": [
+    "watch"
+   ],
+   "primary": "watch"
+  },
+  "dfxtp_1_28520_78880": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_28980_48960": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_28980_89760": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_29440_81600": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_30360_70720": {
+   "registers": [
+    "watch"
+   ],
+   "primary": "watch"
+  },
+  "dfxtp_1_31280_24480": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_1_33120_43520": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_34040_40800": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_34040_57120": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_35420_32640": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_36340_103360": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_36800_48960": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_39560_21760": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_41860_100640": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_43240_8160": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_45540_32640": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_46000_38080": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_1_46000_76160": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_46460_65280": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_46920_103360": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_46920_21760": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_46920_46240": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_1_46920_59840": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_46920_70720": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_46920_81600": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_47840_95200": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_51520_29920": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_52440_35360": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_53820_8160": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_54740_59840": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_5520_87040": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_56120_95200": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_57040_78880": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_58420_87040": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_5980_97920": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_60260_21760": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_63020_48960": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_1_63480_5440": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_1_65320_32640": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_67620_19040": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_1_67620_40800": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_1_67620_68000": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_67620_84320": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_69000_73440": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_69000_78880": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_69460_59840": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_1_70840_5440": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_72680_76160": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_72680_92480": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_7360_40800": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_74520_8160": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_1_75440_95200": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_1_78200_73440": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_80500_65280": {
+   "registers": [
+    "button1"
+   ],
+   "primary": "button1"
+  },
+  "dfxtp_1_8280_62560": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_8280_68000": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_8280_78880": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_8280_84320": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_85560_29920": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_1_85560_73440": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_86480_76160": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_1_9200_103360": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_9200_16320": {
+   "registers": [
+    "X"
+   ],
+   "primary": "X"
+  },
+  "dfxtp_1_9200_59840": {
+   "registers": [
+    "Qs"
+   ],
+   "primary": "Qs"
+  },
+  "dfxtp_1_93840_59840": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_95220_38080": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_95220_57120": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_1_96600_103360": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_9660_43520": {
+   "registers": [
+    "Q"
+   ],
+   "primary": "Q"
+  },
+  "dfxtp_1_9660_76160": {
+   "registers": [
+    "Ps"
+   ],
+   "primary": "Ps"
+  },
+  "dfxtp_1_97520_100640": {
+   "registers": [
+    "D"
+   ],
+   "primary": "D"
+  },
+  "dfxtp_1_98440_21760": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_98900_8160": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_99820_13600": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_1_99820_46240": {
+   "registers": [
+    "Y"
+   ],
+   "primary": "Y"
+  },
+  "dfxtp_2_109020_68000": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_120060_8160": {
+   "registers": [
+    "R"
+   ],
+   "primary": "R"
+  },
+  "dfxtp_2_149040_5440": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_2_149500_54400": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_150420_51680": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_151340_8160": {
+   "registers": [
+    "Z"
+   ],
+   "primary": "Z"
+  },
+  "dfxtp_2_24840_8160": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_2_29440_19040": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_2_31280_5440": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_2_46460_5440": {
+   "registers": [
+    "temp1"
+   ],
+   "primary": "temp1"
+  },
+  "dfxtp_2_48300_62560": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_5980_19040": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_2_5980_32640": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_2_67620_35360": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_6900_24480": {
+   "registers": [
+    "P"
+   ],
+   "primary": "P"
+  },
+  "dfxtp_2_78660_89760": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_80500_87040": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_80960_27200": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_85560_48960": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_93380_62560": {
+   "registers": [
+    "state"
+   ],
+   "primary": "state"
+  },
+  "dfxtp_2_93840_78880": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  },
+  "dfxtp_2_95220_81600": {
+   "registers": [
+    "temp2"
+   ],
+   "primary": "temp2"
+  }
+ },
+ "unmapped_flops": [],
+ "operators": [
+  {
+   "cell": "$add$tt_um_kskyou.v:237$16",
+   "type": "$add",
+   "module": "dev1",
+   "src": "tt_um_kskyou.v:237",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev1.$procmux$25_CMP0",
+   "type": "$eq",
+   "module": "dev1",
+   "src": "tt_um_kskyou.v:363",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\dev1.$procmux$26_CMP0",
+   "type": "$eq",
+   "module": "dev1",
+   "src": "tt_um_kskyou.v:362",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\dev1.$procmux$27_CMP0",
+   "type": "$eq",
+   "module": "dev1",
+   "src": "tt_um_kskyou.v:361",
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\dev1.$procmux$24",
+   "type": "$pmux",
+   "module": "dev1",
+   "src": "tt_um_kskyou.v:363",
+   "widths": {
+    "A": 8,
+    "B": 32,
+    "S": 4,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "4 selects",
+   "feeds": [],
+   "feeds_outputs": true
+  },
+  {
+   "cell": "$flatten\\dev2.$add$tt_um_kskyou.v:350$21",
+   "type": "$add",
+   "module": "dev2",
+   "src": "tt_um_kskyou.v:350",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "Y": 16
+   },
+   "signed": false,
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev2.$ternary$tt_um_kskyou.v:350$22",
+   "type": "$mux",
+   "module": "dev2",
+   "src": "tt_um_kskyou.v:350",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "adder_sel",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev2.$sub$tt_um_kskyou.v:350$20",
+   "type": "$sub",
+   "module": "dev2",
+   "src": "tt_um_kskyou.v:350",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "Y": 16
+   },
+   "signed": false,
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev3.$add$tt_um_kskyou.v:341$18",
+   "type": "$add",
+   "module": "dev3",
+   "src": "tt_um_kskyou.v:341",
+   "widths": {
+    "A": 8,
+    "B": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev3.$ternary$tt_um_kskyou.v:341$19",
+   "type": "$mux",
+   "module": "dev3",
+   "src": "tt_um_kskyou.v:341",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "counter_sel",
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$flatten\\dev3.$sub$tt_um_kskyou.v:341$17",
+   "type": "$sub",
+   "module": "dev3",
+   "src": "tt_um_kskyou.v:341",
+   "widths": {
+    "A": 8,
+    "B": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$160_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:230",
+   "widths": {
+    "A": 4,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "state",
+    "temp1",
+    "temp2",
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$445_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:68",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "R",
+    "X",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$448_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:188",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 9
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "Qs",
+    "Y",
+    "state",
+    "temp1",
+    "temp2",
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$449_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:168",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 8
+   },
+   "feeds": [
+    "P",
+    "Ps",
+    "Q",
+    "Y",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$454_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:82",
+   "widths": {
+    "A": 4,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$466_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:154",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 7
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "R",
+    "X",
+    "Y",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$467_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:134",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 6
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "R",
+    "X",
+    "Y",
+    "Z",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$468_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:114",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 5
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$469_CMP0",
+   "type": "$eq",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:94",
+   "widths": {
+    "A": 4,
+    "B": 3,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 4
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$ge$tt_um_kskyou.v:55$3",
+   "type": "$ge",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:55",
+   "widths": {
+    "A": 14,
+    "B": 8,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "P",
+    "Q",
+    "R",
+    "X",
+    "Y",
+    "Z",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$gt$tt_um_kskyou.v:51$1",
+   "type": "$gt",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:51",
+   "widths": {
+    "A": 14,
+    "B": 14,
+    "Y": 1
+   },
+   "signed": false,
+   "feeds": [
+    "P",
+    "Q",
+    "R",
+    "X",
+    "state",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$100",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$104",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:232",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$111",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:318",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$115",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:236",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(ui_in[1] && ~button1)",
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$118",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:232",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$125",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:318",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$130",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:306",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$134",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:295",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$138",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:284",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$142",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:274",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$146",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:263",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$150",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:255",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$154",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "S": 1,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$158",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:232",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$161",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:224",
+   "widths": {
+    "A": 4,
+    "B": 4,
+    "S": 1,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$217",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:295",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "X"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$222",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "X"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$239",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:224",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "R"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$251",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "Q"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$259",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:306",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$264",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "P"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$288",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:190",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$295",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:170",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$303",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:156",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$319",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:156",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$328",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:136",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$337",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:136",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$363",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:136",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$373",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:116",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$383",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:116",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$39",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:295",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$404",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:96",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$415",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:96",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$428",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:71",
+   "widths": {
+    "A": 1,
+    "B": 1,
+    "S": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$443",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:134",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "(state == 2'b10)",
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$49",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:263",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$53",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:255",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$57",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:241",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "comp",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$64",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:224",
+   "widths": {
+    "A": 16,
+    "B": 16,
+    "S": 1,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "(ui_in[0] && ~button0)",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$76",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:306",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$80",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:295",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$84",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:284",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "comp2zero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$88",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:274",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$92",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:263",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$96",
+   "type": "$mux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:255",
+   "widths": {
+    "A": 8,
+    "B": 8,
+    "S": 1,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "compzero",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$508",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$519",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 1,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 1
+   },
+   "feeds": [
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$521",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$523",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$525",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "state",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$531",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "Q",
+    "state",
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$533",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$535",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$542",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "P",
+    "Q",
+    "X"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$544",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "X",
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$557",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 2
+   },
+   "feeds": [
+    "R",
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$573",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "P",
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$601",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$603",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$605",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$auto$simple.cc:194:make_patterns_logic$609",
+   "type": "$ne",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": null,
+   "widths": {
+    "A": 2,
+    "B": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "const_operand": {
+    "B": 3
+   },
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$113",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:316",
+   "widths": {
+    "A": 2,
+    "B": 4,
+    "S": 2,
+    "Y": 2
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "watch"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$127",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:316",
+   "widths": {
+    "A": 4,
+    "B": 40,
+    "S": 10,
+    "Y": 4
+   },
+   "signed": false,
+   "select": "10 selects",
+   "feeds": [
+    "state"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$219",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:293",
+   "widths": {
+    "A": 8,
+    "B": 16,
+    "S": 2,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "X"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$237",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:239",
+   "widths": {
+    "A": 8,
+    "B": 16,
+    "S": 2,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "R"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$248",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:316",
+   "widths": {
+    "A": 16,
+    "B": 32,
+    "S": 2,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "Q"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$261",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:304",
+   "widths": {
+    "A": 16,
+    "B": 32,
+    "S": 2,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "P"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$32",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:316",
+   "widths": {
+    "A": 16,
+    "B": 96,
+    "S": 6,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "6 selects",
+   "feeds": [
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$435",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:154",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "S": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "P",
+    "R",
+    "X",
+    "temp1"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$447",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:188",
+   "widths": {
+    "A": 16,
+    "B": 112,
+    "S": 7,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "7 selects",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$459",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:134",
+   "widths": {
+    "A": 16,
+    "B": 32,
+    "S": 2,
+    "Y": 16
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$465",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:154",
+   "widths": {
+    "A": 1,
+    "B": 2,
+    "S": 2,
+    "Y": 1
+   },
+   "signed": false,
+   "select": "2 selects",
+   "feeds": [
+    "P",
+    "Q",
+    "Y",
+    "temp1",
+    "temp2"
+   ],
+   "feeds_outputs": false
+  },
+  {
+   "cell": "$procmux$73",
+   "type": "$pmux",
+   "module": "tt_um_elementalcollision_tempo",
+   "src": "tt_um_kskyou.v:316",
+   "widths": {
+    "A": 8,
+    "B": 64,
+    "S": 8,
+    "Y": 8
+   },
+   "signed": false,
+   "select": "8 selects",
+   "feeds": [
+    "temp1"
+   ],
+   "feeds_outputs": false
+  }
+ ],
+ "meta": {
+  "source": {
+   "id": "tt05/tt_um_kskyou",
+   "macro": "tt_um_kskyou",
+   "title": "Continued Fraction Calculator",
+   "author": "Kevin You",
+   "shuttle_repo": "https://github.com/TinyTapeout/tinytapeout-05",
+   "shuttle_commit": "0e918cdd3d396d6108b85a37b8ccafed9b06ac2a"
+  },
+  "files": {
+   "layout": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_kskyou/tt_um_kskyou.gds",
+    "git_blob": "2f5bb51da1204ba9200971f72c050b26afd2050e"
+   },
+   "netlist": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_kskyou/tt_um_kskyou.v",
+    "git_blob": "fa416d488b4bdad8364ec1d8043a31ec4d92f4b6"
+   },
+   "lef": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_kskyou/tt_um_kskyou.lef",
+    "git_blob": "f8f94c14d5fe497cc041aecb973a5260a533b7c4"
+   },
+   "license": {
+    "url": "https://raw.githubusercontent.com/TinyTapeout/tinytapeout-05/0e918cdd3d396d6108b85a37b8ccafed9b06ac2a/projects/tt_um_kskyou/LICENSE",
+    "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+   }
+  },
+  "rtl": {
+   "repo": "https://github.com/kskyou/tt05",
+   "commit": "0d166242eee3f5d185f8d77668378cc9fe697636",
+   "top_module": "tt_um_kskyou",
+   "source_files": [
+    "tt_um_kskyou.v"
+   ],
+   "defines": [
+    "SYNTHESIS",
+    "__openlane__",
+    "__librelane__",
+    "__pnr__"
+   ]
+  },
+  "licence": {
+   "author_repo": "Apache-2.0",
+   "shuttle_license_file": null,
+   "shuttle_repo": "Apache-2.0"
+  },
+  "join_key": "extracted instance name <master minus sky130_fd_sc_hd__>_<x>_<y> (tools/retrace/extract.py, DEF-style lower-left in DBU); netlist instance via GDS property 61",
+  "method": "RETRACE extraction of the published layout; join to the published gate-level netlist by the layout's instance-name property (connectivity checked net by net); RTL at the recorded commit classified by tools/s3/truth_tempo.py's word-level rules (no manual overrides; alt_kinds only from those rules, e.g. the 1-bit toggle rule); register bits mapped to netlist flops by Q-net names through wl.json aliases, confirmed by truth_tempo.map_netlist (random simulation, flop clock edge and async control compared) and prove_mapping (z3, deterministic rlimit); truth/2 rules as in truth_tempo.py (shadow flops, <owner>__retimed registers of kind other, primary = the widest register); lenient units by truth_tempo.UNIT_RULES only (meta.unit_rules), synchronizer stage registers of a unit with stage-level params null",
+  "unit_rules": {
+   "rules": {
+    "sync_chain": "synchronizer stage registers forming chains: synchronizer registers linked by a stage-1 -> stage-2 copy (a chain written as one RTL register per stage) form one unit of kind synchronizer (a chain unit: score.py scores its stage registers strictly through it)",
+    "copy_lanes": "equal-depth copy chains under one copy condition with heads of one external kind: lanes of synchronizer registers (depth 2) or of shift registers (depth >= 3; every stage a single-path copy of the previous one) of >= 2 registers, with equal depth, the same flop controls (clock, enable, sync and async reset nets and polarities), the same copy mux condition, the same per-stage reset values when the lanes copy unconditionally, and heads that are all input pins or all flops of other registers, form one unit of the lanes' kind (per-channel histories; S3's lane rule joins such lanes into one structure)",
+    "concat_adder": "registers written by one concatenated adder: counters whose every bit is the aligned output of disjoint slices of one innermost $add/$sub on their own Q ({hi, lo} <= {hi, lo} + 1) form one unit of kind counter, bit order by adder output offset",
+    "per_slice": "per-slice splits: the bits of one register under different flop controls (cell type, enable, sync and async reset nets) form one unit per slice, of the register's kind (a control-signature grouping splits the register there); TEMPO's truth only, not (yet) the blind-set labeller"
+   },
+   "units": [],
+   "left_out": [
+    {
+     "rule": "concat_adder",
+     "registers": [
+      "R",
+      "temp1"
+     ],
+     "left_out": "the registers take the same output bits of one adder (an incrementer shared between registers, not a concatenation)"
+    },
+    {
+     "rule": "concat_adder",
+     "registers": [
+      "R",
+      "temp1"
+     ],
+     "left_out": "the registers take the same output bits of one adder (an incrementer shared between registers, not a concatenation)"
+    }
+   ]
+  },
+  "alias_unit_members_added": [],
+  "yosys": "Yosys 0.69+59 (git sha1 d85872386-dirty, Release, Clang /usr/local/osxcross/target/bin/aarch64-apple-darwin25.5-clang++ 21.1.8)",
+  "yosys_scripts": {
+   "word": "read_verilog -sv -mem2reg -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/repo/src/tt_um_kskyou.v\nhierarchy -check -top tt_um_kskyou\nproc -norom\nflatten\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/rtl_regs.txt select -list t:$*dff* %x:+[Q] t:$*dff* %d\nsetattr -set rtl_reg 1 t:$*dff* %x:+[Q] t:$*dff* %d\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm_detect\nopt\nwreduce\nopt_clean\ntee -q -o /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/wl_stat.txt stat\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/wl.json\ndffunmap\ntechmap\nopt_clean\nwrite_json /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/gates.json\n",
+   "fsm": "read_verilog -defer -sv -DSYNTHESIS -D__openlane__ -D__librelane__ -D__pnr__ -I/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/repo/src /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/repo/src/tt_um_kskyou.v\nhierarchy -check -top tt_um_kskyou -nokeep_prints -nokeep_asserts\nproc\nopt_expr\nflatten\nopt_expr\nopt_clean\nopt -nodffe -nosdff\nfsm -nomap -encfile /Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/pilot/work/tt05__tt_um_kskyou/fsm_encoding.txt\n"
+  },
+  "rtl_flop_types": {
+   "posedge/no async": 142
+  },
+  "top_level_dynamic_arrays": [],
+  "undriven_rtl_outputs": [],
+  "register_names_sharing_a_flop": 0,
+  "registers_without_primary_flop": [],
+  "join": {
+   "method": "GDS property 61 on each std-cell reference = netlist instance name",
+   "layout_std_cell_refs_without_name": 0,
+   "extracted_logic_instances": 1061,
+   "netlist_logic_instances": 1061,
+   "extracted_without_netlist_instance": 0,
+   "netlist_without_extracted_instance": 0,
+   "master_mismatch": 0,
+   "nets_one_to_one": 1079,
+   "extracted_nets_spanning_several_netlist_nets": 0,
+   "netlist_nets_split_over_several_extracted_nets": 0,
+   "netlist_nets_without_extracted_net": 0,
+   "ports_agree": 42,
+   "ports_disagree": [],
+   "non_port_net_labels": 1053,
+   "non_port_net_labels_rtl_like": 148,
+   "examples": {
+    "unknown": [],
+    "missing": [],
+    "master_mismatch": []
+   },
+   "clean": true
+  },
+  "counts": {
+   "registers": 15,
+   "registers_by_kind": {
+    "accumulator": 4,
+    "counter": 3,
+    "data_register": 5,
+    "flag": 2,
+    "fsm_state": 1
+   },
+   "units": 0,
+   "rtl_flop_bits": 142,
+   "netlist_flops": 148,
+   "netlist_flops_labelled": 148,
+   "shadow_flops": 0,
+   "unmapped_flops": 0,
+   "rtl_bits": {
+    "mapped": 138
+   },
+   "latches": 0,
+   "opaque_sequential_cells": 0
+  },
+  "fsm_recoding": {
+   "format": "{state register: {one-hot position (bits[].index): RTL state code}}",
+   "registers": {
+    "state": {
+     "0": 0,
+     "1": 8,
+     "2": 4,
+     "3": 2,
+     "4": 6,
+     "5": 1,
+     "6": 9,
+     "7": 5,
+     "8": 3,
+     "9": 7
+    }
+   }
+  },
+  "removed_rtl_registers": [],
+  "functional_check": {
+   "method": "bit-parallel random simulation of both models cut at the flops (leaves: flop outputs, input pins, SRAM read data); each netlist flop's D compared with the RTL next-state function of the bit it implements; evidence, not a proof",
+   "patterns": 4096,
+   "seed": 20260921,
+   "reset_inactive_patterns": 3584,
+   "constant_biased_slices": 1,
+   "rounds": 2,
+   "agree_per_round": [
+    148,
+    148
+   ],
+   "flops_checked": 148,
+   "match": 148,
+   "mismatch": [],
+   "unchecked": [],
+   "exercised": 127,
+   "exercised_note": "flops whose next state differs from their current value in at least one pattern with reset inactive; the rest were compared on hold/reset behaviour only",
+   "outputs_match": 8,
+   "outputs_mismatch": [],
+   "outputs_unspecified_in_rtl": [],
+   "flop_types": {
+    "compared": 148,
+    "clock_mismatch": [],
+    "async_mismatch": [],
+    "netlist_cells": {
+     "posedge cell/no async pin": 148
+    },
+    "netlist_clock_inverted": 0,
+    "rtl": {
+     "posedge/no async": 148
+    }
+   }
+  },
+  "proof": {
+   "method": "z3 (QF_BV) combinational equivalence per flop: netlist D (Liberty functions) vs RTL next state (gates.json), flops cut, leaves shared through the correspondence; FSM one-hot flops constrained to the RTL's valid state codes",
+   "rlimit_per_check": 200000000,
+   "spurious_sat": 0,
+   "proven": 148,
+   "refuted": [],
+   "unknown": [],
+   "unchecked": [],
+   "outputs": {
+    "proven": 8
+   },
+   "outputs_not_proven": [],
+   "outputs_unspecified_in_rtl": [],
+   "invariants": {
+    "proven": 1
+   },
+   "invariants_not_proven": [],
+   "note": "all flops, outputs and invariants proven = an inductive register correspondence: once the chip has been reset (every register but rst_sync has a synchronous reset), the netlist and the RTL stay in corresponding states"
+  },
+  "proof_incomplete": []
+ }
+}
