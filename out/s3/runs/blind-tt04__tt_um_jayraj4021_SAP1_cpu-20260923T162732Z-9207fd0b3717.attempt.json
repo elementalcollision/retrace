@@ -1,0 +1,28 @@
+{
+ "attempt": "d285ced69a46f64f",
+ "created": "2026-09-23T16:27:32+00:00",
+ "design": "tt04__tt_um_jayraj4021_SAP1_cpu",
+ "freeze": {
+  "freeze_hash": "1196c56304e3fdd8076345085860288b829228d8d47a84ca2e5909114c62b9bc"
+ },
+ "gds": "out/s3/blind/anon/tt04__tt_um_jayraj4021_SAP1_cpu.gds",
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-ydrpzcx9",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "tt04__tt_um_jayraj4021_SAP1_cpu",
+  "--gds",
+  "out/s3/blind/anon/tt04__tt_um_jayraj4021_SAP1_cpu.gds",
+  "--top",
+  "tt_um_jayraj4021_SAP1_cpu",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
