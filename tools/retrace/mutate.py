@@ -321,6 +321,25 @@ def sites_master_swap(ex, lef):
     return cands
 
 
+def _pin_geometry_diff(lef, old, new):
+    """Pins of masters `old`/`new` whose LEF port rectangles differ, in the cell's own
+    frame (the swap keeps the reference's origin and orientation, so equal LEF rects
+    land on equal layout), or that only one master has. [] means identical pin geometry;
+    None means either master has no LEF entry, so nothing was compared."""
+    if old not in lef or new not in lef:
+        return None
+    po, pn = lef[old]["pins"], lef[new]["pins"]
+    diff = []
+    for pin in sorted(set(po) | set(pn)):
+        if pin not in pn:
+            diff.append(f"{pin} (only on {old[len(PREFIX):]})")
+        elif pin not in po:
+            diff.append(f"{pin} (only on {new[len(PREFIX):]})")
+        elif sorted(po[pin]["rects"]) != sorted(pn[pin]["rects"]):
+            diff.append(pin)
+    return diff
+
+
 def apply_master_swap(lib, top_name, site, lef, pdk_cells):
     top = _top(lib, top_name)
     ref = _find_ref(top, lef, site["master"], site["x"], site["y"], site["orient"])
@@ -331,9 +350,21 @@ def apply_master_swap(lib, top_name, site, lef, pdk_cells):
         lib.add(existing)
     ref.cell = existing
     a, b = site["master"][len(PREFIX):], new_name[len(PREFIX):]
+    # The routing is untouched, so whether a connection survives depends on where the new
+    # master's pins lie: a pin whose geometry changed may still overlap the old contact and
+    # then joins the net to a DIFFERENT pin (nand2_2 A over nor2_2 B, for one). The string
+    # reports per swap whether LEF pin geometry is identical (docs/ROUNDTRIP.md section 7).
+    # Even identical pin geometry does not rule out routing touching the new master's
+    # internal (non-pin) shapes, so the string never claims identical connectivity.
+    diff = _pin_geometry_diff(lef, site["master"], new_name)
+    if diff is None:
+        pins = "pin geometry not compared (no LEF entry)"
+    elif not diff:
+        pins = "identical pin geometry"
+    else:
+        pins = "pin geometry differs: " + ", ".join(diff)
     return (f"swapped master {a} -> {b} at DEF ({_um(site['x']):.3f},{_um(site['y']):.3f}) "
-            f"{site['orient']} -- same footprint width/height, behavioural change, "
-            f"identical connectivity")
+            f"{site['orient']} -- same footprint width/height, behavioural change, {pins}")
 
 
 # ============================================================ pin_label_swap ===========

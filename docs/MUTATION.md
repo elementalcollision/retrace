@@ -118,6 +118,10 @@ campaign.
 ## Survivors
 
 - `puzzle_master_swap_00` (puzzle/master_swap): swapped master nor2_2 -> nand2_2 at DEF (185.380,19.040) S -- same footprint width/height, behavioural change, identical connectivity
+  - *(Freeze 2 note: "identical connectivity" is the description string as the campaign printed it, an
+    a priori claim. `nor2_2` and `nand2_2` differ in LEF pin geometry on A, B, VNB and Y, and the
+    description now says so; for this site the extracted connectivity happened to come out the same, which
+    is what the check layers below observed.)*
     - diagnostics: PASS 
     - cellcheck: PASS 
     - V2_pins: PASS 
@@ -319,8 +323,8 @@ test...` can resolve to the wrong `test` package first (see the module docstring
   (cross-extractor agreement) is real, complementary evidence specifically for
   *connectivity* faults (opens, shorts, orientation) -- it caught every `cell_flip` and
   contributed to several `master_swap`/`via_delete` kills -- but, correctly, contributes
-  nothing to catching a same-connectivity behavioural change; that is V6's job alone.
-- **The one confirmed, unfixed gap**: a same-footprint, same-connectivity logic swap
+  nothing to catching a behavioural change with the same *extracted* connectivity; that is V6's job alone.
+- **The one confirmed, unfixed gap**: a same-footprint logic swap with the same extracted connectivity
   (nand<->nor family) on the puzzle is invisible to every check layer this project has
   *unless* the one recorded stimulus happens to exercise the swapped gate's output
   differently, and for one of the seven sites tested, it does not. This is not a flaw in

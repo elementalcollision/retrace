@@ -301,7 +301,7 @@
    "evidence": [
     {
      "path": "tools/s3/thirdparty.py",
-     "sha256": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a"
+     "sha256": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
     },
     {
      "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
@@ -546,6 +546,60 @@
      "sha256": "e88ac6f3ca263eeb087fff694538450f4fe9dd5deb6790a285966d54808d6ba1"
     }
    ]
+  },
+  {
+   "id": "K16",
+   "what": "freeze 1's blind evaluation SPENT its blind set: the ten drawn Tiny Tapeout designs, their truths and the recognizer's result on each have been read in full",
+   "when": "2026-09-23",
+   "who": "the blind evaluation under freeze 1ee6a47894359fef (commit 232cfe6): the frozen labeller, the run operators, four analysts, the report writer and the fact-checkers of docs/S3.md",
+   "detail": "The ten designs drawn with the freeze-1 seed -- tt03p5/tt_um_Reloj_top, tt03p5/tt_um_thorkn_vgaclock, tt05/tt_um_kskyou, tt05/tt_um_toivoh_synth, tt07/tt_um_toivoh_basilisc_2816, tt07/tt_um_vzayakov_top, tt09/tt_um_pwm_top, ttsky25a/tt_um_sjsu_vga_music, ttsky25a/tt_um_td4, ttsky26c/tt_um_joonatanalanampa_cordic -- were labelled by the frozen labeller (out/s3/truth_<id>.json), run once each, and every miss and false positive on them was traced by truth name (docs/S3.md sections 8-10, out/s3/blind/analysis/misses.json). The ten RESERVES were listed but never labelled, fetched, extracted or run, and no other candidate was ever fetched: the download cache (out/s3/blind/cache) holds exactly the ten drawn designs, the fifteen excluded pilot/probe designs, and one design the pre-development scan rejected (tt05of/tt_um_diferential_ringy, not a candidate). Freeze 2 extracted the excluded pilot ttsky25a/tt_um_BNN again to test the extractor's top-level cuts; that is extractor-side and touched no candidate.",
+   "effect": "none of the ten may be treated as unseen again: not drawn again, and no recognizer change may be motivated by one of their misses while any of them is still counted as blind. tools/s3/thirdparty.py draw() ranks sha256(seed|id) over the WHOLE candidate list and does not exclude earlier draws, so the next freeze that records a draw must exclude these ten first (listed under `open`). Freeze 2 records no draw.",
+   "evidence": [
+    {
+     "path": "out/s3/blind/labels.json",
+     "sha256": "aa886efb24437d08d6b8a4029b2609cc46c77a838ce600191550a69684d69bb4"
+    },
+    {
+     "path": "out/s3/truth_ttsky26c__tt_um_joonatanalanampa_cordic.json",
+     "sha256": "6658bae22df8d00936b2e37629ce514d111f2c4a318d426ac4048e87334a2486"
+    },
+    {
+     "path": "out/s3/truth_tt05__tt_um_toivoh_synth.json",
+     "sha256": "f9c258a17a3a61276de61844626d3b8c5f1fe510e1507b1c99ec748cc1902b3a"
+    },
+    {
+     "path": "out/s3/truth_ttsky25a__tt_um_td4.json",
+     "sha256": "eff95fb6ad37ff6fea0d0f5356a7e073f99f5b231698e73e6adc083c09b7b682"
+    },
+    {
+     "path": "out/s3/truth_tt03p5__tt_um_Reloj_top.json",
+     "sha256": "cb36e9ee9836de8a2f6a6fd6a1b9b80a21b0dd9e6cea2eb35be2cb1e4b9ad860"
+    },
+    {
+     "path": "out/s3/truth_tt03p5__tt_um_thorkn_vgaclock.json",
+     "sha256": "abf2e2c459b6dbdde05714e63ba03264b4040fe225583309a13f96a8f8c93214"
+    },
+    {
+     "path": "out/s3/truth_tt07__tt_um_toivoh_basilisc_2816.json",
+     "sha256": "f088bfcc64249f0f79c0f7cb2a6abedbe60daad302b15dd8d14d45c7aff9a2ff"
+    },
+    {
+     "path": "out/s3/truth_ttsky25a__tt_um_sjsu_vga_music.json",
+     "sha256": "e1bc04ad85742e0284d11d48521ae2192382982569406275d9965100914599a0"
+    },
+    {
+     "path": "out/s3/truth_tt07__tt_um_vzayakov_top.json",
+     "sha256": "cf6cba2ada3dbbeb487f00522545d977ef6bb2891a6572a9a1d4f9e742e30043"
+    },
+    {
+     "path": "out/s3/truth_tt05__tt_um_kskyou.json",
+     "sha256": "9294c464b390903430d5ceddcee556973ebb406a6767f38633aaec90da5a5941"
+    },
+    {
+     "path": "out/s3/truth_tt09__tt_um_pwm_top.json",
+     "sha256": "dc3da92ce6f0cbf7f303d1faa2efd99b50faf20ba5639d2d451cbc746840b68b"
+    }
+   ]
   }
  ],
  "puzzle_report_must_state": [
@@ -559,27 +613,26 @@
  "open": [
   "optionally re-run the corpus evaluation without the K2 families to show recognizer decisions do not hinge on them (review[1] issue 4)",
   "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)",
-  "the frozen evaluation of the puzzle runs >= 5 permutations and reports their spread (changes.jsonl C14)",
-  "review[2] issue 0's second half: draw a fresh held-out set that no recognizer author has seen, or state in the report that none exists. This now covers BOTH regression sets: out/s3/review_generalisation (K13) and out/s3/review_generalisation2 (K15)."
+  "before the next freeze that records a draw: make tools/s3/thirdparty.py draw() exclude the ten designs K16 lists (it ranks over the whole candidate list today), so a spent design cannot be drawn again as unseen (K16)"
  ],
  "refreshed": {
   "date": "2026-09-23",
-  "by": "reporting/provenance agent (the freeze round's provenance artefacts)",
+  "by": "freeze 2",
   "evidence_hashes_corrected": [
    {
-    "where": [
-     "K3",
-     "K9"
-    ],
-    "path": "docs/S3_DESIGN.md",
-    "was": "b86e484f2ac46e578bb2eb551a8bad4803999f8c914ddf2ae3aa16c7cdec0e4a",
-    "now": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+    "where": "K11",
+    "path": "tools/s3/thirdparty.py",
+    "was": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+    "now": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634"
    }
   ],
   "items_added": [
-   "K15"
+   "K15",
+   "K16"
   ],
-  "items_added_this_pass": [],
+  "items_added_this_pass": [
+   "K16"
+  ],
   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
  },
@@ -872,6 +925,27 @@
    "items_added_this_pass": [],
    "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
    "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-23",
+   "by": "reporting/provenance agent (the freeze round's provenance artefacts)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "b86e484f2ac46e578bb2eb551a8bad4803999f8c914ddf2ae3aa16c7cdec0e4a",
+     "now": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+    }
+   ],
+   "items_added": [
+    "K15"
+   ],
+   "items_added_this_pass": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
   }
  ],
  "closed": [
@@ -885,6 +959,16 @@
      "rebuild_needed": false
     }
    },
+   "when": "2026-09-23"
+  },
+  {
+   "was": "review[2] issue 0's second half: draw a fresh held-out set that no recognizer author has seen, or state in the report that none exists. This now covers BOTH regression sets: out/s3/review_generalisation (K13) and out/s3/review_generalisation2 (K15).",
+   "closed_by": "freeze 1's blind evaluation: ten third-party Tiny Tapeout designs drawn after the freeze (commit 232cfe6) with a seed committed in it, from a pool registered by structure-blind criteria before recognizer development, labelled by the frozen labeller and run once each (docs/S3.md). That set is now spent (K16); a further fresh set would need a new draw.",
+   "when": "2026-09-23"
+  },
+  {
+   "was": "the frozen evaluation of the puzzle runs >= 5 permutations and reports their spread (changes.jsonl C14)",
+   "closed_by": "out/s3/runs/blind-puzzle-20260923T073045Z-8ea21ef84643.json: K = 5 os.urandom permutations, spread reported, 0 of 92 defined metrics varied (docs/S3.md sections 12.4 and 13)",
    "when": "2026-09-23"
   }
  ]

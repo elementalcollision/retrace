@@ -94,7 +94,8 @@ Steps:
      result unscored; --score-record scores it later against the drawn truth.
   8. The run record goes to out/s3/eval/runs/<design>-<UTC time>-<sha256[:12]>.json for a
      development run (--out names another directory) and to out/s3/runs/blind-..., read-only, for
-     a blind run: out/s3/runs holds blind records only. Records are created exclusively: nothing is
+     a blind run: out/s3/runs holds blind records only (and each blind run's attempt record, proven by
+     the ledger: freeze.run_strays). Records are created exclusively: nothing is
      ever overwritten. Everything after the recognizer is wrapped: an error still writes the
      record, marked invalid. A run of K > 1 permutations records "evaluations" (one per
      permutation, and the file-order arm), "spread" and, with --leakage, "leakage"; a run of one
@@ -140,7 +141,7 @@ from tools.s3 import freeze, schema, score, verify  # noqa: E402
 from tools.s3.netlist import YICES_SAT, GateGraph, Library, Netlist, load_extraction, strings_in  # noqa: E402
 
 RUN_SCHEMA = "retrace-s3-run/3"
-RUNS = os.path.join(ROOT, "out", "s3", "runs")                 # blind records only
+RUNS = os.path.join(ROOT, "out", "s3", "runs")                 # blind records + their attempts
 DEV_RUNS = os.path.join(ROOT, "out", "s3", "eval", "runs")     # development records (default)
 FROZEN_PERMUTATIONS = freeze.PROTOCOL["permutations_min"]      # K for every frozen evaluation (>= 5)
 EPS = 1e-12
@@ -1705,7 +1706,7 @@ def _rel(p):
 
 def _open_attempt(design, created, fr, rerun, gds):
     aid = secrets.token_hex(8)
-    body = {"schema": "retrace-s3-attempt/1", "design": design, "created": created, "attempt": aid,
+    body = {"schema": freeze.ATTEMPT_SCHEMA, "design": design, "created": created, "attempt": aid,
             "freeze": {"freeze_hash": fr["freeze_hash"]}, "rerun": rerun, "gds": _rel(gds) if gds else None,
             "orig_argv": list(getattr(sys, "orig_argv", []))}
     path, sha = _write_record(body, True, suffix=".attempt")

@@ -5,7 +5,42 @@
  "scope": "review[2]'s reporting and provenance items (issues 0-7), regenerated 2026-09-23 for the freeze round's provenance items. The soundness and generalisation reviews are answered elsewhere. No recognizer code ran on the puzzle or on a third-party design; out/s3/truth_puzzle.json and out/s3/blind/ were not read.",
  "schema_note": "retrace-s3-honesty-summary/2 (2026-09-23) adds code_state (the sha256 of every score.OUT_OF_SAMPLE_SOURCES file this document describes, with the check that decides whether it still does) and replaces the copied out_of_sample block with the gated one; /1 had neither, which is how it went on publishing a superseded estimate as current.",
  "headline": {
-  "tempo": "review[2] measured macro and micro F1 1.000 on registers (found and exact), AMI 0.9806, ARI 0.9726, 106 of 147 exact words, and this round reproduced it exactly early in the session -- a FITTED DEVELOPMENT FIGURE, since thresholds were chosen on TEMPO (changes.jsonl C01-C06, C10, C21d, PC03, PC06, PC07, PC09) and four fixes were traced from TEMPO misses by truth name (C27-C30). CORRECTED 2026-09-22 (review[1] issue 7): this file used to end 'IT NO LONGER REPRODUCES ... do not quote 1.000', which was true of the tree in the middle of the session (the same run then gave macro 0.9891, micro 0.9667, AMI 0.9788, ARI 0.9685, 104 of 147 exact words, because the counter recognizer returned 24 structures for 22 truth registers) and is NOT true of the integrated code: changes.jsonl C60, measured on one code state with all 13 hashes pinned, reports macro and micro F1 1.000 on registers again. Three figures, three code states -- other agents were editing tools/s3 throughout; see code_drift. What holds of all three is the label: every TEMPO number is IN-SAMPLE and FITTED, and none of them is a generalisation estimate. Quote a TEMPO figure only with the code state it was measured on (C60, or C47 for the intermediate one), and quote the corpus holdout beside it (C45, H02).",
+  "tempo": "CURRENT, read from out/s3/eval/runs/tempo-20260923T053247Z-ef7fc630631b.json when this file was generated (the TEMPO evaluation record tools/s3/freeze.py latest_eval_record() names and the freeze commit force-adds; created 2026-09-23T05:32:47+00:00, 6 valid evaluations: file, p1, p2, p3, p4, p5; the record's own label: 'in-sample (fitted development figure)'): registers FOUND (any returned structure, NOT harness-verified) macro F1 1.0000, micro F1 1.0000; registers found by a HARNESS-VERIFIED structure macro F1 0.8118; registers EXACT macro F1 0.9773, micro F1 0.9384; AMI 0.9807, ARI 0.9722 (all flops); 103 of 147 exact words. Code state: 3 of the 18 tools/s3 files the record pins differ from this tree (tools/s3/freeze.py, tools/s3/run.py, tools/s3/thirdparty.py); 0 of its 10 recognizer_sources differ, so these are the figures of the record's code state, not a measurement of this tree. IN-SAMPLE and FITTED, not a generalisation estimate: thresholds were chosen on TEMPO (changes.jsonl C01-C06, C10, C21d, PC03, PC06, PC07, PC09) and four fixes were traced from TEMPO misses by truth name (C27-C30). Quote a TEMPO figure only with the record and code state it was measured on, and quote the corpus holdout beside it (C45, H02). HISTORY -- earlier code states, NOT the current figures, kept so a reader of an older copy can tell: review[2] measured macro and micro F1 1.000 on registers (found and exact), AMI 0.9806, ARI 0.9726 (its own four-place figures, truncated; the record's AMI is 0.98066), 106 of 147 exact words, and this round reproduced it early in the 2026-09-22 session; the same run later in that session gave macro 0.9891, micro 0.9667, AMI 0.9788, ARI 0.9685, 104 of 147, the counter recognizer returning 24 structures for 22 truth registers (changes.jsonl C47, an intermediate tree other agents were editing; see code_drift); C60 then reported macro and micro F1 1.000 (found and exact), AMI 0.981, ARI 0.973 and 106 of 147 on the integrated code. CORRECTED 2026-09-22 (review[1] issue 7): this file once ended 'IT NO LONGER REPRODUCES ... do not quote 1.000', true only of that intermediate tree. CORRECTED 2026-09-23 (freeze 2): this headline used to present review[2]'s figures, 'found and exact' and '106 of 147' included, as the TEMPO result, citing C60 / C47 for the code state; the TEMPO record the freeze commit force-added disagrees on the exact F1s and the exact-word count (docs/S3.md section 15 item 9), so the current figures are now read from that record when this file is generated instead of being written here.",
+  "tempo_record": {
+   "record": "out/s3/eval/runs/tempo-20260923T053247Z-ef7fc630631b.json",
+   "record_sha256": "5aba4bee56833424c02d714ca0db74fd653f7f6b28ec031a1df506d34390836f",
+   "created": "2026-09-23T05:32:47+00:00",
+   "valid": true,
+   "evaluations": [
+    "file",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+   ],
+   "in_sample": true,
+   "label": "in-sample (fitted development figure)",
+   "figures": {
+    "found_macro_f1_registers": 1.0,
+    "found_micro_f1_registers": 1.0,
+    "exact_macro_f1_registers": 0.9772727272727273,
+    "exact_micro_f1_registers": 0.9384309831181727,
+    "verified_macro_f1_registers": 0.8118279569892473,
+    "ami": 0.9806557422798649,
+    "ari": 0.9721658261886101,
+    "exact_words": 103,
+    "truth_words_multi": 147
+   },
+   "figures_source": "each evaluation's score.headline (F1, AMI, ARI) and score.grouping.all_flops (exact_words, truth_words_multi); a list where the evaluations disagree",
+   "code_pinned": 18,
+   "code_differing_from_this_tree": [
+    "tools/s3/freeze.py",
+    "tools/s3/run.py",
+    "tools/s3/thirdparty.py"
+   ],
+   "recognizer_sources_differing_from_this_tree": []
+  },
   "out_of_sample": "the synthetic corpus holdout, per kind, in out_of_sample below -- and ONLY when out_of_sample.available is true. When it is false the estimate is absent in this tree and no holdout number may be quoted from this document (out_of_sample.refused_because says why, and gives the rebuild).",
   "caveat": "the corpus holdout is not clean either: it is synthetic and written by this project, its cohort 2 exists because the generalisation regression set showed which classes were missing (contamination K12), and the regression sets themselves were consulted (C25, K13). After this round no uncontaminated generalisation set exists for counter, shift or lfsr."
  },
@@ -709,17 +744,17 @@
    "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
    "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
    "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
-   "tools/s3/freeze.py": "4a3a78a4e97470e687a4de45122b4909390df750b967195ddc7ced7be522b8cc",
+   "tools/s3/freeze.py": "0f1ca7fce08004594729017052a6e64d1f8296c863813ac1e0ae8e7c2da57e18",
    "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
    "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
    "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
    "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
    "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
-   "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+   "tools/s3/run.py": "467375b40e9e978258dfd15fbf2d7158e7cfcddb437db12d9a8e1d4d6ce89f13",
    "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
    "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
    "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
-   "tools/s3/thirdparty.py": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+   "tools/s3/thirdparty.py": "03b7b0e459dadd854762046b8ac16afc5972ac7e7af388a736748313d7776634",
    "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
    "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
    "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
@@ -936,9 +971,9 @@
   }
  },
  "records_evidence": {
-  "checked": 1004,
+  "checked": 1029,
   "stale": [],
-  "moved": 270,
+  "moved": 283,
   "missing": 5,
   "rule": "a stale CONTAMINATION hash blocks a freeze (the record describes the present); a moved CHANGE-LOG hash is reported only (an entry's evidence is a snapshot)"
  },
@@ -953,6 +988,13 @@
   "FIXED SINCE THIS LIST WAS FIRST WRITTEN, and kept here so a reader of an older copy can tell: the built corpus is no longer stale against corpus.py (see corpus above; changes.jsonl I04, T04); out/s3/runs no longer holds the stray TEMPO development record (H05); and the four test/test_s3.py failures that round reported are not present in this tree."
  ],
  "corrections": [
+  {
+   "what": "headline.tempo",
+   "date": "2026-09-23",
+   "was": "review[2]'s figures presented as the TEMPO result: 'macro and micro F1 1.000 on registers (found and exact)' and '106 of 147 exact words', citing C60 / C47 for the code state",
+   "now": "the current figures are read from the TEMPO evaluation record freeze.latest_eval_record() names, with found (any structure) and harness-verified reported apart and exact beside them; the earlier figures follow, labelled HISTORY",
+   "why": "docs/S3.md section 15 item 9: the record the freeze commit force-added gives exact macro 0.9773 / micro 0.9384 and 103 of 147 exact words; fixed in Freeze 2 (changes.jsonl F03)"
+  },
   {
    "what": "the out_of_sample block",
    "date": "2026-09-23",

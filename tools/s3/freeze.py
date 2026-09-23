@@ -92,6 +92,10 @@ LEDGER_SCHEMA = "retrace-s3-ledger/1"
 FREEZE_REL = os.path.join("out", "s3", "FREEZE.json")
 RUNS_REL = os.path.join("out", "s3", "runs")
 LEDGER_REL = os.path.join("out", "s3", "blind_ledger.jsonl")
+# the record run.py --blind writes into out/s3/runs BEFORE extracting (run.py _open_attempt), and
+# logs by path and sha256 in the ledger; run_strays() accepts it only on that ledger proof
+ATTEMPT_SCHEMA = "retrace-s3-attempt/1"
+ATTEMPT_SUFFIX = ".attempt.json"
 THIRDPARTY_REL = os.path.join("tools", "s3", "thirdparty.py")
 CHANGES_REL = os.path.join("tools", "s3", "changes.jsonl")
 CONTAMINATION_REL = os.path.join("out", "s3", "contamination.json")
@@ -121,7 +125,8 @@ PROTOCOL = {
                     "metric and the structure-set agreement of the file-order arm must lie within the permutations' "
                     "spread (S3_DESIGN section 2)",
     "blackboxes": "black-box masters and pins are opaque ids numbered in a random order, directions kept (V13)",
-    "records": "development records go to out/s3/eval/runs; out/s3/runs holds blind records only",
+    "records": "development records go to out/s3/eval/runs; out/s3/runs holds blind records only, and the "
+               "attempt record each blind run writes there first, proven by the ledger (run_strays)",
 }
 HASHED = ("schema", "code", "extractor_code", "packages", "truth", "inputs", "class_map", "git_head", "blind_seed",
           "blind_candidates", "draw", "supersedes", "protocol", "records", "contamination", "records_evidence")
@@ -289,7 +294,8 @@ def record_evidence(root=ROOT):
 PRE_FREEZE = ("change log well formed (check_changes)",
               "contamination record present and its own evidence hashes current (record_evidence)",
               "change-log evidence hashes current (record_evidence)",
-              "out/s3/runs holds blind records only",
+              "out/s3/runs holds blind records only (run_strays: `blind` true, or an attempt record the "
+              "ledger proves)",
               "the published out-of-sample estimate describes THIS code (score.out_of_sample)",
               "the TEMPO leakage test passes (S3_DESIGN section 2; run.py --leakage)")
 
@@ -399,6 +405,85 @@ def latest_eval_record(design="tempo", root=ROOT):
     return os.path.join(EVAL_RUNS_REL, names[-1]) if names else None
 
 
+_RUNS_RULE = ("out/s3/runs holds blind records only: `blind` true, or an attempt record the ledger proves "
+              "(changes.jsonl C16, F01)")
+
+
+def _logged_attempts(root):
+    """{record path: {record_sha256, ...}} of every "attempt" event of the ledger, working tree and
+    git history (ledger_entries). A root that is not a git repository has no history: git fails
+    there and ledger_entries() reads the working-tree ledger alone. Without a git binary at all the
+    history is not read either; that can only turn a record into a stray, never admit one."""
+    try:
+        entries = ledger_entries(root)[0]
+    except OSError:           # no git executable
+        entries = ledger_entries(root, history=False)[0]
+    out = {}
+    for e in entries:
+        rec, sha = e.get("record"), e.get("record_sha256")
+        if e.get("event") == "attempt" and isinstance(rec, str) and isinstance(sha, str):
+            out.setdefault(rec, set()).add(sha)
+    return out
+
+
+def run_strays(root=ROOT):
+    """{path relative to root: why} for every *.json in out/s3/runs that does not belong there
+    (empty = none). THE rule for that directory: checklist() and test/test_s3.py both call this.
+
+    A file belongs when it is
+      * a blind run's ATTEMPT record proven by the ledger: its name ends ATTEMPT_SUFFIX, its
+        `schema` is ATTEMPT_SCHEMA, and the ledger (ledger_entries: working tree and git history)
+        holds an "attempt" event whose `record` is this file's path relative to root and whose
+        `record_sha256` is the file's sha256 NOW. run.py --blind writes that record into
+        out/s3/runs before extracting (_open_attempt), and it carries no `blind` key, so the rule
+        used to call every blind run's attempt a stray. Name and schema alone prove nothing: a
+        renamed record, an attempt with no ledger entry (a "finish" entry is not one) and an attempt
+        edited after it was logged are all strays. A file that LOOKS like an attempt (either the
+        name or the schema) is judged by this proof alone, whatever its `blind` says: otherwise
+        adding `"blind": true` would pass a forged, renamed or edited attempt; or
+      * any other file whose top-level `blind` is JSON true (run.py _write_record; not under meta,
+        and not merely truthy: "false" or 1 is not true).
+    A file that cannot be read or parsed is skipped, as it always was (blind_results() counts it as
+    an attempt); a parsed file that is not a JSON object is a stray.
+    """
+    rdir = os.path.join(root, RUNS_REL)
+    strays, logged = {}, None
+    for n in sorted(os.listdir(rdir)) if os.path.isdir(rdir) else []:
+        if not n.endswith(".json"):
+            continue
+        rel, path = os.path.join(RUNS_REL, n), os.path.join(rdir, n)
+        try:
+            with open(path) as f:
+                rec = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if not isinstance(rec, dict):
+            strays[rel] = f"not a JSON object; {_RUNS_RULE}"
+            continue
+        design, schema, named = rec.get("design"), rec.get("schema"), n.endswith(ATTEMPT_SUFFIX)
+        # attempts first: `blind` never excuses a file that looks like an attempt from the ledger proof
+        if not named and schema != ATTEMPT_SCHEMA:
+            if rec.get("blind") is True:
+                continue
+            why = f"a non-blind record ({design}, recognizer {((rec.get('meta') or {}).get('recognizer'))!r})"
+        elif not named:
+            why = f"an attempt record ({design}) not named *{ATTEMPT_SUFFIX}"
+        elif schema != ATTEMPT_SCHEMA:
+            why = f"named *{ATTEMPT_SUFFIX} but of schema {schema!r}, not {ATTEMPT_SCHEMA!r} ({design})"
+        else:
+            if logged is None:
+                logged = _logged_attempts(root)
+            shas = logged.get(rel)
+            now = sha256_file(path)
+            if shas and now in shas:
+                continue
+            why = (f"an attempt record ({design}) with no ledger \"attempt\" entry for {rel}" if not shas else
+                   f"an attempt record ({design}) changed after the ledger logged it "
+                   f"(logged {', '.join(sorted(s[:12] for s in shas))}, now {now[:12]})")
+        strays[rel] = f"{why}; {_RUNS_RULE}"
+    return strays
+
+
 def checklist(root=ROOT, leakage=True, timeout=1800, jobs=3, echo=print):
     """The pre-freeze checklist (PRE_FREEZE). Returns a list of blocking problems (empty = ready).
 
@@ -416,21 +501,11 @@ def checklist(root=ROOT, leakage=True, timeout=1800, jobs=3, echo=print):
     notes += [f"evidence path gone (not blocking): {m}" for m in ev["missing"][:20]]
     echo(f"evidence: {ev['checked']} hashes checked, {len(ev['stale'])} stale (contamination), "
          f"{len(ev['moved'])} moved (change log), {len(ev['missing'])} missing")
-    rdir = os.path.join(root, RUNS_REL)
-    strays = []
-    for n in sorted(os.listdir(rdir)) if os.path.isdir(rdir) else []:
-        if not n.endswith(".json"):
-            continue
-        try:
-            with open(os.path.join(rdir, n)) as f:
-                rec = json.load(f)
-        except (OSError, ValueError):
-            continue
-        if not rec.get("blind"):
-            strays.append(f"{RUNS_REL}/{n}: a non-blind record ({rec.get('design')}, "
-                          f"recognizer {((rec.get('meta') or {}).get('recognizer'))!r}); "
-                          "out/s3/runs holds blind records only (changes.jsonl C16)")
-    bad += strays
+    bad += [f"{rel}: {why}" for rel, why in run_strays(root).items()]
+    # run_strays() takes an attempt as proven by a ledger line; a ledger whose working copy has a
+    # broken hash chain or an unparsable line proves nothing, so the pre-freeze checklist blocks on
+    # it here as check() does after the freeze (changes.jsonl F01)
+    bad += [f"blind ledger: {q}" for q in ledger_entries(root, history=False)[1]]
     # the freeze publishes TEMPO's IN-SAMPLE figure; the only out-of-sample number beside it is the
     # corpus holdout, and score.py refuses it when it was derived on other code or carries no rates.
     # A freeze that pins a stale or empty estimate is the defect review[1] issues 0 and 1 found.

@@ -41,13 +41,14 @@ netlist nl.v. These are the oracles the project ran on the warm-up
                     pin) and labels are identical across the GDS files
 
 Magic stream-out. Magic writes no VIA_* cells: every via is flat cut polygons in the
-top cell. Extractor 1 takes cuts only from VIA_* cells, so on a Magic GDS it leaves
-every via open and raises no diagnostic. This module therefore extracts with
-FlatCutExtraction, which adds one rule here and does not change extract.py: a cut
-polygon drawn in the top cell joins the conductors below and above it, just as the
-same polygon inside a VIA_* cell would. The report counts those polygons. A GDS with
-none, such as the KLayout stream-out, is extracted exactly as before.
---no-flat-cuts uses the unchanged extractor, which shows the failure.
+top cell. Until Freeze 2 extractor 1 took cuts only from VIA_* cells, so on a Magic GDS
+it left every via open and raised no diagnostic, and this module added the missing rule
+in a subclass. The rule now lives in extract.py (`Extraction(top_cuts=True)`, the
+default): a cut shape drawn in the top cell joins the conductors below and above it,
+just as the same shape inside a VIA_* cell would. The report counts those shapes and
+how many the extractor bound (X fails on any left unbound). A GDS with none, such as
+the KLayout stream-out, is extracted exactly as before. --no-flat-cuts extracts with
+`top_cuts=False`, the old behaviour, which shows the failure.
 
 --gds picks the GDS: klayout (final/klayout_gds), magic (final/mag_gds), all (every
 stream-out present; the default) or a file path; it can be repeated. Emitted netlists
@@ -79,7 +80,7 @@ if str(ROOT) not in sys.path:
 from tools.l2n import compare as l2n  # noqa: E402
 from tools.retrace import cellcheck, mutate, netgraph  # noqa: E402
 from tools.retrace.defparse import read_def  # noqa: E402
-from tools.retrace.extract import Extraction  # noqa: E402
+from tools.retrace.extract import TOP_CUT, Extraction  # noqa: E402
 from tools.retrace.lef import read_lef  # noqa: E402
 from tools.retrace.tech import SKY130_HD  # noqa: E402
 
@@ -88,7 +89,7 @@ PREFIX = TECH.prefix
 SUPPLY = frozenset(TECH.supply_pins)
 PIN_LAYERS = {"li1": 67, "met1": 68}  # LEF port layers that carry std-cell pins
 OUT = ROOT / "out/roundtrip"
-FLAT_CUT = "TOP"  # owner name given to a cut polygon drawn in the top cell
+FLAT_CUT = TOP_CUT  # owner name extract.py gives a cut shape drawn in the top cell
 STREAMOUTS = {"klayout": "klayout_gds", "magic": "mag_gds"}
 
 
@@ -160,39 +161,25 @@ def port_dirs(pins: dict) -> dict:
 
 # --- extraction ---------------------------------------------------------------
 
-def _poly(points):
-    g = Polygon(points)
-    return g if g.is_valid else g.buffer(0)
-
-
-class FlatCutExtraction(Extraction):
-    """Extractor 1 plus one rule: a cut polygon drawn in the top cell (Magic stream-out
-    writes every via this way) joins the conductors below and above it, as it would
-    inside a VIA_* cell. With no such polygon this is exactly `Extraction`."""
-
-    def _routing(self):
-        super()._routing()
-        keys = {(c.layer, c.datatype): c for c in self.tech.cuts}
-        self.flat_cuts = collections.Counter()
-        for p in self.top.polygons:
-            cut = keys.get((p.layer, p.datatype))
-            if cut is None:
-                continue
-            g = _poly(p.points)
-            self._cuts.append((cut, g, FLAT_CUT))
-            self.cuts.append((self.tech.conductor_named(cut.below).layer, g, FLAT_CUT))
-            self.flat_cuts[f"{cut.below}-{cut.above}"] += 1
+# Back-compat name only. The rule this subclass used to add after `Extraction._routing`
+# (bind cut shapes drawn in the top cell) is now `Extraction`'s own, on by default;
+# subclassing and adding the cuts again would bind each of them twice.
+FlatCutExtraction = Extraction
 
 
 def top_level_cuts(ex) -> int:
+    """Cut shapes drawn directly in the top cell, polygons and paths (as polygons), counted
+    here independently of the extractor so the report can show any it left unbound."""
     keys = {(c.layer, c.datatype) for c in ex.tech.cuts}
-    return sum(1 for p in ex.top.polygons if (p.layer, p.datatype) in keys)
+    shapes = list(ex.top.polygons) + [q for path in ex.top.paths for q in path.to_polygons()]
+    return sum(1 for p in shapes if (p.layer, p.datatype) in keys)
 
 
 def extract(gds: Path, lef: dict, top: str | None, flat_cuts: bool = True):
+    """Extractor 1 on `gds`; `flat_cuts` is `Extraction`'s `top_cuts` (False: cut shapes
+    drawn in the top cell are ignored, the pre-Freeze-2 behaviour)."""
     t0 = time.time()
-    cls = FlatCutExtraction if flat_cuts else Extraction
-    ex = cls(str(gds), lef, top)
+    ex = Extraction(str(gds), lef, top, top_cuts=flat_cuts)
     return ex, time.time() - t0
 
 
@@ -565,7 +552,8 @@ def check_gds(label: str, gds: Path, v: dict, lef: dict, golden: dict, hdr: dict
     ignored = n_cuts - sum(getattr(ex, "flat_cuts", {}).values())
     r["X"] = {"pass": not ex.diag and not ignored, "diagnostics": dict(ex.diag), "notes": ex.notes[:5], "seconds": round(dt, 2),
               "instances": s["instances"], "logic_instances": s["logic_instances"], "nets": s["nets"],
-              "signal_nets": s["signal_nets"], "extractor": type(ex).__name__,
+              "signal_nets": s["signal_nets"],
+              "extractor": type(ex).__name__ + ("(top_cuts=True)" if ex.top_cuts else "(top_cuts=False)"),
               "top_level_cut_polygons": n_cuts, "top_level_cut_polygons_ignored": ignored,
               "flat_cuts_bound": dict(getattr(ex, "flat_cuts", {})), "private_master_copies": aliases}
     r["pass"] = all(r[k]["pass"] for k in ORDER)
@@ -714,7 +702,7 @@ def main(argv=None) -> int:
     ap.add_argument("--json", type=Path, help="report JSON (default WORK/report.json)")
     ap.add_argument("--work", type=Path, help="scratch directory (default out/roundtrip/check/<run>)")
     ap.add_argument("--no-flat-cuts", action="store_true",
-                    help="use the unchanged extractor 1 (top-level cut polygons ignored)")
+                    help="extractor 1 with top_cuts=False: top-level cut shapes ignored, as before Freeze 2")
     ap.add_argument("--lef", type=Path, default=LEF)
     ap.add_argument("--pdk-gds", type=Path, default=PDK_GDS)
     args = ap.parse_args(argv)

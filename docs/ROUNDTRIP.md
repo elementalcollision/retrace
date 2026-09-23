@@ -321,9 +321,10 @@ DEF and `nl.v`. Upstreamlike, KLayout GDS (`out/roundtrip/verify_doc/ci/check_up
 The Magic and both clean stream-outs (12886 instances) pass likewise, with byte-identical extracted
 netlists; 16-39 s per variant in the two retained runs
 (`out/roundtrip/{ci,verify_doc/ci}/steps.tsv`). **Flat cuts:** Magic writes its 15,023 vias as
-top-level cut polygons, which extractor 1 ignores silently (7016 nets, 0/605 matched;
-`out/roundtrip/review_check/logs/noflat.log`); `tools/roundtrip/check.py` binds them
-(`FlatCutExtraction`), and X fails on any left unbound. Both stream-outs have the same cuts by layer
+top-level cut polygons, which extractor 1 ignored silently until Freeze 2 (7016 nets, 0/605 matched;
+`out/roundtrip/review_check/logs/noflat.log`); `tools/roundtrip/check.py` bound them then
+(`FlatCutExtraction`), and since Freeze 2 extractor 1 binds them itself (`Extraction(top_cuts=True)`, the
+default; `--no-flat-cuts` reproduces the failure), and X fails on any left unbound. Both stream-outs have the same cuts by layer
 and box (`out/roundtrip/verify_doc/cut_multisets.txt`), and LibreLane's XOR of them is 0 (a
 reviewer's 38-layer XOR is not retained). **Dummy loads:** `nl.v` omits the 15 `clkload*` X pins, so
 `check.py` drops single-output-pin nets on both sides if the counts agree. **Blind spot:** the
@@ -384,7 +385,8 @@ step 12 (`out/roundtrip/review_loop/negctl/`).
   a short through the new cell's internal li1, which extractor 1 cannot see (not retained; `check`
   on `out/roundtrip/verify_doc/ci/loop/mutant.gds` gives V4 FAIL, 606 L2N nets against 607).
   `and3_2`/`or3_2` share footprint and pin names, not pin geometry, so `tools/retrace/mutate.py`'s
-  "identical connectivity" description of `master_swap` is wrong here; hence the netlist mutant too.
+  "identical connectivity" description of `master_swap` was wrong here (corrected in Freeze 2: the
+  description now reports per swap whether LEF pin geometry is identical); hence the netlist mutant too.
 - **Probe-free proofs do not converge** in 1800 s (two each in
   `out/roundtrip/review_loop/noprobe1800.json` and `out/roundtrip/loop/nohint_probe.log`; mutants
   fail at step 57 in 3-37 s, `out/roundtrip/{loop,review_loop}/upstreamlike_noprobe60.log`), and one
@@ -479,10 +481,14 @@ byte-for-byte deterministic across the two hosts. Artifact: 52 MB.
 - **Unknowns** (§2.3, §4.4): placement (`MANUAL_GLOBAL_PLACEMENTS` could test cluster points), the
   version and whether dev48-dev52 can make the NDR, the keep-out, `CLOCK_PERIOD`, the partition.
 - **Timing is not gated**: at the guessed 10 ns two flop-to-`O` paths miss setup at ss (§5).
-- **`tools/retrace/extract.py`** ignores top-level cuts silently (the rule lives in
-  `tools/roundtrip/check.py`) and cannot see a route landing on a cell's internal geometry (§7).
-- **`tools/retrace/mutate.py`**: the `apply_master_swap` description string (lines 334-336) says
-  "identical connectivity", wrong for pairs whose pin geometry differs (§7).
+- **`tools/retrace/extract.py`** cannot see a route landing on a cell's internal geometry (§7).
+  Resolved in Freeze 2: it used to ignore top-level cuts silently, with the rule living in
+  `tools/roundtrip/check.py`; it now binds them itself (`Extraction(top_cuts=True)`, the default;
+  `check.py --no-flat-cuts` passes `top_cuts=False` to reproduce the failure), and `check.py` no
+  longer adds them (`test/test_topcuts.py`).
+- **`tools/retrace/mutate.py`** (resolved in Freeze 2): the `apply_master_swap` description said
+  "identical connectivity", wrong for pairs whose pin geometry differs (§7); it now compares the two
+  masters' LEF pin rectangles per swap and says "identical pin geometry" or names the pins that differ.
 - RETRACE's oracles do not check wells (§6); V3b needs the local `pdk/` liberty
   (`tools/retrace/netgraph.py`), which `ci.sh` copies. Stale: `out/roundtrip/check/neg/results.json`
   (§6), Part 1's "34 attempts" (§3) and its name-based 609/611 (`part1_results.json` `rt.recipes`,

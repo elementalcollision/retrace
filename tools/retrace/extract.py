@@ -14,7 +14,10 @@ Stages (docs/spec/APPROACH.md):
                  IHP: Metal1 islands via GatPoly+Cont)
   S3 nets        union-find over conductor shapes: routing (paths and polygons),
                  via-cell pads, cell/macro pins; a Tech `Cut` joins the two
-                 conductors it touches
+                 conductors it touches, whether it sits in a via cell or is
+                 drawn directly in the top cell (Magic stream-out and every
+                 Tiny Tapeout layout draw every via that way; `top_cuts=False`
+                 ignores those, as this extractor did before Freeze 2)
   S4 netlist     structural Verilog + JSON, deterministic names
 
     python -m tools.retrace.extract GDS [--top NAME] [--verilog OUT.v] [--json OUT.json]
@@ -61,6 +64,11 @@ CONDUCTOR_DT = SKY130_HD.conductors[0].datatypes
 POLY = SKY130_HD.poly_layer
 LICON = SKY130_HD.poly_cut
 
+# Owner name (the `via_name` slot of `Extraction.cuts`/`_cuts`) of a cut shape drawn
+# directly in the top cell rather than inside a via-cell reference. Not a VIA_* name, so
+# tools/retrace/mutate.py's via families never select it.
+TOP_CUT = "TOP"
+
 
 class UnionFind:
     def __init__(self):
@@ -93,10 +101,19 @@ def _dbu(v):
 
 
 class Extraction:
-    """Result of extracting one GDS top cell under a given `Tech`."""
+    """Result of extracting one GDS top cell under a given `Tech`.
 
-    def __init__(self, gds_path, lef, top=None, tech=SKY130_HD):
+    `top_cuts` (default True): a cut shape (a `Tech.cuts` layer/datatype) drawn directly in
+    the top cell, as a polygon or a path, joins the conductors below and above it exactly as
+    the same shape inside a via-cell reference would. Each such cut is recorded in `_cuts`
+    and `cuts` with owner `TOP_CUT` and counted in `flat_cuts`, a Counter keyed
+    "below-above" by conductor name. `top_cuts=False` ignores those shapes (and leaves
+    `flat_cuts` empty), which is what this extractor did before Freeze 2. A layout with no
+    top-level cut shape extracts identically either way."""
+
+    def __init__(self, gds_path, lef, top=None, tech=SKY130_HD, top_cuts=True):
         self.tech = tech
+        self.top_cuts = bool(top_cuts)
         self.lef = lef
         self.lib = gdstk.read_gds(gds_path)
         tops = self.lib.top_level()
@@ -260,14 +277,19 @@ class Extraction:
         tech = self.tech
         top = self.top
         cond_layers = tech.conductor_layers()
+        cut_keys = {(c.layer, c.datatype): c for c in tech.cuts}
+        top_level_cuts = []  # gdstk.Polygon: cut shapes drawn in the top cell itself
         for path in top.paths:
             for p in path.to_polygons():
                 if tech.is_conductor_shape(p.layer, p.datatype):
                     self._add_shape(p.layer, p.datatype, _poly(p.points), ("route",))
+                elif (p.layer, p.datatype) in cut_keys:
+                    top_level_cuts.append(p)
         for p in top.polygons:
             if tech.is_conductor_shape(p.layer, p.datatype):
                 self._add_shape(p.layer, p.datatype, _poly(p.points), ("poly",))
-        cut_keys = {(c.layer, c.datatype): c for c in tech.cuts}
+            elif (p.layer, p.datatype) in cut_keys:
+                top_level_cuts.append(p)
         self._cuts = []  # (Cut, geom, via_name); used internally by _connect()
         self.cuts = []  # (below_layer:int, geom, via_name); back-compat with
         #                 tools/retrace/mutate.py, which assumes (as sky130's own
@@ -284,6 +306,15 @@ class Extraction:
                     geom = _poly(p.points)
                     self._cuts.append((cut, geom, ref.cell.name))
                     self.cuts.append((tech.conductor_named(cut.below).layer, geom, ref.cell.name))
+        # after the via-cell cuts, so their order in `cuts` is what it was without this rule
+        self.flat_cuts = collections.Counter()  # "below-above" -> top-level cuts bound
+        if self.top_cuts:
+            for p in top_level_cuts:
+                cut = cut_keys[(p.layer, p.datatype)]
+                geom = _poly(p.points)
+                self._cuts.append((cut, geom, TOP_CUT))
+                self.cuts.append((tech.conductor_named(cut.below).layer, geom, TOP_CUT))
+                self.flat_cuts[f"{cut.below}-{cut.above}"] += 1
         max_label_dt = {c.label_dt for c in tech.conductors}
         for lb in top.labels:
             if lb.layer in cond_layers and lb.texttype in max_label_dt:

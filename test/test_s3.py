@@ -1498,27 +1498,112 @@ def test_permutation_counts_and_record_locations(tmp_path, monkeypatch):
     # out/s3/runs holds BLIND records only (changes.jsonl C16, H05, T05). The assertion used to look
     # for a "puzzle" name prefix, which let a TEMPO development record sit there while the suite was
     # green and only the pre-freeze checklist complained (review[1] issue 3 of 2026-09-22, still open
-    # as review[1]'s minor of 2026-09-23). It now applies freeze.checklist()'s own rule -- any record
-    # whose top-level `blind` is not true, whatever it is called. `blind` is top-level on the record
-    # (run.py _write_record / freeze.py:311), not under meta.
-    runs = os.path.join(ROOT, "out", "s3", "runs")
-    strays = []
-    for n in sorted(os.listdir(runs)) if os.path.isdir(runs) else []:
-        if not n.endswith(".json"):
-            continue
-        try:
-            with open(os.path.join(runs, n)) as f:
-                rec = json.load(f)
-        except (OSError, ValueError):
-            continue          # freeze.checklist() skips an unreadable record too
-        if not rec.get("blind"):
-            strays.append(f"{n} (design {rec.get('design')!r}, "
-                          f"recognizer {((rec.get('meta') or {}).get('recognizer'))!r})")
-    assert not strays, "non-blind records in out/s3/runs, which holds blind records only: " + "; ".join(strays)
+    # as review[1]'s minor of 2026-09-23). It then copied freeze.checklist()'s rule (top-level `blind`
+    # true), and both copies failed on the attempt record every blind run writes there first. It now
+    # CALLS the one rule, freeze.run_strays(), which checklist() calls too: `blind` true, or an
+    # attempt record the ledger proves (test_run_strays_accept_only_ledger_proven_attempts).
+    strays = F.run_strays(ROOT)
+    assert not strays, "strays in out/s3/runs: " + "; ".join(f"{p}: {why}" for p, why in strays.items())
     # --leakage is refused for a DEVELOPMENT run of anything but TEMPO; a blind run may take the
     # file-order arm (review[2] issue 4, changes.jsonl C43)
     with pytest.raises(SystemExit, match="--leakage runs on TEMPO"):
         R.run("puzzle", leakage_arm=True, write=False, echo=lambda *a: None)
+
+
+def test_run_strays_accept_only_ledger_proven_attempts(tmp_path, monkeypatch):
+    """freeze.run_strays(), the one rule for out/s3/runs (checklist() applies it too): a record with
+    top-level `blind` true belongs, and so does the attempt record run.py --blind writes before
+    extracting -- but only on the ledger's proof: named *.attempt.json, schema
+    freeze.ATTEMPT_SCHEMA, and an "attempt" event with this path and this sha256. A non-blind
+    record, the same renamed *.attempt.json, a correct-schema attempt with no ledger entry (or only a
+    "finish" entry), a logged attempt copied to another name and a logged attempt edited after
+    logging are strays -- and stay strays when they also carry `"blind": true`, since a file that
+    looks like an attempt (name or schema) is judged by the ledger proof alone; elsewhere `blind`
+    must be JSON true, not merely truthy. tmp_path is kept out of any enclosing git repository, so
+    ledger_entries() has no history to read and the working-tree ledger alone is the proof."""
+    root = str(tmp_path)
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path.parent))
+    if shutil.which("git"):
+        assert F.git(root, "rev-parse", "--git-dir")[0] != 0, "tmp_path must not be inside a git repository"
+    runs = os.path.join(root, F.RUNS_REL)
+    assert F.run_strays(root) == {}                       # no out/s3/runs at all
+    # the attempt exactly as a blind run makes it: run.py's own writer and ledger entry
+    monkeypatch.setattr(R, "RUNS", runs)
+    monkeypatch.setattr(R, "ROOT", root)
+    monkeypatch.setattr(R, "LEDGER_ROOT", root)
+    att = R._open_attempt("toy", "2026-09-23T00:00:00+00:00", {"freeze_hash": "f" * 64}, None, None)
+    good = os.path.join(root, att["record"])
+    assert att["record"] == os.path.relpath(good, root) and good.endswith(F.ATTEMPT_SUFFIX)
+    assert json.load(open(good))["schema"] == F.ATTEMPT_SCHEMA and F.sha256_file(good) == att["record_sha256"]
+    blind_rec, _sha = R._write_record({"schema": "retrace-s3-run/1", "design": "toy", "blind": True,
+                                       "created": "2026-09-23T00:00:00+00:00"}, True)
+    with open(os.path.join(runs, "unreadable.json"), "w") as f:
+        f.write("{not json")                             # skipped, as it always was
+    assert F.run_strays(root) == {}, "a ledger-proven attempt and a blind record are not strays"
+
+    def put(name, body):
+        p = os.path.join(runs, name)
+        with open(p, "w") as f:
+            f.write(body if isinstance(body, str) else json.dumps(body))
+        return os.path.join(F.RUNS_REL, name), F.sha256_file(p)
+
+    def log(event, rel, sha):
+        F.ledger_append({"event": event, "attempt": "x", "design": "toy", "freeze_hash": "f" * 64,
+                         "record": rel, "record_sha256": sha}, root)
+
+    dev = {"schema": "retrace-s3-run/1", "design": "toy", "blind": False, "meta": {"recognizer": "r"}}
+    forged = dict(json.load(open(good)), attempt="0" * 16)
+    cases = {}
+    cases["non-blind"] = put("toy-dev.json", dev)[0]
+    cases["renamed"] = put("blind-toy-dev.attempt.json", dev)[0]
+    log("attempt", *put("blind-toy-dev2.attempt.json", dev))       # a ledger entry does not make it an attempt
+    cases["renamed, logged"] = os.path.join(F.RUNS_REL, "blind-toy-dev2.attempt.json")
+    cases["forged"] = put("blind-toy-forged.attempt.json", forged)[0]
+    log("finish", *put("blind-toy-finish.attempt.json", forged))   # only an "attempt" event proves
+    cases["finish only"] = os.path.join(F.RUNS_REL, "blind-toy-finish.attempt.json")
+    cases["copied"] = put("blind-toy-copy.attempt.json", open(good).read())[0]   # proof is for another path
+    log("attempt", *put("blind-toy-bare.json", forged))            # attempt schema, logged, wrong name
+    cases["not named"] = os.path.join(F.RUNS_REL, "blind-toy-bare.json")
+    cases["not an object"] = put("list.json", [1, 2])[0]
+    edited_rel, edited_sha = put("blind-toy-edited.attempt.json", forged)
+    log("attempt", edited_rel, edited_sha)
+    assert edited_rel not in F.run_strays(root), "logged with its sha256: not a stray"
+    put("blind-toy-edited.attempt.json", dict(forged, rerun={"reason": "edited after logging"}))
+    cases["edited"] = edited_rel
+    # `"blind": true` must not stand in for the ledger proof of anything that looks like an attempt
+    cases["forged, blind"] = put("blind-toy-forgedb.attempt.json", dict(forged, blind=True))[0]
+    cases["renamed, blind"] = put("blind-toy-run.attempt.json", dict(dev, blind=True))[0]
+    log("attempt", *put("blind-toy-bareb.json", dict(forged, blind=True)))   # attempt schema, wrong name
+    cases["not named, blind"] = os.path.join(F.RUNS_REL, "blind-toy-bareb.json")
+    eb_rel, eb_sha = put("blind-toy-editedb.attempt.json", forged)
+    log("attempt", eb_rel, eb_sha)
+    assert eb_rel not in F.run_strays(root), "logged with its sha256: not a stray"
+    put("blind-toy-editedb.attempt.json", dict(forged, design="other", blind=True, structures=["smuggled"]))
+    cases["edited, blind"] = eb_rel
+    # outside the attempt rule `blind` must be JSON true, not merely truthy
+    cases["blind 'false'"] = put("toy-str.json", dict(dev, blind="false"))[0]
+    cases["blind 1"] = put("toy-one.json", dict(dev, blind=1))[0]
+    os.chmod(good, 0o644)                                 # run.py leaves it read-only
+    with open(good, "a") as f:
+        f.write(" ")                                      # the real attempt, one byte changed
+    cases["real attempt edited"] = att["record"]
+    strays = F.run_strays(root)
+    assert set(strays) == set(cases.values()), {k: v in strays for k, v in cases.items()}
+    assert os.path.relpath(blind_rec, root) not in strays
+    assert "no ledger" in strays[cases["forged"]] and "no ledger" in strays[cases["finish only"]]
+    assert "no ledger" in strays[cases["copied"]]
+    assert "changed after the ledger logged it" in strays[cases["edited"]]
+    assert "changed after the ledger logged it" in strays[cases["real attempt edited"]]
+    assert "changed after the ledger logged it" in strays[cases["edited, blind"]]
+    assert "no ledger" in strays[cases["forged, blind"]]
+    assert "not named" in strays[cases["not named"]] and "not named" in strays[cases["not named, blind"]]
+    assert all(f"but of schema {s!r}" in strays[cases[k]]
+               for k, s in (("renamed", dev["schema"]), ("renamed, blind", dev["schema"])))
+    assert all("non-blind" in strays[cases[k]] for k in ("non-blind", "blind 'false'", "blind 1"))
+    assert all("holds blind records only" in why for why in strays.values())
+    # checklist() blocks on exactly these, worded the same
+    bad = F.checklist(root, leakage=False, echo=lambda *a: None)
+    assert [b for b in bad if b.startswith(F.RUNS_REL)] == [f"{p}: {why}" for p, why in strays.items()]
 
 
 SYN_CHAIN_V = """

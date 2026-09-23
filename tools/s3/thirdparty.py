@@ -25,7 +25,9 @@ Data (checked 2026-09-21; candidates.json["shuttles"] has what each shuttle publ
   * The RTL is in the author's repository at the recorded commit (codeload tarball), not in the
     shuttle repo; it can disappear (deleted/renamed repos), so availability is a criterion.
   * Layout quirks the pipeline handles: every TT layout flattens its vias into top-level cut shapes,
-    which RETRACE's extractor only honours inside via-cell references (`prepare_layout` wraps them);
+    which RETRACE's extractor honours since Freeze 2 (`Extraction(top_cuts=True)`, the default; before
+    it, only cuts inside via-cell references counted, and `prepare_layout`, which still wraps them into
+    one, was what made them count);
     flipped and upright rows share GDS origins (the join keys on orientation too). OpenLane-1 era
     layouts (TT03p5-TT06 in the probes) also carry top-level text labels naming internal nets
     (`_0123_`, RTL register names): the blind harness must strip every label but the TT pinout and
@@ -609,11 +611,14 @@ def fetch_layout(rec):
 
 
 def prepare_layout(gds, top):
-    """Every TT layout seen flattens its vias into top-level polygons; RETRACE's extractor joins
-    layers only through cuts inside via-cell references (`Tech.via_prefix`). Move top-level cut
-    shapes into one via-prefixed cell referenced at the origin (geometry unchanged). TT02-era
+    """Every TT layout seen flattens its vias into top-level polygons. Move top-level cut polygons
+    into one via-prefixed cell (`Tech.via_prefix`) referenced at the origin (geometry unchanged).
+    Before Freeze 2 RETRACE's extractor joined layers only through cuts inside via-cell references,
+    so this move was what connected the vias; the extractor now binds top-level cuts itself
+    (`Extraction(top_cuts=True)`, the default) and gives the same nets either way, so the move is
+    redundant for extraction but harmless, and kept so that runs stay reproducible. TT02-era
     layouts put their pin labels on texttype 16 (pin) instead of 5: retype those to 5 so the pins
-    keep their names. Returns (path to use, number of cut shapes moved)."""
+    keep their names (still needed). Returns (path to use, number of cut shapes moved)."""
     import gdstk
     from ..retrace.tech import SKY130_HD
     lib = gdstk.read_gds(gds)
