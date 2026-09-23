@@ -168,21 +168,21 @@ Done (2026-09-21), after the review:
   summary headline and the master-swap description corrected. `F05`/K16: freeze 1's ten drawn designs are
   spent. No recognizer, verifier, scorer or corpus file changed, so the out-of-sample estimate stands.
   Freeze 2 records no blind draw.
+  **TEMPO's pin followed** (done by the TEMPO session, 2026-09-23): TEMPO commit `c8a455b` pins RETRACE
+  `586f20c` in `lvs.yaml`; its LVS report on the v0.3-signoff layout is identical to the one at `0091088` apart
+  from runtime and memory, `test_tempo.py` gives 20 passed / 1 skipped, and CI run 35862338455 (fire drill on)
+  passed.
 
 Next, in priority order:
 
-1. **Bump the RETRACE pin in TEMPO's `lvs.yaml`** (TEMPO's repo, owned by the TEMPO session): Freeze 2
-   changed `tools/retrace/extract.py` and `tools/retrace/mutate.py`. On TEMPO the extractor change is a
-   proven no-op (TEMPO has no top-level cut shape; its netlist hash is unchanged and `test/test_tempo.py`
-   passes), so the bump is bookkeeping, not a behaviour change.
-2. **Before any further S3 evaluation**: make `tools/s3/thirdparty.py` `draw()` exclude freeze 1's ten
+1. **Before any further S3 evaluation**: make `tools/s3/thirdparty.py` `draw()` exclude freeze 1's ten
    spent designs (contamination K16; it ranks over the whole candidate list today). Then the choice is a
    second S3 slice (the shift-register handoff that caused 7 of 8 blind misses; the labeller's LFSR rules)
    or stopping here.
-3. **A GF180MCU `Tech` table**: defer until there is a GF180 design with ground truth to check it against.
+2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with ground truth to check it against.
    S3 showed on sky130 that a DEF is not strictly needed (a published gate-level netlist plus the
    instance names in the layout gave exact truth); whether GF180 flows keep those names is unchecked.
-4. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): the puzzle's placement mechanism (dense
+3. **Follow-ups from S4** (`docs/ROUNDTRIP.md` section 10): the puzzle's placement mechanism (dense
    clusters) is not reproduced; timing is not gated. (The silent top-level-cut drop and the master-swap
    description were fixed in Freeze 2.)
 
