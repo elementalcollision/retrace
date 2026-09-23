@@ -1,0 +1,28 @@
+{
+ "attempt": "4325410fcca47dcc",
+ "created": "2026-09-23T06:57:20+00:00",
+ "design": "tt05__tt_um_toivoh_synth",
+ "freeze": {
+  "freeze_hash": "1ee6a47894359fefa10b0507ac610db6d19fb1426c6626b7162e5f977e5c4838"
+ },
+ "gds": "out/s3/blind/anon/tt05__tt_um_toivoh_synth.gds",
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-814izhsb",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "tt05__tt_um_toivoh_synth",
+  "--gds",
+  "/Users/dave/Jane_Street_Reverse_ASIC/out/s3/blind/anon/tt05__tt_um_toivoh_synth.gds",
+  "--top",
+  "tt_um_toivoh_synth",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
