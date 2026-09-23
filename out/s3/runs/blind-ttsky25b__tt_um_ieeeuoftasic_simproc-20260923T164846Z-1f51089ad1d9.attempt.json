@@ -1,0 +1,28 @@
+{
+ "attempt": "cfdcd030733589dd",
+ "created": "2026-09-23T16:48:46+00:00",
+ "design": "ttsky25b__tt_um_ieeeuoftasic_simproc",
+ "freeze": {
+  "freeze_hash": "1196c56304e3fdd8076345085860288b829228d8d47a84ca2e5909114c62b9bc"
+ },
+ "gds": "out/s3/blind/anon/ttsky25b__tt_um_ieeeuoftasic_simproc.gds",
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-2nvv_ze5",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "ttsky25b__tt_um_ieeeuoftasic_simproc",
+  "--gds",
+  "out/s3/blind/anon/ttsky25b__tt_um_ieeeuoftasic_simproc.gds",
+  "--top",
+  "tt_um_ieeeuoftasic_simproc",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
