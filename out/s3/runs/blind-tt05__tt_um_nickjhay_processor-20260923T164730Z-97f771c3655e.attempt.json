@@ -1,0 +1,28 @@
+{
+ "attempt": "7a1d6b2cabc30193",
+ "created": "2026-09-23T16:47:30+00:00",
+ "design": "tt05__tt_um_nickjhay_processor",
+ "freeze": {
+  "freeze_hash": "1196c56304e3fdd8076345085860288b829228d8d47a84ca2e5909114c62b9bc"
+ },
+ "gds": "out/s3/blind/anon/tt05__tt_um_nickjhay_processor.gds",
+ "orig_argv": [
+  "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "-B",
+  "-X",
+  "pycache_prefix=/var/folders/9t/czshm55s7kz1rg8s2j4l97g00000gn/T/s3-pycache-ullf3w0g",
+  "-m",
+  "tools.s3.run",
+  "--design",
+  "tt05__tt_um_nickjhay_processor",
+  "--gds",
+  "out/s3/blind/anon/tt05__tt_um_nickjhay_processor.gds",
+  "--top",
+  "tt_um_nickjhay_processor",
+  "--blind",
+  "--jobs",
+  "5"
+ ],
+ "rerun": null,
+ "schema": "retrace-s3-attempt/1"
+}
