@@ -417,8 +417,8 @@ committed before the new seed existed. Counter recall on proved structures came 
 42 of 108 (0.389) over all twenty designs. Every figure was computed once from the raw records and
 recomputed independently with separate code; the two agreed on 213 of 216, and the other three
 differed only in the order of their random draws (`docs/S3_REPLICATION.md`). The replication also
-found a defect in the frozen labeller itself -- it cannot label a shift register that synthesis has
-partly removed -- which cost two drawn designs, and which the report records rather than hides.
+found a defect in the frozen labeller itself — it cannot label a shift register that synthesis has
+partly removed — which cost two drawn designs, and which the report records rather than hides.
 
 ## Easter eggs
 
