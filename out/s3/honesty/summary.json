@@ -1,0 +1,1012 @@
+{
+ "schema": "retrace-s3-honesty-summary/2",
+ "created": "2026-09-23",
+ "generated_by": "out/s3/honesty/summarise.py",
+ "scope": "review[2]'s reporting and provenance items (issues 0-7), regenerated 2026-09-23 for the freeze round's provenance items. The soundness and generalisation reviews are answered elsewhere. No recognizer code ran on the puzzle or on a third-party design; out/s3/truth_puzzle.json and out/s3/blind/ were not read.",
+ "schema_note": "retrace-s3-honesty-summary/2 (2026-09-23) adds code_state (the sha256 of every score.OUT_OF_SAMPLE_SOURCES file this document describes, with the check that decides whether it still does) and replaces the copied out_of_sample block with the gated one; /1 had neither, which is how it went on publishing a superseded estimate as current.",
+ "headline": {
+  "tempo": "review[2] measured macro and micro F1 1.000 on registers (found and exact), AMI 0.9806, ARI 0.9726, 106 of 147 exact words, and this round reproduced it exactly early in the session -- a FITTED DEVELOPMENT FIGURE, since thresholds were chosen on TEMPO (changes.jsonl C01-C06, C10, C21d, PC03, PC06, PC07, PC09) and four fixes were traced from TEMPO misses by truth name (C27-C30). CORRECTED 2026-09-22 (review[1] issue 7): this file used to end 'IT NO LONGER REPRODUCES ... do not quote 1.000', which was true of the tree in the middle of the session (the same run then gave macro 0.9891, micro 0.9667, AMI 0.9788, ARI 0.9685, 104 of 147 exact words, because the counter recognizer returned 24 structures for 22 truth registers) and is NOT true of the integrated code: changes.jsonl C60, measured on one code state with all 13 hashes pinned, reports macro and micro F1 1.000 on registers again. Three figures, three code states -- other agents were editing tools/s3 throughout; see code_drift. What holds of all three is the label: every TEMPO number is IN-SAMPLE and FITTED, and none of them is a generalisation estimate. Quote a TEMPO figure only with the code state it was measured on (C60, or C47 for the intermediate one), and quote the corpus holdout beside it (C45, H02).",
+  "out_of_sample": "the synthetic corpus holdout, per kind, in out_of_sample below -- and ONLY when out_of_sample.available is true. When it is false the estimate is absent in this tree and no holdout number may be quoted from this document (out_of_sample.refused_because says why, and gives the rebuild).",
+  "caveat": "the corpus holdout is not clean either: it is synthetic and written by this project, its cohort 2 exists because the generalisation regression set showed which classes were missing (contamination K12), and the regression sets themselves were consulted (C25, K13). After this round no uncontaminated generalisation set exists for counter, shift or lfsr."
+ },
+ "code_state": {
+  "code_sha256": {
+   "recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+   "controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+   "counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+   "lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+   "shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+   "group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+   "netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+   "params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+   "schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
+   "verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19",
+   "corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+   "score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8"
+  },
+  "sources": "score.OUT_OF_SAMPLE_SOURCES: the recognizer modules, verify.py (found means harness-VERIFIED), corpus.py (the designs and the split) and score.py (which registers are scored items) -- the files whose change can move a holdout rate",
+  "check": ".venv/bin/python out/s3/honesty/oos_provenance.py  (exit 1 when this document, or the rates it quotes, no longer describe the tree)",
+  "rebuild": "out/s3/honesty/holdout_rates.py --run   (then the record writers, then out/s3/honesty/summarise.py)",
+  "provenance_check": {
+   "code_state_compared": [
+    "controls.py",
+    "corpus.py",
+    "counter.py",
+    "group.py",
+    "lfsr.py",
+    "netlist.py",
+    "params.py",
+    "recognize.py",
+    "schema.py",
+    "score.py",
+    "shift.py",
+    "verify.py"
+   ],
+   "sources": 12,
+   "artifacts": [
+    {
+     "path": "out/s3/honesty/holdout_rates.json",
+     "role": "estimate",
+     "publishes": "the per-kind corpus-HOLDOUT found/exact rates every report quotes beside TEMPO",
+     "present": true,
+     "code_recorded": true,
+     "recorded_as": "source.code_sha256 (the code the evaluation ran on)",
+     "compared": 12,
+     "moved": [],
+     "unrecorded": [],
+     "current": true,
+     "labelled_superseded": null,
+     "problem": null
+    },
+    {
+     "path": "out/s3/honesty/summary.json",
+     "role": "report",
+     "publishes": "the honesty summary's out_of_sample block (quoted by changes.jsonl C33-C37, C45, C47)",
+     "present": true,
+     "code_recorded": true,
+     "recorded_as": "code_state.code_sha256",
+     "compared": 12,
+     "moved": [],
+     "unrecorded": [],
+     "current": true,
+     "labelled_superseded": null,
+     "problem": null
+    },
+    {
+     "path": "out/s3/honesty/corpus_holdout_eval.json",
+     "role": "snapshot",
+     "publishes": "the 336-run corpus evaluation the rates are derived from",
+     "present": true,
+     "code_recorded": true,
+     "recorded_as": "code_sha256_16",
+     "compared": 12,
+     "moved": [],
+     "unrecorded": [],
+     "current": true,
+     "labelled_superseded": false,
+     "problem": null
+    },
+    {
+     "path": "out/s3/honesty/ablations_corpus_holdout.json",
+     "role": "snapshot",
+     "publishes": "per-arm corpus-holdout AMI / exact words (changes.jsonl C01-C06)",
+     "present": true,
+     "code_recorded": true,
+     "recorded_as": "code",
+     "compared": 12,
+     "moved": [
+      "controls.py",
+      "corpus.py",
+      "counter.py",
+      "lfsr.py",
+      "params.py",
+      "recognize.py",
+      "schema.py",
+      "score.py",
+      "shift.py",
+      "verify.py"
+     ],
+     "unrecorded": [],
+     "current": false,
+     "labelled_superseded": true,
+     "problem": null
+    },
+    {
+     "path": "out/s3/honesty/ablations_corpus_holdout.prev.json",
+     "role": "snapshot",
+     "publishes": "the earlier run of the same ablation, kept to show the recognizer moved under it",
+     "present": true,
+     "code_recorded": false,
+     "recorded_as": "code",
+     "compared": 0,
+     "moved": [],
+     "unrecorded": [],
+     "current": null,
+     "labelled_superseded": true,
+     "problem": "records no code state, so nothing can say which recognizer it measured -- PERMANENTLY: written before the ablation runner pinned its code state, so the tools/s3 hashes of that run do not exist anywhere and cannot be reconstructed (the same case as changes.jsonl C54's overwritten evidence). It is kept only as the BEFORE arm of 'the recognizer moved under this round's measurements'; no absolute figure of it may be quoted",
+     "unrecoverable": "written before the ablation runner pinned its code state, so the tools/s3 hashes of that run do not exist anywhere and cannot be reconstructed (the same case as changes.jsonl C54's overwritten evidence). It is kept only as the BEFORE arm of 'the recognizer moved under this round's measurements'; no absolute figure of it may be quoted"
+    },
+    {
+     "path": "out/s3/honesty/integration/summary.json",
+     "role": "snapshot",
+     "publishes": "the integration round's per-kind table, whose 'corpus holdout' rows are an out-of-sample estimate",
+     "present": true,
+     "code_recorded": true,
+     "recorded_as": "code_sha256_16",
+     "compared": 12,
+     "moved": [
+      "corpus.py",
+      "params.py",
+      "schema.py",
+      "score.py",
+      "verify.py"
+     ],
+     "unrecorded": [],
+     "current": false,
+     "labelled_superseded": true,
+     "problem": null
+    }
+   ],
+   "blocks": [],
+   "rules": {
+    "R1": "every artefact records the code it was measured on",
+    "R2": "the live estimate and any report quoting it must hash-match this tree",
+    "R3": "a stale snapshot must be named in the summary's out_of_sample.superseded"
+   },
+   "refresh": "out/s3/honesty/holdout_rates.py --run   (then the record writers, then out/s3/honesty/summarise.py)"
+  }
+ },
+ "out_of_sample": {
+  "gate": "tools/s3/score.py out_of_sample(): the document is quoted only while every file of score.OUT_OF_SAMPLE_SOURCES hashes as it did when the rates were derived, and only when it carries rates at all",
+  "source_of_truth": "out/s3/honesty/holdout_rates.json",
+  "superseded": [
+   {
+    "path": "out/s3/honesty/ablations_corpus_holdout.json",
+    "publishes": "per-arm corpus-holdout AMI / exact words (changes.jsonl C01-C06)",
+    "moved": [
+     "controls.py",
+     "corpus.py",
+     "counter.py",
+     "lfsr.py",
+     "params.py",
+     "recognize.py",
+     "schema.py",
+     "score.py",
+     "shift.py",
+     "verify.py"
+    ],
+    "why": "measured on other code (controls.py, corpus.py, counter.py, lfsr.py, params.py, recognize.py, schema.py, score.py, shift.py, verify.py have changed since); the live estimate is out/s3/honesty/holdout_rates.json"
+   },
+   {
+    "path": "out/s3/honesty/ablations_corpus_holdout.prev.json",
+    "publishes": "the earlier run of the same ablation, kept to show the recognizer moved under it",
+    "moved": null,
+    "code_state": "UNRECOVERABLE",
+    "why": "written before the ablation runner pinned its code state, so the tools/s3 hashes of that run do not exist anywhere and cannot be reconstructed (the same case as changes.jsonl C54's overwritten evidence). It is kept only as the BEFORE arm of 'the recognizer moved under this round's measurements'; no absolute figure of it may be quoted"
+   },
+   {
+    "path": "out/s3/honesty/integration/summary.json",
+    "publishes": "the integration round's per-kind table, whose 'corpus holdout' rows are an out-of-sample estimate",
+    "moved": [
+     "corpus.py",
+     "params.py",
+     "schema.py",
+     "score.py",
+     "verify.py"
+    ],
+    "why": "measured on other code (corpus.py, params.py, schema.py, score.py, verify.py have changed since); the live estimate is out/s3/honesty/holdout_rates.json"
+   }
+  ],
+  "superseded_note": "measurements of an EARLIER code state that also publish a corpus-holdout figure; they are listed so a reader never meets one without the label (out/s3/honesty/oos_provenance.py, rule R3). A file whose code state is UNRECOVERABLE can never be made current and is named permanently.",
+  "available": true,
+  "refused_because": null,
+  "source": {
+   "path": "out/s3/honesty/corpus_holdout_eval.json",
+   "sha256": "02cb7c0dfe3a95c5a2414bd90817d776a5d42e4a44dcf14d7e7d9bf710d05619",
+   "eval_schema": "retrace-s3-review-generalisation2-eval/1",
+   "aggregation_id": "per_register_and_unit",
+   "seed": 20260922,
+   "code_sha256_16": {
+    "recognize.py": "15b72f5864f64ead",
+    "controls.py": "bfcff2ad45cd0977",
+    "shift.py": "c7a01d973c51c7bb",
+    "counter.py": "0072137626ccc60b",
+    "lfsr.py": "5e9d5179897b6f71",
+    "group.py": "cfec4232c61f1999",
+    "params.py": "f7c7ce733333dddb",
+    "netlist.py": "b353bfff3f867ab8",
+    "verify.py": "f08007dc4fd39059",
+    "score.py": "350cf55ad364cf98",
+    "run.py": "270579167d830a7b",
+    "corpus.py": "f4b70e14fe6026e8",
+    "schema.py": "0d5f16447d77ff14"
+   },
+   "runs": 336,
+   "code_sha256": {
+    "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+    "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+    "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+    "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+    "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+    "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+    "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+    "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+    "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19",
+    "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
+    "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+    "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+    "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add"
+   },
+   "code_matches_tree": true,
+   "code_moved_since_evaluation": [],
+   "recognizer_code_now": {
+    "tools/s3/__init__.py": "dda2b99431e66ed0d0ffa828773c9dcdd0557e10de4b3c6f719813060dc0fcbf",
+    "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+    "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+    "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+    "tools/s3/freeze.py": "4a3a78a4e97470e687a4de45122b4909390df750b967195ddc7ced7be522b8cc",
+    "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+    "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+    "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+    "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+    "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+    "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+    "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
+    "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
+    "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+    "tools/s3/thirdparty.py": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+    "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
+    "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
+    "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
+   },
+   "note": "code_sha256 is the FULL hash of every file the evaluation recorded, taken from the tree it still matched when these rates were derived; tools/s3/score.py refuses to quote this document unless every file of score.OUT_OF_SAMPLE_SOURCES still hashes that way, so a later change to the recognizer, verify.py, corpus.py or score.py withholds the estimate instead of ageing it silently (review[1] issues 0-2)."
+  },
+  "split": {
+   "rule": "tools/s3/corpus.py splits(): per (cohort, family), sha256(name) order, the first (n + 1) // 4 held out, then every corpus.FITTED_ON design forced into train; corpus.DROPPED designs are not in the corpus at all. docs/S3_DESIGN.md section 4.4 states the same rule and the in-sample / out-of-sample protocol.",
+   "designs": 168,
+   "holdout_designs": 40,
+   "train_designs": 128,
+   "corrections": {
+    "dropped": {},
+    "moved": {},
+    "rebuild_needed": false
+   }
+  },
+  "aggregation": "one item per structure-kind truth register, except a synchronizer register of a declared chain unit, which is counted through its unit, plus one item per declared structure-kind unit; found = matched a harness-verified structure of an accepted kind at IoU > 0.5; exact = equal flop sets and verified; both libraries pooled (a design contributes twice). This is review[2]'s own aggregation, and the one every published holdout figure has used.",
+  "holdout": {
+   "runs": 80,
+   "designs": 40,
+   "per_kind": {
+    "shift_register": {
+     "items": 30,
+     "found": 20,
+     "exact": 18,
+     "found_unverified": 0,
+     "found_rate": 0.6667,
+     "exact_rate": 0.6
+    },
+    "counter": {
+     "items": 44,
+     "found": 28,
+     "exact": 28,
+     "found_unverified": 10,
+     "found_rate": 0.6364,
+     "exact_rate": 0.6364
+    },
+    "lfsr_crc": {
+     "items": 14,
+     "found": 14,
+     "exact": 14,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 1.0
+    },
+    "synchronizer": {
+     "items": 6,
+     "found": 6,
+     "exact": 4,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 0.6667
+    }
+   },
+   "false_positive_structures": {
+    "counter": 2,
+    "synchronizer": 4
+   },
+   "grouping": {
+    "ami_mean": 0.8453,
+    "ami_median": 1.0
+   }
+  },
+  "train": {
+   "runs": 256,
+   "designs": 128,
+   "per_kind": {
+    "shift_register": {
+     "items": 72,
+     "found": 50,
+     "exact": 50,
+     "found_unverified": 4,
+     "found_rate": 0.6944,
+     "exact_rate": 0.6944
+    },
+    "counter": {
+     "items": 196,
+     "found": 150,
+     "exact": 143,
+     "found_unverified": 22,
+     "found_rate": 0.7653,
+     "exact_rate": 0.7296
+    },
+    "lfsr_crc": {
+     "items": 48,
+     "found": 48,
+     "exact": 48,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 1.0
+    },
+    "synchronizer": {
+     "items": 20,
+     "found": 16,
+     "exact": 14,
+     "found_unverified": 0,
+     "found_rate": 0.8,
+     "exact_rate": 0.7
+    }
+   },
+   "false_positive_structures": {
+    "counter": 14,
+    "shift_register": 2
+   },
+   "grouping": {
+    "ami_mean": 0.8641,
+    "ami_median": 1.0
+   }
+  },
+  "holdout_as_built_before_the_correction": {
+   "runs": 80,
+   "designs": 40,
+   "per_kind": {
+    "shift_register": {
+     "items": 30,
+     "found": 20,
+     "exact": 18,
+     "found_unverified": 0,
+     "found_rate": 0.6667,
+     "exact_rate": 0.6
+    },
+    "counter": {
+     "items": 44,
+     "found": 28,
+     "exact": 28,
+     "found_unverified": 10,
+     "found_rate": 0.6364,
+     "exact_rate": 0.6364
+    },
+    "lfsr_crc": {
+     "items": 14,
+     "found": 14,
+     "exact": 14,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 1.0
+    },
+    "synchronizer": {
+     "items": 6,
+     "found": 6,
+     "exact": 4,
+     "found_unverified": 0,
+     "found_rate": 1.0,
+     "exact_rate": 0.6667
+    }
+   },
+   "false_positive_structures": {
+    "counter": 2,
+    "synchronizer": 4
+   },
+   "grouping": {
+    "ami_mean": 0.8453,
+    "ami_median": 1.0
+   }
+  },
+  "caveats": [
+   "The corpus is SYNTHETIC and was written by the same project as the recognizer; several of its classes (cohort 2) were added because the generalisation regression set showed them missing (changes.jsonl C23, C31). It is the best out-of-sample estimate that survives this round, not an independent one.",
+   "The generalisation regression sets (out/s3/review_generalisation, review_generalisation2) are NO LONGER held out: counter.py, lfsr.py, shift.py, controls.py and verify.py all consulted them (changes.jsonl C25).",
+   "TEMPO is the development design: every TEMPO figure is in-sample. Four recognizer fixes were traced from TEMPO misses by truth name (changes.jsonl C27-C30), and PC03, PC06, PC07, PC09, C01-C06, C10 and C21(d) were selected on TEMPO.",
+   "These rates come from ONE seeded corpus evaluation; they carry no confidence interval.",
+   "They describe the recognizer AND the harness verifier as of source.code_sha256: 'found' means the harness verified the structure, so a change to tools/s3/verify.py moves them as surely as a change to a recognizer module (review[1] issue 2).",
+   "THE false_positive_structures COLUMN OVERSTATES; found / exact and their denominators do NOT. out/s3/review_generalisation2/evaluate.py's outcomes() builds its item list from truth registers whose kind is in STRUCTURE_KINDS, so a 'flag' register's alt_kinds are never consulted. Under the truth's TOGGLE_RULE a 1-bit toggle is kind 'flag' with alt_kinds ['counter'] -- the truth EXPLICITLY ACCEPTS a counter over it -- yet such a prediction matches no item there and is scored a false positive. Counted on the evaluation this document was derived from, as false-positive structures of width 1 lying entirely in one truth register of kind 'flag': holdout 2 of 6, train 10 of 16. The overstatement is in the CONSERVATIVE direction. tools/s3/score.py -- the scorer every published table comes from -- does not make this error: score.Truth builds accepts from alt_kinds for EVERY truth register, a flag included. The scoring rule is left as it is on purpose: changing it would move a published out-of-sample number without a lead decision (changes.jsonl T04, T14)."
+  ]
+ },
+ "ablations": {
+  "base": {
+   "change_log_entry": null,
+   "tempo": {
+    "ami": 0.9787603065494379,
+    "ari": 0.968528390382322,
+    "exact_words": 104,
+    "truth_words_multi": 147,
+    "splits": 19,
+    "merges": 26
+   },
+   "tempo_headline": {
+    "macro_f1_registers": 0.9891304347826086,
+    "macro_f1_registers_exact": 0.9891304347826086,
+    "micro_f1_registers": 0.9666666666666666,
+    "micro_f1_registers_exact": 0.9666666666666666,
+    "macro_f1_bits": 0.9892996108949417,
+    "micro_f1_bits": 0.9794392523364486,
+    "macro_f1_registers_verified": 0.7873563218390804,
+    "ami": 0.9787603065494379,
+    "ari": 0.968528390382322
+   },
+   "tempo_counts": {
+    "all/shift_register": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "all/counter": {
+     "structures": 24,
+     "tp": 22,
+     "registers": 22,
+     "found": 22,
+     "exact": 22
+    },
+    "all/lfsr_crc": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "all/synchronizer": {
+     "structures": 3,
+     "tp": 3,
+     "registers": 11,
+     "found": 11,
+     "exact": 11
+    },
+    "verified/shift_register": {
+     "structures": 1,
+     "tp": 1,
+     "registers": 2,
+     "found": 1,
+     "exact": 1
+    },
+    "verified/counter": {
+     "structures": 7,
+     "tp": 7,
+     "registers": 22,
+     "found": 7,
+     "exact": 7
+    },
+    "verified/lfsr_crc": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "verified/synchronizer": {
+     "structures": 3,
+     "tp": 3,
+     "registers": 11,
+     "found": 11,
+     "exact": 11
+    }
+   },
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "ari_mean": 0.7715,
+    "exact_words": 93,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": true
+  },
+  "cover_cap4": {
+   "change_log_entry": "C01",
+   "tempo": {
+    "ami": 0.9774955932563527,
+    "ari": 0.9666479914276689,
+    "exact_words": 103,
+    "truth_words_multi": 147,
+    "splits": 20,
+    "merges": 27
+   },
+   "tempo_headline": {
+    "macro_f1_registers": 0.9891304347826086,
+    "macro_f1_registers_exact": 0.9891304347826086,
+    "micro_f1_registers": 0.9666666666666666,
+    "micro_f1_registers_exact": 0.9666666666666666,
+    "macro_f1_bits": 0.9847328244274809,
+    "micro_f1_bits": 0.9703703703703704,
+    "macro_f1_registers_verified": 0.7873563218390804,
+    "ami": 0.9774955932563527,
+    "ari": 0.9666479914276689
+   },
+   "tempo_counts": {
+    "all/shift_register": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "all/counter": {
+     "structures": 24,
+     "tp": 22,
+     "registers": 22,
+     "found": 22,
+     "exact": 22
+    },
+    "all/lfsr_crc": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "all/synchronizer": {
+     "structures": 3,
+     "tp": 3,
+     "registers": 11,
+     "found": 11,
+     "exact": 11
+    },
+    "verified/shift_register": {
+     "structures": 1,
+     "tp": 1,
+     "registers": 2,
+     "found": 1,
+     "exact": 1
+    },
+    "verified/counter": {
+     "structures": 7,
+     "tp": 7,
+     "registers": 22,
+     "found": 7,
+     "exact": 7
+    },
+    "verified/lfsr_crc": {
+     "structures": 2,
+     "tp": 2,
+     "registers": 2,
+     "found": 2,
+     "exact": 2
+    },
+    "verified/synchronizer": {
+     "structures": 3,
+     "tp": 3,
+     "registers": 11,
+     "found": 11,
+     "exact": 11
+    }
+   },
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "ari_mean": 0.7715,
+    "exact_words": 93,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": true
+  },
+  "p0_dominant": {
+   "change_log_entry": "C02",
+   "tempo": {
+    "ami": 0.9498373085724062,
+    "ari": 0.8592758055046148,
+    "exact_words": 92,
+    "truth_words_multi": 147,
+    "splits": 17,
+    "merges": 27
+   },
+   "tempo_headline": null,
+   "tempo_counts": null,
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7953,
+    "ari_mean": 0.7965,
+    "exact_words": 95,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": false
+  },
+  "dana_fixpoint": {
+   "change_log_entry": "C04",
+   "tempo": {
+    "ami": 0.9748889249695502,
+    "ari": 0.9689132726848207,
+    "exact_words": 105,
+    "truth_words_multi": 147,
+    "splits": 27,
+    "merges": 29
+   },
+   "tempo_headline": null,
+   "tempo_counts": null,
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "ari_mean": 0.7715,
+    "exact_words": 93,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": true
+  },
+  "jaccard_half": {
+   "change_log_entry": "C05",
+   "tempo": {
+    "ami": 0.9737618996588765,
+    "ari": 0.9586129421233671,
+    "exact_words": 102,
+    "truth_words_multi": 147,
+    "splits": 23,
+    "merges": 24
+   },
+   "tempo_headline": null,
+   "tempo_counts": null,
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "ari_mean": 0.7715,
+    "exact_words": 93,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": true
+  },
+  "no_transfer_split": {
+   "change_log_entry": "C06",
+   "tempo": {
+    "ami": 0.9787603065494379,
+    "ari": 0.968528390382322,
+    "exact_words": 104,
+    "truth_words_multi": 147,
+    "splits": 19,
+    "merges": 26
+   },
+   "tempo_headline": null,
+   "tempo_counts": null,
+   "corpus_holdout": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "ari_mean": 0.7715,
+    "exact_words": 93,
+    "truth_words_multi": 130
+   },
+   "same_as_base_on_holdout": true
+  }
+ },
+ "ablations_code_state": "EVERY corpus_holdout figure in `ablations` is a SNAPSHOT of the code state its ablation file records, not of this tree. The arms within one file share a code state and are comparable -- that is what the ablation says -- but no absolute number here is the out-of-sample estimate; that is out_of_sample, and only when it is available. Whether each ablation file still describes this tree is in out_of_sample.superseded and in code_state.provenance_check.",
+ "code_drift": {
+  "reference_evaluation": {
+   "path": "out/s3/honesty/corpus_holdout_eval.json",
+   "code_sha256_16": {
+    "recognize.py": "15b72f5864f64ead",
+    "controls.py": "bfcff2ad45cd0977",
+    "shift.py": "c7a01d973c51c7bb",
+    "counter.py": "0072137626ccc60b",
+    "lfsr.py": "5e9d5179897b6f71",
+    "group.py": "cfec4232c61f1999",
+    "params.py": "f7c7ce733333dddb",
+    "netlist.py": "b353bfff3f867ab8",
+    "verify.py": "f08007dc4fd39059",
+    "score.py": "350cf55ad364cf98",
+    "run.py": "270579167d830a7b",
+    "corpus.py": "f4b70e14fe6026e8",
+    "schema.py": "0d5f16447d77ff14"
+   },
+   "matches_this_tree": true,
+   "refusal": null
+  },
+  "recognizer_code_now": {
+   "tools/s3/__init__.py": "dda2b99431e66ed0d0ffa828773c9dcdd0557e10de4b3c6f719813060dc0fcbf",
+   "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+   "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+   "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+   "tools/s3/freeze.py": "4a3a78a4e97470e687a4de45122b4909390df750b967195ddc7ced7be522b8cc",
+   "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+   "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+   "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+   "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+   "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+   "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+   "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
+   "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
+   "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+   "tools/s3/thirdparty.py": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+   "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
+   "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
+   "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
+  },
+  "note": "the holdout rates score.py prints are derived from the evaluation named in reference_evaluation.path, of the recognizer AS IT WAS when that run was made. If any file of score.OUT_OF_SAMPLE_SOURCES has moved since, score.py refuses them and the evaluation must be re-run (out/s3/honesty/holdout_rates.py --run) before they are quoted.",
+  "corpus_holdout_under_this_rounds_own_runs": {
+   "first_run": {
+    "runs": 80,
+    "ami_mean": 0.8453,
+    "exact_words": 99,
+    "per_kind": {
+     "shift_register": {
+      "registers": 26,
+      "found": 16,
+      "exact": 14
+     },
+     "counter": {
+      "registers": 42,
+      "found": 38,
+      "exact": 38
+     },
+     "lfsr_crc": {
+      "registers": 14,
+      "found": 12,
+      "exact": 12
+     },
+     "synchronizer": {
+      "registers": 10,
+      "found": 8,
+      "exact": 4
+     }
+    }
+   },
+   "second_run": {
+    "runs": 80,
+    "ami_mean": 0.7703,
+    "exact_words": 93,
+    "per_kind": {
+     "shift_register": {
+      "registers": 26,
+      "found": 16,
+      "exact": 14
+     },
+     "counter": {
+      "registers": 42,
+      "found": 38,
+      "exact": 32
+     },
+     "lfsr_crc": {
+      "registers": 14,
+      "found": 14,
+      "exact": 14
+     },
+     "synchronizer": {
+      "registers": 10,
+      "found": 8,
+      "exact": 4
+     }
+    }
+   },
+   "same": false,
+   "what_it_means": "the two runs of the SAME ablation, about ninety minutes apart in one session, used different tools/s3 states because other agents were editing the recognizer. The arms of one run stay comparable (they share a code state); the ABSOLUTE figures do not carry across runs.",
+   "code_first_run": null,
+   "code_second_run": {
+    "tools/s3/__init__.py": "dda2b99431e66ed0d0ffa828773c9dcdd0557e10de4b3c6f719813060dc0fcbf",
+    "tools/s3/controls.py": "7a077010afc7647bf5f176e4979b8cc729dbc5ba841f912a2f06003fe93b89cc",
+    "tools/s3/corpus.py": "8e59651e1824e851384872a2eaa8364ff3b0699ce5e1fffc18f88079d3c6b56d",
+    "tools/s3/counter.py": "b9766ac03fea0b0ca7a461c8b9b55423a056e9d536f979a8bf9daeff1b993abf",
+    "tools/s3/freeze.py": "89dc52619343e5d16d47a1257e3a05833e159bfa8df02f35898e5b42d79f50c7",
+    "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+    "tools/s3/lfsr.py": "3029460a9b1274cbb43722ded896173f85daf447e92e2b9a9ad7504af80502ee",
+    "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+    "tools/s3/params.py": "4df0b0ceb86315a7a101467b62f7ad76fa90409706f1c33a40afb499c1be55de",
+    "tools/s3/recognize.py": "80c53d85735bd1cd4799ba17e1d1d382727f2b3e75c0dddbd8fee949e4ee8e9d",
+    "tools/s3/run.py": "ee7fb5d7834e5356fd1c60b025a6f8673c0b38a9577eab5c81952e9e7ae5cf90",
+    "tools/s3/schema.py": "b1e00340ac96c93280f0599cfd96d0b2dfea22317e093365a3d6901a8915cc55",
+    "tools/s3/score.py": "12d586dcf7eb0a8d1f2687d18474f722133303afebbf352301975f575e2faee5",
+    "tools/s3/shift.py": "2e5291b9786d8545e4e2c567b8d0377c80967e7e3b4760ad22da42dbaa27a19b",
+    "tools/s3/thirdparty.py": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+    "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
+    "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
+    "tools/s3/verify.py": "0bad4228b279493a76549ee55a8e3a2209e558653c36f95c05c2e791aea2afa7"
+   }
+  },
+  "tempo_and_corpus_arms_share_a_code_state": false,
+  "files_differing_between_the_tempo_and_corpus_ablation_runs": [
+   "tools/s3/controls.py",
+   "tools/s3/counter.py",
+   "tools/s3/lfsr.py",
+   "tools/s3/score.py",
+   "tools/s3/shift.py",
+   "tools/s3/verify.py"
+  ],
+  "how_to_read_it": "the arms WITHIN one ablation file share a code state and are comparable; the TEMPO file and the corpus file were produced minutes apart and, when the list above is non-empty, not on the same tree, so a TEMPO figure and a corpus figure must not be subtracted from each other"
+ },
+ "ablation_findings": [
+  "C01 (COVER_CAP 6 over the design's 4) bought exactly ONE TEMPO counter register in the EARLY run (macro F1 1.0000 -> 0.9886, micro 1.0000 -> 0.9692) and NONE in the LATE one (identical register counts at cap 4 and cap 6, macro 0.9891, micro 0.9667 in both); nothing at all on the holdout in either.",
+  "C02 (P0 on the shared-class set over the design's dominant class) is WORSE out of sample than the design it replaced, in BOTH code states: holdout AMI 0.8453 against 0.8703 (early) and 0.7624 against 0.7874 (late), exact words 99 against 101 and 88 against 90 of 130. On TEMPO it is better, which is the set it was chosen on.",
+  "C04's recorded gap (TEMPO AMI 0.969 one pass vs 0.950 at the fixed point) is NOT reproduced in either code state: the gap is 0.0039, and the fixed point is BETTER on ARI and on exact words. No-op on the holdout.",
+  "C05: the corrected holdout confirms C05's own note that the synthetic set does not separate 1/3 from 1/2 (identical in both code states). The value rests on TEMPO alone.",
+  "C06 (the depth-2 transfer split) changes NOTHING on TEMPO or on any of the 80 holdout runs, in both code states: its stated measurement is not reproducible."
+ ],
+ "parameters": {
+  "params_py_total": 164,
+  "in_change_log_before": 164,
+  "design_3_8_only": [],
+  "undocumented_now_logged": [],
+  "no_selection_set_recorded": [
+   "CASE_ROUNDS",
+   "CASE_TRIES",
+   "CASE_MIN_LANES",
+   "BLOCK_CUT_SHARE",
+   "MUX_LEGS"
+  ],
+  "outside_params_py": {
+   "module": "tools/s3/{controls,shift,counter,lfsr}.py module-local threshold registries",
+   "names": {},
+   "in_change_log": [],
+   "note": "empty since the integration round of 2026-09-22 (second pass): every recognizer threshold is a tools/s3/params.py entry with a change-log entry of its own (C48-C58), so an override of any of them is validated and routed by recognize.split_params. A name appearing here again means a module has grown a local threshold registry that params.py does not know about."
+  }
+ },
+ "change_log_corrections": {
+  "PC02": "tuned_on ['corpus holdout: fsm_timer_ar', 'corpus']; fitted on the HOLDOUT design fsm_timer_ar, measured on tmr_up_autoreload_w16_ar",
+  "PC03": "tuned_on ['tempo', 'corpus']; measured on the holdout design cnt_down_w36_load_ar",
+  "PC04": "tuned_on ['corpus']; measured on the holdout design cnt_case_mod5_ud_ar",
+  "PC06": "tuned_on ['corpus', 'tempo']; measured on the holdout design acc_w8_en_ar",
+  "C25": "status closed on crc12_d16_ar (dropped, C42)",
+  "how": "every correction is recorded in the entry's own 'corrections' list with the previous value and the reason; no entry's prose was rewritten"
+ },
+ "corpus": {
+  "fitted_on_moved_to_train": [
+   "fsm_timer_ar"
+  ],
+  "dropped": [
+   "crc12_d16_ar"
+  ],
+  "designs": 168,
+  "holdout_designs": 40,
+  "train_designs": 128,
+  "registers_by_kind": {
+   "counter": 109,
+   "data_register": 31,
+   "flag": 34,
+   "other": 6,
+   "shift_register": 46,
+   "synchronizer": 16,
+   "fsm_state": 5,
+   "lfsr_crc": 31,
+   "register_file_word": 18,
+   "accumulator": 7
+  },
+  "designs_whose_build_checks_pass": "168/168",
+  "reference_structures_verified": {
+   "sky130": "151/196",
+   "ihp": "151/196"
+  },
+  "built_tree_matches_corpus_py": true,
+  "manifest_corrections": {
+   "dropped": {},
+   "moved": {},
+   "rebuild_needed": false
+  },
+  "toggle_rule": "1-bit toggles are kind 'flag' with alt_kinds ['counter'] (corpus.TOGGLE_RULE, the string out/s3/truth_tempo.json uses): the lead's decision of 2026-09-23, so schema v2.1's counter width >= 2 does not make toggle_en_ar, toggle_free_nr and toggle_multi_sr unverifiable by construction (changes.jsonl T04)"
+ },
+ "determinism": {
+  "recognize_run": "recognize.py's RECOGNIZE_RUN line now carries canonical_order and bdd; run.py parses it into every evaluation as 'recognize_run' and raises a problem on a tie left to id order, a hit round budget, a missing block, a missing line, or more than one distinct answer over the permutations",
+  "blind_file_order_arm": "--leakage is now allowed with --blind",
+  "leakage_test": {
+   "leakage_slow_suite.log": {
+    "how": "test/test_s3.py::test_tempo_leakage with RETRACE_S3_SLOW=1",
+    "ran": true,
+    "passed": true,
+    "failed": false,
+    "verdict": null,
+    "tail": [
+     ".                                                                        [100%]",
+     "1 passed, 100 deselected in 776.38s (0:12:56)"
+    ]
+   },
+   "freeze_checklist.log": {
+    "how": "python -m tools.s3.freeze checklist",
+    "ran": true,
+    "passed": false,
+    "failed": true,
+    "verdict": "pass",
+    "tail": [
+     "evidence: 452 hashes checked, 0 stale (contamination), 54 moved (change log), 0 missing",
+     "leakage test (TEMPO, file-order arm + 5 permutations; this takes minutes) ...",
+     "leakage: verdict pass, strong [], distinct answers 1",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C01: tools/s3/params.py: recorded d1ad2427ad15, now 4df0b0ceb863",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C02: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C03: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C04: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C05: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C06: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C07: tools/s3/recognize.py: recorded d671bc265699, now 80c53d85735b",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C08: tools/s3/recognize.py: recorded d671bc265699, now 80c53d85735b",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C09: tools/s3/counter.py: recorded d2d79d30af67, now a8ed391b9932",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C09: tools/s3/lfsr.py: recorded 3720e9b680a3, now d1c594bc934f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C09: tools/s3/group.py: recorded 5ca2a97ecebd, now cfec4232c61f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C10: tools/s3/params.py: recorded d1ad2427ad15, now 4df0b0ceb863",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C10: tools/s3/lfsr.py: recorded 3720e9b680a3, now d1c594bc934f",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C11: tools/s3/params.py: recorded d1ad2427ad15, now 4df0b0ceb863",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C11: tools/s3/controls.py: recorded 9e3f7ff889b2, now 7e54f89c0f28",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:C15: tools/s3/schema.py: recorded 2845a90cea46, now b1e00340ac96",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:PC01: tools/s3/counter.py: recorded 6d451438af40, now a8ed391b9932",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:PC02: tools/s3/counter.py: recorded 6d451438af40, now a8ed391b9932",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:PC03: tools/s3/counter.py: recorded 6d451438af40, now a8ed391b9932",
+     "note: change-log evidence moved since its entry (a snapshot, not a fault): tools/s3/changes.jsonl:PC04: tools/s3/counter.py: recorded 6d451438af40, now a8ed391b9932",
+     "BLOCKS: out/s3/runs/tempo-20260921T231244Z-9ad4b666c101.json: a non-blind record (tempo, recognizer None); out/s3/runs holds blind records only (changes.jsonl C16)",
+     "1 blocking item(s)"
+    ]
+   }
+  }
+ },
+ "records_evidence": {
+  "checked": 1004,
+  "stale": [],
+  "moved": 270,
+  "missing": 5,
+  "rule": "a stale CONTAMINATION hash blocks a freeze (the record describes the present); a moved CHANGE-LOG hash is reported only (an entry's evidence is a snapshot)"
+ },
+ "open_problems": [
+  "No uncontaminated generalisation set survives for counter, shift or lfsr (review[2] issue 0). A fresh draw is a lead decision; until then every report must say so.",
+  "C02 is worse out of sample than the design it replaced and stays only because nobody re-selected it (lead decision).",
+  "C06 is dead code on TEMPO and on the whole corpus holdout.",
+  "C01's only measured benefit is in-sample: one TEMPO counter register.",
+  "C40's remainder, and ONLY its remainder: none of the nine moved thresholds is in params.NOT_PER_RUN, so a caller may still override them per run. That is a lead decision, not work. CORRECTED 2026-09-23 (checked against this tree, not copied from a review): this item used to read 'Ten recognizer thresholds live outside params.py (controls.py's NEW THRESHOLDS block), outside NOT_PER_RUN, with no proposed entries where their own comment says they are', which is false of this tree on three counts. Nine of the ten -- CLOCK_GATE_FOLD, CLOCK_GATE_FALLBACK, MODE_SELECT, MODE_SELECT_SHARE, MODE_SELECT_MIN_FLOPS, MODE_SELECT_MARGIN, MODE_SELECT_MAX_CANDS, MODE_SELECT_SCREEN, MODE_SELECT_MIN_LIVE -- resolve in tools/s3/params.py, moved unchanged by the integration round (I01) and logged one per value (C48, C49, C52, C53, C57 and their neighbours); controls.py has no _NEW_THRESHOLDS block left, only a comment recording the move; out/s3/controls/changes_proposed.jsonl does exist; and the tenth, CLOCK_GATE_SUPPORT, is in NEITHER module -- it is not a live threshold in this tree, the fold's support bound being params.HARNESS_CLOCK_SUPPORT = 16, the mirror of verify.CLOCK_SUPPORT. The parameters block above (outside_params_py, empty since the integration round) and C40's own corrected status say the same; this list had been missed. Logged as C40, closed_by I01 / C49 / C52 / C53 / C57.",
+  "THE RECOGNIZER MOVED UNDER THIS ROUND'S MEASUREMENTS. The same ablation, run twice about ninety minutes apart in one session, gave corpus-holdout base AMI 0.8453 and then 0.7624, counter exact 38 then 28, lfsr_crc found 12 then 14: other agents were editing tools/s3 (controls.py grew the clock-gate fold and the mode selector between the two runs). Every arm of ONE run shares a code state, so the ablation conclusions hold; the ABSOLUTE figures are a snapshot. CORRECTED 2026-09-23: this sentence used to end 'every ablation file now pins the tools/s3 hashes it was produced with', which is FALSE of out/s3/honesty/ablations_corpus_holdout.prev.json -- that file has no code block at all and the code state of its run cannot be reconstructed. It is listed permanently under out_of_sample.superseded (out/s3/honesty/oos_provenance.py), and no absolute figure of it may be quoted.",
+  "THE TREE MOVED WHILE THIS DOCUMENT WAS BEING WRITTEN (2026-09-23): tools/s3/verify.py and tools/s3/score.py were edited by other agents of the same round minutes before the out-of-sample estimate below was re-derived. Whether the estimate still describes the tree is not a matter of memory: code_state.provenance_check answers it, and out/s3/honesty/oos_provenance.py answers it again for any reader, at any later time.",
+  "FIXED SINCE THIS LIST WAS FIRST WRITTEN, and kept here so a reader of an older copy can tell: the built corpus is no longer stale against corpus.py (see corpus above; changes.jsonl I04, T04); out/s3/runs no longer holds the stray TEMPO development record (H05); and the four test/test_s3.py failures that round reported are not present in this tree."
+ ],
+ "corrections": [
+  {
+   "what": "the out_of_sample block",
+   "date": "2026-09-23",
+   "was": "a verbatim copy of holdout_rates.json's blocks, with code_matches_tree true and the 2026-09-22 hashes, republished whatever the tree had since become",
+   "now": "the estimate comes through tools/s3/score.out_of_sample(), the gate the report and the pre-freeze checklist use; when it refuses, this file records the refusal in place of the rates and quotes no number",
+   "why": "review[1] of 2026-09-23, blocker: 'summary.json republishes a SUPERSEDED out-of-sample estimate with no gate and no staleness marker'"
+  },
+  {
+   "what": "code_drift.reference_evaluation.matches_this_tree",
+   "date": "2026-09-23",
+   "was": "null",
+   "now": "score.out_of_sample_problem() is None, with the refusal text beside it",
+   "why": "the one question that block exists to answer was left unanswered"
+  },
+  {
+   "what": "code_drift.note",
+   "date": "2026-09-23",
+   "was": "'the holdout rates score.py prints come from out/s3/dev2/corpus_final.json'",
+   "now": "the source is read from reference_evaluation.path, which is out/s3/honesty/corpus_holdout_eval.json",
+   "why": "false since H03 of 2026-09-22 gave the deriver its own --run; a reader chasing the named file would have found a different evaluation"
+  },
+  {
+   "what": "the corpus block and three open problems",
+   "date": "2026-09-23",
+   "was": "prose asserting a stale built corpus, a stray record in out/s3/runs and four failing tests",
+   "now": "the corpus block is computed from corpus.manifest(); the three items are restated as fixed",
+   "why": "all three were closed by later rounds (I04, H05) and a frozen record must not describe a tree that no longer exists"
+  },
+  {
+   "what": "open_problems item 5 (C40's ten thresholds)",
+   "date": "2026-09-23",
+   "was": "'Ten recognizer thresholds live outside params.py (controls.py's NEW THRESHOLDS block), outside NOT_PER_RUN, with no proposed entries where their own comment says they are'",
+   "now": "the nine that moved into params.py by I01 are named as moved; CLOCK_GATE_SUPPORT is recorded as live in neither module; only the NOT_PER_RUN half is still open, and it is the lead's call",
+   "why": "review[1] of 2026-09-23 (freeze readiness), major: 'summary.json republishes a stale open problem that its own body contradicts' -- parameters.outside_params_py in this same file has been empty since the integration round, and C40's own status was corrected on 2026-09-23. Re-checked against tools/s3/params.py, tools/s3/controls.py and out/s3/controls/changes_proposed.jsonl in this tree before rewriting."
+  },
+  {
+   "what": "'every ablation file now pins the tools/s3 hashes it was produced with'",
+   "date": "2026-09-23",
+   "was": "asserted",
+   "now": "corrected: ablations_corpus_holdout.prev.json pins nothing and never will",
+   "why": "checked by out/s3/honesty/oos_provenance.py (rule R1)"
+  }
+ ],
+ "files_written": [
+  "tools/s3/changes.jsonl",
+  "out/s3/contamination.json",
+  "tools/s3/params.py (docstring only; no value changed)",
+  "tools/s3/corpus.py",
+  "tools/s3/score.py",
+  "tools/s3/run.py",
+  "tools/s3/freeze.py",
+  "tools/s3/recognize.py (the RECOGNIZE_RUN line)",
+  "test/test_s3.py",
+  "out/s3/honesty/",
+  "out/s3/corpus/ (2026-09-23: the three toggle designs rebuilt under the flag rule)"
+ ]
+}

@@ -1,0 +1,891 @@
+{
+ "schema": "retrace-s3-contamination/1",
+ "created": "2026-09-22",
+ "audience": "the lead, reviewers and the puzzle report. This record restates puzzle facts (as review[1] states them): never give it, or its contents, to recognizer authors or put it in their prompts.",
+ "purpose": "S3_DESIGN 4.4 'Contamination record' (V0, F15): everything by which knowledge of the puzzle (the frozen-code, known-design evaluation) reached the recognizer, its development data or its authors, and every run of harness or recognizer code on the puzzle, so the puzzle report can say what its score is worth. freeze.py copies this file into FREEZE.json and pins its hash.",
+ "sources": [
+  {
+   "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+   "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+   "note": "result.reviews[1] (leakage + overfitting), issues 4, 5 and 8, verdict 'sound with changes'"
+  },
+  {
+   "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-abb4f0330c56ed751.jsonl",
+   "sha256": "4296e2dbd1549b7f62e13c97225d2568f52be58c0e0c6828356d4788b77eca6c",
+   "note": "transcript of the leakage + overfitting reviewer: hashed, not read"
+  }
+ ],
+ "summary": "No recognizer code ran on the puzzle or on a third-party design (review[1] issue 8, which checked run records, scripts, logs, shell history and 97 transcripts). Puzzle knowledge did reach recognizer development: the first corpus builder read the puzzle truth and four puzzle-shaped corpus families followed; puzzle register names and measurements reached recognizer authors through a test, a review and a prompt; the design's corpus table itself was written with the puzzle known. The puzzle score is therefore 'frozen code, known design, puzzle-informed development', never blind. Added 2026-09-22 (review[2] issue 5): corpus cohort 2 was written from the generalisation regression set's findings and has now been checked for puzzle shapes (K12, two partial matches recorded); the regression set is no longer held out and one corpus HOLDOUT design had a threshold fitted to it (K13); the corpus/regression duplicate crc12_d16_ar has been dropped (K14). Added 2026-09-23 (review[1] of the freeze round, major): the SECOND regression set, out/s3/review_generalisation2, is no longer held out either -- five entries (C40, C49, C52, C53, C57) were fitted to five of its designs, which K13's singular wording hid (K15). Neither regression set is now a generalisation estimate.",
+ "items": [
+  {
+   "id": "K1",
+   "what": "the puzzle truth was read by the first synthetic-corpus builder",
+   "when": "2026-09-21T23:49Z",
+   "who": "workflow wf_81ae7d38-b33, agent a25aa2924cf87542b ('synthetic corpus', phase Foundations)",
+   "detail": "it read out/s3/truth_puzzle.json and printed, per review[1]: cnt_lo/cnt_hi as mod-11 digits, the mod-121 cascade with cnt_done, the 12-deep shift_taps, the scrambler (Fibonacci, k 8 print mode) and the units. Its report said only that it copied parameter conventions and that the puzzle-like cases were on the lead's list; mod 11 and the 8-step mode were not on the list.",
+   "evidence": [
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-a25aa2924cf87542b.jsonl",
+     "sha256": "c93309078abd2896422e22bfc7976eccff4a3e10e16cef318d16cb9896ee5a77",
+     "note": "transcript of the first synthetic-corpus builder: hashed, not read"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[4]"
+    }
+   ]
+  },
+  {
+   "id": "K2",
+   "what": "puzzle-shaped families in the development corpus",
+   "families": [
+    {
+     "name": "mod11_ar",
+     "family": "counter_modulo",
+     "split": "train",
+     "puzzle_shape": "the puzzle's digit modulus (11)",
+     "on_the_leads_list": false
+    },
+    {
+     "name": "scr_modes_w8_ar",
+     "family": "scrambler",
+     "split": "holdout",
+     "puzzle_shape": "an 8-bit Fibonacci scrambler with a serial data mode and an 8-step autonomous mode, the puzzle scrambler's modes",
+     "on_the_leads_list": false
+    },
+    {
+     "name": "casc_mod10x6_done_ar",
+     "family": "counter_cascade",
+     "split": "train",
+     "puzzle_shape": "a cascade of digits with a sticky done flag",
+     "on_the_leads_list": true
+    },
+    {
+     "name": "sat_bins8_decode_ar, sat_bins4_updown_sr, sat_bins6_vec_ar",
+     "family": "counter_saturating",
+     "split": "train",
+     "puzzle_shape": "the lead's list asked for '2-bit bins under a decode, like hit counters'",
+     "on_the_leads_list": true
+    }
+   ],
+   "effect": "the counter and LFSR recognizers were developed and tuned on this corpus; the counter and LFSR templates were therefore exercised on puzzle-shaped synthetic cases",
+   "evidence": [
+    {
+     "path": "tools/s3/corpus.py",
+     "sha256": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+     "note": "the family generators (state as of this record)"
+    },
+    {
+     "path": "out/s3/corpus/manifest.json",
+     "sha256": "c5b2ff283bb60b68947e2b86c80b714ee8cc96b5371ff79454eb0d6e582aa5a1",
+     "note": "splits"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[4]"
+    }
+   ]
+  },
+  {
+   "id": "K3",
+   "what": "the design's corpus table came from puzzle knowledge",
+   "detail": "docs/S3_DESIGN.md 4.4's synthetic corpus table (saturating counters, a mod-M cascade with a sticky done flag, two chains under one enable, k-step and multi-mode LFSRs) and 3.4's saturating, mod-M and cascade templates were written by a design process that knew the puzzle's structure (the validity review V predicted a puzzle failure; M15 records that TEMPO has none of these shapes). The table was the corpus builders' specification.",
+   "evidence": [
+    {
+     "path": "docs/S3_DESIGN.md",
+     "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf",
+     "note": "revision 3, section 4.4 table and 3.4"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_ae81603f-4a5/agent-a86c46603d915f1a6.jsonl",
+     "sha256": "c6384e0ddd5456514a5a649676fe98fd2dca6e08fba1aade665b77b9a111f38a",
+     "note": "transcript of the S3_DESIGN.md author: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_91363770-b0e/agent-abb2c990bea3af311.jsonl",
+     "sha256": "4de076a4e355c1e14d12abc4c1512981c20db7882ccc7722b0cc8e3656064420",
+     "note": "transcript of the S3_DESIGN.md reviser: hashed, not read"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[4]"
+    }
+   ]
+  },
+  {
+   "id": "K4",
+   "what": "puzzle names reached recognizer authors through test/test_s3.py",
+   "when": "2026-09-21T23:47Z",
+   "detail": "test_s3._truth_names() read truth_puzzle.json, and a control-layer agent printed all 262 forbidden tokens to keep its docstrings clean; the static test's failure message printed matched names; the lfsr and control-layer reports name 'scrambler' and 'pos' as puzzle registers; the test's plain-text list of exempt ordinary words consisted of truth register names",
+   "remedy": "2026-09-22 (changes.jsonl C17): names compared as salted hashes and never printed; the exempt words stored as digests; puzzle-truth scorer tests report failures without details",
+   "evidence": [
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-a5faa9978de6a0864.jsonl",
+     "sha256": "044314856ceb368cd6545551db641dcf604abb39eeeda7250e7191fd5449f509",
+     "note": "transcript of a control-layer agent: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-aa5288929778056b2.jsonl",
+     "sha256": "860fbdd31fbe63d09e4a6e6a884b30bd7840f31ade30100cc482af210a093937",
+     "note": "transcript of a control-layer agent: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-a0ad10caf3b4f4701.jsonl",
+     "sha256": "670e672b04963f104d7ded329ccf63bcb029428fef17047995eb975cfb997aae",
+     "note": "transcript of the lfsr agent: hashed, not read"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[5]"
+    }
+   ]
+  },
+  {
+   "id": "K5",
+   "what": "the part-1 feasibility review quoted puzzle measurements and was assigned reading for both control-layer attempts",
+   "detail": "per review[1]: 'the 22 bins as 1-bit toggles', 'Scrambler bits 0-3 ... not self-active'",
+   "evidence": [
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_ae81603f-4a5/agent-a1aab543a2a073d4f.jsonl",
+     "sha256": "da698a5054678798985797352300dc107e659d0f73665887a767b428ebad032a",
+     "note": "transcript of the part-1 feasibility reviewer: hashed, not read"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[5]"
+    }
+   ]
+  },
+  {
+   "id": "K6",
+   "what": "the recognize.py (integration) agent's prompt carried the truth agent's report",
+   "detail": "per review[1]: the scrambler's data mode k 1 with print mode k 8, the 22 bins, cnt_done, pos",
+   "evidence": [
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-a52ec5e61057fe63c.jsonl",
+     "sha256": "9e0ed6342e737684ccfcea759c3b5b6ef46ad0d3d8919a89b8b09b1b8025579b",
+     "note": "transcript of the integration agent: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_81ae7d38-b33/agent-a4d81246bd2bad622.jsonl",
+     "sha256": "ae49f667eea9f54a4b305a7091cc4a2fd59fc8651d1073f85ef67c3c4f456336",
+     "note": "transcript of the truth-fixes agent whose report was forwarded: hashed, not read"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[5]"
+    }
+   ]
+  },
+  {
+   "id": "K7",
+   "what": "harness runs of the STUB recognizer on the puzzle, and a join probe",
+   "detail": "three development runs of tools.s3.run on the puzzle with the stub recognizer (meta.recognizer 'stub', 0 structures, 0 groups; modules recognize and netlist only), 2026-09-21 22:52-23:12Z, before any recognizer module existed (the build workflow started 23:45Z); run.py now refuses a development run of the puzzle. The third of those PUZZLE records lay in out/s3/runs, where blind records live, and was moved unchanged to out/s3/eval/dev_runs/ on 2026-09-22 (its sha256 is unchanged; changes.jsonl C16). That move did NOT empty out/s3/runs: a TEMPO development record was still there on 2026-09-22, which this item's earlier wording was read as covering (review[1] issue 3), and the pre-freeze checklist blocked on it until it too was moved unchanged to out/s3/eval/dev_runs/ (see also_moved below). It is a run of the DEVELOPMENT design with the stub recognizer, not a puzzle run, so it is no contamination path of its own; it is recorded here only because this item was the place the question was asked. out/s3/eval/probe_join.py ran extraction, GateGraph and the truth join on the puzzle.",
+   "records": [
+    {
+     "path": "out/s3/eval/dev_runs/puzzle-20260921T225230Z-c6440a7500ff.json",
+     "sha256": "567a1abe4101f1021a7c9cdbc70e4ffee37cd480c6a41a96acf02ac251f54819"
+    },
+    {
+     "path": "out/s3/eval/dev_runs/puzzle-20260921T230811Z-f2b48ae61863.json",
+     "sha256": "a5df31372f752f5c10682f14369cae9bd4d33228159cfd24644a13f3ec43e818"
+    },
+    {
+     "path": "out/s3/eval/dev_runs/puzzle-20260921T231241Z-16a44922d407.json",
+     "sha256": "bb2fd37f0a3800cca6134db3901153b9fb667f33e2975646acc6651e021154c5",
+     "note": "moved from out/s3/runs/ on 2026-09-22"
+    }
+   ],
+   "evidence": [
+    {
+     "path": "out/s3/eval/probe_join.py",
+     "sha256": "a83667f1afd03a5241a388efe5ded2a58c113d64f7471d3ac0a89bce939596b8"
+    },
+    {
+     "path": "out/s3/eval/run--design_puzzle.log",
+     "sha256": "234cec31dd79e4016c621d98aaac78cc46a5746419f46b824c54941070f9d61b"
+    },
+    {
+     "path": "out/s3/eval/run--design_puzzle.time",
+     "sha256": "0bd6434d815460ffafdb44ebd6c3fa071e3f576aa0dd5ed2a0ccc4eac77db33c"
+    },
+    {
+     "path": "out/s3/eval/run_--design_puzzle.log",
+     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "path": "out/s3/eval/run_--design_puzzle.time",
+     "sha256": "faf9c3f312b0e0a2ecd622a390acce45cf00d87db8044dd16ec4afc086cad2e4"
+    },
+    {
+     "path": "out/s3/eval/final--design_puzzle.log",
+     "sha256": "4f5c84900b2762197136d9a3b6f435c9f6f3ed3a772dc503083f632c76984093"
+    },
+    {
+     "path": "out/s3/eval/final--design_puzzle.time",
+     "sha256": "39927ec5448cd3339f73eb80b4616646be5ca956124ee7816ec9d36775104840"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[8]"
+    }
+   ],
+   "also_moved": [
+    {
+     "path": "out/s3/eval/dev_runs/tempo-20260921T231244Z-9ad4b666c101.json",
+     "sha256": "508114c7cdb155aa6475c39c48e7d071e5fcf797390b1628d73152d0fd84614c",
+     "note": "a TEMPO (development design) run record with the stub recognizer, blind false, written 2026-09-21T23:12:44Z; moved unchanged out of out/s3/runs on 2026-09-22 so that directory holds blind records only. Not a puzzle run: listed here to correct this item's earlier wording, not as a contamination path."
+    }
+   ]
+  },
+  {
+   "id": "K8",
+   "what": "a refused blind attempt",
+   "detail": "`--design puzzle --blind` at 2026-09-22T00:25Z was refused (no FREEZE.json); nothing was extracted",
+   "evidence": [
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[8]"
+    }
+   ]
+  },
+  {
+   "id": "K9",
+   "what": "items already in S3_DESIGN 4.4's contamination record",
+   "detail": "the prototype ran the loader, simulation, SAT sweeping and reset discovery on the puzzle; both part-1 reviews probed the puzzle netlist; V predicted one puzzle failure (two chains under one select merged into one structure), which 3.3's lane-head split avoids, adopted on its synthetic case and recorded as puzzle-informed; the saturating, mod-M and cascade templates rest on synthetic cases only (M15); prior_art.md 6 ('freeze ... on the puzzle ... before scoring TEMPO') is superseded",
+   "evidence": [
+    {
+     "path": "docs/S3_DESIGN.md",
+     "sha256": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+    },
+    {
+     "path": "out/s3/prior_art.md",
+     "sha256": "a9741bc85be479e19805649472f5f246c7472a600c5a3a7c15ce48f12176a17a"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_ae81603f-4a5/agent-a2f47d8d88e6e8a68.jsonl",
+     "sha256": "c824b31d31690c029ee3abea2ac75abccfb336f632e6db6ca164e80106c882f3",
+     "note": "transcript of the analysis-core prototype agent: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_ae81603f-4a5/agent-a657fc426dd8a73dd.jsonl",
+     "sha256": "d914c8cdd93210a9b7e9654659088432d4130f56104568e1a31fbe64a1568cac",
+     "note": "transcript of the part-1 validity reviewer: hashed, not read"
+    },
+    {
+     "path": "/Users/dave/.claude/projects/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/subagents/workflows/wf_ae81603f-4a5/agent-a1aab543a2a073d4f.jsonl",
+     "sha256": "da698a5054678798985797352300dc107e659d0f73665887a767b428ebad032a",
+     "note": "transcript of the part-1 feasibility reviewer: hashed, not read"
+    }
+   ]
+  },
+  {
+   "id": "K10",
+   "what": "the puzzle's recovered RTL and its documentation are in this repository",
+   "detail": "the project recovered the puzzle's RTL (the design's 'known design'); it, its documentation and commit messages that state puzzle facts (e.g. 75803221bc299fea6a9f364d55277922540091cd 2026-09-21T23:33:29+01:00, 'INTENT/outgen: correct the scrambler reset value ... and pos (a saturating counter, 15 steps)') are readable by every agent working in the repository",
+   "effect": "the puzzle evaluation can never be blind; it is reported as 'frozen code, known design'",
+   "evidence": []
+  },
+  {
+   "id": "K11",
+   "what": "third-party designs touched on the truth side only",
+   "detail": "thirdparty.py's pilot extracted and labelled 15 third-party designs on the truth side only; none is in the 84-candidate draw pool (review[1] issue 8). No recognizer code ran on any of them.",
+   "evidence": [
+    {
+     "path": "tools/s3/thirdparty.py",
+     "sha256": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/w5l7z9adl.output",
+     "sha256": "6c88241a11803ada6917f7dbd42b71d3fe71edce435ba55a7a08553d8b7ee593",
+     "note": "workflow output: result.reviews[1].issues[8]"
+    }
+   ]
+  },
+  {
+   "id": "K12",
+   "what": "corpus cohort 2: written from the generalisation regression set's findings, and its puzzle-shape check",
+   "when": "2026-09-22",
+   "who": "the corpus agent (changes.jsonl C23); the class list came from review[2]'s findings on out/s3/review_generalisation",
+   "detail": "C23 added 55 designs to the development corpus AFTER the record above was written, so nothing here covered them. They exist because the generalisation review found classes the corpus lacked, which means the regression set shaped the development data: a contamination path from the regression set into the corpus and so into the recognizers (the agent reports writing the RTL from scratch without reading the regression generator). One of the 55, crc12_d16_ar, turned out to be the regression set's own CRC-12 and has since been dropped (K14). The remaining 54 were checked for puzzle shapes for this record; the check and its two partial matches are below.",
+   "cohort2_puzzle_shape_check": {
+    "designs": 54,
+    "holdout": 13,
+    "families": {
+     "counter_cascade_mixed": [
+      "casc_div10dn_ev12up_sr",
+      "casc_pre200up_tmr16dn_ar",
+      "casc_pre50up_dnsat10_ar"
+     ],
+     "counter_case": [
+      "cnt_case_mod12_ud_en_ar",
+      "cnt_case_mod25_ud_en_nr",
+      "cnt_case_mod5_ud_ar",
+      "cnt_case_mod9_ud_sr"
+     ],
+     "counter_concat": [
+      "cat_hilo_4x12_sr",
+      "cat_hilo_8x8_en_ar",
+      "cat_hilo_dn_6x6_en_nr",
+      "cat_hml_4x4x4_en_ar"
+     ],
+     "counter_reload": [
+      "tmr_oneshot_w24_if_ar",
+      "tmr_reload_w13_case_nr",
+      "tmr_reload_w16_case_sr",
+      "tmr_reload_w20_if_ar",
+      "tmr_up_autoreload_w16_ar"
+     ],
+     "counter_wide": [
+      "cnt_down_w36_load_ar",
+      "cnt_up_w40_en_ar",
+      "cnt_up_w48_free_sr",
+      "cnt_up_w64_en_clrset_ar",
+      "cnt_updown_w33_en_nr"
+     ],
+     "crc_trinomial": [
+      "crc11_tri_gal_k4_ar",
+      "crc15_tri_fib_k2_nr",
+      "crc6_tri_gal_ar",
+      "crc9_tri_fib_sr"
+     ],
+     "crc_wide": [
+      "crc15_d16_sr",
+      "crc16_d16_ar",
+      "crc24_d32_ar",
+      "crc32_d32_nr"
+     ],
+     "lfsr_affine": [
+      "xorshift12_two_ar",
+      "xorshift16_en_ar",
+      "xorshift20_rlr_nr",
+      "xorshift32_en_sr"
+     ],
+     "negative_accumulator": [
+      "acc_dump_w14_s3_ar",
+      "acc_w10_s4_en_sr",
+      "acc_w9_s2_en_nr",
+      "nco_w16_ar"
+     ],
+     "negative_lcg": [
+      "lcg_w10_nr",
+      "lcg_w12_en_sr",
+      "lcg_w16_en_ar",
+      "lcg_w8_ar"
+     ],
+     "shift_mixed_reset": [
+      "sr_mixrst_d8_ar",
+      "sr_mixrst_head_d6_ar",
+      "sr_mixrst_l2_d5_ar",
+      "sr_mixrst_set_d7_ar",
+      "sr_mixrst_sync_d6_ar"
+     ],
+     "shift_multichannel": [
+      "hist_ch2_s3_d3_vec_ar",
+      "hist_ch3_d4_vec_nr",
+      "hist_ch3_d5_gen_ar",
+      "hist_ch4_s2_d4_gen_sr"
+     ],
+     "shift_nonlinear": [
+      "debruijn_w10_lsb_en_nr",
+      "debruijn_w6_ar",
+      "nlfsr_w12_lsb_sr",
+      "nlfsr_w9_en_ar"
+     ]
+    },
+    "counter_moduli": [
+     5,
+     9,
+     10,
+     12,
+     16,
+     25,
+     50,
+     64,
+     200,
+     256,
+     4096,
+     8589934592,
+     68719476736,
+     1099511627776,
+     281474976710656,
+     18446744073709551616
+    ],
+    "shift_depths": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     12
+    ],
+    "lfsr_forms": [
+     "affine",
+     "both",
+     "galois"
+    ],
+    "checked_against": "items K1-K3 of this record",
+    "result": [
+     "NO cohort-2 counter has modulus 11 or 121, and no cohort-2 design is a cascade of two mod-11 digits: the moduli present are 5, 9, 10, 12, 16, 25, 50, 64, 200, 256 and powers of two up to 2^64 (the wide counters).",
+     "NO cohort-2 design is a Fibonacci scrambler, with or without an 8-step autonomous mode: its LFSR/CRC families are trinomial CRCs, word-parallel CRCs and xorshift maps, with forms affine, both, galois.",
+     "NO cohort-2 design is an array of 2-bit saturating bins under a decode; cohort 2 adds no counter_saturating design at all (casc_pre50up_dnsat10_ar saturates a single down counter).",
+     "TWO partial shape matches, recorded rather than waved away: (1) nlfsr_w12_lsb_sr is a 12-deep shift chain with nonlinear feedback (train split), and the puzzle's tapped shift chain is also 12 deep, although the cohort-2 design's feedback and taps were not taken from it; (2) cohort 2 adds cascade and concatenation families (counter_cascade_mixed, counter_concat: casc_div10dn_ev12up_sr, casc_pre200up_tmr16dn_ar, casc_pre50up_dnsat10_ar, cat_hilo_4x12_sr, cat_hilo_8x8_en_ar, cat_hilo_dn_6x6_en_nr, cat_hml_4x4x4_en_ar), which share the CLASS of the puzzle's counter cascade already recorded in K2, though none shares its moduli."
+    ],
+    "how": "tools/s3/corpus.py designs() with cohort 2, and each design's out/s3/corpus/<name>/truth.json params (modulus, depth, form). The puzzle truth was not opened."
+   },
+   "effect": "the corpus the counter, shift and LFSR recognizers were tuned on now contains classes chosen because the regression set exposed them; corpus figures and regression figures are therefore not independent, and no cohort-2 design reproduces a puzzle shape except the two partial matches recorded above",
+   "evidence": [
+    {
+     "path": "tools/s3/corpus.py",
+     "sha256": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616"
+    },
+    {
+     "path": "out/s3/corpus/manifest.json",
+     "sha256": "c5b2ff283bb60b68947e2b86c80b714ee8cc96b5371ff79454eb0d6e582aa5a1"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/waufb9mpp.output",
+     "sha256": "3cb7ae3b8f940ff3669ceebb1717c58a5e3e17af502601424a0b72b2e7380ebe"
+    }
+   ]
+  },
+  {
+   "id": "K13",
+   "what": "the generalisation regression set is no longer held out, and a corpus HOLDOUT design had a threshold fitted to it",
+   "when": "2026-09-22",
+   "who": "counter.py, lfsr.py, shift.py, controls.py and verify.py (changes.jsonl C25); PC02 for the holdout fit",
+   "detail": "C25 records that out/s3/review_generalisation was consulted during development by counter.py (11 designs read at the start of its phase, names not listed), lfsr.py (C20), shift.py (PS04, PS07), the control layer's BDD prover (C21) and verify.py (C22); C26, C29 and C40 add more. Its counter, LFSR/CRC and shift figures are a regression measurement, not a generalisation estimate. Separately, review[2] found that RELOAD_DISTINCT = 4 was set on fsm_timer_ar, which was in the corpus HOLDOUT (PC02, now corrected); corpus.FITTED_ON moves it into train and the holdout rates were re-reported (changes.jsonl C41). Four further corpus holdout designs are named in the change log as MEASUREMENTS, not fits: tmr_up_autoreload_w16_ar (PC02), cnt_down_w36_load_ar (PC03), cnt_case_mod5_ud_ar (PC04), acc_w8_en_ar (PC06); their outcomes were read while the recognizer was being changed, so the holdout is a weaker estimate than an untouched set. The ten controls.py thresholds of C40 were chosen on two REGRESSION designs (scan_cnt8_ar, scan_mix_w12_ar).",
+   "effect": "after this round no uncontaminated generalisation set exists for counter, shift or lfsr. The out-of-sample estimate the reports quote is the synthetic corpus holdout (out/s3/honesty/holdout_rates.json), which is itself written by this project and whose cohort 2 came from the regression set's findings (K12).",
+   "evidence": [
+    {
+     "path": "tools/s3/corpus.py",
+     "sha256": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616"
+    },
+    {
+     "path": "out/s3/honesty/holdout_rates.json",
+     "sha256": "191db821e0edb398190ae2be45c14662c8de4d20991976d486d0ff9888eace4c"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/waufb9mpp.output",
+     "sha256": "3cb7ae3b8f940ff3669ceebb1717c58a5e3e17af502601424a0b72b2e7380ebe"
+    }
+   ]
+  },
+  {
+   "id": "K14",
+   "what": "crc12_d16_ar existed in both the development corpus and the held-out regression set",
+   "when": "2026-09-22",
+   "who": "the corpus agent (C23) added the corpus copy; found at integration (C25), decided by review[2] issue 6",
+   "detail": "Both are a CRC-12, poly 0x80F, 16 data bits, Galois, init 0; the RTL text differs (sha256 833d60c1... vs 18b2ca14...). Any regression LFSR/CRC figure that included it included a design that was also corpus training data. The corpus copy is now dropped (corpus.DROPPED, changes.jsonl C42) and the corpus train lfsr_crc figure was restated (items 50 -> 48, found and exact 48/48 = 1.0000); no holdout figure moves, because the design was in the train split. crc16_d16_ar shares only its name between the two sets (poly 98309 vs 101303).",
+   "effect": "one duplicate removed; the regression set as a whole is still not held out (K13)",
+   "evidence": [
+    {
+     "path": "tools/s3/corpus.py",
+     "sha256": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616"
+    },
+    {
+     "path": "out/s3/corpus/crc12_d16_ar/rtl.v",
+     "sha256": "833d60c1f833c242d7b0bebb1dd547c67f8aac1332c1f7dda28c97ea037acb50",
+     "missing": "not present when this record was refreshed"
+    },
+    {
+     "path": "out/s3/review_generalisation/designs/ref/crc12_d16_ar/rtl.v",
+     "sha256": "18b2ca14f4b17e5696e5562fbd5b5fb112bf1f7fbfe02f09d80283f290506e7d"
+    },
+    {
+     "path": "out/s3/honesty/holdout_rates.json",
+     "sha256": "191db821e0edb398190ae2be45c14662c8de4d20991976d486d0ff9888eace4c"
+    },
+    {
+     "path": "/private/tmp/claude-501/-Users-dave-Jane-Street-Reverse-ASIC/cf1d1cbd-8f35-4b75-a57d-8114770f25d8/tasks/waufb9mpp.output",
+     "sha256": "3cb7ae3b8f940ff3669ceebb1717c58a5e3e17af502601424a0b72b2e7380ebe"
+    }
+   ]
+  },
+  {
+   "id": "K15",
+   "what": "the SECOND generalisation regression set (out/s3/review_generalisation2) is no longer held out either: five change-log entries were fitted to five of its designs",
+   "when": "2026-09-22 / 2026-09-23",
+   "who": "controls.py (C40, C49), counter.py (C52, C53), lfsr.py (C57); moved into tools/s3/params.py unchanged by the integration round (I01, C49/C52/C53/C57)",
+   "detail": "K13 said 'the generalisation regression set' in the singular and named only out/s3/review_generalisation; the record contained no occurrence of 'review_generalisation2' at all, although K13's own last sentence ('the ten controls.py thresholds of C40 were chosen on two REGRESSION designs, scan_cnt8_ar and scan_mix_w12_ar') is about set 2, where both of those designs live. The five entries and the designs they were fitted to, each from the entry's own tuned_on / regression_set_used field: C40, the ten controls.py thresholds (CLOCK_GATE_*, MODE_SELECT*) -- scan_cnt8_ar and scan_mix_w12_ar; C49, MODE_SELECT_SHARE / MODE_SELECT_MIN_FLOPS / MODE_SELECT_MARGIN (the mode selector) -- scan_cnt8_ar and scan_mix_w12_ar, then corrected on the synthetic corpus; C52, the case-selected step (several constant steps under one enable) -- cnt_step12_w9_ar; C53, the quiescent / awake rule (a flop that moves only under the detected reset) -- cnt_bcd2_w8_ar; C57, the pin-poly CONVENTION for a programmable CRC (which probed setting to report) -- crc_poly4_modes_w16_ar. All five designs are in out/s3/review_generalisation2/designs/ref/ (checked). Nothing was retuned when the values of C49, C52, C53 and C57 moved into params.py; the fit happened where the entries say it did.",
+   "effect": "out/s3/review_generalisation2 is NOT a clean out-of-sample set for the clock-gate fold, the mode selector, the case-selected counter step, the quiescent/awake rule or the pin-poly convention, and its aggregate figures are a regression measurement, not a generalisation estimate -- the same status K13 gives set 1. Both regression sets are now contaminated; the only out-of-sample estimate any report may quote is the synthetic corpus holdout (out/s3/honesty/holdout_rates.json, itself written by this project: K12, K13). The 'no uncontaminated generalisation set' item under `open` therefore covers both sets, not one.",
+   "evidence": [
+    {
+     "path": "tools/s3/params.py",
+     "sha256": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68"
+    },
+    {
+     "path": "out/s3/review_generalisation2/designs/ref/scan_cnt8_ar/rtl.v",
+     "sha256": "f44aad45dac0a90e944177452ecf3679822586cd1134559fd87c714490be5317"
+    },
+    {
+     "path": "out/s3/review_generalisation2/designs/ref/scan_mix_w12_ar/rtl.v",
+     "sha256": "9718d4f15f8feab11d1f510bdd7378d76e81e93270f63c4aec663d57bfdc4ad9"
+    },
+    {
+     "path": "out/s3/review_generalisation2/designs/ref/cnt_step12_w9_ar/rtl.v",
+     "sha256": "05cfbbb465316b3ed1a44398a2111b7141601de46a014a2bfb8a558371d69d44"
+    },
+    {
+     "path": "out/s3/review_generalisation2/designs/ref/cnt_bcd2_w8_ar/rtl.v",
+     "sha256": "3cefe69d448a2a25d5e2d36ed0dfb5f4794528bb44c923b0b35ea1905542ca65"
+    },
+    {
+     "path": "out/s3/review_generalisation2/designs/ref/crc_poly4_modes_w16_ar/rtl.v",
+     "sha256": "e88ac6f3ca263eeb087fff694538450f4fe9dd5deb6790a285966d54808d6ba1"
+    }
+   ]
+  }
+ ],
+ "puzzle_report_must_state": [
+  "the puzzle is a known design; its evaluation is frozen code on a known design, not blind (K10, K9)",
+  "the counter and LFSR templates were exercised on puzzle-shaped synthetic cases (K1-K3)",
+  "puzzle register names and measurements reached recognizer authors (K4-K6)",
+  "no recognizer code ran on the puzzle before the freeze; three stub harness runs and a join probe did (K7)",
+  "TEMPO's 1.000 is a FITTED development figure; the out-of-sample estimate is the synthetic corpus holdout, and after this round no uncontaminated generalisation set exists for counter, shift or lfsr (K13)",
+  "NEITHER generalisation regression set is held out: out/s3/review_generalisation (K13) and out/s3/review_generalisation2 (K15, five entries fitted to five of its designs). A figure from either set is a regression measurement and must be labelled as one."
+ ],
+ "open": [
+  "optionally re-run the corpus evaluation without the K2 families to show recognizer decisions do not hinge on them (review[1] issue 4)",
+  "remove puzzle-derived specifics from future corpus requests and from prompts to recognizer agents (review[1] issues 4 and 5)",
+  "the frozen evaluation of the puzzle runs >= 5 permutations and reports their spread (changes.jsonl C14)",
+  "review[2] issue 0's second half: draw a fresh held-out set that no recognizer author has seen, or state in the report that none exists. This now covers BOTH regression sets: out/s3/review_generalisation (K13) and out/s3/review_generalisation2 (K15)."
+ ],
+ "refreshed": {
+  "date": "2026-09-23",
+  "by": "reporting/provenance agent (the freeze round's provenance artefacts)",
+  "evidence_hashes_corrected": [
+   {
+    "where": [
+     "K3",
+     "K9"
+    ],
+    "path": "docs/S3_DESIGN.md",
+    "was": "b86e484f2ac46e578bb2eb551a8bad4803999f8c914ddf2ae3aa16c7cdec0e4a",
+    "now": "d783a9c7d365628d50e5e1ee84b6e476c5ec962ac08f747f40930251d7bb4adf"
+   }
+  ],
+  "items_added": [
+   "K15"
+  ],
+  "items_added_this_pass": [],
+  "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
+  "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+ },
+ "refreshed_history": [
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": "K13",
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "07290c125848c98647d9c5944aa3204fe4bbafc0aa852db6df9dccb52b7a609f",
+     "now": "67e03a1bb8b6c410756179f2a7490a164cda8761939f17e0df5008e684f402c9"
+    },
+    {
+     "where": "K14",
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "07290c125848c98647d9c5944aa3204fe4bbafc0aa852db6df9dccb52b7a609f",
+     "now": "67e03a1bb8b6c410756179f2a7490a164cda8761939f17e0df5008e684f402c9"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present."
+  },
+  {
+   "date": "2026-09-22",
+   "by": "integration of the review fixes (second pass)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K2",
+      "K12",
+      "K13",
+      "K14"
+     ],
+     "path": "tools/s3/corpus.py",
+     "was": "8e59651e1824e851384872a2eaa8364ff3b0699ce5e1fffc18f88079d3c6b56d",
+     "now": "7ef7d704af6c5dcf21524efd1d3e58d5854d2c707de996c20824eab5fc4a38e6",
+     "why": "this integration round edited the file: the corpus's reference result now claims control.hold, which schema v2 requires of a counter and a shift_register, and a reference the harness then refutes on the hold obligation is recorded as not expressible in v2 (changes.jsonl C59). What the corpus CONTAINS is unchanged; only the builder's reference output is."
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present.",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "bc3df8181b131c7a5aa8e32c146fc5005cde779c164c967e164df11c0790187a",
+     "now": "e588253ac0e02244644769f3a093e9dd4b6b4b4b5346d9e1fdeba7b610d9a611"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "67e03a1bb8b6c410756179f2a7490a164cda8761939f17e0df5008e684f402c9",
+     "now": "af59abf23a2eee18c09da92b8a5f10e57100c7b6d18065a2cabd04ce723da92c"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "af59abf23a2eee18c09da92b8a5f10e57100c7b6d18065a2cabd04ce723da92c",
+     "now": "daf3f8a1364e0999faea3ab40db576c269a27a925a5440cbf2eb665038ac1e44"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K2",
+      "K12",
+      "K13",
+      "K14"
+     ],
+     "path": "tools/s3/corpus.py",
+     "was": "7ef7d704af6c5dcf21524efd1d3e58d5854d2c707de996c20824eab5fc4a38e6",
+     "now": "8a82aac0fc6fdce33fe233eb492b041954d39cf34c29b9bf997050d33ab06662"
+    },
+    {
+     "where": [
+      "K2",
+      "K12"
+     ],
+     "path": "out/s3/corpus/manifest.json",
+     "was": "58f8763327e307711dd9f2ac5c19043ec8737522d366337db42bad5a3cd960d0",
+     "now": "0a000b1dfdb54b406baea7ba5005f689870a8e005b8c0fe4e3b955725daf05ff"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "daf3f8a1364e0999faea3ab40db576c269a27a925a5440cbf2eb665038ac1e44",
+     "now": "6d813dac1b50c1dc73ee7b7d1a7f14e9939b5f331b8c620cfd896f75efd70c26"
+    },
+    {
+     "where": "K14",
+     "path": "out/s3/corpus/crc12_d16_ar/rtl.v",
+     "was": "833d60c1f833c242d7b0bebb1dd547c67f8aac1332c1f7dda28c97ea037acb50",
+     "now": null,
+     "note": "the path no longer exists"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": "K14",
+     "path": "out/s3/corpus/crc12_d16_ar/rtl.v",
+     "was": "833d60c1f833c242d7b0bebb1dd547c67f8aac1332c1f7dda28c97ea037acb50",
+     "now": null,
+     "note": "the path no longer exists"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K2",
+      "K12",
+      "K13",
+      "K14"
+     ],
+     "path": "tools/s3/corpus.py",
+     "was": "8a82aac0fc6fdce33fe233eb492b041954d39cf34c29b9bf997050d33ab06662",
+     "now": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616"
+    },
+    {
+     "where": [
+      "K2",
+      "K12"
+     ],
+     "path": "out/s3/corpus/manifest.json",
+     "was": "0a000b1dfdb54b406baea7ba5005f689870a8e005b8c0fe4e3b955725daf05ff",
+     "now": "c5b2ff283bb60b68947e2b86c80b714ee8cc96b5371ff79454eb0d6e582aa5a1"
+    },
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "e588253ac0e02244644769f3a093e9dd4b6b4b4b5346d9e1fdeba7b610d9a611",
+     "now": "1a8b804cb03b86f76d5da040f91b2b35246c2a00921e63b2c08ae3639531c708"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "6d813dac1b50c1dc73ee7b7d1a7f14e9939b5f331b8c620cfd896f75efd70c26",
+     "now": "191830f45beef4d13b9c7c64225e1bfed6077f811f38b8de0314f0d4271028a6"
+    }
+   ],
+   "items_added": [
+    "K15"
+   ],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-22",
+   "by": "reporting/provenance agent (review[2] issue 5)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "1a8b804cb03b86f76d5da040f91b2b35246c2a00921e63b2c08ae3639531c708",
+     "now": "9846f2a5a12ca234c35e45b0eac8904a998c94a3449971dc620221180d13777f"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "191830f45beef4d13b9c7c64225e1bfed6077f811f38b8de0314f0d4271028a6",
+     "now": "2575ca233437fefafe64f40424715e43aa7553b5c79e36325cb1fee2717ad134"
+    },
+    {
+     "where": "K15",
+     "path": "tools/s3/params.py",
+     "was": "45a6a29651ef4771ab5d7ea17c2c1a5ebd4691bc417792f2ddd343d4173439c2",
+     "now": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68"
+    }
+   ],
+   "items_added": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8).",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-23",
+   "by": "reporting/provenance agent (the freeze round's provenance artefacts)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "9846f2a5a12ca234c35e45b0eac8904a998c94a3449971dc620221180d13777f",
+     "now": "b805df51ac66be1f0eafee27d029e9d4edab23a3c63b8e023c2da106e0a3b3a4"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "2575ca233437fefafe64f40424715e43aa7553b5c79e36325cb1fee2717ad134",
+     "now": "8f2141e47c74cacbccba6b6aab41edc806879d9d808a3649eccb4dc9c671e26b"
+    }
+   ],
+   "items_added": [
+    "K15"
+   ],
+   "items_added_this_pass": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  },
+  {
+   "date": "2026-09-23",
+   "by": "reporting/provenance agent (the freeze round's provenance artefacts)",
+   "evidence_hashes_corrected": [
+    {
+     "where": [
+      "K3",
+      "K9"
+     ],
+     "path": "docs/S3_DESIGN.md",
+     "was": "b805df51ac66be1f0eafee27d029e9d4edab23a3c63b8e023c2da106e0a3b3a4",
+     "now": "b86e484f2ac46e578bb2eb551a8bad4803999f8c914ddf2ae3aa16c7cdec0e4a"
+    },
+    {
+     "where": [
+      "K13",
+      "K14"
+     ],
+     "path": "out/s3/honesty/holdout_rates.json",
+     "was": "8f2141e47c74cacbccba6b6aab41edc806879d9d808a3649eccb4dc9c671e26b",
+     "now": "191db821e0edb398190ae2be45c14662c8de4d20991976d486d0ff9888eace4c"
+    }
+   ],
+   "items_added": [
+    "K15"
+   ],
+   "items_added_this_pass": [],
+   "note": "freeze.record_evidence() re-hashes every path this record cites; freeze write() refuses on a stale one unless --force, and FREEZE.json records the result as records_evidence. A change-log evidence hash that moved is reported, not blocked: a change-log entry's evidence is a snapshot of the file as it was, while this record describes the present. This writer is idempotent: a second pass that finds nothing to correct leaves the record unchanged (review[1] issue 8). `date` and `by` are THIS pass's, taken when the writer runs (they were a hardcoded 2026-09-22 and the previous round's name until 2026-09-23); `items_added` is every item this writer has introduced, carried across passes, and `items_added_this_pass` is what this run introduced.",
+   "normalised": "2026-09-22 (review[1] issue 8): the corrections are collapsed by (path, was, now) with every citing item under 'where', and this writer is idempotent"
+  }
+ ],
+ "closed": [
+  {
+   "was": "a rebuild of out/s3/corpus (python -m tools.s3.corpus) is needed for the built files to match corpus.py's FITTED_ON and DROPPED; corpus.manifest() corrects them for readers in the meantime",
+   "closed_by": "changes.jsonl I04 (the integration round rebuilt out/s3/corpus: 168 designs, every netlist and every truth_hash byte-identical) and T04 (the three toggle designs rebuilt under the flag rule of 2026-09-23)",
+   "checked": {
+    "corpus.manifest()['corrections']": {
+     "dropped": {},
+     "moved": {},
+     "rebuild_needed": false
+    }
+   },
+   "when": "2026-09-23"
+  }
+ ]
+}

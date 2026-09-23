@@ -1,0 +1,76 @@
+S3 honesty table (retrace-s3-honesty-table/1), seed 20260923, libraries ['sky130', 'ihp']
+code: controls.py bfcff2ad, corpus.py f4b70e14, counter.py 00721376, group.py cfec4232, lfsr.py 5e9d5179, netlist.py b353bfff, params.py f7c7ce73, recognize.py 15b72f58, schema.py 0d5f1644, score.py 350cf55a, shift.py c7a01d97, verify.py f08007dc
+code state: measured on THIS tree
+
+FOUND vs VERIFIED per kind (found = the recognizer's answer matched the register; verified = it matched a structure the HARNESS proved)
+
+tempo: 5 permutations, 1 distinct answer(s) up to ids, from out/s3/eval/runs/tempo-20260923T053247Z-ef7fc630631b.json (2026-09-23T05:32:47+00:00)
+  IN-SAMPLE: TEMPO is the development design and every threshold was chosen on it; folded in from a harness run record (python -m tools.s3.run --design tempo --permutations K), not re-run here
+  kind              regs  found  verif  exact  foundR  verifR  exactR     bitF1  ordKap  ordCov    strs  ver   unverified by reason
+  shift_register       2      2      1      2   1.000   0.500   1.000     1.000   1.000   1.000       2    1   hold 1
+  counter             22     22      9     20   1.000   0.409   0.909     0.992   1.000   1.000      22    9   hold 13
+  lfsr_crc             2      2      2      2   1.000   1.000   1.000     1.000   1.000   1.000       2    2   -
+  synchronizer        11     11     11     11   1.000   1.000   1.000     1.000   1.000   1.000       3    3   -
+  verified structures 15: vacuous hold 1; with a load case 4; load_hidden_share mean  0.587 max  0.971 over 4 (mean  0.157 over all 15 verified)
+  of the verified: 15 carry an unchecked param, 0 a dead bit; 6 carry no per-bit liveness obligation; lfsr polynomial certified 0/2; unchecked names {'load': 9, 'lanes_unordered': 4, 'form': 2, 'poly': 2, 'serial_in': 1}
+  params: all 107/111 ( 0.964); CERTIFIED 43/43 ( 1.000); TRANSCRIBED 64/68 ( 0.941)
+  unverified structures by reason: {'unscored kind': 196, 'hold': 14}
+  grouping over 1 partition(s): AMI mean  0.981 median  0.981; ARI mean  0.972 median  0.972; baselines singletons AMI  0.000 ARI  0.000, random blocks AMI -0.001 ARI -0.000
+  over the 5 permutations: counter.found_r [1.0]; counter.verified_found_r [0.4090909090909091]; params_certified_accuracy [1.0]; params_certified_compared [43.0]; params_transcribed_accuracy [0.9411764705882353]; params_transcribed_compared [68.0]; verified [15.0]; verified_load_hidden_share_max [0.9712]; verified_load_hidden_share_mean [0.58705]; verified_vacuous_hold [1.0]; verified_with_dead_bits [0.0]; verified_with_unchecked_params [15.0]
+
+corpus_train: 128 designs x 2 libraries = 256 evaluations (0 errors)
+  IN-SAMPLE: the fitted half of the synthetic development corpus
+  kind              regs  found  verif  exact  foundR  verifR  exactR     bitF1  ordKap  ordCov    strs  ver   unverified by reason
+  shift_register      66     48     44     48   0.727   0.667   0.727     0.980   1.000   1.000      56   52   hold 4
+  counter            178    160    139    156   0.899   0.781   0.876     0.984   1.000   1.000     180  149   hold 11, vacuous 10, template 10
+  lfsr_crc            48     48     48     48   1.000   1.000   1.000     1.000   0.813   0.859      48   48   -
+  synchronizer        22     22     22     22   1.000   1.000   1.000     1.000   1.000   1.000      14   14   -
+  verified structures 263: vacuous hold 24; with a load case 19; load_hidden_share mean  0.293 max  0.763 over 19 (mean  0.021 over all 263 verified)
+  of the verified: 263 carry an unchecked param, 0 a dead bit; 114 carry no per-bit liveness obligation; lfsr polynomial certified 38/48; unchecked names {'load': 149, 'lanes_unordered': 66, 'serial_in': 52, 'form': 48, 'n_inputs': 26, 'poly': 4, 'k_steps': 2, 'bit_order': 2}
+  params: all 1115/1118 ( 0.997); CERTIFIED 741/744 ( 0.996); TRANSCRIBED 374/374 ( 1.000)
+  unverified structures by reason: {'unscored kind': 163, 'hold': 15, 'vacuous': 10, 'template': 10}
+  grouping over 256 partition(s): AMI mean  0.864 median  1.000; ARI mean  0.863 median  1.000; baselines singletons AMI  0.008 ARI  0.008, random blocks AMI  0.638 ARI  0.637
+
+corpus_holdout: 40 designs x 2 libraries = 80 evaluations (0 errors)
+  OUT-OF-SAMPLE: the synthetic corpus holdout, this project's own generator (the only out-of-sample estimate in this table)
+  kind              regs  found  verif  exact  foundR  verifR  exactR     bitF1  ordKap  ordCov    strs  ver   unverified by reason
+  shift_register      26     16     16     14   0.615   0.615   0.538     0.987   1.000   1.000      20   20   -
+  counter             40     36     26     36   0.900   0.650   0.900     0.997   1.000   1.000      40   28   vacuous 6, hold 4, template 2
+  lfsr_crc            14     14     14     14   1.000   1.000   1.000     1.000   0.576   0.637      14   14   -
+  synchronizer        10      8      8      4   0.800   0.800   0.400     0.909   1.000   1.000      10   10   -
+  verified structures 72: vacuous hold 8; with a load case 4; load_hidden_share mean  0.254 max  0.264 over 4 (mean  0.014 over all 72 verified)
+  of the verified: 72 carry an unchecked param, 0 a dead bit; 44 carry no per-bit liveness obligation; lfsr polynomial certified 10/14; unchecked names {'lanes_unordered': 30, 'load': 28, 'serial_in': 20, 'form': 14, 'n_inputs': 10, 'bit_order': 2, 'poly': 2, 'k_steps': 2}
+  params: all 296/300 ( 0.987); CERTIFIED 178/180 ( 0.989); TRANSCRIBED 118/120 ( 0.983)
+  unverified structures by reason: {'unscored kind': 53, 'vacuous': 6, 'hold': 4, 'template': 2}
+  grouping over 80 partition(s): AMI mean  0.845 median  1.000; ARI mean  0.846 median  1.000; baselines singletons AMI  0.025 ARI  0.025, random blocks AMI  0.701 ARI  0.702
+
+gen1: 33 designs x 2 libraries = 66 evaluations (0 errors)
+  REGRESSION SET 1 (out/s3/review_generalisation): consulted while building the recognizer (contamination K13), so not a generalisation estimate
+  kind              regs  found  verif  exact  foundR  verifR  exactR     bitF1  ordKap  ordCov    strs  ver   unverified by reason
+  shift_register      28     22     20     22   0.786   0.714   0.786     1.000   1.000   1.000      24   22   hold 2
+  counter             34     32     26     30   0.941   0.765   0.882     1.000   1.000   1.000      32   26   hold 4, vacuous 2
+  lfsr_crc            26     26     26     26   1.000   1.000   1.000     1.000   0.895   0.925      26   26   -
+  synchronizer        10     10     10     10   1.000   1.000   1.000     1.000   1.000   1.000       4    4   -
+  verified structures 78: vacuous hold 0; with a load case 2; load_hidden_share mean  0.126 max  0.128 over 2 (mean  0.003 over all 78 verified)
+  of the verified: 78 carry an unchecked param, 0 a dead bit; 52 carry no per-bit liveness obligation; lfsr polynomial certified 24/26; unchecked names {'load': 26, 'lanes_unordered': 26, 'form': 26, 'serial_in': 22, 'n_inputs': 16}
+  params: all 328/328 ( 1.000); CERTIFIED 208/208 ( 1.000); TRANSCRIBED 120/120 ( 1.000)
+  unverified structures by reason: {'unscored kind': 28, 'hold': 6, 'vacuous': 2}
+  grouping over 66 partition(s): AMI mean  0.918 median  1.000; ARI mean  0.916 median  1.000; baselines singletons AMI  0.000 ARI  0.000, random blocks AMI  0.784 ARI  0.784
+
+gen2: 35 designs x 2 libraries = 70 evaluations (0 errors)
+  REGRESSION SET 2 (out/s3/review_generalisation2): five designs of it were used to choose ten controls.py thresholds and four conventions (changes.jsonl C40, C49, C52, C53, C57), so not a generalisation estimate either
+  kind              regs  found  verif  exact  foundR  verifR  exactR     bitF1  ordKap  ordCov    strs  ver   unverified by reason
+  shift_register      34     22     18     16   0.647   0.529   0.471     0.987   1.000   1.000      28   24   unsupported clock 2, hold 2
+  counter             54     52     45     52   0.963   0.833   0.963     0.991   1.000   1.000      52   45   template 6, vacuous 1
+  lfsr_crc            24     24     24     24   1.000   1.000   1.000     1.000   0.916   1.000      24   24   -
+  synchronizer         4      4      4      4   1.000   1.000   1.000     0.667   1.000   1.000       6    6   -
+  verified structures 99: vacuous hold 6; with a load case 7; load_hidden_share mean  0.252 max  0.257 over 7 (mean  0.018 over all 99 verified)
+  of the verified: 99 carry an unchecked param, 0 a dead bit; 54 carry no per-bit liveness obligation; lfsr polynomial certified 24/24; unchecked names {'load': 45, 'lanes_unordered': 30, 'form': 24, 'serial_in': 24, 'n_inputs': 4}
+  params: all 430/442 ( 0.973); CERTIFIED 292/298 ( 0.980); TRANSCRIBED 138/144 ( 0.958)
+  unverified structures by reason: {'unscored kind': 71, 'template': 6, 'unsupported clock': 2, 'hold': 2, 'vacuous': 1}
+  grouping over 70 partition(s): AMI mean  0.895 median  1.000; ARI mean  0.890 median  1.000; baselines singletons AMI  0.000 ARI  0.000, random blocks AMI  0.491 ARI  0.497
+
+Reason buckets: hold = hold: control.hold is required for a counter and a shift_register and either was not claimed or the hold region could not be discharged (an opaque load case may not be what empties it); template = template: a harness-built template does not fit the structure's shape -- the extent and liveness rules (counter width >= 2 with every claimed bit live, shift depth >= 3, synchronizer stages >= 2) or a constant / word-independent template; unscored kind = unscored kind: not one of the four STRUCTURE_KINDS, so it is never verified; unsupported clock = unsupported clock: the harness does not model this flop's clock path, so it proves nothing about it; vacuous = vacuous: a named case is unsatisfiable with the reset and async controls inactive, so it would be checked nowhere
+
+LIMITATION: found and verified are reported separately because the harness certifies fewer structures than the recognizer finds. On the development design the gap is the hold obligation: the count condition pins a reload register whose complement is not a bounded set of cubes, so no legal set of VERIFIED cases (the defining case, when_down and the reset cases) covers the space and the hold region cannot be discharged -- and an opaque load case may not be the thing that empties it. This is an ACCEPTED limitation of this freeze, not a recognizer miss and not a contract to widen (lead decision, 2026-09-23).
+PARAMS: a compared parameter is CERTIFIED only when the harness VERIFIED the matched structure and named the parameter in the verdict's params_checked; every other compared parameter is TRANSCRIBED -- copied from the recognizer's answer and never checked

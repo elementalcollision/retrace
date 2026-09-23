@@ -1,0 +1,224 @@
+{
+ "schema": "retrace-s3-holdout-rates/2",
+ "created": "2026-09-23T05:32:33+00:00",
+ "generated_by": "out/s3/honesty/holdout_rates.py",
+ "source": {
+  "path": "out/s3/honesty/corpus_holdout_eval.json",
+  "sha256": "02cb7c0dfe3a95c5a2414bd90817d776a5d42e4a44dcf14d7e7d9bf710d05619",
+  "eval_schema": "retrace-s3-review-generalisation2-eval/1",
+  "aggregation_id": "per_register_and_unit",
+  "seed": 20260922,
+  "code_sha256_16": {
+   "recognize.py": "15b72f5864f64ead",
+   "controls.py": "bfcff2ad45cd0977",
+   "shift.py": "c7a01d973c51c7bb",
+   "counter.py": "0072137626ccc60b",
+   "lfsr.py": "5e9d5179897b6f71",
+   "group.py": "cfec4232c61f1999",
+   "params.py": "f7c7ce733333dddb",
+   "netlist.py": "b353bfff3f867ab8",
+   "verify.py": "f08007dc4fd39059",
+   "score.py": "350cf55ad364cf98",
+   "run.py": "270579167d830a7b",
+   "corpus.py": "f4b70e14fe6026e8",
+   "schema.py": "0d5f16447d77ff14"
+  },
+  "runs": 336,
+  "code_sha256": {
+   "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+   "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+   "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+   "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+   "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+   "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+   "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+   "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+   "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19",
+   "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
+   "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+   "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+   "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add"
+  },
+  "code_matches_tree": true,
+  "code_moved_since_evaluation": [],
+  "recognizer_code_now": {
+   "tools/s3/__init__.py": "dda2b99431e66ed0d0ffa828773c9dcdd0557e10de4b3c6f719813060dc0fcbf",
+   "tools/s3/controls.py": "bfcff2ad45cd09771659ac95cc7ee56c6c992f473cab84438811a12821cd015a",
+   "tools/s3/corpus.py": "f4b70e14fe6026e82c03932bfaa2eeadc15747f1dc3333005303b16c60c76616",
+   "tools/s3/counter.py": "0072137626ccc60baca6b12a7e8e1a824dd9028ad479ee2b305ec8df2e9197a0",
+   "tools/s3/freeze.py": "4a3a78a4e97470e687a4de45122b4909390df750b967195ddc7ced7be522b8cc",
+   "tools/s3/group.py": "cfec4232c61f19995142fead96a17c5cc99c84cc0e9ba8e22b9551da667c2b82",
+   "tools/s3/lfsr.py": "5e9d5179897b6f715c9e0b0729100e07dd4b575d85d0e3a888fb93575408347b",
+   "tools/s3/netlist.py": "b353bfff3f867ab8caf2758d74851af86fa6dae170a88ab9ce387d528ecebc7b",
+   "tools/s3/params.py": "f7c7ce733333dddbe76e8a3b80ce1aa20ba4a48a5f68fe3d97f24e9fe8925d68",
+   "tools/s3/recognize.py": "15b72f5864f64ead55ff8401f05d24b00152c6e2715f7f9b743d102d49145120",
+   "tools/s3/run.py": "270579167d830a7b6d0eb89a29547f355149f06c28629f3b069bbdad4773e8cd",
+   "tools/s3/schema.py": "0d5f16447d77ff14d3e3c5ff271e29e06a6040a657e7f2d970167026926e4add",
+   "tools/s3/score.py": "350cf55ad364cf98eb994b6a7732c966e8b68a1dc0ea17f0df2db525bf0347f8",
+   "tools/s3/shift.py": "c7a01d973c51c7bbe78310b88d9c5ce429bdb74d85515d0640f6e7240c0a3af4",
+   "tools/s3/thirdparty.py": "51b6088f775769d0ffadae46e1f405eb12a00518b8b841d47d65535d2058bb0a",
+   "tools/s3/truth_puzzle.py": "b2d4b1dab6e7e4eb9b3e7eef881f9ee73ffa0aa37e0a65125928cb6105545c92",
+   "tools/s3/truth_tempo.py": "909e1ac7b5078f0b5a68b96e7e49ffc21abd5d5f6727a9ee941268e57441b5ca",
+   "tools/s3/verify.py": "f08007dc4fd39059016c4a5876addbe1608e8a339efa2cf273fca09c17b50c19"
+  },
+  "note": "code_sha256 is the FULL hash of every file the evaluation recorded, taken from the tree it still matched when these rates were derived; tools/s3/score.py refuses to quote this document unless every file of score.OUT_OF_SAMPLE_SOURCES still hashes that way, so a later change to the recognizer, verify.py, corpus.py or score.py withholds the estimate instead of ageing it silently (review[1] issues 0-2)."
+ },
+ "split": {
+  "rule": "tools/s3/corpus.py splits(): per (cohort, family), sha256(name) order, the first (n + 1) // 4 held out, then every corpus.FITTED_ON design forced into train; corpus.DROPPED designs are not in the corpus at all. docs/S3_DESIGN.md section 4.4 states the same rule and the in-sample / out-of-sample protocol.",
+  "designs": 168,
+  "holdout_designs": 40,
+  "train_designs": 128,
+  "corrections": {
+   "dropped": {},
+   "moved": {},
+   "rebuild_needed": false
+  }
+ },
+ "aggregation": "one item per structure-kind truth register, except a synchronizer register of a declared chain unit, which is counted through its unit, plus one item per declared structure-kind unit; found = matched a harness-verified structure of an accepted kind at IoU > 0.5; exact = equal flop sets and verified; both libraries pooled (a design contributes twice). This is review[2]'s own aggregation, and the one every published holdout figure has used.",
+ "holdout": {
+  "runs": 80,
+  "designs": 40,
+  "per_kind": {
+   "shift_register": {
+    "items": 30,
+    "found": 20,
+    "exact": 18,
+    "found_unverified": 0,
+    "found_rate": 0.6667,
+    "exact_rate": 0.6
+   },
+   "counter": {
+    "items": 44,
+    "found": 28,
+    "exact": 28,
+    "found_unverified": 10,
+    "found_rate": 0.6364,
+    "exact_rate": 0.6364
+   },
+   "lfsr_crc": {
+    "items": 14,
+    "found": 14,
+    "exact": 14,
+    "found_unverified": 0,
+    "found_rate": 1.0,
+    "exact_rate": 1.0
+   },
+   "synchronizer": {
+    "items": 6,
+    "found": 6,
+    "exact": 4,
+    "found_unverified": 0,
+    "found_rate": 1.0,
+    "exact_rate": 0.6667
+   }
+  },
+  "false_positive_structures": {
+   "counter": 2,
+   "synchronizer": 4
+  },
+  "grouping": {
+   "ami_mean": 0.8453,
+   "ami_median": 1.0
+  }
+ },
+ "train": {
+  "runs": 256,
+  "designs": 128,
+  "per_kind": {
+   "shift_register": {
+    "items": 72,
+    "found": 50,
+    "exact": 50,
+    "found_unverified": 4,
+    "found_rate": 0.6944,
+    "exact_rate": 0.6944
+   },
+   "counter": {
+    "items": 196,
+    "found": 150,
+    "exact": 143,
+    "found_unverified": 22,
+    "found_rate": 0.7653,
+    "exact_rate": 0.7296
+   },
+   "lfsr_crc": {
+    "items": 48,
+    "found": 48,
+    "exact": 48,
+    "found_unverified": 0,
+    "found_rate": 1.0,
+    "exact_rate": 1.0
+   },
+   "synchronizer": {
+    "items": 20,
+    "found": 16,
+    "exact": 14,
+    "found_unverified": 0,
+    "found_rate": 0.8,
+    "exact_rate": 0.7
+   }
+  },
+  "false_positive_structures": {
+   "counter": 14,
+   "shift_register": 2
+  },
+  "grouping": {
+   "ami_mean": 0.8641,
+   "ami_median": 1.0
+  }
+ },
+ "holdout_as_built": {
+  "runs": 80,
+  "designs": 40,
+  "per_kind": {
+   "shift_register": {
+    "items": 30,
+    "found": 20,
+    "exact": 18,
+    "found_unverified": 0,
+    "found_rate": 0.6667,
+    "exact_rate": 0.6
+   },
+   "counter": {
+    "items": 44,
+    "found": 28,
+    "exact": 28,
+    "found_unverified": 10,
+    "found_rate": 0.6364,
+    "exact_rate": 0.6364
+   },
+   "lfsr_crc": {
+    "items": 14,
+    "found": 14,
+    "exact": 14,
+    "found_unverified": 0,
+    "found_rate": 1.0,
+    "exact_rate": 1.0
+   },
+   "synchronizer": {
+    "items": 6,
+    "found": 6,
+    "exact": 4,
+    "found_unverified": 0,
+    "found_rate": 1.0,
+    "exact_rate": 0.6667
+   }
+  },
+  "false_positive_structures": {
+   "counter": 2,
+   "synchronizer": 4
+  },
+  "grouping": {
+   "ami_mean": 0.8453,
+   "ami_median": 1.0
+  }
+ },
+ "caveats": [
+  "The corpus is SYNTHETIC and was written by the same project as the recognizer; several of its classes (cohort 2) were added because the generalisation regression set showed them missing (changes.jsonl C23, C31). It is the best out-of-sample estimate that survives this round, not an independent one.",
+  "The generalisation regression sets (out/s3/review_generalisation, review_generalisation2) are NO LONGER held out: counter.py, lfsr.py, shift.py, controls.py and verify.py all consulted them (changes.jsonl C25).",
+  "TEMPO is the development design: every TEMPO figure is in-sample. Four recognizer fixes were traced from TEMPO misses by truth name (changes.jsonl C27-C30), and PC03, PC06, PC07, PC09, C01-C06, C10 and C21(d) were selected on TEMPO.",
+  "These rates come from ONE seeded corpus evaluation; they carry no confidence interval.",
+  "They describe the recognizer AND the harness verifier as of source.code_sha256: 'found' means the harness verified the structure, so a change to tools/s3/verify.py moves them as surely as a change to a recognizer module (review[1] issue 2).",
+  "THE false_positive_structures COLUMN OVERSTATES; found / exact and their denominators do NOT. out/s3/review_generalisation2/evaluate.py's outcomes() builds its item list from truth registers whose kind is in STRUCTURE_KINDS, so a 'flag' register's alt_kinds are never consulted. Under the truth's TOGGLE_RULE a 1-bit toggle is kind 'flag' with alt_kinds ['counter'] -- the truth EXPLICITLY ACCEPTS a counter over it -- yet such a prediction matches no item there and is scored a false positive. Counted on the evaluation this document was derived from, as false-positive structures of width 1 lying entirely in one truth register of kind 'flag': holdout 2 of 6, train 10 of 16. The overstatement is in the CONSERVATIVE direction. tools/s3/score.py -- the scorer every published table comes from -- does not make this error: score.Truth builds accepts from alt_kinds for EVERY truth register, a flag included. The scoring rule is left as it is on purpose: changing it would move a published out-of-sample number without a lead decision (changes.jsonl T04, T14)."
+ ]
+}
