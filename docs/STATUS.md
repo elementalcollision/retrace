@@ -17,7 +17,7 @@
 | **Answer (V8)** | **Solved. On success the chip prints `(* TWO STARS *)`** (`docs/SOLUTION.md`, `answer/solution.vcd`). Two independent routes agree bit for bit on the only solution: (A) the exact rules derived from the proven RTL, solved with z3 and enumerated to UNSAT (`tools/solve/starbattle.py`, `docs/SOLVE_ANALYTICAL.md`); (B) blind SymbiYosys search on the extracted netlist, 4 engines, found at step 123 in 4-12 s, then no differing sequence to depth 135 (`tools/solve/formal_solve.py`, `docs/SOLVE_FORMAL.md`). A SAT lemma on the netlist (enable low before the decision changes no state) extends uniqueness to every input pattern (`test/test_uniqueness.py`). Confirmed in three models (netlist with PDK models in Icarus, netlist as Liberty logic in Verilator, recovered RTL) and by an independent lead replay with enable gaps and wrong bits during the gaps. |
 | **TEMPO LVS (G6)** | **Done.** The extractor is technology-independent (`tools/retrace/tech.py`, `SKY130_HD` byte-identical to before, `IHP_SG13CMOS5L` new) and checks TEMPO's sign-off GDS (`runs/wokwi`, 62,151 instances) against its own DEF, netlist and LEF in ~20 s: placements 62,151/62,151, nets 35,542/35,542 vs DEF and vs `nl.v`, pins vs LEF (52 masters), sanity, cell geometry 51/51; KLayout agrees 35,543/35,543. Six planted faults, one per failure class, are permanent tests and each is reported where it was planted (`tools/tempo/faults.py`); the supplies are checked since 2026-09-21 (`docs/TEMPO_LVS.md` §4e). The pins check now also compares geometry per pin name (d2: 553 LEF rectangles, 0 misplaced; swapped labels fail it), closing the name-set blind spot (`docs/TEMPO_LVS.md` §4c). **In TEMPO's CI** since 2026-09-19 (`tempo/.github/workflows/lvs.yaml`, after every sign-off and on demand; first run 35438357943 on the CI-built `v0.2-signoff` GDS: all checks pass, 11 passed / 1 skipped). |
 | **S3 structure recognition** | **Done (frozen, blind-evaluated).** `tools/s3/` recognises counters, shift registers, LFSR/CRCs, synchronizers and word grouping in an anonymous netlist; `verify.py` builds each kind's defining template itself and proves it under extent, liveness, coverage and hold obligations. Frozen in `232cfe6` with a 128-bit draw seed; 10 third-party Tiny Tapeout designs drawn after the freeze from an 84-design pool pre-registered by structure-blind criteria, labelled by the frozen labeller, run once each under 5 permutations (`out/s3/runs/`, hash-chained ledger). Blind: 59/94 registers found, 41 certified; 215 claims against 40 harness proofs; zero permutation variance. Report `docs/S3.md`, design `docs/S3_DESIGN.md`. Superseded by **Freeze 2** (`20e014987880`, `docs/S3.md` §17), which fixed four defects the evaluation exposed without touching the recognizer. |
-| Tests | **320 passed, 8 skipped, 0 failed** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI), S3 (`test_s3.py`, `test_s3_verify.py`), and the top-level-cut extractor tests (`test_topcuts.py`; its TEMPO test runs with `TEMPO_ROOT=out/s3/tempo_snapshot`). The record-location failure that Freeze 1's blind runs exposed is fixed in Freeze 2. |
+| Tests | **359 passed, 8 skipped, 0 failed** (~2 min): V1-V8, uniqueness lemma, messages, mutation smoke tests, layout figures, TEMPO LVS (21, including the planted faults; skipped without the TEMPO checkout), round trip (34; the 3 slow ones run with `RETRACE_ROUNDTRIP_RUN` set or in CI), S3 (`test_s3.py`, `test_s3_verify.py`), and the top-level-cut extractor tests (`test_topcuts.py`; its TEMPO test runs with `TEMPO_ROOT=out/s3/tempo_snapshot`). The record-location failure that Freeze 1's blind runs exposed is fixed in Freeze 2. |
 | Recon | PRD §2: sky130_fd_sc_hd, 728 logic cells, 92 flops, masters and pin labels intact, names stripped, `INTERNAL_*` marker strip at y = -52.72 on layer 200/0 |
 
 ## Finding (resolved): the puzzle was built with open_pdks `8afc8346`
@@ -172,13 +172,20 @@ Done (2026-09-21), after the review:
   `586f20c` in `lvs.yaml`; its LVS report on the v0.3-signoff layout is identical to the one at `0091088` apart
   from runtime and memory, `test_tempo.py` gives 20 passed / 1 skipped, and CI run 35862338455 (fire drill on)
   passed.
+* **S3 Freeze 3** (freeze `cd07cd0bce0d`, commit `50f320c`; `docs/S3.md` §17; change-log `F06`). A blind draw
+  can no longer offer a design an earlier evaluation has seen: `freeze.spent_designs()` (six sources, today
+  exactly freeze 1's ten) is recorded as `draw.excluded` under `freeze_hash` when a draw is recorded, so the draw
+  is reproducible; `freeze check` gains a count and a tripwire; `freeze write` refuses short draws and unreadable
+  evidence; `run.py` normalises `--design`. No draw recorded; nothing under `tools/retrace` changed, so TEMPO's
+  pin stands. Four review rounds, one defect each, all fixed with mutation-checked tests.
 
 Next, in priority order:
 
-1. **Before any further S3 evaluation**: make `tools/s3/thirdparty.py` `draw()` exclude freeze 1's ten
-   spent designs (contamination K16; it ranks over the whole candidate list today). Then the choice is a
-   second S3 slice (the shift-register handoff that caused 7 of 8 blind misses; the labeller's LFSR rules)
-   or stopping here.
+1. **Decide the next S3 step: a replication draw, a second slice, or stop.** The draw is now safe (Freeze 3,
+   above). A *replication* re-runs the frozen recognizer on a fresh draw from the 74 unseen candidates, which
+   attacks the report's binding limit (a 94-register denominator) without touching code. A *second slice* changes
+   the recognizer (the shift-register handoff behind 7 of 8 blind misses; the labeller's LFSR rules) and then
+   needs its own evaluation freeze with a draw.
 2. **A GF180MCU `Tech` table**: defer until there is a GF180 design with ground truth to check it against.
    S3 showed on sky130 that a DEF is not strictly needed (a published gate-level netlist plus the
    instance names in the layout gave exact truth); whether GF180 flows keep those names is unchecked.
