@@ -42,7 +42,7 @@ mkdir -p pdk/sky130_fd_sc_hd && for d in lef lib verilog gds; do \
   cp -rL ~/pdk-sky130/sky130A/libs.ref/sky130_fd_sc_hd/$d pdk/sky130_fd_sc_hd/; done
 .venv/bin/python -m pytest -q
 python3.12 -m venv ~/ttsetup/librelane-venv && ~/ttsetup/librelane-venv/bin/pip install librelane==3.0.14
-tools/roundtrip/ci.sh   # the round trip (needs Docker; see docs/ROUNDTRIP.md section 9), ~7 min
+tools/roundtrip/ci.sh   # the round trip (needs Docker; see docs/ROUNDTRIP.md section 9), ~6 min (338 s in the retained run)
 ```
 
 The TEMPO tests skip unless `TEMPO_ROOT` points at a TEMPO checkout with a sign-off run and

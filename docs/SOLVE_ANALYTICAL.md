@@ -16,18 +16,21 @@ Reproduce everything in this document with:
 ```
 .venv/bin/python -m tools.solve.starbattle             # self-test, derive, solve, validate
 .venv/bin/python -m tools.solve.starbattle --selftest   # only the RTL cross-checks
+.venv/bin/python -m tools.solve.rowcount_check          # section 4's directed row-count test
 ```
 
-`tools/solve/starbattle.py` is the single source of truth; this document narrates its
-output (`out/solve_a/full_run.log` has a full transcript of the run this document
-describes).
+`tools/solve/starbattle.py` is the single source of truth (section 4's directed test is
+`tools/solve/rowcount_check.py`, which drives its Icarus harness); this document narrates its
+output. Running it prints the full transcript; the log of the run this document describes
+was not kept.
 
 ## 1. Cell order (which counter value the k-th enabled cycle presents)
 
 Simulated `rec_counter` (`rtl_recovered/counter.v`) standalone from reset with `enable=1`
-held for 130 cycles (`out/solve_a/tb_counter.v` / `tb_counter.log`), printing `HI =
-{q_f01,q_f03,q_f02,q_f00}` and `LO = {q_f07,q_f04,q_f05,q_f06}` (the bit assemblies the
-counter's own next-state logic uses) at every enabled cycle. Result: the 121 enabled
+held for 130 cycles (`tools/solve/tb/tb_counter.v`, log `out/solve_a/tb_counter.log`),
+printing `HI = {q_f01,q_f03,q_f02,q_f00}` and `LO = {q_f07,q_f04,q_f05,q_f06}`
+(the bit assemblies the counter's own next-state logic uses) at every enabled cycle.
+Result: the 121 enabled
 cycles k = 0..120 present, in order, `(HI,LO) = (0,0),(0,1),...,(0,10),(1,0),...,(10,10)` —
 row-major, **row = HI, column = LO**, column fastest. `cnt_done` (`q_f08`) is 0 for every
 one of these 121 cycles and first becomes 1 the cycle after `(10,10)`. This is exactly the
@@ -42,8 +45,9 @@ against `cell_order()`/`counter_bits()` in `starbattle.py`, see `verify_cell_ord
 were transcribed verbatim from `array.v` into Python (`GROUP_A_HITS` in `starbattle.py`) and
 cross-checked against a **direct Icarus simulation of `rec_array.v`** that pulses `I=1` from
 an all-zero bin state at each of the 121 reachable `(HI,LO)` states and reads which bin's
-LSB fired (`out/solve_a/tb_array.v` / `tb_array.log`): **0 mismatches over all 121 states**,
-for both group A and the group-B/column decode (`verify_region_map_against_icarus()`).
+LSB fired (`tools/solve/tb/tb_array.v`, log `out/solve_a/tb_array.log`):
+**0 mismatches over all 121 states**, for both group A and the group-B/column decode
+(`verify_region_map_against_icarus()`).
 
 Region map (letters A-K = bins 0-10, row 0 at top, column 0 at left):
 
@@ -86,8 +90,8 @@ mismatches). So group B is literally "count of stars in this column."
 
 ## 4. `row_count_err` (f53): exact trigger, established by directed simulation
 
-(This flag and its two helper flops were first recovered as `row_count_err`, `row_stars_hi` and
-`row_stars_lo`; they were renamed to `row_count_err`, `row_stars_hi` and `row_stars_lo` on
+(This flag and its two helper flops were first recovered as `match_ok`, `cmp_state` and
+`cmp_hold`; they were renamed to `row_count_err`, `row_stars_hi` and `row_stars_lo` on
 2026-09-19, after this section established what they are.)
 
 `row_count_err` only ever updates on a `check_slot` cycle (`LO == 10`, i.e. the last cell of each
@@ -95,9 +99,11 @@ row — one `check_slot` per row, 11 total over the sweep), confirmed by both re
 `left_top.v`'s `check_slot` equation (`~q_f04 & q_f05 & ~q_f06 & q_f07`, which decodes to
 `LO == 10` under the counter's own bit weights) and by simulation.
 
-Directed test (`out/solve_a` runs, reproduced by the snippet in this doc's history):
-holding every other row at exactly 2 stars and sweeping one row's star count through
-0,1,2,3,4:
+Directed test: every other row held at exactly 2 stars, one row's star count swept through
+0,1,2,3,4. The original script was not kept (an earlier version of this sentence pointed at a
+snippet that no version of this document contains). `python -m tools.solve.rowcount_check`
+re-runs the test against Icarus; on 2026-10-02 it gave the same results, for this table and
+the random trials below:
 
 | row star count | `row_count_err` |
 |---|---|
@@ -270,8 +276,11 @@ would rise on the real `upstream/puzzle.gds` netlist for this same `I` sequence.
 ## Files
 
 * `tools/solve/starbattle.py` — derivation, self-test, solver, validator (re-runnable).
-* `out/solve_a/tb_counter.v`, `tb_array.v`, `tb_left_top.v`, `tb_left_top_trace.v` — Icarus
-  testbenches used to establish sections 1-5 directly from the RTL.
+* `tools/solve/rowcount_check.py` — section 4's directed row-count test, against Icarus.
+* `tools/solve/tb/tb_counter.v`, `tb_array.v`, `tb_left_top.v` — Icarus testbenches used to
+  establish sections 1-5 directly from the RTL; `starbattle.py` builds them into `out/solve_a/`.
+  A fourth, `tb_left_top_trace.v`, was not kept.
 * `out/solve_a/tb_counter.log`, `tb_array.log` — raw simulation logs cross-checked against.
-* `out/solve_a/full_run.log` — full transcript of `python -m tools.solve.starbattle`.
+* The full transcript of `python -m tools.solve.starbattle` is printed on each run; the log of
+  the run this document describes (`full_run.log`) was not kept.
 * `out/solve_a/tb_e2e.v` (generated on each run) — end-to-end validation testbench.

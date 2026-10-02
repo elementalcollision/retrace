@@ -90,7 +90,8 @@ gaps, `I` free). Full method and evidence: `docs/SOLVE_FORMAL.md`.
 
 **Agreement.** Route A's z3 solution and Route B's blind gate-level BMC
 witness are **bit-for-bit identical**: same 121-bit `I` sequence
-(`out/solve_a/full_run.log`'s `solution 1` vs. `out/solve_b/solve_found_bits.vh`
+(the 22 star cells, row-major, that `python -m tools.solve.starbattle`
+prints as `solution 1` under `== SOLVING`, vs. `out/solve_b/solve_found_bits.vh`
 / `out/solve_b/solve_found.json`), same 22-star grid, same row/column/region
 counts. Route A derives its answer from the puzzle's actual rules (Star
 Battle); Route B never uses any rule interpretation, just blind search on the

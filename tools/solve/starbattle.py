@@ -35,7 +35,7 @@ VVP = os.path.join(_EDA, "vvp") if os.path.exists(os.path.join(_EDA, "vvp")) els
 # ---------------------------------------------------------------------------
 # 1. Cell order: (row, col) presented on enabled cycle k, k = 0..120.
 #    Established by simulating rec_counter.v from reset with enable=1 for
-#    130 cycles (out/solve_a/tb_counter.v / tb_counter.log) and reading off
+#    130 cycles (tools/solve/tb/tb_counter.v, log out/solve_a/tb_counter.log) and reading off
 #    HI (=row), LO (=col) at each K. The trace shows: K=1..121 sweep
 #    (0,0),(0,1),...,(0,10),(1,0),...,(10,10) i.e. row-major, LO (column)
 #    fast, HI (row) slow; K=122 first shows DONE=1 with HI=LO=0 (reset by

@@ -311,8 +311,9 @@ fault there and nothing anywhere else:
 
 (d) and (f) stay clean on the planted copy, as they should: no pin name set and no master
 changes. `python -m tools.tempo.faults OUT.gds` writes the planted copy for inspection. The
-TEMPO test file now has 19 tests and takes about 150 s here, with a 3.9 GB peak, because it
-holds the base extraction while it extracts the planted copy.
+TEMPO test file now has 19 tests (21 cases) and takes about 55 s here, with a 4.1 GB peak,
+because it holds the base extraction while it extracts the planted copy. Those figures are from
+two runs on 2026-10-02 (54.5 and 55.5 s wall); this sentence first said about 150 s and 3.9 GB.
 
 ## 4f. Where it failed: the short locator and the findings image (2026-09-21)
 
